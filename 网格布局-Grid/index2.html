@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Grid</title>
+    <style>
+        .wrapper {
+            display: grid;
+            /* 设置列宽 */
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
+            /* 设置列间距和行间距 */
+            grid-gap: 1rem;
+            /* 设置行高 */
+            grid-auto-rows: 100px;
+            /* 设置行高最小100px-小了之后自动撑开 */
+            grid-auto-rows: minmax(100px, auto);
+        }
+
+        .wrapper>div {
+            background: #eee;
+            padding: 1rem;
+        }
+
+        .wrapper>div:nth-child(odd) {
+            background: #ddd;
+        }
+
+        .nested {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1rem;
+            grid-auto-rows: 70px;
+        }
+
+        .nested>div {
+            border: 1px solid #333;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div>Lorem ipsum dolor sit amet.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora illo libero voluptatem, eligendi,
+            voluptates rerum in soluta magnam officiis modi porro repellat atque? Alias itaque aliquid et! Perspiciatis,
+            id nihil et sequi excepturi amet nemo unde aliquid nisi at. Ratione?</div>
+        <div class="nested">
+            <div>lorem</div>
+            <div>lorem</div>
+            <div>lorem</div>
+        </div>
+        <div>Lorem ipsum dolor sit amet.</div>
+        <div>Lorem ipsum dolor sit amet.</div>
+        <div>Lorem ipsum dolor sit amet.</div>
+        <div>Lorem ipsum dolor sit amet.</div>
+        <div>Lorem ipsum dolor sit amet.</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Grid</title>
+    <style>
+        .wrapper {
+            display: grid;
+            /* 设置列宽-两列-可以设置多列 */
+            grid-template-columns: 70% 30%;
+            /* 列间距 */
+            grid-column-gap: 1rem;
+            /* 行间距 */
+            grid-row-gap: 1rem;
+            /* 列间距和行间距相同-简写 */
+            grid-gap: 1rem;
+        }
+
+        .wrapper>div {
+            background: #eee;
+            padding: 1rem;
+        }
+
+        .wrapper>div:nth-child(odd) {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos sapiente ut, molestiae officiis ea itaque
+            nesciunt, soluta perspiciatis incidunt quo ducimus! Quibusdam fugit ipsam tenetur earum in doloremque odit
+            quidem libero aliquid dolor incidunt explicabo assumenda, sequi saepe itaque culpa blanditiis vitae qui
+            deserunt neque corporis? Vel suscipit architecto, in blanditiis voluptas magnam quis excepturi laborum,
+            facilis natus molestias nesciunt ut dignissimos quibusdam nobis omnis sint quisquam hic odit saepe deserunt
+            alias. Atque explicabo architecto modi! Explicabo dolores libero eveniet.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quidem culpa numquam eaque facere consectetur
+            dolorum esse. Debitis quaerat perspiciatis accusantium saepe quisquam eum illo corrupti ad! Quaerat, fugiat.
+            Officia labore earum voluptas reiciendis excepturi saepe repellendus praesentium optio molestias!</div>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos sapiente ut, molestiae officiis ea itaque
+            nesciunt, soluta perspiciatis incidunt quo ducimus! Quibusdam fugit ipsam tenetur earum in doloremque odit
+            quidem libero aliquid dolor incidunt explicabo assumenda, sequi saepe itaque culpa blanditiis vitae qui
+            deserunt neque corporis? Vel suscipit architecto, in blanditiis voluptas magnam quis excepturi laborum,
+            facilis natus molestias nesciunt ut dignissimos quibusdam nobis omnis sint quisquam hic odit saepe deserunt
+            alias. Atque explicabo architecto modi! Explicabo dolores libero eveniet.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quidem culpa numquam eaque facere consectetur
+            dolorum esse. Debitis quaerat perspiciatis accusantium saepe quisquam eum illo corrupti ad! Quaerat, fugiat.
+            Officia labore earum voluptas reiciendis excepturi saepe repellendus praesentium optio molestias!</div>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos sapiente ut, molestiae officiis ea itaque
+            nesciunt, soluta perspiciatis incidunt quo ducimus! Quibusdam fugit ipsam tenetur earum in doloremque odit
+            quidem libero aliquid dolor incidunt explicabo assumenda, sequi saepe itaque culpa blanditiis vitae qui
+            deserunt neque corporis? Vel suscipit architecto, in blanditiis voluptas magnam quis excepturi laborum,
+            facilis natus molestias nesciunt ut dignissimos quibusdam nobis omnis sint quisquam hic odit saepe deserunt
+            alias. Atque explicabo architecto modi! Explicabo dolores libero eveniet.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quidem culpa numquam eaque facere consectetur
+            dolorum esse. Debitis quaerat perspiciatis accusantium saepe quisquam eum illo corrupti ad! Quaerat, fugiat.
+            Officia labore earum voluptas reiciendis excepturi saepe repellendus praesentium optio molestias!</div>
+    </div>
+</body>
+
+</html>

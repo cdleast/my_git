@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Grid</title>
+    <style>
+        .wrapper {
+            display: grid;
+            grid-template-areas:
+                'header header header'
+                'content content sidebar'
+                'box-1 box-2 box-3'
+                'footer footer footer';
+            grid-gap: 1rem;
+        }
+
+        .header {
+            grid-area: header;
+            text-align: center;
+        }
+
+        .content {
+            grid-area: content;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+        }
+
+        .box-1 {
+            grid-area: box-1;
+        }
+
+        .box-2 {
+            grid-area: box-2;
+        }
+
+        .box-3 {
+            grid-area: box-3;
+        }
+
+        .footer {
+            grid-area: footer;
+            text-align: center;
+        }
+
+        .header,
+        .content,
+        .sidebar,
+        .box-1,
+        .box-2,
+        .box-3,
+        .footer {
+            border: 1px solid #000;
+            padding: 0.5rem;
+        }
+
+        /* 响应式布局-小于500px时候每一个都一列显示 */
+        @media(max-width:500px) {
+            .wrapper {
+                grid-template-areas:
+                    'header'
+                    'content'
+                    'sidebar'
+                    'box-1'
+                    'box-2'
+                    'box-3'
+                    'footer';
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">头部标题</header>
+        <section class="content">
+            <h3>Hello World</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum commodi consequatur incidunt possimus
+                inventore voluptates exercitationem, vitae autem fuga earum eaque cum omnis obcaecati atque debitis
+                consectetur itaque dolores neque!</p>
+        </section>
+        <aside class="sidebar">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non, illum nesciunt debitis eos asperiores
+                magni voluptatem optio dolorum reprehenderit aliquid cum consequuntur minima animi ipsa id similique
+                distinctio ipsum! Reprehenderit.</p>
+        </aside>
+        <div class="box-1">
+            <h3>标题一</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At repudiandae nisi delectus omnis accusantium
+                ab similique culpa architecto. Non alias magni distinctio quis fugit, itaque dolorem molestias
+                consequuntur neque modi.</p>
+        </div>
+        <div class="box-2">
+            <h3>标题二</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At repudiandae nisi delectus omnis accusantium
+                ab similique culpa architecto. Non alias magni distinctio quis fugit, itaque dolorem molestias
+                consequuntur neque modi.</p>
+        </div>
+        <div class="box-3">
+            <h3>标题三</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At repudiandae nisi delectus omnis accusantium
+                ab similique culpa architecto. Non alias magni distinctio quis fugit, itaque dolorem molestias
+                consequuntur neque modi.</p>
+        </div>
+        <footer class="footer">底部标题</footer>
+    </div>
+</body>
+
+</html>
