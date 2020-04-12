@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+		<script>
+			
+			//js對象
+			var book=new Object();
+			book.id="001";
+			book.language="java";
+			
+			//js对象转json字符传
+			var jsonstr=JSON.stringify(book);
+			//alert(jsonstr);
+			
+			//字符串
+			var jsonstr2='{"id":"001","language":"java"}';
+			//alert(jsonstr2.id);
+			//alert(jsonstr2.language);
+			
+			//字符串转成json对象
+			var jsonobj1=JSON.parse(jsonstr2);
+			//alert(jsonobj.id);
+			//alert(jsonobj.language);
+			
+			//json对象
+			var jsonobj2={"id":"002","language":"java"};
+			//alert(jsonobj2.id);
+			//alert(jsonobj2.language);
+			
+			
+			var jsonstr3='{"books":[{"id":"001","language":"java"},{"id":"001","language":"c++"}]}';
+			var jsonobj3=JSON.parse(jsonstr3);
+			
+			$.each(jsonobj3.books, function(index,element) {
+				alert(element.language);
+			});
+			
+			
+			
+		</script>
+		
+		
+	</head>
+	<body>
+	</body>
+</html>

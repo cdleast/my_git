@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+		
+		<script>
+			
+			$(function(){
+				
+				var audio=$("#audio").get(0);
+				
+				$("#play").click(function(){
+					if(audio.paused){
+						audio.play();
+						$("#play").val("pause");
+					}else{
+						audio.pause();
+						$("#play").val("play");
+					}
+				})
+								
+				$("#audio").on("timeupdate",function(){
+					//console.log(this.currentTime+"/"+this.duration);
+					var tRanges=this.buffered;
+					var endTime=tRanges.end(tRanges.length-1);
+					console.log(endTime+"/"+this.duration);
+				})
+								
+				$("#audio").on("ended",function(){
+					console.log("end");
+				})
+				
+			})
+			
+			
+		</script>
+		
+		
+	</head>
+	<body>
+		
+		<audio id="audio" src="http://music.163.com/song/media/outer/url?id=483671599.mp3"></audio>
+		
+		<input type="button" value="play" id="play"/>
+		
+	</body>
+</html>

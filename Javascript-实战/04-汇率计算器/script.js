@@ -4,7 +4,7 @@ const amountEl_one = document.getElementById("amount-one"); // 第一个数值
 const currencyEl_two = document.getElementById("currency-two"); // 第二个下拉框-美元
 const amountEl_two = document.getElementById("amount-two"); // 第二个数值
 const swap = document.getElementById("swap"); // 交换按钮
-const rateEl = document.getElementById("rate"); // 交换后的数值
+const rateEl = document.getElementById("rate"); // 汇率计算完的数值
 
 
 // 绑定事件监听
