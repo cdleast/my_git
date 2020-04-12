@@ -10,13 +10,21 @@ export default {
             let numberArray = [1,2,3,4,5,6,7,8,9,10,11,12];;
             let groupedArray = group(numberArray, 5);
         */
-        Vue.prototype.group = function(array, subGroupLength) {
+        Vue.prototype.group = function (array, subGroupLength) {
             let index = 0;
             let newArray = [];
             while (index < array.length) {
                 newArray.push(array.slice(index, index += subGroupLength));
             }
             return newArray;
+        }
+
+
+        /*
+            转换货币格式
+        */
+        Vue.prototype.formatMoney = function (number) {
+            return "$" + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
         }
     }
 }

@@ -73,7 +73,6 @@
                                 ></el-badge>
                             </span>
                             <el-table
-                                ref="multipleTable"
                                 :data="tableDaiYue"
                                 tooltip-effect="dark"
                                 style="width: 100%"
@@ -110,7 +109,6 @@
                                 ></el-badge>
                             </span>
                             <el-table
-                                ref="multipleTable"
                                 :data="tableWeiJie"
                                 tooltip-effect="dark"
                                 style="width: 100%"
@@ -147,7 +145,6 @@
                                 ></el-badge>
                             </span>
                             <el-table
-                                ref="multipleTable"
                                 :data="tableWeiTuo"
                                 tooltip-effect="dark"
                                 style="width: 100%"
@@ -184,7 +181,6 @@
                                 ></el-badge>
                             </span>
                             <el-table
-                                ref="multipleTable"
                                 :data="tableTiXing"
                                 tooltip-effect="dark"
                                 style="width: 100%"
@@ -220,7 +216,7 @@
                     </div>
                     <div v-show="isFooter" class="el-tabs-footer">
                         <el-button
-                            @click="toggleSelect(tableData)"
+                            @click="toggleSelect(tableDaiBan)"
                             class="allButton"
                             type="text"
                         >全选/反选</el-button>
@@ -898,17 +894,15 @@ export default {
         },
 
         // 全选/反选
-        // toggleRowSelection element自带的方法
-        // 用于多选表格，切换某一行的选中状态，如果使用了第二个参数，则是设置这一行选中与否（allSelect 为 true 则选中）
+        // toggleRowSelection 用于多选表格，切换某一行的选中状态，如果使用了第二个参数，则是设置这一行选中与否（selected 为 true 则选中）
+        // clearSelection 用于多选表格，清空用户的选择
         toggleSelect(rows) {
             if (rows) {
                 rows.forEach(row => {
-                    this.$refs.multipleTable.toggleRowSelection(
-                        row,
-                        !this.allSelect
-                    );
+                    this.$refs.multipleTable.toggleRowSelection(row);
                 });
-                this.allSelect = !this.allSelect;
+            } else {
+                this.$refs.multipleTable.clearSelection();
             }
         },
 
