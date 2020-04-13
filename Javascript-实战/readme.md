@@ -2,7 +2,7 @@
 
 ### 表单验证
 * 表单验证封装函数
-* forEach()
+* forEach() - 数组循环
 
 ### 预购电影票
 * ...展开运算符 - 具有复制功能
@@ -11,7 +11,7 @@
 * localStorage - 本地存储 - 存储到浏览器中
 
 ### 自定义播放器
-* video
+* video - 食谱播放标签
 
 ### 汇率计算器
 * fetch() - js原生获取数据方法
@@ -20,7 +20,7 @@
 * fetch() - js原生获取数据方法
 * async 标记函数为异步函数
 * await 等待异步函数完成
-* forEach()
+* forEach() - 数组循环
 * map() - 功能和forEach类似可以返回一个新的数组
 * ...展开运算符
 * sort() - 排序算法
@@ -29,10 +29,19 @@
 
 ### 折叠侧边栏
 
-### SVG矢量图 - 猜单词游戏
-* svg
+### 猜单词游戏
+* SVG - 矢量图
 * keydown - 键盘事件
 * includes() 方法用来判断一个数组是否包含一个指定的值，如果是返回 true，否则false
 * map() - 功能和forEach类似可以返回一个新的数组
 * forEach() - 数组循环
-* 
+
+### API接口文档操作 - 食谱查询器
+* trim() - 清除首尾空格
+* fetch() - js原生获取数据方法
+* map() - 功能和forEach类似可以返回一个新的数组
+* data-前缀 - html5中我们可以使用data-前缀设置我们需要的自定义属性,来进行一些数据的存放,例如我们要在一个文字按钮上存放相应的id:`<a href="javascript:;" data-id="2312">测试</a>`
+* find() - 找到符合条件的对象（find方法找到符合条件的对象之后不在往后执行）无符合条件返回undefined
+* contains() - js原生方法，用于判断DOM元素的包含关系
+* classList - 属性返回元素的类名，作为 DOMTokenList 对象
+* getAttribute() - 方法返回指定属性名的属性值

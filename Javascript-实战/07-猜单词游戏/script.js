@@ -1,4 +1,4 @@
-// 第一步 获取节点
+// 获取节点
 const wordEl = document.getElementById("word"); // 单词输入内容
 const wrongLettersEl = document.getElementById("wrong-letters"); // 错误提示
 const playAgainBtn = document.getElementById("play-button"); // 再玩一次
