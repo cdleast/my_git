@@ -45,3 +45,19 @@
 * contains() - js原生方法，用于判断DOM元素的包含关系
 * classList - 属性返回元素的类名，作为 DOMTokenList 对象
 * getAttribute() - 方法返回指定属性名的属性值
+
+### 记账本
+* createElement() - 创建元素标签
+* Math.abs() - 负数转换为正数
+* forEach() - 数组循环
+* map() - 功能和forEach类似可以返回一个新的数组
+* reduce() - 用于计算总价，对数组中的每个元素执行一个由您提供的reduce函数(升序执行)，将其结果汇总为单个返回值
+* filter() - 数组过滤
+* toFixed() - 保留几位小数
+* trim() - 清除首尾空格
+* Math.random() - 生成随机数
+* Math.floor() - 向下取整
+* localStorage() - 本地存储
+
+### 音乐播放器
+* 

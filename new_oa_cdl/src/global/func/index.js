@@ -26,5 +26,13 @@ export default {
         Vue.prototype.formatMoney = function (number) {
             return "$" + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
         }
+
+
+        /*
+            生成随机数
+        */
+        Vue.prototype.randomID = function () {
+            return Math.floor(Math.random() * 100000000);
+        }
     }
 }
