@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import global from './global' // 公共路由
 import portal from './portal' // 个人门户
 import proces from './proces' // 流程中心
 
@@ -11,7 +12,7 @@ VueRouter.prototype.push = function push(location) {
 Vue.use(VueRouter)
 
 const routes = [
-	...portal, ...proces,
+	...global, ...portal, ...proces,
 	{ path: '/', redirect: '/portal' }
 ]
 
