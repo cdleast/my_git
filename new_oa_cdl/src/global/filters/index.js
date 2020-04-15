@@ -32,3 +32,9 @@ Vue.filter('comverTime', (data, format) => {
     return Moment(data, Moment.ISO_8601).format(format);
 });
 
+
+
+// 金钱过滤 ¥xx.xx
+Vue.filter('moneyFormat', (value) => {
+    return '¥' + Number(value).toFixed(2);
+})
