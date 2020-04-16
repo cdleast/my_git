@@ -22,4 +22,23 @@ export default {
             }
         })
     },
+
+    // 获取用户的数据
+    getUserInfo(token) {
+        return request({
+            url: `/user/info/${token}`,
+            method: 'get'
+        })
+    },
+
+    // 退出系统
+    logout(token) {
+        return request({
+            url: `/user/logout`,
+            method: 'post',
+            data: {
+                token
+            }
+        })
+    }
 }

@@ -22,7 +22,7 @@
                 <el-form-item label="确认密码" prop="checkPass">
                     <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="选择身份">
+                <el-form-item label="选择身份" prop="identity">
                     <el-select v-model="ruleForm.identity" placeholder="请选择身份">
                         <el-option label="管理员" value="manager"></el-option>
                         <el-option label="员工" value="employee"></el-option>
@@ -30,7 +30,8 @@
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
-                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                    <el-button @click="$router.push('/login')">登录</el-button>
+                    <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
                 </el-form-item>
             </el-form>
         </section>
@@ -40,7 +41,7 @@
 <script>
 import globalApi from "@/api/global"; // 导入调取接口api文档
 export default {
-    name:"register",
+    name: "register",
     data() {
         var validatePass = (rule, value, callback) => {
             if (value !== this.ruleForm.password) {
@@ -96,6 +97,13 @@ export default {
                         trigger: "blur"
                     },
                     { validator: validatePass, trigger: "blur" }
+                ],
+                identity: [
+                    {
+                        required: true,
+                        message: "请选择身份",
+                        trigger: "blur"
+                    }
                 ]
             }
         };
@@ -106,7 +114,16 @@ export default {
             this.$refs[formName].validate(valid => {
                 if (valid) {
                     globalApi.register(this.ruleForm).then(res => {
-                        // console.log(res);
+                        const resp = res.data;
+                        if (resp.flag) {
+                            this.$message({
+                                message: "注册成功",
+                                type: "success"
+                            });
+                            this.$router.push("/login");
+                        } else {
+                            this.$message.error("注册失败");
+                        }
                     });
                 } else {
                     return false;
@@ -122,7 +139,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang='scss' scoped>
 .register {
     background-color: #f9fafb;
     font-family: Arial, Helvetica, sans-serif;
@@ -139,8 +156,8 @@ export default {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 .manage_tip {
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: #409eff;

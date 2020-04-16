@@ -21,7 +21,8 @@
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                    <el-button @click="$router.push('/register')">注册</el-button>
+                    <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
                 </el-form-item>
             </el-form>
         </section>
@@ -30,6 +31,7 @@
 
 <script>
 import globalApi from "@/api/global"; // 导入调取接口api文档
+import jwt_decode from "jwt-decode"; // 解析token
 export default {
     name: "lohin",
     data() {
@@ -56,7 +58,35 @@ export default {
                     globalApi.login(this.ruleForm).then(res => {
                         const resp = res.data;
                         if (resp.flag) {
-                            console.log("登录成功");
+                            // 验证成功, 通过token去获取用户信息
+                            globalApi.getUserInfo(resp.data.token).then(res => {
+                                // 获取到了用户的数据
+                                const respUser = res.data;
+                                if (respUser.flag) {
+                                    // 存储用户信息
+                                    localStorage.setItem(
+                                        "eleUser",
+                                        JSON.stringify(respUser.data)
+                                    );
+                                    // 存储token
+                                    localStorage.setItem(
+                                        "eleToken",
+                                        resp.data.token
+                                    );
+                                    // 前往首页
+                                    this.$router.push("/");
+                                } else {
+                                    this.$message({
+                                        message: "获取用户信息失败",
+                                        type: "warning"
+                                    });
+                                }
+                            });
+                        } else {
+                            this.$message({
+                                message: "登录失败",
+                                type: "warning"
+                            });
                         }
                     });
                 } else {
@@ -72,8 +102,7 @@ export default {
 };
 </script>
 
-
-<style scoped>
+<style lang='scss' scoped>
 .lohin {
     background-color: #f9fafb;
     font-family: Arial, Helvetica, sans-serif;
@@ -90,8 +119,8 @@ export default {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 .manage_tip {
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: #409eff;

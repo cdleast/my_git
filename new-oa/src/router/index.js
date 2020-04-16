@@ -22,4 +22,17 @@ const router = new VueRouter({
 	routes
 })
 
+
+// 添加路由守卫-未登录的时候只能进去登录页或者注册页
+router.beforeEach((to, from, next) => {
+	const isLogin = localStorage.eleToken ? true : false;
+	if (to.path == "/login" || to.path == "/register") {
+		next();
+	} else {
+		isLogin ? next() : next("/login");
+	}
+})
+
+
+
 export default router
