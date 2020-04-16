@@ -1,10 +1,10 @@
-import request from '@/utils/request' // 请求文件
+import axios from '@/utils/request/axios' // 请求文件
 
 
 export default {
     // 注册用户 
     register(pojo) {
-        return request({
+        return axios({
             url: '/user/register',
             method: 'post',
             data: pojo
@@ -13,7 +13,7 @@ export default {
 
     // 登录用户
     login(users) {
-        return request({
+        return axios({
             url: '/user/login',
             method: 'post',
             data: {
@@ -25,7 +25,7 @@ export default {
 
     // 获取用户的数据
     getUserInfo(token) {
-        return request({
+        return axios({
             url: `/user/info/${token}`,
             method: 'get'
         })
@@ -33,7 +33,7 @@ export default {
 
     // 退出系统
     logout(token) {
-        return request({
+        return axios({
             url: `/user/logout`,
             method: 'post',
             data: {

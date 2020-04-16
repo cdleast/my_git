@@ -13,7 +13,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	...global, ...portal, ...proces,
-	{ path: '/', redirect: '/portal' }
+	// { path: '/', redirect: '/portal' }
 ]
 
 const router = new VueRouter({

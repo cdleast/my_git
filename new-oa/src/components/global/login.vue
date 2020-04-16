@@ -31,7 +31,6 @@
 
 <script>
 import globalApi from "@/api/global"; // 导入调取接口api文档
-import jwt_decode from "jwt-decode"; // 解析token
 export default {
     name: "lohin",
     data() {
@@ -63,15 +62,15 @@ export default {
                                 // 获取到了用户的数据
                                 const respUser = res.data;
                                 if (respUser.flag) {
-                                    // 存储用户信息
-                                    localStorage.setItem(
-                                        "eleUser",
-                                        JSON.stringify(respUser.data)
+                                    // vuex存储用户信息/token
+                                    // this.isEmpty全局方法，判断内容是否为空
+                                    this.$store.dispatch(
+                                        "setIsAutnenticated",
+                                        !this.isEmpty(resp.data.token)
                                     );
-                                    // 存储token
-                                    localStorage.setItem(
-                                        "eleToken",
-                                        resp.data.token
+                                    this.$store.dispatch(
+                                        "setUser",
+                                        JSON.stringify(respUser.data)
                                     );
                                     // 前往首页
                                     this.$router.push("/");

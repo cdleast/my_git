@@ -1,10 +1,5 @@
 export default {
     install(Vue) {
-        Vue.prototype.getToken = function () {
-            alert('每次进入的时候调用全局方法函数，getToken')
-        };
-
-
         /*
             把一个数组分成多个小数组
             let numberArray = [1,2,3,4,5,6,7,8,9,10,11,12];;
@@ -33,6 +28,20 @@ export default {
         */
         Vue.prototype.randomID = function () {
             return Math.floor(Math.random() * 100000000);
+        }
+
+
+        /*
+            判断内容是否为空
+            this.isEmpty(传入的内容)
+        */
+        Vue.prototype.isEmpty = function (value) {
+            return (
+                value === undefined ||
+                value === null ||
+                (typeof value === "object" && Object.keys(value).length === 0) ||
+                (typeof value === "string" && value.trim().length === 0)
+            );
         }
     }
 }

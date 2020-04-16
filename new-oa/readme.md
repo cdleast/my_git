@@ -18,12 +18,12 @@
         |- portal                                   // 个人门户路由
         |- proces                                   // 流程中心路由
         |— index.js                                 // 路由主文件
-    
+
     |- store                                        // vuex文件夹
         |- modules                                  // vuex模块化
-            |- global.js                            // 全局vuex
+            |- user.js                              // 用户信息
         |- index.js                                 // vuex主文件
-    
+
     |- utils                                        // 工具
         |- request.js                               // 封装axios请求文件
         |- directive                                // 自定义指令
