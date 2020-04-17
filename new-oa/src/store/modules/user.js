@@ -47,11 +47,11 @@ const actions = {
     setUser: ({ commit }, user) => {
         commit(types.SET_USER, user)
     },
-    // 设置
-    // clearCurrentState: ({ commit }) => {
-    //     commit(types.SET_IS_AUTNENTIATED, false)
-    //     commit(types.SET_USER, null)
-    // }
+    // 清除用户存储的信息
+    clearCurrentState: ({ commit }) => {
+        commit(types.SET_IS_AUTNENTIATED, false)
+        commit(types.SET_USER, null)
+    }
 }
 
 // 暴露对象，让其他页面可以拿到

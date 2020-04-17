@@ -33,7 +33,13 @@
         </el-dropdown>
 
         <!-- 修改密码 -->
-        <el-dialog class="edit-pass" :append-to-body="true" title="修改密码" :visible.sync="dialogFormVisible" width="500px">
+        <el-dialog
+            class="edit-pass"
+            :append-to-body="true"
+            title="修改密码"
+            :visible.sync="dialogFormVisible"
+            width="500px"
+        >
             <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="80px">
                 <el-form-item label="原密码" prop="oldPass">
                     <el-input type="password" v-model="ruleForm.oldPass" autocomplete="off"></el-input>
@@ -51,7 +57,6 @@
             </el-form>
         </el-dialog>
     </div>
-    
 </template>
 
 <script>
@@ -182,7 +187,12 @@ export default {
             });
         },
         // 退出系统
-        handleLogout() {}
+        handleLogout() {
+            // 清除vuex存储的用户信息
+            this.$store.dispatch("clearCurrentState");
+            // 页面跳转
+            this.$router.push("/login");
+        }
     }
 };
 </script>

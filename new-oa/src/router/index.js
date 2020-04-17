@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store'
+import store from '../store' // vuex
 import global from './global' // 公共路由
 import portal from './portal' // 个人门户
 import proces from './proces' // 流程中心
