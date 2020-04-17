@@ -1,5 +1,8 @@
 <template>
-    <div class="portal"></div>
+    <div class="portal">
+        <HeaderNav></HeaderNav>
+
+    </div>
 </template>
 
 <script>
