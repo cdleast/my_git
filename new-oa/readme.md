@@ -2,7 +2,7 @@
 ```
 |- src                                              // 项目主目录
     |- api                                          // 请求数据操作
-        |- global.js                                // 全局api
+        |- user.js                                  // 用户api
 
     |- assets                                       // 资源会被 webpack 编译
         |- images                                   // 公共图片文件夹
@@ -12,6 +12,7 @@
             |- login.vue                            // 登录组件
             |- register.vue                         // 注册组件
             |- nofind.vue                           // 404组件
+            |- header.vue                           // 头部组件
 
     |- router                                       // 路由文件夹
         |- global                                   // 全局路由
@@ -25,7 +26,8 @@
         |- index.js                                 // vuex主文件
 
     |- utils                                        // 工具
-        |- request.js                               // 封装axios请求文件
+        |- component                                // 全局注册组件
+        |- request                                  // 封装请求文件
         |- directive                                // 自定义指令
         |- filters                                  // 过滤器
         |- function                                 // 方法函数

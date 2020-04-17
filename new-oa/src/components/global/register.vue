@@ -10,7 +10,7 @@
                 status-icon
                 :rules="rules"
                 ref="ruleForm"
-                label-width="100px"
+                label-width="80px"
                 class="ruleForm"
             >
                 <el-form-item label="用户名" prop="username">
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import globalApi from "@/api/global"; // 导入调取接口api文档
+import userApi from "@/api/user"; // 导入调取接口api文档
 export default {
     name: "register",
     data() {
@@ -113,7 +113,7 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate(valid => {
                 if (valid) {
-                    globalApi.register(this.ruleForm).then(res => {
+                    userApi.register(this.ruleForm).then(res => {
                         const resp = res.data;
                         if (resp.flag) {
                             this.$message({

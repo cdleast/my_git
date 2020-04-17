@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import globalApi from "@/api/global"; // 导入调取接口api文档
+import userApi from "@/api/user"; // 导入调取接口api文档
 export default {
     name: "lohin",
     data() {
@@ -54,11 +54,11 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate(valid => {
                 if (valid) {
-                    globalApi.login(this.ruleForm).then(res => {
+                    userApi.login(this.ruleForm).then(res => {
                         const resp = res.data;
                         if (resp.flag) {
                             // 验证成功, 通过token去获取用户信息
-                            globalApi.getUserInfo(resp.data.token).then(res => {
+                            userApi.getUserInfo(resp.data.token).then(res => {
                                 // 获取到了用户的数据
                                 const respUser = res.data;
                                 if (respUser.flag) {
@@ -74,6 +74,10 @@ export default {
                                     );
                                     // 前往首页
                                     this.$router.push("/");
+                                    this.$message({
+                                        message: "登录成功",
+                                        type: "success"
+                                    });
                                 } else {
                                     this.$message({
                                         message: "获取用户信息失败",
