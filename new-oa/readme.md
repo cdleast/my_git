@@ -13,6 +13,7 @@
             |- register.vue                         // 注册组件
             |- nofind.vue                           // 404组件
             |- header.vue                           // 头部组件
+            |- breadcrumb.vue                       // 导航面包屑
 
     |- router                                       // 路由文件夹
         |- global                                   // 全局路由

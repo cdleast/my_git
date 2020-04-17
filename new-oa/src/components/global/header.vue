@@ -204,11 +204,12 @@ export default {
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
     height: 60px;
     z-index: 999;
     box-sizing: border-box;
     background-color: #545c64;
+    min-width: 1200px;
+
 }
 // 头部导航
 .el-menu.el-menu--horizontal {
@@ -221,7 +222,7 @@ export default {
 .el-dropdown {
     position: absolute;
     top: 0;
-    right: 40px;
+    right: 30px;
     line-height: 60px;
 }
 .el-dropdown-link {
