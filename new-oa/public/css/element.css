@@ -1,9 +1,57 @@
 /* Container 布局容器 */
-.el-container .el-header{
+.el-container .el-header {
     padding: 0;
 }
 
-.el-container .el-main{
+.el-container .el-main {
     padding: 20px 0;
     overflow: initial;
+}
+
+
+/* 选项卡 */
+.el-tabs {
+    height: 100%;
+}
+
+.el-tabs .el-tabs__item {
+    height: 50px;
+    line-height: 50px;
+}
+
+.el-tabs__content {
+    /* 70px是选项卡头部50px加上选项卡content上下间距一共30px */
+    height: calc(100% - 80px);
+    padding: 0 20px;
+}
+
+.el-tabs.el-tabs--bottom .el-tabs__item.is-bottom:nth-child(2),
+.el-tabs.el-tabs--bottom .el-tabs__item.is-top:nth-child(2),
+.el-tabs.el-tabs--top .el-tabs__item.is-bottom:nth-child(2),
+.el-tabs.el-tabs--top .el-tabs__item.is-top:nth-child(2) {
+    padding-left: 20px;
+}
+
+
+/* table表格 */
+.el-table .el-table__header th,
+.el-table .el-table__body td {
+    padding: 0;
+}
+
+.el-table .el-table__header .cell,
+.el-table .el-table__body .cell {
+    line-height: 39px;
+}
+
+.el-table .el-table__header th {
+    background: #F9FAFB;
+}
+
+.el-table th>.cell {
+    font-size: 14px;
+}
+
+.el-table td>.cell {
+    font-size: 12px;
 }

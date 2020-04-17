@@ -1,4 +1,4 @@
-<template>
+x<template>
     <div class="portal">
         <el-row :gutter="20">
             <!-- 待办/待阅 -->
@@ -831,19 +831,19 @@ export default {
     methods: {
         // 获取数据
         getTableData() {
-            this.$axios.get("/api/portal_daiban").then(res => {
+            this.$axios.get("/api/portal/daiban").then(res => {
                 this.tableDaiBan = res.data.ORIGIN;
             });
-            this.$axios.get("/api/portal_daiyue").then(res => {
+            this.$axios.get("/api/portal/daiyue").then(res => {
                 this.tableDaiYue = res.data.ORIGIN;
             });
-            this.$axios.get("/api/portal_weijie").then(res => {
+            this.$axios.get("/api/portal/weijie").then(res => {
                 this.tableWeiJie = res.data._DATA_;
             });
-            this.$axios.get("/api/portal_weituo").then(res => {
+            this.$axios.get("/api/portal/weituo").then(res => {
                 this.tableWeiTuo = res.data._DATA_;
             });
-            this.$axios.get("/api/portal_tixing").then(res => {
+            this.$axios.get("/api/portal/tixing").then(res => {
                 this.tableTiXing = res.data._DATA_;
             });
             this.$axios.get("/api/portal_tongzhi").then(res => {

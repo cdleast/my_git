@@ -3,6 +3,7 @@
 |- src                                              // 项目主目录
     |- api                                          // 请求数据操作
         |- user.js                                  // 用户api
+        |- portal.js                                // 个人门户
 
     |- assets                                       // 资源会被 webpack 编译
         |- images                                   // 公共图片文件夹
