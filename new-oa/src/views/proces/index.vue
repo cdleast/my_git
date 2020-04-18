@@ -4,7 +4,9 @@
             <el-header>
                 <HeaderNav></HeaderNav>
             </el-header>
-            <el-main></el-main>
+            <el-main>
+                <BreadCrumb></BreadCrumb>
+            </el-main>
         </el-container>
     </div>
 </template>
@@ -20,4 +22,8 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.el-main{
+    width: 1200px;
+    margin: 0 auto;
+}
 </style>

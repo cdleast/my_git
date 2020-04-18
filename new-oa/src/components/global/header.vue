@@ -20,6 +20,8 @@
             <el-menu-item index="8">员工分析</el-menu-item>
         </el-menu>
 
+        <el-avatar class="avatar" :size="40" :src="circleUrl"></el-avatar>
+
         <!-- 下拉菜单 -->
         <el-dropdown @command="handleCommand" placement="top">
             <span class="el-dropdown-link">
@@ -91,6 +93,8 @@ export default {
         // 注意:在 return 上面,而上面不能使用 逗号 , 结束
         return {
             user: JSON.parse(this.$store.getters.user), // vuex中用户信息
+            circleUrl:
+                "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
             dialogFormVisible: false, // 修改密码弹窗状态
             ruleForm: {
                 oldPass: "", // 原密码
@@ -209,7 +213,6 @@ export default {
     box-sizing: border-box;
     background-color: #545c64;
     min-width: 1200px;
-
 }
 // 头部导航
 .el-menu.el-menu--horizontal {
@@ -252,5 +255,13 @@ export default {
 }
 .el-button {
     flex: 1;
+}
+
+// 头像
+.avatar {
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    cursor: pointer;
 }
 </style>

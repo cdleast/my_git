@@ -554,7 +554,7 @@ x<template>
             </el-col>
 
             <!-- 个人看板 -->
-            <el-col :span="24" class="grkb">
+            <el-col :span="24" class="gerenkanban">
                 <div class="grid-content">
                     <el-card class="box-card">
                         <div slot="header" class="clearfix">

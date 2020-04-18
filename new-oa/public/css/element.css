@@ -55,3 +55,82 @@
 .el-table td>.cell {
     font-size: 12px;
 }
+
+
+/* card卡片布局 */
+.el-card.box-card.is-always-shadow,
+.el-card.box-card.is-hover-shadow:focus,
+.el-card.box-card.is-hover-shadow:hover {
+    box-shadow: none;
+    border: none;
+}
+
+.el-card .el-card__header {
+    height: 50px;
+    line-height: 48px;
+    padding: 0 20px;
+    border-bottom: 2px solid #E4E7ED;
+    position: relative;
+}
+
+.el-card .el-card__body {
+    padding: 0 20px;
+    position: relative;
+}
+
+.el-card.card-border-none .el-card__body {
+    padding: 0;
+}
+
+.el-card .card-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #303133;
+    list-style: none;
+}
+
+.el-card .iconfont {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.el-card .iconfont:hover {
+    color: #409EFF;
+}
+
+.el-card .card-name:hover {
+    color: #409EFF;
+}
+
+.el-card .item {
+    font-size: 12px;
+    color: #454A5B;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px dotted #EDEDED;
+}
+
+.el-card .item>span {
+    float: right;
+    color: #8C8D9E;
+}
+
+.el-card .item>span:not(.item_left) {
+    margin-left: 15px;
+}
+
+.el-card .item .item_left {
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.el-card .item:hover span {
+    color: #409EFF;
+    cursor: pointer;
+}
