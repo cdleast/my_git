@@ -1,10 +1,8 @@
 <template>
     <div id="app">
-        <div class="layout">
-            <keep-alive>
-                <router-view></router-view>
-            </keep-alive>
-        </div>
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
     </div>
 </template>
 
@@ -15,8 +13,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app,
-.layout{
+#app {
     width: 100%;
     height: 100%;
 }

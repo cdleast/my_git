@@ -1020,7 +1020,7 @@ export default {
 
 <style lang='scss' scoped>
 .el-main {
-    width: 1190px;
+    width: 1200px;
     margin: 0 auto;
 }
 
