@@ -28,7 +28,9 @@
                             </el-menu-item>
                         </el-menu>
                     </el-aside>
-                    <el-main>Main</el-main>
+                    <el-main class="el-main-child">
+                        <router-view :rightChildLeft="leftMenu"></router-view>
+                    </el-main>
                 </el-container>
             </el-main>
         </el-container>
@@ -41,7 +43,7 @@ export default {
     name: "proces",
     data() {
         return {
-            leftMenu: {}
+            leftMenu: []
         };
     },
     computed: {
@@ -101,6 +103,13 @@ export default {
 }
 
 /* 竖导航右侧边框去掉 */
+.el-aside {
+    box-shadow: 0 0 12px 4px rgba(0, 28, 144, 0.06);
+    z-index: 9;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
 .el-menu.el-menu-vertical-demo {
     border-right: none;
     padding: 20px 15px;
@@ -125,11 +134,27 @@ export default {
 
 .el-menu.el-menu-vertical-demo .el-menu-item.is-active,
 .el-menu.el-menu-vertical-demo .el-menu-item:hover {
-    background: #f6f6f9 !important;
-    border: 1px solid #f1f1f1;
-    color: #409eff !important;
+    background: #409eff !important;
+    border: 1px solid #409eff;
+    color: #fff !important;
     i {
-        color: #409eff;
+        color: #fff;
     }
+}
+
+// 右侧内容
+.el-main-child {
+    padding: 20px 30px;
+    background: #fff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+
+.proces /deep/ .main_left {
+    float: left;
+}
+.proces /deep/ .main_right {
+    float: right;
 }
 </style>

@@ -1036,7 +1036,7 @@ export default {
 .grid-content {
     background: #ffffff;
     border: 1px solid #ededed;
-    border-radius: 4px;
+    border-radius: 5px;
     position: relative;
     height: 100%;
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="menhuyuzhixingli">
+    <div class="baoxiaoguanli2">
         <el-row :gutter="20">
             <el-col :span="16" class="main_left">
                 <procesChildLeft :leftMenu="leftMenu"></procesChildLeft>
@@ -16,7 +16,7 @@
 import procesChildLeft from "@/views/proces/proces-child-left";
 import procesChildRight from "@/views/proces/proces-child-right";
 export default {
-    name: "menhuyuzhixingli",
+    name: "baoxiaoguanli2",
     components: {
         procesChildLeft,
         procesChildRight
