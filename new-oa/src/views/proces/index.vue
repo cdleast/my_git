@@ -97,11 +97,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.el-main {
-    width: 1200px;
-    margin: 0 auto;
-}
-
 /* 竖导航右侧边框去掉 */
 .el-aside {
     box-shadow: 0 0 12px 4px rgba(0, 28, 144, 0.06);

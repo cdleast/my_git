@@ -20,6 +20,7 @@
         |- global                                   // 全局路由
         |- portal                                   // 个人门户路由
         |- proces                                   // 流程中心路由
+        |- partymass                                // 党群门户路由
         |— index.js                                 // 路由主文件
 
     |- store                                        // vuex文件夹
@@ -37,6 +38,7 @@
     |- view                                         // 页面文件夹
         |- portal                                   // 个人门户
         |- proces                                   // 流程中心
+        |- partymass                                // 党群门户
 
     |- App.vue                                      // 根组件
     |- main.js                                      // 项目的核心配置文件

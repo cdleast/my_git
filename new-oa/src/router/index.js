@@ -4,6 +4,7 @@ import store from '../store' // vuex
 import global from './global' // 公共路由
 import portal from './portal' // 个人门户
 import proces from './proces' // 流程中心
+import partymass from './partymass' // 党群门户
 
 // 解决 点击同一路由，控制台报错问题，适用所有UI框架
 const originalPush = VueRouter.prototype.push
@@ -13,7 +14,7 @@ VueRouter.prototype.push = function push(location) {
 Vue.use(VueRouter)
 
 const routes = [
-	...global, ...portal, ...proces,
+	...global, ...portal, ...proces, ...partymass,
 	{ path: '/', redirect: '/portal' }
 ]
 

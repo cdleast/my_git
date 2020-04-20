@@ -1019,11 +1019,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.el-main {
-    width: 1200px;
-    margin: 0 auto;
-}
-
 .el-col {
     border-radius: 4px;
     margin-bottom: 20px;

@@ -6,6 +6,8 @@
 .el-container .el-main {
     padding: 20px 0;
     overflow: initial;
+    width: 1200px;
+    margin: 0 auto;
 }
 
 

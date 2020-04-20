@@ -12,7 +12,7 @@
         >
             <el-menu-item index="/portal">个人门户</el-menu-item>
             <el-menu-item index="/proces">流程中心</el-menu-item>
-            <el-menu-item index="3">党群门户</el-menu-item>
+            <el-menu-item index="/partymass">党群门户</el-menu-item>
             <el-menu-item index="4">廉政建设</el-menu-item>
             <el-menu-item index="5">安全生产门户</el-menu-item>
             <el-menu-item index="6">经营分析</el-menu-item>
