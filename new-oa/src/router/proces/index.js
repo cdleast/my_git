@@ -27,7 +27,8 @@ export default [
             { path: '/yingyongpingtai', meta: { title: '应用平台', activeParent: '/proces', activeChild: '/yingyongpingtai' }, name: 'yingyongpingtai', component: () => import('@/components/proces/yingyongpingtai') },
             { path: '/biaoqianziliaozhunbei', meta: { title: '标前资料准备', activeParent: '/proces', activeChild: '/biaoqianziliaozhunbei' }, name: 'biaoqianziliaozhunbei', component: () => import('@/components/proces/biaoqianziliaozhunbei') },
             { path: '/xitongshezhi', meta: { title: '系统设置', activeParent: '/proces', activeChild: '/xitongshezhi' }, name: 'xitongshezhi', component: () => import('@/components/proces/xitongshezhi') },
-
         ]
-    }
+    },
+    // 档案管理子级
+    { path: '/hetongzhulu', meta: { title: '合同著录', activeParent: '/proces', childParent: '/danganguanli' }, name: 'hetongzhulu', component: () => import('@/components/proces/danganguanli/hetongzhulu') },
 ]

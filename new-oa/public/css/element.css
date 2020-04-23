@@ -4,7 +4,7 @@
 }
 
 .el-container .el-main {
-    padding: 20px 0;
+    padding: 0;
     overflow: initial;
     width: 1200px;
     margin: 0 auto;
@@ -135,4 +135,13 @@
 .el-card .item:hover span {
     color: #409EFF;
     cursor: pointer;
+}
+
+/* form */
+.el-form .el-form-item{
+    margin-bottom: 15px;
+}
+.el-input .el-input__inner{
+    height: 35px;
+    line-height: 35px;
 }

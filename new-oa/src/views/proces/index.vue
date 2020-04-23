@@ -1,11 +1,7 @@
 <template>
     <div class="proces">
         <el-container>
-            <el-header>
-                <HeaderNav></HeaderNav>
-            </el-header>
             <el-main>
-                <BreadCrumb></BreadCrumb>
                 <el-container>
                     <el-aside width="232px">
                         <el-menu

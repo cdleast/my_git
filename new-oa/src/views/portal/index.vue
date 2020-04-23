@@ -1,855 +1,836 @@
 <template>
     <div class="portal">
-        <el-container>
-            <el-header>
-                <HeaderNav></HeaderNav>
-            </el-header>
-            <el-main>
-                <BreadCrumb></BreadCrumb>
-                <el-row :gutter="20">
-                    <!-- 待办待阅 -->
-                    <el-col :span="16" class="daiban">
-                        <div class="grid-content">
-                            <el-tabs v-model="activeName1" @tab-click="handleClick">
-                                <el-tab-pane label="待办" name="DAIBAN">
-                                    <span slot="label" style="position: relative">
-                                        <span>待办</span>
-                                        <el-badge
-                                            v-show="tableDaiBan.length>0"
-                                            class="items_badge"
-                                            :value="tableDaiBan.length"
-                                            size="mini"
-                                            :max="99"
-                                        ></el-badge>
-                                    </span>
-                                    <el-table
-                                        ref="multipleTable"
-                                        :data="tableDaiBan"
-                                        tooltip-effect="dark"
-                                        style="width: 100%"
-                                        height="320"
-                                        @selection-change="handleSelectionChange"
-                                    >
-                                        <el-table-column type="selection" width="45"></el-table-column>
-                                        <el-table-column
-                                            prop="TODO_TITLE"
-                                            width="190"
-                                            label="标题"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="S_ODEPT__NAME"
-                                            show-overflow-tooltip
-                                            label="所属机构"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SEND_USER_CODE__NAME"
-                                            show-overflow-tooltip
-                                            label="发送者"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SEND_DEPT_NAME"
-                                            show-overflow-tooltip
-                                            label="所在部门"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="TODO_CODE_NAME"
-                                            label="代办类型"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column label="时间" show-overflow-tooltip>
-                                            <template
-                                                slot-scope="scope"
-                                            >{{ scope.row.TODO_SEND_TIME | comverTime('YYYY-MM-DD') }}</template>
-                                        </el-table-column>
-                                        <el-table-column label="操作">
-                                            <template slot-scope="scope">
-                                                <el-button
-                                                    type="text"
-                                                    size="mini"
-                                                    @click="handleYes(scope.$index, scope.row)"
-                                                >同意</el-button>
-                                                <el-button
-                                                    type="text"
-                                                    class="handleNo"
-                                                    size="mini"
-                                                    @click="handleNo(scope.$index, scope.row)"
-                                                >拒绝</el-button>
-                                            </template>
-                                        </el-table-column>
-                                    </el-table>
-                                </el-tab-pane>
-                                <el-tab-pane label="待阅" name="DAIYUE">
-                                    <span slot="label" style="position: relative">
-                                        <span>待阅</span>
-                                        <el-badge
-                                            v-show="tableDaiYue.length>0"
-                                            class="items_badge"
-                                            :value="tableDaiYue.length"
-                                            size="mini"
-                                            :max="99"
-                                        ></el-badge>
-                                    </span>
-                                    <el-table
-                                        :data="tableDaiYue"
-                                        tooltip-effect="dark"
-                                        style="width: 100%"
-                                        height="320"
-                                    >
-                                        <el-table-column
-                                            prop="TODO_TITLE"
-                                            width="190"
-                                            label="标题"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SEND_USER_CODE__NAME"
-                                            show-overflow-tooltip
-                                            label="发送者"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SEND_DEPT_NAME"
-                                            show-overflow-tooltip
-                                            label="所在部门"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="TODO_CODE_NAME"
-                                            label="代办类型"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column label="时间" show-overflow-tooltip>
-                                            <template
-                                                slot-scope="scope"
-                                            >{{ scope.row.TODO_SEND_TIME | comverTime('YYYY-MM-DD') }}</template>
-                                        </el-table-column>
-                                    </el-table>
-                                </el-tab-pane>
-                                <el-tab-pane label="未结" name="WEIJIE">
-                                    <span slot="label" style="position: relative">
-                                        <span>未结</span>
-                                        <el-badge
-                                            v-show="tableWeiJie.length>0"
-                                            class="items_badge"
-                                            :value="tableWeiJie.length"
-                                            size="mini"
-                                            :max="99"
-                                        ></el-badge>
-                                    </span>
-                                    <el-table
-                                        :data="tableWeiJie"
-                                        tooltip-effect="dark"
-                                        style="width: 100%"
-                                        height="320"
-                                    >
-                                        <el-table-column
-                                            prop="TITLE"
-                                            width="190"
-                                            label="标题"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="S_USER__NAME"
-                                            show-overflow-tooltip
-                                            label="拟稿人"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="S_TDEPT__NAME"
-                                            show-overflow-tooltip
-                                            label="拟稿部门"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SERV_NAME"
-                                            label="单据类型"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column label="时间" show-overflow-tooltip>
-                                            <template
-                                                slot-scope="scope"
-                                            >{{ scope.row.S_ATIME | comverTime('YYYY-MM-DD') }}</template>
-                                        </el-table-column>
-                                    </el-table>
-                                </el-tab-pane>
-                                <el-tab-pane label="委托" name="WEITUO">
-                                    <span slot="label" style="position: relative">
-                                        <span>委托</span>
-                                        <el-badge
-                                            v-show="tableWeiTuo.length>0"
-                                            class="items_badge"
-                                            :value="tableWeiTuo.length"
-                                            size="mini"
-                                            :max="99"
-                                        ></el-badge>
-                                    </span>
-                                    <el-table
-                                        :data="tableWeiTuo"
-                                        tooltip-effect="dark"
-                                        style="width: 100%"
-                                        height="320"
-                                    >
-                                        <el-table-column
-                                            prop="TODO_TITLE"
-                                            width="190"
-                                            label="标题"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SEND_USER_CODE__NAME"
-                                            show-overflow-tooltip
-                                            label="发送者"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SEND_DEPT_NAME"
-                                            show-overflow-tooltip
-                                            label="所在部门"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="TODO_CODE_NAME"
-                                            label="代办类型"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column label="时间" show-overflow-tooltip>
-                                            <template
-                                                slot-scope="scope"
-                                            >{{ scope.row.TODO_SEND_TIME | comverTime('YYYY-MM-DD') }}</template>
-                                        </el-table-column>
-                                    </el-table>
-                                </el-tab-pane>
-                                <el-tab-pane label="提醒" name="TIXING">
-                                    <span slot="label" style="position: relative">
-                                        <span>提醒</span>
-                                        <el-badge
-                                            v-show="tableTiXing.length>0"
-                                            class="items_badge"
-                                            :value="tableTiXing.length"
-                                            size="mini"
-                                            :max="99"
-                                        ></el-badge>
-                                    </span>
-                                    <el-table
-                                        :data="tableTiXing"
-                                        tooltip-effect="dark"
-                                        style="width: 100%"
-                                        height="320"
-                                    >
-                                        <el-table-column
-                                            prop="DATA_TITLE"
-                                            width="190"
-                                            label="标题"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SEND_USER__NAME"
-                                            show-overflow-tooltip
-                                            label="发送者"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="S_DEPT__NAME"
-                                            show-overflow-tooltip
-                                            label="所在部门"
-                                        ></el-table-column>
-                                        <el-table-column
-                                            prop="SERV_NAME"
-                                            label="单据类型"
-                                            show-overflow-tooltip
-                                        ></el-table-column>
-                                        <el-table-column label="时间" show-overflow-tooltip>
-                                            <template
-                                                slot-scope="scope"
-                                            >{{ scope.row.SEND_TIME | comverTime('YYYY-MM-DD') }}</template>
-                                        </el-table-column>
-                                    </el-table>
-                                </el-tab-pane>
-                            </el-tabs>
-                            <div class="el-tabs-right">
-                                <el-button type="text">
-                                    切换排序
-                                    <span class="el-icon-d-caret"></span>
-                                </el-button>
-                                <span class="el-icon-refresh iconfont"></span>
-                            </div>
-                            <div v-show="isFooter" class="el-tabs-footer">
-                                <el-button
-                                    @click="toggleSelect(tableDaiBan)"
-                                    class="allButton"
-                                    type="text"
-                                >全选/反选</el-button>
-                                <el-button
-                                    @click="allRefused"
-                                    class="refused"
-                                    type="danger"
-                                    round
+        <el-row :gutter="20">
+            <!-- 待办待阅 -->
+            <el-col :span="16" class="daiban">
+                <div class="grid-content">
+                    <el-tabs v-model="activeName1" @tab-click="handleClick">
+                        <el-tab-pane label="待办" name="DAIBAN">
+                            <span slot="label" style="position: relative">
+                                <span>待办</span>
+                                <el-badge
+                                    v-show="tableDaiBan.length>0"
+                                    class="items_badge"
+                                    :value="tableDaiBan.length"
                                     size="mini"
-                                >拒绝</el-button>
-                                <el-button
-                                    @click="allAgreed"
-                                    size="mini"
-                                    class="agreed"
-                                    type="success"
-                                    round
-                                >同意</el-button>
-                            </div>
-                        </div>
-                    </el-col>
-
-                    <!-- 通知公告 -->
-                    <el-col :span="8" class="tongzhigonggao">
-                        <div class="grid-content">
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span class="card-name">通知公告</span>
-                                    <span class="el-icon-more iconfont"></span>
-                                </div>
-                                <div v-for="(item,index) in tableTongZhi" :key="index" class="item">
-                                    <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                    <span
-                                        class="item_right"
-                                    >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                </div>
-                            </el-card>
-                        </div>
-                    </el-col>
-
-                    <!-- 公司要闻 -->
-                    <el-col :span="16" class="gongsiyaowen">
-                        <div class="grid-content">
-                            <el-tabs v-model="activeName2">
-                                <el-tab-pane label="公司要闻" name="GSYW">
-                                    <div
-                                        v-for="item in tableGongSiTop"
-                                        :key="item.NEWS_ID"
-                                        class="gsyw_top"
-                                    >
-                                        <el-image :src="imgUrl"></el-image>
-                                        <div class="gsyw_top_right">
-                                            <h3>{{item.NEWS_SUBJECT}}</h3>
-                                            <v-clamp
-                                                class="gsyw_top_right_p"
-                                                autoresize
-                                                :max-lines="4"
-                                            >{{item.NEWS_BODY}}</v-clamp>
-                                            <div class="gsyw_top_right_b">
-                                                <span
-                                                    class="gsyw_top_right_b_company"
-                                                >{{item.S_ODEPT__NAME}}</span>
-                                                <span
-                                                    class="gsyw_top_right_b_time"
-                                                >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                                <span
-                                                    class="el-icon-view gsyw_top_right_b_view"
-                                                >&nbsp;{{item.COUNTER}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        v-for="item in tableGongSiBottom"
-                                        :key="item.NEWS_ID"
-                                        class="gsyw_bottom"
-                                    >
-                                        <el-card class="box-card card-border-none">
-                                            <div class="item">
-                                                <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                                <span>{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                                <span>{{item.S_ODEPT__NAME}}</span>
-                                            </div>
-                                        </el-card>
-                                    </div>
-                                </el-tab-pane>
-                                <el-tab-pane label="所属公司要闻" name="SSGSYW">
-                                    <div
-                                        v-for="item in tableSuoShuTop"
-                                        :key="item.NEWS_ID"
-                                        class="gsyw_top"
-                                    >
-                                        <el-image :src="imgUrl"></el-image>
-                                        <div class="gsyw_top_right">
-                                            <h3>{{item.NEWS_SUBJECT}}</h3>
-                                            <v-clamp
-                                                class="gsyw_top_right_p"
-                                                autoresize
-                                                :max-lines="4"
-                                            >{{item.NEWS_BODY}}</v-clamp>
-                                            <div class="gsyw_top_right_b">
-                                                <span
-                                                    class="gsyw_top_right_b_company"
-                                                >{{item.S_ODEPT__NAME}}</span>
-                                                <span
-                                                    class="gsyw_top_right_b_time"
-                                                >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                                <span
-                                                    class="el-icon-view gsyw_top_right_b_view"
-                                                >&nbsp;{{item.COUNTER}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        v-for="item in tableSuoShuBottom"
-                                        :key="item.NEWS_ID"
-                                        class="gsyw_bottom"
-                                    >
-                                        <el-card class="box-card card-border-none">
-                                            <div class="item">
-                                                <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                                <span>{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                                <span>{{item.S_ODEPT__NAME}}</span>
-                                            </div>
-                                        </el-card>
-                                    </div>
-                                </el-tab-pane>
-                            </el-tabs>
-                        </div>
-                    </el-col>
-
-                    <!-- 常用功能 -->
-                    <el-col :span="8" class="changyonggongneng">
-                        <div class="grid-content">
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span class="card-name">常用功能</span>
-                                    <el-tooltip effect="dark" content="常用菜单" placement="bottom">
-                                        <span @click="BacKcygnMore" class="el-icon-more iconfont"></span>
-                                    </el-tooltip>
-                                </div>
-                                <el-carousel
-                                    class="cygn_carousel"
-                                    :autoplay="false"
-                                    trigger="click"
-                                    indicator-position="outside"
-                                    height="256px"
-                                >
-                                    <el-carousel-item
-                                        v-for="(items,index) in tableChangYong"
-                                        :key="index"
-                                    >
-                                        <div
-                                            v-for="item in items"
-                                            :key="item.MENU_ID"
-                                            class="carousel_item"
-                                        >
-                                            <span></span>
-                                            <p>{{item.MENU_NAME}}</p>
-                                        </div>
-                                    </el-carousel-item>
-                                </el-carousel>
-                            </el-card>
-                            <div v-if="cygnmore" class="style_hover">
-                                <div class="style_hover_head">
-                                    <span class="style_hover_head_name">常用菜单</span>
-                                    <i @click="BacKcygnMoreChild" class="el-icon-edit iconfont"></i>
-                                </div>
-                                <div class="style_hover_main">
-                                    <ul>
-                                        <li>
-                                            <img src="../../assets/protal/shouwendengji.png" />
-                                            <p>收文登记</p>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/yewuqingshi.png" />
-                                            <p>业务请示</p>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/fawen.png" />
-                                            <p>发文</p>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/yongche.png" />
-                                            <p>用车</p>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/itzhichi.png" />
-                                            <p>IT支持</p>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/bangongshiyongzhang.png" />
-                                            <p>办公室管理印章申请</p>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/wupinlingyong.png" />
-                                            <p>物品领用</p>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/fatongzhi.png" />
-                                            <p>发通知</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div v-if="cygnmorechild" class="style_hover style_hover_child">
-                                <div class="style_hover_head">
-                                    <span class="style_hover_head_name">常用菜单</span>
-                                    <span class="save">保存</span>
-                                    <span class="level">
-                                        <span class="level_img"></span>
-                                        操作员操作
-                                    </span>
-                                </div>
-                                <div class="style_hover_main">
-                                    <ul>
-                                        <li>
-                                            <img src="../../assets/protal/shouwendengji.png" />
-                                            <p>收文登记</p>
-                                            <i class="el-icon-remove-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/yewuqingshi.png" />
-                                            <p>业务请示</p>
-                                            <i class="el-icon-remove-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/fawen.png" />
-                                            <p>发文</p>
-                                            <i class="el-icon-remove-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/yongche.png" />
-                                            <p>用车</p>
-                                            <i class="el-icon-remove-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/itzhichi.png" />
-                                            <p>IT支持</p>
-                                            <i class="el-icon-remove-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/bangongshiyongzhang.png" />
-                                            <p>办公室管理印章申请</p>
-                                            <i class="el-icon-remove-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/wupinlingyong.png" />
-                                            <p>物品领用</p>
-                                            <i class="el-icon-remove-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/fatongzhi.png" />
-                                            <p>发通知</p>
-                                            <i class="el-icon-remove-outline"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="style_hover_head">
-                                    <span class="style_hover_head_name">系统菜单库</span>
-                                </div>
-                                <div class="style_hover_main">
-                                    <ul>
-                                        <li>
-                                            <img src="../../assets/protal/shouwendengji.png" />
-                                            <p>收文登记</p>
-                                            <i class="el-icon-circle-plus-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/yewuqingshi.png" />
-                                            <p>业务请示</p>
-                                            <i class="el-icon-circle-plus-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/fawen.png" />
-                                            <p>发文</p>
-                                            <i class="el-icon-circle-plus-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/yongche.png" />
-                                            <p>用车</p>
-                                            <i class="el-icon-circle-plus-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/itzhichi.png" />
-                                            <p>IT支持</p>
-                                            <i class="el-icon-circle-plus-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/bangongshiyongzhang.png" />
-                                            <p>办公室管理印章申请</p>
-                                            <i class="el-icon-circle-plus-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/wupinlingyong.png" />
-                                            <p>物品领用</p>
-                                            <i class="el-icon-circle-plus-outline"></i>
-                                        </li>
-                                        <li>
-                                            <img src="../../assets/protal/fatongzhi.png" />
-                                            <p>发通知</p>
-                                            <i class="el-icon-circle-plus-outline"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </el-col>
-
-                    <!-- 个人收藏夹 -->
-                    <el-col :span="8" class="gerenshoucangjia">
-                        <div class="grid-content">
-                            <el-carousel
-                                class="grscj_carousel"
-                                :autoplay="false"
-                                trigger="click"
-                                indicator-position="none"
-                                height="106px"
+                                    :max="99"
+                                ></el-badge>
+                            </span>
+                            <el-table
+                                ref="multipleTable"
+                                :data="tableDaiBan"
+                                tooltip-effect="dark"
+                                style="width: 100%"
+                                height="320"
+                                @selection-change="handleSelectionChange"
                             >
-                                <el-carousel-item>
-                                    <div class="carousel_item">
-                                        <div class="carousel_item_div">
-                                            <span></span>
-                                        </div>
-                                        <p>个人收藏夹</p>
-                                    </div>
-                                    <div class="carousel_item">
-                                        <div class="carousel_item_div">
-                                            <span></span>
-                                        </div>
-                                        <p>个人回收站</p>
-                                    </div>
-                                    <div class="carousel_item">
-                                        <div class="carousel_item_div">
-                                            <span></span>
-                                        </div>
-                                        <p>OA操作视频</p>
-                                    </div>
-                                </el-carousel-item>
-                                <el-carousel-item>2</el-carousel-item>
-                                <el-carousel-item>3</el-carousel-item>
-                            </el-carousel>
-                        </div>
-                    </el-col>
+                                <el-table-column type="selection" width="45"></el-table-column>
+                                <el-table-column
+                                    prop="TODO_TITLE"
+                                    width="190"
+                                    label="标题"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="S_ODEPT__NAME"
+                                    show-overflow-tooltip
+                                    label="所属机构"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SEND_USER_CODE__NAME"
+                                    show-overflow-tooltip
+                                    label="发送者"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SEND_DEPT_NAME"
+                                    show-overflow-tooltip
+                                    label="所在部门"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="TODO_CODE_NAME"
+                                    label="代办类型"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column label="时间" show-overflow-tooltip>
+                                    <template
+                                        slot-scope="scope"
+                                    >{{ scope.row.TODO_SEND_TIME | comverTime('YYYY-MM-DD') }}</template>
+                                </el-table-column>
+                                <el-table-column label="操作">
+                                    <template slot-scope="scope">
+                                        <el-button
+                                            type="text"
+                                            size="mini"
+                                            @click="handleYes(scope.$index, scope.row)"
+                                        >同意</el-button>
+                                        <el-button
+                                            type="text"
+                                            class="handleNo"
+                                            size="mini"
+                                            @click="handleNo(scope.$index, scope.row)"
+                                        >拒绝</el-button>
+                                    </template>
+                                </el-table-column>
+                            </el-table>
+                        </el-tab-pane>
+                        <el-tab-pane label="待阅" name="DAIYUE">
+                            <span slot="label" style="position: relative">
+                                <span>待阅</span>
+                                <el-badge
+                                    v-show="tableDaiYue.length>0"
+                                    class="items_badge"
+                                    :value="tableDaiYue.length"
+                                    size="mini"
+                                    :max="99"
+                                ></el-badge>
+                            </span>
+                            <el-table
+                                :data="tableDaiYue"
+                                tooltip-effect="dark"
+                                style="width: 100%"
+                                height="320"
+                            >
+                                <el-table-column
+                                    prop="TODO_TITLE"
+                                    width="190"
+                                    label="标题"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SEND_USER_CODE__NAME"
+                                    show-overflow-tooltip
+                                    label="发送者"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SEND_DEPT_NAME"
+                                    show-overflow-tooltip
+                                    label="所在部门"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="TODO_CODE_NAME"
+                                    label="代办类型"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column label="时间" show-overflow-tooltip>
+                                    <template
+                                        slot-scope="scope"
+                                    >{{ scope.row.TODO_SEND_TIME | comverTime('YYYY-MM-DD') }}</template>
+                                </el-table-column>
+                            </el-table>
+                        </el-tab-pane>
+                        <el-tab-pane label="未结" name="WEIJIE">
+                            <span slot="label" style="position: relative">
+                                <span>未结</span>
+                                <el-badge
+                                    v-show="tableWeiJie.length>0"
+                                    class="items_badge"
+                                    :value="tableWeiJie.length"
+                                    size="mini"
+                                    :max="99"
+                                ></el-badge>
+                            </span>
+                            <el-table
+                                :data="tableWeiJie"
+                                tooltip-effect="dark"
+                                style="width: 100%"
+                                height="320"
+                            >
+                                <el-table-column
+                                    prop="TITLE"
+                                    width="190"
+                                    label="标题"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="S_USER__NAME"
+                                    show-overflow-tooltip
+                                    label="拟稿人"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="S_TDEPT__NAME"
+                                    show-overflow-tooltip
+                                    label="拟稿部门"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SERV_NAME"
+                                    label="单据类型"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column label="时间" show-overflow-tooltip>
+                                    <template
+                                        slot-scope="scope"
+                                    >{{ scope.row.S_ATIME | comverTime('YYYY-MM-DD') }}</template>
+                                </el-table-column>
+                            </el-table>
+                        </el-tab-pane>
+                        <el-tab-pane label="委托" name="WEITUO">
+                            <span slot="label" style="position: relative">
+                                <span>委托</span>
+                                <el-badge
+                                    v-show="tableWeiTuo.length>0"
+                                    class="items_badge"
+                                    :value="tableWeiTuo.length"
+                                    size="mini"
+                                    :max="99"
+                                ></el-badge>
+                            </span>
+                            <el-table
+                                :data="tableWeiTuo"
+                                tooltip-effect="dark"
+                                style="width: 100%"
+                                height="320"
+                            >
+                                <el-table-column
+                                    prop="TODO_TITLE"
+                                    width="190"
+                                    label="标题"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SEND_USER_CODE__NAME"
+                                    show-overflow-tooltip
+                                    label="发送者"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SEND_DEPT_NAME"
+                                    show-overflow-tooltip
+                                    label="所在部门"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="TODO_CODE_NAME"
+                                    label="代办类型"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column label="时间" show-overflow-tooltip>
+                                    <template
+                                        slot-scope="scope"
+                                    >{{ scope.row.TODO_SEND_TIME | comverTime('YYYY-MM-DD') }}</template>
+                                </el-table-column>
+                            </el-table>
+                        </el-tab-pane>
+                        <el-tab-pane label="提醒" name="TIXING">
+                            <span slot="label" style="position: relative">
+                                <span>提醒</span>
+                                <el-badge
+                                    v-show="tableTiXing.length>0"
+                                    class="items_badge"
+                                    :value="tableTiXing.length"
+                                    size="mini"
+                                    :max="99"
+                                ></el-badge>
+                            </span>
+                            <el-table
+                                :data="tableTiXing"
+                                tooltip-effect="dark"
+                                style="width: 100%"
+                                height="320"
+                            >
+                                <el-table-column
+                                    prop="DATA_TITLE"
+                                    width="190"
+                                    label="标题"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SEND_USER__NAME"
+                                    show-overflow-tooltip
+                                    label="发送者"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="S_DEPT__NAME"
+                                    show-overflow-tooltip
+                                    label="所在部门"
+                                ></el-table-column>
+                                <el-table-column
+                                    prop="SERV_NAME"
+                                    label="单据类型"
+                                    show-overflow-tooltip
+                                ></el-table-column>
+                                <el-table-column label="时间" show-overflow-tooltip>
+                                    <template
+                                        slot-scope="scope"
+                                    >{{ scope.row.SEND_TIME | comverTime('YYYY-MM-DD') }}</template>
+                                </el-table-column>
+                            </el-table>
+                        </el-tab-pane>
+                    </el-tabs>
+                    <div class="el-tabs-right">
+                        <el-button type="text">
+                            切换排序
+                            <span class="el-icon-d-caret"></span>
+                        </el-button>
+                        <span class="el-icon-refresh iconfont"></span>
+                    </div>
+                    <div v-show="isFooter" class="el-tabs-footer">
+                        <el-button
+                            @click="toggleSelect(tableDaiBan)"
+                            class="allButton"
+                            type="text"
+                        >全选/反选</el-button>
+                        <el-button
+                            @click="allRefused"
+                            class="refused"
+                            type="danger"
+                            round
+                            size="mini"
+                        >拒绝</el-button>
+                        <el-button
+                            @click="allAgreed"
+                            size="mini"
+                            class="agreed"
+                            type="success"
+                            round
+                        >同意</el-button>
+                    </div>
+                </div>
+            </el-col>
 
-                    <!-- 个人看板 -->
-                    <el-col :span="24" class="gerenkanban">
-                        <div class="grid-content">
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span class="card-name">个人看板</span>
-                                    <span class="el-icon-more iconfont"></span>
-                                </div>
-                            </el-card>
+            <!-- 通知公告 -->
+            <el-col :span="8" class="tongzhigonggao">
+                <div class="grid-content">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span class="card-name">通知公告</span>
+                            <span class="el-icon-more iconfont"></span>
                         </div>
-                    </el-col>
-
-                    <!-- 我的日历 -->
-                    <el-col :span="8" class="wdrl_xdt_zt">
-                        <div class="grid-content">
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span class="card-name">我的日历</span>
-                                    <span class="el-icon-more iconfont"></span>
-                                </div>
-                                <el-calendar v-model="value"></el-calendar>
-                            </el-card>
+                        <div v-for="(item,index) in tableTongZhi" :key="index" class="item">
+                            <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                            <span class="item_right">{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
                         </div>
-                    </el-col>
+                    </el-card>
+                </div>
+            </el-col>
 
-                    <!-- 新动态 -->
-                    <el-col :span="8" class="wdrl_xdt_zt">
-                        <div class="grid-content">
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span class="card-name">新动态</span>
-                                    <span class="el-icon-more iconfont"></span>
+            <!-- 公司要闻 -->
+            <el-col :span="16" class="gongsiyaowen">
+                <div class="grid-content">
+                    <el-tabs v-model="activeName2">
+                        <el-tab-pane label="公司要闻" name="GSYW">
+                            <div
+                                v-for="item in tableGongSiTop"
+                                :key="item.NEWS_ID"
+                                class="gsyw_top"
+                            >
+                                <el-image :src="imgUrl"></el-image>
+                                <div class="gsyw_top_right">
+                                    <h3>{{item.NEWS_SUBJECT}}</h3>
+                                    <v-clamp
+                                        class="gsyw_top_right_p"
+                                        autoresize
+                                        :max-lines="4"
+                                    >{{item.NEWS_BODY}}</v-clamp>
+                                    <div class="gsyw_top_right_b">
+                                        <span
+                                            class="gsyw_top_right_b_company"
+                                        >{{item.S_ODEPT__NAME}}</span>
+                                        <span
+                                            class="gsyw_top_right_b_time"
+                                        >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                        <span
+                                            class="el-icon-view gsyw_top_right_b_view"
+                                        >&nbsp;{{item.COUNTER}}</span>
+                                    </div>
                                 </div>
+                            </div>
+                            <div
+                                v-for="item in tableGongSiBottom"
+                                :key="item.NEWS_ID"
+                                class="gsyw_bottom"
+                            >
+                                <el-card class="box-card card-border-none">
+                                    <div class="item">
+                                        <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                                        <span>{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                        <span>{{item.S_ODEPT__NAME}}</span>
+                                    </div>
+                                </el-card>
+                            </div>
+                        </el-tab-pane>
+                        <el-tab-pane label="所属公司要闻" name="SSGSYW">
+                            <div
+                                v-for="item in tableSuoShuTop"
+                                :key="item.NEWS_ID"
+                                class="gsyw_top"
+                            >
+                                <el-image :src="imgUrl"></el-image>
+                                <div class="gsyw_top_right">
+                                    <h3>{{item.NEWS_SUBJECT}}</h3>
+                                    <v-clamp
+                                        class="gsyw_top_right_p"
+                                        autoresize
+                                        :max-lines="4"
+                                    >{{item.NEWS_BODY}}</v-clamp>
+                                    <div class="gsyw_top_right_b">
+                                        <span
+                                            class="gsyw_top_right_b_company"
+                                        >{{item.S_ODEPT__NAME}}</span>
+                                        <span
+                                            class="gsyw_top_right_b_time"
+                                        >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                        <span
+                                            class="el-icon-view gsyw_top_right_b_view"
+                                        >&nbsp;{{item.COUNTER}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                v-for="item in tableSuoShuBottom"
+                                :key="item.NEWS_ID"
+                                class="gsyw_bottom"
+                            >
+                                <el-card class="box-card card-border-none">
+                                    <div class="item">
+                                        <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                                        <span>{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                        <span>{{item.S_ODEPT__NAME}}</span>
+                                    </div>
+                                </el-card>
+                            </div>
+                        </el-tab-pane>
+                    </el-tabs>
+                </div>
+            </el-col>
+
+            <!-- 常用功能 -->
+            <el-col :span="8" class="changyonggongneng">
+                <div class="grid-content">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span class="card-name">常用功能</span>
+                            <el-tooltip effect="dark" content="常用菜单" placement="bottom">
+                                <span @click="BacKcygnMore" class="el-icon-more iconfont"></span>
+                            </el-tooltip>
+                        </div>
+                        <el-carousel
+                            class="cygn_carousel"
+                            :autoplay="false"
+                            trigger="click"
+                            indicator-position="outside"
+                            height="256px"
+                        >
+                            <el-carousel-item v-for="(items,index) in tableChangYong" :key="index">
                                 <div
-                                    v-for="(item,index) in tableXinDongTai"
-                                    :key="index"
-                                    class="item"
+                                    v-for="item in items"
+                                    :key="item.MENU_ID"
+                                    class="carousel_item"
                                 >
-                                    <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                    <span
-                                        class="item_right"
-                                    >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                    <span></span>
+                                    <p>{{item.MENU_NAME}}</p>
                                 </div>
-                            </el-card>
+                            </el-carousel-item>
+                        </el-carousel>
+                    </el-card>
+                    <div v-if="cygnmore" class="style_hover">
+                        <div class="style_hover_head">
+                            <span class="style_hover_head_name">常用菜单</span>
+                            <i @click="BacKcygnMoreChild" class="el-icon-edit iconfont"></i>
                         </div>
-                    </el-col>
+                        <div class="style_hover_main">
+                            <ul>
+                                <li>
+                                    <img src="../../assets/protal/shouwendengji.png" />
+                                    <p>收文登记</p>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/yewuqingshi.png" />
+                                    <p>业务请示</p>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/fawen.png" />
+                                    <p>发文</p>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/yongche.png" />
+                                    <p>用车</p>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/itzhichi.png" />
+                                    <p>IT支持</p>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/bangongshiyongzhang.png" />
+                                    <p>办公室管理印章申请</p>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/wupinlingyong.png" />
+                                    <p>物品领用</p>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/fatongzhi.png" />
+                                    <p>发通知</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div v-if="cygnmorechild" class="style_hover style_hover_child">
+                        <div class="style_hover_head">
+                            <span class="style_hover_head_name">常用菜单</span>
+                            <span class="save">保存</span>
+                            <span class="level">
+                                <span class="level_img"></span>
+                                操作员操作
+                            </span>
+                        </div>
+                        <div class="style_hover_main">
+                            <ul>
+                                <li>
+                                    <img src="../../assets/protal/shouwendengji.png" />
+                                    <p>收文登记</p>
+                                    <i class="el-icon-remove-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/yewuqingshi.png" />
+                                    <p>业务请示</p>
+                                    <i class="el-icon-remove-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/fawen.png" />
+                                    <p>发文</p>
+                                    <i class="el-icon-remove-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/yongche.png" />
+                                    <p>用车</p>
+                                    <i class="el-icon-remove-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/itzhichi.png" />
+                                    <p>IT支持</p>
+                                    <i class="el-icon-remove-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/bangongshiyongzhang.png" />
+                                    <p>办公室管理印章申请</p>
+                                    <i class="el-icon-remove-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/wupinlingyong.png" />
+                                    <p>物品领用</p>
+                                    <i class="el-icon-remove-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/fatongzhi.png" />
+                                    <p>发通知</p>
+                                    <i class="el-icon-remove-outline"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="style_hover_head">
+                            <span class="style_hover_head_name">系统菜单库</span>
+                        </div>
+                        <div class="style_hover_main">
+                            <ul>
+                                <li>
+                                    <img src="../../assets/protal/shouwendengji.png" />
+                                    <p>收文登记</p>
+                                    <i class="el-icon-circle-plus-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/yewuqingshi.png" />
+                                    <p>业务请示</p>
+                                    <i class="el-icon-circle-plus-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/fawen.png" />
+                                    <p>发文</p>
+                                    <i class="el-icon-circle-plus-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/yongche.png" />
+                                    <p>用车</p>
+                                    <i class="el-icon-circle-plus-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/itzhichi.png" />
+                                    <p>IT支持</p>
+                                    <i class="el-icon-circle-plus-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/bangongshiyongzhang.png" />
+                                    <p>办公室管理印章申请</p>
+                                    <i class="el-icon-circle-plus-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/wupinlingyong.png" />
+                                    <p>物品领用</p>
+                                    <i class="el-icon-circle-plus-outline"></i>
+                                </li>
+                                <li>
+                                    <img src="../../assets/protal/fatongzhi.png" />
+                                    <p>发通知</p>
+                                    <i class="el-icon-circle-plus-outline"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </el-col>
 
-                    <!-- 专题活动 -->
-                    <el-col :span="8" class="wdrl_xdt_zt">
-                        <div class="grid-content">
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span class="card-name">专题活动</span>
-                                    <span class="el-icon-more iconfont"></span>
+            <!-- 个人收藏夹 -->
+            <el-col :span="8" class="gerenshoucangjia">
+                <div class="grid-content">
+                    <el-carousel
+                        class="grscj_carousel"
+                        :autoplay="false"
+                        trigger="click"
+                        indicator-position="none"
+                        height="106px"
+                    >
+                        <el-carousel-item>
+                            <div class="carousel_item">
+                                <div class="carousel_item_div">
+                                    <span></span>
                                 </div>
-                                <el-carousel
-                                    class="grscj_carousel"
-                                    :autoplay="false"
-                                    trigger="click"
-                                    indicator-position="none"
-                                    height="220px"
-                                >
-                                    <el-carousel-item>1</el-carousel-item>
-                                    <el-carousel-item>2</el-carousel-item>
-                                    <el-carousel-item>3</el-carousel-item>
-                                </el-carousel>
-                            </el-card>
-                        </div>
-                    </el-col>
-
-                    <!-- 资讯信息 -->
-                    <el-col :span="24" class="zxxx_fgzd">
-                        <div class="grid-content">
-                            <el-tabs v-model="activeName3">
-                                <el-tab-pane label="资讯信息" name="ZIXUNXINXI">
-                                    <div class="el-tab-pane-div">
-                                        <img :src="imgUrl" />
-                                        <el-card class="box-card">
-                                            <div slot="header" class="clearfix">
-                                                <span class="card-name">每周资讯</span>
-                                                <span class="el-icon-more iconfont"></span>
-                                            </div>
-                                            <div
-                                                v-for="(item,index) in tableZiXun"
-                                                :key="index"
-                                                class="item"
-                                            >
-                                                <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                                <span
-                                                    class="item_right"
-                                                >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                            </div>
-                                        </el-card>
-                                    </div>
-                                    <div class="el-tab-pane-div">
-                                        <img :src="imgUrl" />
-                                        <el-card class="box-card">
-                                            <div slot="header" class="clearfix">
-                                                <span class="card-name">每周财经</span>
-                                                <span class="el-icon-more iconfont"></span>
-                                            </div>
-                                            <div
-                                                v-for="(item,index) in tableCaiJing"
-                                                :key="index"
-                                                class="item"
-                                            >
-                                                <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                                <span
-                                                    class="item_right"
-                                                >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                            </div>
-                                        </el-card>
-                                    </div>
-                                    <div class="el-tab-pane-div">
-                                        <img :src="imgUrl" />
-                                        <el-card class="box-card">
-                                            <div slot="header" class="clearfix">
-                                                <span class="card-name">经营参考</span>
-                                                <span class="el-icon-more iconfont"></span>
-                                            </div>
-                                            <div
-                                                v-for="(item,index) in tableJingYing"
-                                                :key="index"
-                                                class="item"
-                                            >
-                                                <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                                <span
-                                                    class="item_right"
-                                                >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                            </div>
-                                        </el-card>
-                                    </div>
-                                </el-tab-pane>
-                                <el-tab-pane label="法规制度" name="FAGUIZHIDU">
-                                    <div class="el-tab-pane-div">
-                                        <img :src="imgUrl" />
-                                        <el-card class="box-card">
-                                            <div slot="header" class="clearfix">
-                                                <span class="card-name">规章制度</span>
-                                                <span class="el-icon-more iconfont"></span>
-                                            </div>
-                                            <div
-                                                v-for="(item,index) in tableGuiZhangZhiDu"
-                                                :key="index"
-                                                class="item"
-                                            >
-                                                <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                                <span
-                                                    class="item_right"
-                                                >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                            </div>
-                                        </el-card>
-                                    </div>
-                                    <div class="el-tab-pane-div">
-                                        <img :src="imgUrl" />
-                                        <el-card class="box-card">
-                                            <div slot="header" class="clearfix">
-                                                <span class="card-name">法律法规</span>
-                                                <span class="el-icon-more iconfont"></span>
-                                            </div>
-                                            <div
-                                                v-for="(item,index) in tableFaLvFaGui"
-                                                :key="index"
-                                                class="item"
-                                            >
-                                                <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                                <span
-                                                    class="item_right"
-                                                >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                            </div>
-                                        </el-card>
-                                    </div>
-                                    <div class="el-tab-pane-div">
-                                        <img :src="imgUrl" />
-                                        <el-card class="box-card">
-                                            <div slot="header" class="clearfix">
-                                                <span class="card-name">企业文化</span>
-                                                <span class="el-icon-more iconfont"></span>
-                                            </div>
-                                            <div
-                                                v-for="(item,index) in tableQiYeWenHua"
-                                                :key="index"
-                                                class="item"
-                                            >
-                                                <span class="item_left">{{item.NEWS_SUBJECT}}</span>
-                                                <span
-                                                    class="item_right"
-                                                >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
-                                            </div>
-                                        </el-card>
-                                    </div>
-                                </el-tab-pane>
-                            </el-tabs>
-                        </div>
-                    </el-col>
-
-                    <!-- 艺术长廊 -->
-                    <el-col :span="16" class="yishu_gupiao">
-                        <div class="grid-content">
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span class="card-name">艺术长廊</span>
-                                    <span class="el-icon-more iconfont"></span>
+                                <p>个人收藏夹</p>
+                            </div>
+                            <div class="carousel_item">
+                                <div class="carousel_item_div">
+                                    <span></span>
                                 </div>
-                                <el-carousel
-                                    class="yscl_carousel"
-                                    :autoplay="false"
-                                    trigger="click"
-                                    indicator-position="none"
-                                    height="120px"
-                                >
-                                    <el-carousel-item>
-                                        <img :src="imgUrl" />
-                                        <img :src="imgUrl" />
-                                        <img :src="imgUrl" />
-                                    </el-carousel-item>
-                                    <el-carousel-item>2</el-carousel-item>
-                                    <el-carousel-item>3</el-carousel-item>
-                                </el-carousel>
-                            </el-card>
-                        </div>
-                    </el-col>
-
-                    <!-- 股票信息 -->
-                    <el-col :span="8" class="yishu_gupiao">
-                        <div class="grid-content">
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span class="card-name">股票信息</span>
-                                    <span class="el-icon-more iconfont"></span>
+                                <p>个人回收站</p>
+                            </div>
+                            <div class="carousel_item">
+                                <div class="carousel_item_div">
+                                    <span></span>
                                 </div>
-                            </el-card>
+                                <p>OA操作视频</p>
+                            </div>
+                        </el-carousel-item>
+                        <el-carousel-item>2</el-carousel-item>
+                        <el-carousel-item>3</el-carousel-item>
+                    </el-carousel>
+                </div>
+            </el-col>
+
+            <!-- 个人看板 -->
+            <el-col :span="24" class="gerenkanban">
+                <div class="grid-content">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span class="card-name">个人看板</span>
+                            <span class="el-icon-more iconfont"></span>
                         </div>
-                    </el-col>
-                </el-row>
-            </el-main>
-        </el-container>
+                    </el-card>
+                </div>
+            </el-col>
+
+            <!-- 我的日历 -->
+            <el-col :span="8" class="wdrl_xdt_zt">
+                <div class="grid-content">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span class="card-name">我的日历</span>
+                            <span class="el-icon-more iconfont"></span>
+                        </div>
+                        <el-calendar v-model="value"></el-calendar>
+                    </el-card>
+                </div>
+            </el-col>
+
+            <!-- 新动态 -->
+            <el-col :span="8" class="wdrl_xdt_zt">
+                <div class="grid-content">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span class="card-name">新动态</span>
+                            <span class="el-icon-more iconfont"></span>
+                        </div>
+                        <div v-for="(item,index) in tableXinDongTai" :key="index" class="item">
+                            <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                            <span class="item_right">{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                        </div>
+                    </el-card>
+                </div>
+            </el-col>
+
+            <!-- 专题活动 -->
+            <el-col :span="8" class="wdrl_xdt_zt">
+                <div class="grid-content">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span class="card-name">专题活动</span>
+                            <span class="el-icon-more iconfont"></span>
+                        </div>
+                        <el-carousel
+                            class="grscj_carousel"
+                            :autoplay="false"
+                            trigger="click"
+                            indicator-position="none"
+                            height="220px"
+                        >
+                            <el-carousel-item>1</el-carousel-item>
+                            <el-carousel-item>2</el-carousel-item>
+                            <el-carousel-item>3</el-carousel-item>
+                        </el-carousel>
+                    </el-card>
+                </div>
+            </el-col>
+
+            <!-- 资讯信息 -->
+            <el-col :span="24" class="zxxx_fgzd">
+                <div class="grid-content">
+                    <el-tabs v-model="activeName3">
+                        <el-tab-pane label="资讯信息" name="ZIXUNXINXI">
+                            <div class="el-tab-pane-div">
+                                <img :src="imgUrl" />
+                                <el-card class="box-card">
+                                    <div slot="header" class="clearfix">
+                                        <span class="card-name">每周资讯</span>
+                                        <span class="el-icon-more iconfont"></span>
+                                    </div>
+                                    <div
+                                        v-for="(item,index) in tableZiXun"
+                                        :key="index"
+                                        class="item"
+                                    >
+                                        <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                                        <span
+                                            class="item_right"
+                                        >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                    </div>
+                                </el-card>
+                            </div>
+                            <div class="el-tab-pane-div">
+                                <img :src="imgUrl" />
+                                <el-card class="box-card">
+                                    <div slot="header" class="clearfix">
+                                        <span class="card-name">每周财经</span>
+                                        <span class="el-icon-more iconfont"></span>
+                                    </div>
+                                    <div
+                                        v-for="(item,index) in tableCaiJing"
+                                        :key="index"
+                                        class="item"
+                                    >
+                                        <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                                        <span
+                                            class="item_right"
+                                        >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                    </div>
+                                </el-card>
+                            </div>
+                            <div class="el-tab-pane-div">
+                                <img :src="imgUrl" />
+                                <el-card class="box-card">
+                                    <div slot="header" class="clearfix">
+                                        <span class="card-name">经营参考</span>
+                                        <span class="el-icon-more iconfont"></span>
+                                    </div>
+                                    <div
+                                        v-for="(item,index) in tableJingYing"
+                                        :key="index"
+                                        class="item"
+                                    >
+                                        <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                                        <span
+                                            class="item_right"
+                                        >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                    </div>
+                                </el-card>
+                            </div>
+                        </el-tab-pane>
+                        <el-tab-pane label="法规制度" name="FAGUIZHIDU">
+                            <div class="el-tab-pane-div">
+                                <img :src="imgUrl" />
+                                <el-card class="box-card">
+                                    <div slot="header" class="clearfix">
+                                        <span class="card-name">规章制度</span>
+                                        <span class="el-icon-more iconfont"></span>
+                                    </div>
+                                    <div
+                                        v-for="(item,index) in tableGuiZhangZhiDu"
+                                        :key="index"
+                                        class="item"
+                                    >
+                                        <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                                        <span
+                                            class="item_right"
+                                        >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                    </div>
+                                </el-card>
+                            </div>
+                            <div class="el-tab-pane-div">
+                                <img :src="imgUrl" />
+                                <el-card class="box-card">
+                                    <div slot="header" class="clearfix">
+                                        <span class="card-name">法律法规</span>
+                                        <span class="el-icon-more iconfont"></span>
+                                    </div>
+                                    <div
+                                        v-for="(item,index) in tableFaLvFaGui"
+                                        :key="index"
+                                        class="item"
+                                    >
+                                        <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                                        <span
+                                            class="item_right"
+                                        >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                    </div>
+                                </el-card>
+                            </div>
+                            <div class="el-tab-pane-div">
+                                <img :src="imgUrl" />
+                                <el-card class="box-card">
+                                    <div slot="header" class="clearfix">
+                                        <span class="card-name">企业文化</span>
+                                        <span class="el-icon-more iconfont"></span>
+                                    </div>
+                                    <div
+                                        v-for="(item,index) in tableQiYeWenHua"
+                                        :key="index"
+                                        class="item"
+                                    >
+                                        <span class="item_left">{{item.NEWS_SUBJECT}}</span>
+                                        <span
+                                            class="item_right"
+                                        >{{item.NEWS_TIME | comverTime('YYYY-MM-DD')}}</span>
+                                    </div>
+                                </el-card>
+                            </div>
+                        </el-tab-pane>
+                    </el-tabs>
+                </div>
+            </el-col>
+
+            <!-- 艺术长廊 -->
+            <el-col :span="16" class="yishu_gupiao">
+                <div class="grid-content">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span class="card-name">艺术长廊</span>
+                            <span class="el-icon-more iconfont"></span>
+                        </div>
+                        <el-carousel
+                            class="yscl_carousel"
+                            :autoplay="false"
+                            trigger="click"
+                            indicator-position="none"
+                            height="120px"
+                        >
+                            <el-carousel-item>
+                                <img :src="imgUrl" />
+                                <img :src="imgUrl" />
+                                <img :src="imgUrl" />
+                            </el-carousel-item>
+                            <el-carousel-item>2</el-carousel-item>
+                            <el-carousel-item>3</el-carousel-item>
+                        </el-carousel>
+                    </el-card>
+                </div>
+            </el-col>
+
+            <!-- 股票信息 -->
+            <el-col :span="8" class="yishu_gupiao">
+                <div class="grid-content">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span class="card-name">股票信息</span>
+                            <span class="el-icon-more iconfont"></span>
+                        </div>
+                    </el-card>
+                </div>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -955,7 +936,7 @@ export default {
                 this.tableQiYeWenHua = res.data._DATA_;
             });
         },
-        
+
         // 选中的表格 val是选中的那行
         handleSelectionChange(val) {
             // 把选中的表格添加进数组
@@ -1031,7 +1012,6 @@ export default {
 .grid-content {
     background: #ffffff;
     border: 1px solid #ededed;
-    border-radius: 5px;
     position: relative;
     height: 100%;
 }
@@ -1170,7 +1150,7 @@ export default {
     letter-spacing: 0;
     text-align: justify;
     line-height: 22px;
-    margin: 15px 0;
+    margin: 10px 0;
     cursor: pointer;
 }
 
@@ -1183,7 +1163,7 @@ export default {
     line-height: 20px;
 }
 
-.gsyw_top_right_b>span {
+.gsyw_top_right_b > span {
     font-size: 12px;
     color: #8c8d9e;
     float: left;
@@ -1198,7 +1178,7 @@ export default {
     margin-top: 4px;
 }
 
-.gsyw_top_right_b>span:hover {
+.gsyw_top_right_b > span:hover {
     color: #409eff;
 }
 
@@ -1350,7 +1330,7 @@ export default {
     flex-wrap: wrap;
 }
 
-.style_hover .style_hover_main ul>li {
+.style_hover .style_hover_main ul > li {
     flex: 0 0 25%;
     text-align: center;
     padding: 20px 15px;
@@ -1358,25 +1338,25 @@ export default {
     position: relative;
 }
 
-.style_hover .style_hover_main ul>li>p {
+.style_hover .style_hover_main ul > li > p {
     font-size: 12px;
     color: #454a5b;
     line-height: 14px;
     margin-top: 10px;
 }
 
-.style_hover .style_hover_main ul>li>i {
+.style_hover .style_hover_main ul > li > i {
     position: absolute;
     right: 10px;
     top: 10px;
     color: #f56c6c;
 }
 
-.style_hover .style_hover_main ul>li>i.el-icon-remove-outline {
+.style_hover .style_hover_main ul > li > i.el-icon-remove-outline {
     color: #f56c6c;
 }
 
-.style_hover .style_hover_main ul>li>i.el-icon-circle-plus-outline {
+.style_hover .style_hover_main ul > li > i.el-icon-circle-plus-outline {
     color: #409eff;
 }
 
@@ -1524,7 +1504,7 @@ export default {
     width: 250px;
 }
 
-.zxxx_fgzd .el-card .iconfont{
+.zxxx_fgzd .el-card .iconfont {
     right: 0;
 }
 

@@ -119,12 +119,12 @@ export default {
 
 <style lang='scss' scoped>
 .breadcrumb {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     background: #fff;
     padding: 10px 10px 0 10px;
     border: 1px solid #ededed;
     border-left: 3px solid #409eff;
-    border-radius: 5px;
 }
 .breadcrumb > span {
     margin-right: 10px;

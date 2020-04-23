@@ -2,9 +2,9 @@
     <div class="proces-child-left">
         <div class="mainList" v-for="items in leftMenu" :key="items.ID">
             <div class="mainlist_div" v-for="item in items.CHILD" :key="item.ID">
-                <h3 tag="h3"  @click="clickH3(item.ROUTER)">{{item.NAME}}</h3>
+                <h3 tag="h3"  @click="clickH3(item.router)">{{item.NAME}}</h3>
                 <ul v-for="i in item.CHILD" :key="i.Id">
-                    <li @click="clickLi(i.ROUTER)">{{i.NAME}}</li>
+                    <li @click="clickLi(i.router)">{{i.NAME}}</li>
                 </ul>
             </div>
         </div>

@@ -30,7 +30,7 @@ const mutations = {
     // 更改用户信息
     [types.SET_USER](state, user) {
         if (user) {
-            state.user = user
+            state.user = JSON.parse(user)
         } else {
             state.user = {}
         }

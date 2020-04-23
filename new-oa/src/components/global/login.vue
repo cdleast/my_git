@@ -1,5 +1,6 @@
 <template>
-    <div class="lohin">
+    <div class="login">
+        
         <section class="form_container">
             <div class="manage_tip">
                 <span class="title">登录用户</span>
@@ -106,7 +107,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.lohin {
+.login {
     background-color: #f9fafb;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -142,10 +143,14 @@ export default {
 .el-select {
     width: 100%;
 }
-.lohin /deep/ .el-form-item__content {
+.login /deep/ .el-form-item__content {
     display: flex;
 }
 .el-button {
     flex: 1;
+}
+
+.ruleForm .el-form-item:last-child {
+    margin-top: 30px;
 }
 </style>
