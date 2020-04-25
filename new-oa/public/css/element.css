@@ -138,10 +138,44 @@
 }
 
 /* form */
-.el-form .el-form-item{
-    margin-bottom: 15px;
+.el-form .el-form-item {
+    /* margin-bottom: 15px; */
 }
-.el-input .el-input__inner{
-    height: 35px;
-    line-height: 35px;
+
+.el-input .el-input__inner {
+    /* height: 35px;
+    line-height: 35px; */
+}
+
+.el-form-item__content .el-select {
+    width: 100%;
+}
+
+/* 单选框及外出边框 */
+.el-radio-group.radioBorder {
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 40px;
+    outline: 0;
+    padding: 0 15px;
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.radioBorder:hover {
+    border-color: #c0c4cc;
+}
+
+.radioBorder .el-radio__input {
+    /* height: 14px; */
+    /* vertical-align: bottom; */
 }
