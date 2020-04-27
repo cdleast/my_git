@@ -4,6 +4,7 @@
             <!-- 待办待阅 -->
             <el-col :span="16" class="daiban">
                 <div class="grid-content">
+                    
                     <el-tabs v-model="activeName1" @tab-click="handleClick">
                         <el-tab-pane label="待办" name="DAIBAN">
                             <span slot="label" style="position: relative">
