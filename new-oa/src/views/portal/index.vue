@@ -16,40 +16,19 @@
                                     :max="99"
                                 ></el-badge>
                             </span>
-                            <el-table
-                                ref="multipleTable"
-                                :data="tableDaiBan"
-                                tooltip-effect="dark"
-                                style="width: 100%"
-                                height="320"
+                            <el-table ref="multipleTable" :data="tableDaiBan" tooltip-effect="dark" style="width: 100%" height="320"
                                 @selection-change="handleSelectionChange"
                             >
                                 <el-table-column type="selection" width="45"></el-table-column>
-                                <el-table-column
-                                    prop="TODO_TITLE"
-                                    width="190"
-                                    label="标题"
-                                    show-overflow-tooltip
+                                <el-table-column prop="TODO_TITLE" width="190" label="标题" show-overflow-tooltip
                                 ></el-table-column>
-                                <el-table-column
-                                    prop="S_ODEPT__NAME"
-                                    show-overflow-tooltip
-                                    label="所属机构"
+                                <el-table-column prop="S_ODEPT__NAME" show-overflow-tooltip label="所属机构"
                                 ></el-table-column>
-                                <el-table-column
-                                    prop="SEND_USER_CODE__NAME"
-                                    show-overflow-tooltip
-                                    label="发送者"
+                                <el-table-column prop="SEND_USER_CODE__NAME" show-overflow-tooltip label="发送者"
                                 ></el-table-column>
-                                <el-table-column
-                                    prop="SEND_DEPT_NAME"
-                                    show-overflow-tooltip
-                                    label="所在部门"
+                                <el-table-column prop="SEND_DEPT_NAME" show-overflow-tooltip label="所在部门"
                                 ></el-table-column>
-                                <el-table-column
-                                    prop="TODO_CODE_NAME"
-                                    label="代办类型"
-                                    show-overflow-tooltip
+                                <el-table-column prop="TODO_CODE_NAME" label="代办类型" show-overflow-tooltip
                                 ></el-table-column>
                                 <el-table-column label="时间" show-overflow-tooltip>
                                     <template
@@ -73,6 +52,8 @@
                                 </el-table-column>
                             </el-table>
                         </el-tab-pane>
+
+
                         <el-tab-pane label="待阅" name="DAIYUE">
                             <span slot="label" style="position: relative">
                                 <span>待阅</span>
