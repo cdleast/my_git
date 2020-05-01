@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name:'login',
+    name: "login",
     data() {
         return {
             model: {
@@ -79,13 +79,13 @@ export default {
                     window.localStorage.setItem("token", result.token);
 
                     //判断路由是否带参，带参就去到重定向参数地址，否则就去首页
-                    // if (this.$route.query.redirect) {
-                    //     this.$router.replace({
-                    //         path: this.$route.query.redirect
-                    //     });
-                    // } else {
-                    //     this.$router.replace({ path: "/botnav/index" });
-                    // }
+                    if (this.$route.query.redirect) {
+                        this.$router.replace({
+                            path: this.$route.query.redirect
+                        });
+                    } else {
+                        this.$router.replace({ path: "/botnav/home" });
+                    }
                 } else {
                     alert(result.message);
                 }

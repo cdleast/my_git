@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	...global,
-	{ path: '/', redirect: '/register' },
+	{ path: '/', redirect: '/botnav/home' },
 ]
 
 const router = new VueRouter({
