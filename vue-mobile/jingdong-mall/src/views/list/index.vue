@@ -126,9 +126,9 @@ export default {
         addtocart(e, tag) {
             this.$store.commit("tocart", tag);
             //让我们小球显示出来
-            this.ball.show = true;
+            // this.ball.show = true;
             //获取点击元素
-            this.ball.el = e.target;
+            // this.ball.el = e.target;
         }
     }
 };

@@ -4,7 +4,7 @@
             {{item.title}}
             <div class="goodsright">
                 <i class="cubeic-remove" @click="removeCart(index)"></i>
-                <span>{{item.cartCount}}</span>
+                <span class="num">{{item.cartCount}}</span>
                 <i class="cubeic-add" @click="addCart(index)"></i>
             </div>
         </div>
@@ -18,9 +18,12 @@ import { mapState } from "vuex";
 export default {
     name: "cart",
     computed: {
-        ...mapState({
-            cartarr: state => state.cartarry
-        })
+        cartarr(){
+            return this.$store.state.cart.cartarry
+        },
+        // ...mapState({
+        //     cartarr: state => state.cart.cartarry
+        // })
     },
     methods: {
         //减少商品
@@ -43,9 +46,13 @@ export default {
 .goods {
     padding: 10px;
     text-align: left;
+    font-size: 16px;
 
     .goodsright {
         float: right;
+        .num{
+            margin: 0 10px;
+        }
     }
 
     i {

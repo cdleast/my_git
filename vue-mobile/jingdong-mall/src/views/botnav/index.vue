@@ -10,7 +10,7 @@
             @change="changeHandler"
             class="content"
         ></cube-tab-bar>
-        <!-- <span class="countsum">{{countsum}}</span> -->
+        <span class="countsum">{{countsum}}</span>
     </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
     methods: {
         clickHandler(label) {
             // if you clicked home tab, then print 'Home'
-            console.log(label);
+            // console.log(label);
         },
         //点击与自身不同的其他导航
         changeHandler(label) {
@@ -109,6 +109,7 @@ export default {
     width: 100%;
     border-top: 1px solid #ededed;
     background: #fff;
+
     .cube-tab div {
         font-size: 16px;
         padding-top: 3px;
@@ -151,6 +152,7 @@ export default {
     font-size: 14px;
     background: red;
     color: #fff;
+    text-align: center;
 }
 </style>
 
