@@ -136,18 +136,21 @@ export default {
         //添加商品到购物车
         addtocart(e, tag) {
             this.$store.commit("tocart", tag);
-            //让我们小球显示出来
+            // 让我们小球显示出来
             this.ball.show = true;
-            //获取点击元素
+            // 获取点击元素
             this.ball.el = e.target;
         },
         beforeEnter(el) {
-            //让小球移动到点击的位置
-            //获取点击位置
+            // 让小球移动到点击的位置
+            // 获取点击位置
             const dom = this.ball.el;
-            const rect = dom.getBoundingClientRect(); //获取点击的dom的位置
+            // 获取点击的dom的位置
+            const rect = dom.getBoundingClientRect();
+            // 获取点击dom距离left/top的距离，这个0.7是小球设置的位置left的70%
             const x = rect.left - window.innerWidth * 0.7;
             const y = -(window.innerHeight - rect.top);
+            // 显示小球并移动
             el.style.display = "block";
             el.style.transform = `translate3d(0,${y}px,0)`;
             const inner = el.querySelector(".inner");
