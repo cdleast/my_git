@@ -1,6 +1,6 @@
 // 设置属性，主要承载一些属性，存储数据的
 const state = {
-    cartarry: [] // 存储购物车商品
+    cartarry: JSON.parse(localStorage.getItem('cartarry')) || [], // 存储购物车商品的数组 
 }
 
 // 对应的一些方法,用来获取到属性(state)的状态，相当于我们vue 计算属性

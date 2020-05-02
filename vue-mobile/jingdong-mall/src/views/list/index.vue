@@ -24,6 +24,17 @@
                 </li>
             </ul>
         </cube-scroll>
+
+        <!-- 小球掉落动画 -->
+        <div class="ball-wrap">
+            <transition @before-enter="beforeEnter" @enter="enter" @afterEnter="afterEnter">
+                <div class="ball" v-if="ball.show">
+                    <div class="inner">
+                        <i class="cubeic-add"></i>
+                    </div>
+                </div>
+            </transition>
+        </div>
     </div>
 </template>
 
@@ -126,9 +137,36 @@ export default {
         addtocart(e, tag) {
             this.$store.commit("tocart", tag);
             //让我们小球显示出来
-            // this.ball.show = true;
+            this.ball.show = true;
             //获取点击元素
-            // this.ball.el = e.target;
+            this.ball.el = e.target;
+        },
+        beforeEnter(el) {
+            //让小球移动到点击的位置
+            //获取点击位置
+            const dom = this.ball.el;
+            const rect = dom.getBoundingClientRect(); //获取点击的dom的位置
+            const x = rect.left - window.innerWidth * 0.7;
+            const y = -(window.innerHeight - rect.top);
+            el.style.display = "block";
+            el.style.transform = `translate3d(0,${y}px,0)`;
+            const inner = el.querySelector(".inner");
+            inner.style.transform = `translate3d(${x}px,0,0)`;
+        },
+        enter(el, done) {
+            //触发重绘
+            document.body.offsetHeight;
+            //小球移动回到原点，就是购物车的位置
+            el.style.transform = `translate3d(0,0,0)`;
+            const inner = el.querySelector(".inner");
+            inner.style.transform = `translate3d(0,0,0)`;
+            //过渡完成后执行的事件
+            el.addEventListener("transitionend", done);
+        },
+        afterEnter(el) {
+            //结束隐藏小球
+            this.ball.show = false;
+            el.style.display = "none";
         }
     }
 };
