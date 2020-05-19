@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import 'normalize.css/normalize.css' // 样式初始化文件，替换原来的reset
 import App from './App.vue'
 import router from './router'
 import store from './store'
