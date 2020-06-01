@@ -7,10 +7,15 @@ import 'amfe-flexible/index.js' // 用于设置 rem 基准值
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import func from '@/func/index' // 引入全局方法函数
+
+
+
 import axios from 'axios'
 Vue.prototype.$axios = axios
 
-Vue.use(Vant)
+Vue.use(Vant) // 全局vant
+Vue.use(func) // 全局方法函数
 Vue.config.productionTip = false
 
 
