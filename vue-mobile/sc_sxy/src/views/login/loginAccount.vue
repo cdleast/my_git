@@ -1,8 +1,16 @@
 <template>
     <div class="login">
+        <!-- 开屏广告 -->
+        <div class="count-down" v-show="back">
+            <span class="jump" @click="jump()">
+                点击跳转
+                <b>{{num}}</b>
+            </span>
+        </div>
+
+        <!-- 登录主体 -->
         <img class="logo" src="../../assets/images/logo.png" />
         <h1>首创商学院</h1>
-
         <van-form @submit="onSubmit">
             <van-field
                 v-model="users.loginName"
@@ -34,18 +42,41 @@
 <script>
 import loginApi from "@/api/login";
 export default {
-    name: "login",
+    name: "loginAccount",
     data() {
         return {
+            timer: null, // 开屏广告定时器
+            back: true, // 开屏广告状态
+            num: 5, // 开屏广告倒计时
             users: {
-                loginName: "",
-                password: ""
+                loginName: "", // 用户名
+                password: "" // 密码
             },
             account: true, // 切换密码/账户登录
-            disabled: true, // 登录按钮状态
+            disabled: true // 登录按钮状态
         };
     },
+    // 挂载完成后执行
+    mounted() {
+        this.theTail();
+    },
     methods: {
+        // 开始开屏广告
+        theTail() {
+            this.timer = setInterval(this.play, 1000);
+        },
+        // 开始倒计时
+        play() {
+            this.num--;
+            if (this.num == 0) {
+                this.jump();
+            }
+        },
+        // 直接关闭开屏广告
+        jump() {
+            this.back = false;
+            clearInterval(this.timer);
+        },
         // 判断输入内容是否为空，来改变登录按钮状态
         isEmpty() {
             if (this.users.loginName && this.users.password) {

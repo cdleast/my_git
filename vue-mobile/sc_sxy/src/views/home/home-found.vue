@@ -1,19 +1,15 @@
 <template>
-    <div class="phone">
-        手机号登录
-    </div>
+    <div class="home-found">发现</div>
 </template>
 
 <script>
 export default {
-    name: "phone",
+    name: "home-found",
     data() {
         return {};
-    },
-    methods: {}
+    }
 };
 </script>
 
 <style lang='scss' scoped>
-@import "~@/styles/login";
 </style>

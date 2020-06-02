@@ -1,2 +1,7 @@
 @import './vant.scss';
 
+html,
+body,
+#app {
+    height: 100vh;
+}

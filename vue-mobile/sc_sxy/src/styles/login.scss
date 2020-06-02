@@ -1,8 +1,32 @@
+// 登录
 .login {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 
+    // 开屏广告
+    .count-down {
+        position: absolute;
+        top: 0;
+        background: url('~@/assets/images/thetail.jpg') no-repeat top center;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+
+        /*display:none;*/
+        .jump {
+            float: right;
+            padding: 20px;
+            color: $text-color;
+
+            b {
+                padding: 5px;
+            }
+        }
+    }
+
+    // 登录主体部分
     .logo {
         width: 160px;
         height: 160px;
@@ -34,5 +58,21 @@
         font-size: 30px;
         font-weight: 500;
         color: $text-color;
+    }
+}
+
+// 登录end
+
+// 登录引导页
+.loginGuide {
+    .my-swipe .van-swipe-item {
+        font-size: 40px;
+        line-height: 150px;
+        text-align: center;
+    }
+
+    .my-swipe-child img{
+        width: 100%;
+        height: 600px;
     }
 }
