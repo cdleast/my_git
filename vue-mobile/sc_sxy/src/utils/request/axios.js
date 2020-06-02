@@ -4,6 +4,11 @@ import axios from 'axios'
 const request = axios.create({
     baseURL: process.env.VUE_APP_BASE_API, // 请求路径的前缀
     timeout: 5000, // 请求超时，5000毫秒
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-DEVICE-NAME": "@chrome-76.0.3809.132",
+        "X-XSRF-TOKEN": `${localStorage.eleToken}`
+    }
 })
 
 // 请求拦截器

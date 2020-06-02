@@ -6,10 +6,6 @@ export default {
         return request({
             url: '/archivetemp-api/SY_ORG_LOGIN.login.do',
             method: 'POST',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "X-DEVICE-NAME": "@chrome-76.0.3809.132"
-            },
             params: {
                 loginName: users.loginName,
                 password: users.password
@@ -17,8 +13,11 @@ export default {
         })
     },
 
-    // 获取用户信息
-    getUserInfo(){
-
+    // 登录引导页
+    loginGuide() {
+        return request({
+            url: '/archivetemp-api/EXEXM_BOOTSTRAP_AD.appLoginBoot.do',
+            method: 'POST'
+        })
     }
 }

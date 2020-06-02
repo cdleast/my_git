@@ -9,6 +9,7 @@
                 name="用户名"
                 placeholder="请输入账号/身份证号"
                 :rules="[{ required: true, message: '请填写用户名' }]"
+                @input="isEmpty"
             />
             <van-field
                 v-model="users.password"
@@ -16,10 +17,11 @@
                 name="密码"
                 placeholder="请输入密码"
                 :rules="[{ required: true, message: '请填写密码' }]"
+                @input="isEmpty"
             />
 
             <div class="btnorg">
-                <van-button round block native-type="submit">提交</van-button>
+                <van-button :disabled="disabled" round block native-type="submit">提交</van-button>
             </div>
         </van-form>
 
@@ -31,7 +33,6 @@
 
 <script>
 import loginApi from "@/api/login";
-import jwt_decode from "jwt-decode"; // 解析token
 export default {
     name: "login",
     data() {
@@ -40,13 +41,31 @@ export default {
                 loginName: "",
                 password: ""
             },
-            account: true // 切换密码/账户登录
+            account: true, // 切换密码/账户登录
+            disabled: true, // 登录按钮状态
         };
     },
     methods: {
+        // 判断输入内容是否为空，来改变登录按钮状态
+        isEmpty() {
+            if (this.users.loginName && this.users.password) {
+                this.disabled = false;
+            } else {
+                this.disabled = true;
+            }
+        },
+        // 登录用户
         onSubmit() {
             loginApi.login(this.users).then(res => {
-                
+                const resp = res.data;
+                if (resp._RTN_CODE_ === "OK") {
+                    localStorage.setItem("eleToken", resp.USER_TOKEN);
+                    this.$toast("登录成功");
+                } else {
+                    this.$toast({
+                        message: `${resp._MSG_}`
+                    });
+                }
             });
         }
     }

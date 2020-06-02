@@ -1,10 +1,12 @@
 <template>
-    <div class='phone'>phone</div>
+    <div class='loginGuide'>
+        登录引导页
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'phone',
+    name: 'loginGuide',
     data() {
         return {}
     },
@@ -12,5 +14,5 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-@import "~@/styles/login";
+
 </style>
