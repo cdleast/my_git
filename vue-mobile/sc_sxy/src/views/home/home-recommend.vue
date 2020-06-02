@@ -1,5 +1,7 @@
 <template>
-    <div class="home-recommend">推荐</div>
+    <div class="home-recommend">
+        推荐
+    </div>
 </template>
 
 <script>

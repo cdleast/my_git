@@ -72,10 +72,10 @@ export default {
                 this.jump();
             }
         },
-        // 直接关闭开屏广告
+        // 关闭开屏广告
         jump() {
             this.back = false;
-            clearInterval(this.timer);
+            clearInterval(this.timer); // 清楚定时器
         },
         // 判断输入内容是否为空，来改变登录按钮状态
         isEmpty() {

@@ -1,0 +1,40 @@
+// 首页
+.home {
+
+}
+
+// 首页头部
+.homeHeader {
+    height: 100px;
+    padding: 0 30px;
+    position: relative;
+
+    &>div {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+    }
+
+    .left {
+        left: 30px;
+    }
+
+    .center {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        span{
+            margin: 0 10px;
+            font-size: 36px;
+        }
+    }
+
+    .right {
+        right: 30px;
+
+        i {
+            margin-left: 10px;
+        }
+    }
+}

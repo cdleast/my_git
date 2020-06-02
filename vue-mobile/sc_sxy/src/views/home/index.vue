@@ -1,17 +1,22 @@
 <template>
     <div class="home">
-        <header-bar></header-bar>
+        <home-header></home-header>
+
+        <div class="contaner">
+            <router-view />
+        </div>
+
         <footer-bar></footer-bar>
     </div>
 </template>
 
 <script>
-import headerBar from "@/components/global/headerBar";
+import homeHeader from "@/components/home/homeHeader";
 import footerBar from "@/components/global/footerBar";
 export default {
     name: "home",
     components:{
-        headerBar,
+        homeHeader,
         footerBar
     },
     data() {
@@ -21,4 +26,5 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import "~@/styles/home";
 </style>
