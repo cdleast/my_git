@@ -10,7 +10,6 @@ import myinfo from './myinfo' // 我的
 Vue.use(VueRouter)
 
 const routes = [
-	{ path: '/', redirect: '/home' },
 	...login, ...home, ...message, ...addres, ...secretary, ...myinfo
 ]
 
