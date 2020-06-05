@@ -1,5 +1,5 @@
 <template>
-    <van-tabbar class="footerBar" v-model="active">
+    <van-tabbar class="footerBar" v-model="active" placeholder>
         <van-tabbar-item to="/home" name="home" icon="home-o">首页</van-tabbar-item>
         <van-tabbar-item to="/message" name="message" icon="chat-o">消息</van-tabbar-item>
         <van-tabbar-item to="/addres" name="addres" icon="friends-o">通信录</van-tabbar-item>

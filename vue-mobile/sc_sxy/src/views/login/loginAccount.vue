@@ -46,7 +46,7 @@ export default {
     data() {
         return {
             timer: null, // 开屏广告定时器
-            back: true, // 开屏广告状态
+            back: false, // 开屏广告状态
             num: 5, // 开屏广告倒计时
             users: {
                 loginName: "", // 用户名
@@ -56,27 +56,7 @@ export default {
             disabled: true // 登录按钮状态
         };
     },
-    // 挂载完成后执行
-    mounted() {
-        this.theTail();
-    },
     methods: {
-        // 开始开屏广告
-        theTail() {
-            this.timer = setInterval(this.play, 1000);
-        },
-        // 开始倒计时
-        play() {
-            this.num--;
-            if (this.num == 0) {
-                this.jump();
-            }
-        },
-        // 关闭开屏广告
-        jump() {
-            this.back = false;
-            clearInterval(this.timer); // 清楚定时器
-        },
         // 判断输入内容是否为空，来改变登录按钮状态
         isEmpty() {
             if (this.users.loginName && this.users.password) {
@@ -92,12 +72,31 @@ export default {
                 if (resp._RTN_CODE_ === "OK") {
                     localStorage.setItem("eleToken", resp.USER_TOKEN);
                     this.$toast("登录成功");
+                    this.theTail(); // 调用开屏广告
+                    this.$router.push('/home')
                 } else {
                     this.$toast({
                         message: `${resp._MSG_}`
                     });
                 }
             });
+        },
+        // 开始开屏广告
+        theTail() {
+            this.back = true;
+            this.timer = setInterval(this.play, 1000);
+        },
+        // 开始倒计时
+        play() {
+            this.num--;
+            if (this.num == 0) {
+                this.jump();
+            }
+        },
+        // 关闭开屏广告
+        jump() {
+            this.back = false;
+            clearInterval(this.timer); // 清除定时器
         }
     }
 };

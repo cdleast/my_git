@@ -13,7 +13,7 @@ export default {
         })
     },
 
-    // 登录引导页
+    // 登录引导页-开屏广告
     loginGuide() {
         return request({
             url: '/archivetemp-api/EXEXM_BOOTSTRAP_AD.appLoginBoot.do',

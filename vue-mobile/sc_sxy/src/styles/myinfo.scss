@@ -1,0 +1,115 @@
+.myinfo /deep/ {
+    height: auto;
+    background-color: #EEEEEE;
+
+    .header {
+        height: 350px;
+        background: linear-gradient(90deg, rgba(91, 133, 240, 1), rgba(146, 119, 234, 1));
+    }
+
+    // 导航部门
+    .van-nav-bar {
+        background: none;
+
+        .van-icon,
+        .van-nav-bar__text {
+            color: #fff;
+        }
+
+        .van-nav-bar__title {
+            color: #fff;
+        }
+    }
+
+    .icon {
+        color: $text-color;
+        font-size: 40px;
+    }
+
+    .van-cell-group {
+        margin-bottom: 20px;
+    }
+
+    .van-cell__title {
+        font-size: 30px;
+        color: #333;
+        margin-left: 22px;
+    }
+
+    .van-cell__value {
+        font-size: 26px;
+        color: #999;
+    }
+
+    // 头部用户部分
+    .users {
+        height: calc(100% - 92px);
+        position: relative;
+
+        .user-info {
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            left: 60px;
+            bottom: 18px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .user-desp {
+            position: absolute;
+            left: 265px;
+            top: 40px;
+
+            h2 {
+                font-size: 30px;
+                font-weight: 500;
+                color: #fff;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 24px;
+                font-weight: 500;
+                color: #fff;
+            }
+        }
+    }
+
+    // 我的课程/考试/收藏
+    .part {
+        background-color: #fff;
+        margin-bottom: 20px;
+
+        .num {
+            font-size: 34px;
+            color: #000;
+            text-align: center;
+            padding: 30px 0 15px 0;
+        }
+
+        .desp {
+            font-size: 30px;
+            color: #333;
+            text-align: center;
+            padding: 15px 0 30px 0;
+        }
+    }
+
+    // 九宫格部分
+    .grid {
+        margin-top: 20px;
+        background-color: #fff;
+
+        .van-grid-item {
+            min-height: 150px;
+
+            p {
+                font-size: 26px;
+                color: #333;
+                margin-top: 20px;
+            }
+        }
+
+    }
+}
