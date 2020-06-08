@@ -1,15 +1,14 @@
 .myinfo /deep/ {
     height: auto;
-    background-color: #EEEEEE;
+    background-color: $bg-color;
 
     .header {
         height: 350px;
-        background: linear-gradient(90deg, rgba(91, 133, 240, 1), rgba(146, 119, 234, 1));
     }
 
     // 导航部门
     .van-nav-bar {
-        background: none;
+        background-color: $bg-header-color;
 
         .van-icon,
         .van-nav-bar__text {
@@ -45,6 +44,8 @@
     .users {
         height: calc(100% - 92px);
         position: relative;
+        background: url('~@/assets/images/me/me-bg.png') no-repeat #fff;
+        background-size: 100% 100%;
 
         .user-info {
             width: 160px;
@@ -52,8 +53,6 @@
             position: absolute;
             left: 60px;
             bottom: 18px;
-            border-radius: 50%;
-            background-color: #fff;
         }
 
         .user-desp {

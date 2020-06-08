@@ -8,13 +8,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import func from '@/func/index' // 引入全局方法函数
-
+import GL_Compoent from '@/components/index.js' // 全局注册组件
 
 import axios from 'axios'
 Vue.prototype.$axios = axios
 
 Vue.use(Vant) // 全局vant
 Vue.use(func) // 全局方法函数
+Vue.use(GL_Compoent) // 使用全局组件
 Vue.config.productionTip = false
 
 

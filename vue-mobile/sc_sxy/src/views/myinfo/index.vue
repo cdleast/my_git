@@ -2,17 +2,15 @@
     <div class="myinfo">
         <!-- 头部 -->
         <div class="header">
-            <van-nav-bar
-                title="标题"
-                left-text="返回"
-                right-text="按钮"
-                left-arrow
-                @click-left="onClickLeft"
-                @click-right="onClickRight"
-                :border="false"
-            />
+            <!-- 头部导航标题 -->
+            <van-nav-bar title="我的" right-text="按钮" @click-right="onClickRight" :border="false">
+                <template #right>
+                    <van-icon name="setting-o" />
+                </template>
+            </van-nav-bar>
+
             <div class="users">
-                <div class="user-info"></div>
+                <van-image round class="user-info" src="https://img.yzcdn.cn/vant/cat.jpeg" />
                 <div class="user-desp">
                     <h2>吴章华</h2>
                     <p>北京华展汇元信息技术有限公司</p>
@@ -114,16 +112,14 @@ export default {
         };
     },
     methods: {
-        onClickLeft() {
-            this.$toast("返回");
-        },
+        // 跳转我的设置
         onClickRight() {
-            this.$toast("按钮");
+            this.$router.push('/myinfo/my-set')
         }
     }
 };
 </script>
 
 <style lang='scss' scoped>
-@import "~@/styles/myinfo";
+@import "~@/styles/myinfo.scss";
 </style>
