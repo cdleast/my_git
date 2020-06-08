@@ -37,26 +37,62 @@
         </div>
 
         <van-cell-group>
-            <van-cell to="/myinfo/my-level" title="我的等级" class="icon icon-dengji" value="LV.3" is-link />
-            <van-cell title="我的魅力值" class="icon icon-meili" value="33" is-link />
+            <van-cell
+                to="/myinfo/my-level"
+                title="我的等级"
+                class="icon icon-dengji"
+                value="LV.3"
+                is-link
+            />
+            <van-cell
+                to="/myinfo/my-charm"
+                title="我的魅力值"
+                class="icon icon-meili"
+                value="33"
+                is-link
+            />
         </van-cell-group>
 
         <van-cell-group>
-            <van-cell title="我的学历" class="icon icon-xueli" value="新手上路" is-link />
-            <van-cell title="我的证书" class="icon icon-zhengshu" is-link />
+            <van-cell
+                to="/myinfo/my-education"
+                title="我的学历"
+                class="icon icon-xueli"
+                value="新手上路"
+                is-link
+            />
+            <van-cell to="/myinfo/my-certificate" title="我的证书" class="icon icon-zhengshu" is-link />
         </van-cell-group>
 
         <van-cell-group>
-            <van-cell title="我的积分" class="icon icon-jifen" value="1470" is-link />
-            <van-cell title="我的任务" class="icon icon-renwu" value="3个人未完成" is-link />
-            <van-cell title="我的相册" class="icon icon-xiangce" value="3个人未完成" is-link />
+            <van-cell
+                to="/myinfo/my-integral"
+                title="我的积分"
+                class="icon icon-jifen"
+                value="1470"
+                is-link
+            />
+            <van-cell
+                to="/myinfo/my-task"
+                title="我的任务"
+                class="icon icon-renwu"
+                value="3个人未完成"
+                is-link
+            />
+            <van-cell
+                to="/myinfo/my-photo"
+                title="我的相册"
+                class="icon icon-xiangce"
+                value="3个人未完成"
+                is-link
+            />
         </van-cell-group>
 
-        <van-cell title="我的草稿" class="icon icon-caogao" value="1470" is-link />
+        <van-cell to="/myinfo/my-draft" title="我的草稿" class="icon icon-caogao" value="1470" is-link />
 
         <van-grid :column-num="3" class="grid" :border="false">
-            <van-grid-item v-for="(value,index) in gridList" :key="index">
-                <span :class="`icon icon-${value.icon}`"></span>
+            <van-grid-item :to="item.router" v-for="(item,index) in gridList" :key="index">
+                <span :class="`icon icon-${item.icon}`"></span>
                 <p>{{value.text}}</p>
             </van-grid-item>
         </van-grid>
@@ -78,35 +114,43 @@ export default {
             gridList: [
                 {
                     text: "我的问题",
-                    icon: "wenti"
+                    icon: "wenti",
+                    router: "/myinfo/my-problem"
                 },
                 {
                     text: "我的回答",
-                    icon: "huida"
+                    icon: "huida",
+                    router: "/myinfo/my-answer"
                 },
                 {
                     text: "我的分享",
-                    icon: "fenxiang"
+                    icon: "fenxiang",
+                    router: "/myinfo/my-share"
                 },
                 {
                     text: "我的帖子",
-                    icon: "tiezi"
+                    icon: "tiezi",
+                    router: "/myinfo/my-post"
                 },
                 {
                     text: "我的背包",
-                    icon: "beibao"
+                    icon: "beibao",
+                    router: "/myinfo/my-backpack"
                 },
                 {
                     text: "我的下载",
-                    icon: "xiazai"
+                    icon: "xiazai",
+                    router: "/myinfo/my-download"
                 },
                 {
                     text: "关注/粉丝",
-                    icon: "guanzhu"
+                    icon: "guanzhu",
+                    router: "/myinfo/my-fans"
                 },
                 {
                     text: "排行榜",
-                    icon: "paihangbang"
+                    icon: "paihangbang",
+                    router: "/myinfo/my-ranking"
                 }
             ]
         };
@@ -114,7 +158,7 @@ export default {
     methods: {
         // 跳转我的设置
         onClickRight() {
-            this.$router.push('/myinfo/my-set')
+            this.$router.push("/myinfo/my-set");
         }
     }
 };

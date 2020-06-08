@@ -1,6 +1,6 @@
 <template>
     <div class="my-set">
-        <van-nav-bar title="我的设置" left-arrow @click-left="this.$router.go(-1)" @click-right="onClickRight">
+        <van-nav-bar title="我的设置" left-arrow @click-left="$router.go(-1)" @click-right="onClickRight">
             <template #right>
                 <van-icon name="plus" size="18" />
             </template>
