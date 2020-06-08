@@ -13,3 +13,20 @@
 .van-icon {
     font-size: 40px;
 }
+
+
+/**
+    头部导航
+*/
+.van-nav-bar {
+    background-color: $bg-header-color;
+
+    .van-icon,
+    .van-nav-bar__text {
+        color: #fff;
+    }
+
+    .van-nav-bar__title {
+        color: #fff;
+    }
+}

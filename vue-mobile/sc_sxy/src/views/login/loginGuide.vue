@@ -6,7 +6,7 @@
                 <b>{{num}}</b>
             </span>
 
-            <van-swipe class="my-swipe" :autoplay="300000" indicator-color="white">
+            <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
                 <van-swipe-item v-for="(items,index) in loginGuideList" :key="index">
                     <div class="shopImg" :style="{backgroundImage:'url('+items.FILE[0].FILE_PATH+')'}"></div>
                 </van-swipe-item>
@@ -24,7 +24,7 @@ export default {
             loginGuideList: [], // 开屏广告数据
             timer: null, // 开屏广告定时器
             back: true, // 开屏广告状态
-            num: 500 // 开屏广告倒计时
+            num: 5 // 开屏广告倒计时
         };
     },
     created() {

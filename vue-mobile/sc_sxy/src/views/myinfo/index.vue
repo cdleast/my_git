@@ -37,7 +37,7 @@
         </div>
 
         <van-cell-group>
-            <van-cell title="我的等级" class="icon icon-dengji" value="LV.3" is-link />
+            <van-cell to="/myinfo/my-level" title="我的等级" class="icon icon-dengji" value="LV.3" is-link />
             <van-cell title="我的魅力值" class="icon icon-meili" value="33" is-link />
         </van-cell-group>
 
