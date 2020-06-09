@@ -1,6 +1,11 @@
 <template>
     <div class="my-set">
-        <van-nav-bar title="我的设置" left-arrow @click-left="$router.go(-1)" @click-right="onClickRight">
+        <van-nav-bar
+            title="我的设置"
+            left-arrow
+            @click-left="$router.go(-1)"
+            @click-right="onClickRight"
+        >
             <template #right>
                 <van-icon name="plus" size="18" />
             </template>
@@ -11,6 +16,7 @@
 </template>
 
 <script>
+import { removeToken } from "@/utils/request/auth";
 export default {
     name: "my-set",
     data() {
@@ -20,9 +26,10 @@ export default {
         onClickRight() {
             this.$toast("提示文案");
         },
-        // 退出登录
+        // 退出登录并清除数据
         loginOut() {
-            this.$router.push("/loginAccount");
+            removeToken();
+            this.$router.push("/login");
         }
     }
 };

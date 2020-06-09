@@ -10,10 +10,16 @@
             </van-nav-bar>
 
             <div class="users">
-                <van-image round class="user-info" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <van-image
+                    v-for="(item,index) in getUser.IMAGE_FILE"
+                    :key="index"
+                    round
+                    class="user-info"
+                    :src="item.FILE_PATH"
+                />
                 <div class="user-desp">
-                    <h2>吴章华</h2>
-                    <p>北京华展汇元信息技术有限公司</p>
+                    <h2>{{getUser.USER_NAME}}</h2>
+                    <p>{{getUser.EX_ODEPT_CODE__NAME}}</p>
                 </div>
             </div>
         </div>
@@ -111,6 +117,7 @@ export default {
     },
     data() {
         return {
+            user: {}, // 账户信息
             gridList: [
                 {
                     text: "我的问题",
@@ -154,6 +161,11 @@ export default {
                 }
             ]
         };
+    },
+    computed: {
+        getUser() {
+            return this.$store.getters.user._DATA_[0];
+        }
     },
     methods: {
         // 跳转我的设置

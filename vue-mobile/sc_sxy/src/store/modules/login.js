@@ -19,6 +19,7 @@ const mutations = {
         state.token = token
         setToken(token)
     },
+
     // 设置用户信息
     SET_USER(state, user) {
         state.user = user
@@ -30,8 +31,8 @@ const mutations = {
 const actions = {
     // 获取用户信息
     getUserInfo: ({ commit }, user) => {
-        commit(SET_USER, user)
-    },
+        commit("SET_USER", user)
+    }
 }
 
 // 暴露对象，让其他页面可以拿到
