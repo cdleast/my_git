@@ -41,7 +41,7 @@ import loginApi from "@/api/login";
 import loginGuide from "@/views/login/loginGuide"; // 引入开屏广告
 
 export default {
-    name: "loginAccount",
+    name: "login",
     components: {
         loginGuide
     },
@@ -70,8 +70,15 @@ export default {
             loginApi.login(this.users).then(res => {
                 const resp = res.data;
                 if (resp._RTN_CODE_ === "OK") {
+                    // 存储token
+                    this.$store.commit("SET_TOKEN", resp.USER_TOKEN);
                     localStorage.setItem("eleToken", resp.USER_TOKEN);
                     this.guideShow = true; // 打开开屏广告
+
+                    // 根据登录成功之后的token获取用户信息
+                    loginApi.getAccountUser().then(res => {
+                        this.$store.dispatch("getUserInfo", res.data);
+                    });
                 } else {
                     this.$toast({
                         message: `${resp._MSG_}`

@@ -8,7 +8,10 @@
 
             <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
                 <van-swipe-item v-for="(items,index) in loginGuideList" :key="index">
-                    <div class="shopImg" :style="{backgroundImage:'url('+items.FILE[0].FILE_PATH+')'}"></div>
+                    <div
+                        class="shopImg"
+                        :style="{backgroundImage:'url('+items.FILE[0].FILE_PATH+')'}"
+                    ></div>
                 </van-swipe-item>
             </van-swipe>
         </div>
@@ -54,7 +57,14 @@ export default {
         jump() {
             this.back = false;
             clearInterval(this.timer); // 清除定时器
-            this.$router.push("/home");
+            // 判断路由是否带参，带参就去到重定向参数地址，否则就去首页
+            if (this.$route.query.redirect) {
+                this.$router.replace({
+                    path: this.$route.query.redirect
+                });
+            } else {
+                this.$router.replace({ path: "/home" });
+            }
         }
     }
 };

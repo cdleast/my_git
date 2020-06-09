@@ -19,5 +19,13 @@ export default {
             url: '/archivetemp-api/EXEXM_BOOTSTRAP_AD.appLoginBoot.do',
             method: 'POST'
         })
+    },
+
+    // 获取账户登录的用户信息
+    getAccountUser() {
+        return request({
+            url: '/archivetemp-api/EXEXM_USER_LIST.appEnalbeUserList.do',
+            method: 'POST'
+        })
     }
 }

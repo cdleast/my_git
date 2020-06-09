@@ -16,7 +16,7 @@ export function getUser() {
     return JSON.parse(localStorage.getItem(USER_KEY))
 }
 
-//保存用户信息
+// 保存用户信息
 export function setUser(user) {
     localStorage.setItem(USER_KEY, JSON.stringify(user))
 }
