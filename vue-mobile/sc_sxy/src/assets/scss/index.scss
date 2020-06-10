@@ -7,10 +7,6 @@ body,
     height: 100vh;
 }
 
-#app {
-    background-color: $bg-color;
-}
-
 // 路由选择颜色
 .router-link-exact-active.router-link-active {
     color: $bg-text-color !important;

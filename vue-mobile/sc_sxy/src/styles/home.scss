@@ -47,37 +47,66 @@
 
 
 // 推荐页
-.home-recommend /deep/{
+.home-recommend /deep/ {
 
     // 轮播图
     .swiper-container {
-        margin-top: 20px;
+        margin-top: 30px;
         width: 100%;
         height: 320px;
-        margin-bottom: 53px;
+        margin-bottom: 30px;
+
+        .swiper-wrapper .swiper-slide {
+            width: 690px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .swiper-wrapper .swiper-slide div {
+            width: 690px;
+            height: 280px;
+            border-radius: 20px;
+        }
+
+        .swiper-wrapper .swiper-slide.swiper-slide-active div {
+            width: 690px;
+            height: 320px;
+            border-radius: 20px;
+        }
+
+        // 分页器部分
+        .swiper-pagination .swiper-pagination-bullet {
+            width: 20px;
+            height: 20px;
+        }
+
+        .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+            width: 30px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+        }
     }
 
-    .swiper-container .swiper-wrapper .swiper-slide {
-        width: 600px;
-        border-radius: 20px;
-        background: red;
+
+    // banner导航
+    .banner {
+        .van-col {
+            text-align: center;
+            padding: 10px 0;
+
+            .icon {
+                font-size: 60px;
+            }
+
+            p {
+                color: $text-color;
+                font-size: 30px;
+                margin-top: 10px;
+            }
+        }
     }
 
-    .swiper-container .swiper-wrapper .swiper-slide div {
-        width: 100%;
-        height: 320px;
-        border-radius: 20px;
-    }
 
-    // 分页器部分
-    .swiper-pagination .swiper-pagination-bullet  {
-        width: 20px;
-        height: 20px;
-    }
-    .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
-        width: 30px;
-        height: 20px;
-        border-radius: 10px;
-        background-color: #fff;
-    }
 }

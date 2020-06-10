@@ -96,6 +96,7 @@
 
         <van-cell to="/myinfo/my-draft" title="我的草稿" class="icon icon-caogao" value="1470" is-link />
 
+        <!-- 九宫格部分 -->
         <van-grid :column-num="3" class="grid" :border="false">
             <van-grid-item :to="item.router" v-for="(item,index) in gridList" :key="index">
                 <span :class="`icon icon-${item.icon}`"></span>

@@ -1,6 +1,6 @@
 <template>
     <div class="home-recommend">
-        <!-- 轮播图部分 -->
+        <!-- 轮播图 -->
         <swiper ref="mySwiper" :options="swiperOptions">
             <swiper-slide :to="items.DATA" v-for="items in this.swiperList" :key="items.ID">
                 <div
@@ -12,13 +12,15 @@
             <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
 
-        <van-row type="flex" justify="space-around">
-            <van-col>123</van-col>
-            <van-col>123</van-col>
-            <van-col>123</van-col>
-            <van-col>123</van-col>
-            <van-col>123</van-col>
+        <!-- banner -->
+        <van-row class="banner" type="flex" justify="space-around">
+            <van-col v-for="(item,index) in banner" :key="index">
+               <span :class="`icon icon-${item.icon}`"></span>
+                <p>{{item.text}}</p>
+            </van-col>
         </van-row>
+
+
     </div>
 </template>
 
@@ -45,7 +47,29 @@ export default {
                 pagination: {
                     el: ".swiper-pagination" // 分页器
                 }
-            }
+            },
+            banner: [
+                {
+                    icon: "qiandao",
+                    text: "我的签到"
+                },
+                {
+                    icon: "paihangbang",
+                    text: "排行榜"
+                },
+                {
+                    icon: "renwu",
+                    text: "我的任务"
+                },
+                {
+                    icon: "shequ",
+                    text: "我的社区"
+                },
+                {
+                    icon: "kecheng",
+                    text: "我的课程"
+                }
+            ]
         };
     },
     created() {
