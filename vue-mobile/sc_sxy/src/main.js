@@ -11,7 +11,7 @@ import func from '@/func/index' // 引入全局方法函数
 import GL_Compoent from '@/components/index.js' // 全局注册组件
 import './permission' // 权限拦截，判断是否登录等
 import VueAwesomeSwiper from 'vue-awesome-swiper' // 轮播图插件
-import 'swiper/css/swiper.css' // 轮播图插件样式
+import 'swiper/css/swiper.min.css' // 轮播图插件样式
 
 
 import axios from 'axios'
@@ -21,12 +21,11 @@ Vue.prototype.$axios = axios
 Vue.use(Vant) // 全局vant
 Vue.use(func) // 全局方法函数
 Vue.use(GL_Compoent) // 使用全局组件
-Vue.use(VueAwesomeSwiper) // 全局轮播图挂在
+Vue.use(VueAwesomeSwiper) // 全局轮播图
 
 // Vue.config.productionTip = false
 // 开发环境 development, 生产环境 production 
 Vue.config.productionTip = process.env.NODE_ENV === 'production';
-
 
 
 new Vue({

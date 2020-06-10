@@ -7,11 +7,19 @@ import addres from './addres' // 通讯录
 import secretary from './secretary' // 小秘书
 import myinfo from './myinfo' // 我的
 
+
+// 解决 点击同一路由，控制台报错问题，适用所有UI框架
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+	return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/', redirect: '/home' },
-	...login, ...home, ...message, ...addres, ...secretary, ...myinfo
+	...login, ...home, ...message, ...addres, ...secretary, ...myinfo,
+	{ path: '/swiper', name: 'swiper', component: () => import('@/components/global/swiper') },
 ]
 
 const router = new VueRouter({

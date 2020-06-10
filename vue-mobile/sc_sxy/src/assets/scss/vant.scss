@@ -3,7 +3,7 @@
 */
 .van-button {
     background: $btn-color;
-    color: #fff;
+    color: $bg-header-text-color;
 }
 
 
@@ -23,10 +23,10 @@
 
     .van-icon,
     .van-nav-bar__text {
-        color: #fff;
+        color: $bg-header-text-color;
     }
 
     .van-nav-bar__title {
-        color: #fff;
+        color: $bg-header-text-color;
     }
 }

@@ -7,15 +7,18 @@ body,
     height: 100vh;
 }
 
+#app {
+    background-color: $bg-color;
+}
 
 // 路由选择颜色
-.router-link-exact-active.router-link-active{
-    color: $active-color;
+.router-link-exact-active.router-link-active {
+    color: $bg-text-color !important;
 }
 
 
 // 自己的字体图标默认大小
-.icon{
+.icon {
     font-size: 40px;
-    color: $text-color;
+    color: $active-color;
 }
