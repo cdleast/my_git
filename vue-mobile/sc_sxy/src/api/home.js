@@ -9,5 +9,13 @@ export default {
         })
     },
 
+    // 热门头条
+    hotInfo(){
+        return request({
+            url: '/archivetemp-api/EXEXM_HOT_HEADLINES.appHotHeadlines.do',
+            method: 'POST'
+        })
+    }
+
     
 }
