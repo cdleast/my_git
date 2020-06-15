@@ -2,8 +2,9 @@
     <div class="home-recommend">
         <!-- 轮播图 -->
         <swiper ref="mySwiper" :options="swiperOptions">
-            <swiper-slide :to="items.DATA" v-for="items in this.swiperList" :key="items.ID">
+            <swiper-slide v-for="items in this.swiperList" :key="items.ID">
                 <div
+                    @click="jumpUrl(items.DATA)"
                     v-for="item in items.FILE"
                     :key="item.DATA_ID"
                     :style="{backgroundImage:'url('+item.FILE_PATH+')'}"
@@ -14,7 +15,11 @@
 
         <!-- banner -->
         <van-row class="banner" type="flex" justify="space-around">
-            <van-col v-for="(item,index) in banner" :key="index">
+            <van-col
+                @click="jumpBannerItem(item.path)"
+                v-for="(item,index) in banner"
+                :key="index"
+            >
                 <span :class="`icon icon-${item.icon}`"></span>
                 <p>{{item.text}}</p>
             </van-col>
@@ -66,24 +71,35 @@ export default {
             banner: [
                 {
                     icon: "qiandao",
-                    text: "我的签到"
+                    text: "签到",
+                    path: "/home/home-recommend/recommend-signin"
                 },
                 {
                     icon: "paihangbang",
-                    text: "排行榜"
+                    text: "排行榜",
+                    path: "/home/home-recommend/recommend-ranking"
                 },
                 {
                     icon: "renwu",
-                    text: "我的任务"
+                    text: "任务"
                 },
                 {
-                    icon: "shequ",
-                    text: "我的社区"
+                    icon: "shipin",
+                    text: "短视频"
                 },
                 {
-                    icon: "kecheng",
-                    text: "我的课程"
+                    icon: "zhibo",
+                    text: "直播",
+                    path: "/home/home-recommend/recommend-teaching"
                 }
+                // {
+                //     icon: "shequ",
+                //     text: "我的社区"
+                // },
+                // {
+                //     icon: "kecheng",
+                //     text: "我的课程"
+                // }
             ]
         };
     },
@@ -171,7 +187,23 @@ export default {
                     this.toast(_MSG_);
                 }
             });
-        }
+        },
+
+        // 轮播图跳转第三方链接
+        jumpUrl(item) {
+            window.location.href = item;
+        },
+
+        // banner跳转子页面
+        jumpBannerItem(item) {
+            if (item) {
+                this.$router.push(item);
+            } else {
+                this.$toast("敬请期待");
+            }
+        },
+
+
     }
 };
 </script>

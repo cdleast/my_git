@@ -18,8 +18,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/', redirect: '/home' },
-	...login, ...home, ...message, ...addres, ...secretary, ...myinfo,
-	{ path: '/swiper', name: 'swiper', component: () => import('@/components/global/swiper') },
+	...login, ...home, ...message, ...addres, ...secretary, ...myinfo
 ]
 
 const router = new VueRouter({
