@@ -15,11 +15,7 @@
 
         <!-- banner -->
         <van-row class="banner" type="flex" justify="space-around">
-            <van-col
-                @click="jumpBannerItem(item.path)"
-                v-for="(item,index) in banner"
-                :key="index"
-            >
+            <van-col @click="jumpBannerItem(item.path)" v-for="(item,index) in banner" :key="index">
                 <span :class="`icon icon-${item.icon}`"></span>
                 <p>{{item.text}}</p>
             </van-col>
@@ -27,6 +23,7 @@
 
         <!-- 垂直滚动轮播 -->
         <van-notice-bar
+            class
             left-icon="volume-o"
             :scrollable="false"
             color="#1989fa"
@@ -40,6 +37,45 @@
                 </van-swipe-item>
             </van-swipe>
         </van-notice-bar>
+
+        <!-- 金牌课程 -->
+        <div class="king-classes">
+            <div class="top">
+                <span class="title">金牌课程</span>
+                <span @click="allCourse" class="right-all">全部</span>
+            </div>
+
+            <van-swipe
+                class="my-swipe"
+                :autoplay="0"
+                indicator-color="white"
+                :loop="false"
+                :width="280"
+                :show-indicators="false"
+            >
+                <van-swipe-item
+                    @click="courseDetails(item)"
+                    v-for="item in goldCourse"
+                    :key="item.ID"
+                >
+                    <div class="items">
+                        <div
+                            class="items-img"
+                            :style="{backgroundImage:'url('+item.FILE[0].FILE_PATH+')'}"
+                        ></div>
+                        <div class="items-info">{{item.NAME}}</div>
+                        <div class="items-user">
+                            <span>{{ item.LECTURER_ID__NAME }}</span>
+                            <span>{{ item.LECTURER.SHOW_DEPT }}</span>
+                        </div>
+                        <div class="items-bottom">
+                            <span>{{ item.price || '免费' }}</span>
+                            <span class="right">{{ item.LOOK_COUNT + '人参与' }}</span>
+                        </div>
+                    </div>
+                </van-swipe-item>
+            </van-swipe>
+        </div>
     </div>
 </template>
 
@@ -51,6 +87,7 @@ export default {
         return {
             swiperList: {}, // 首页轮播图
             hotNews: [], // 热门头条
+            goldCourse: [], // 金牌课程
             swiperOptions: {
                 direction: "horizontal", // 水平方向(horizontal)或垂直方向(vertical)
                 loop: true, // 开启循环
@@ -106,6 +143,7 @@ export default {
     created() {
         this.getHomeSwiper();
         this.getHotInfo();
+        this.getGoldCourse();
     },
     computed: {
         // 首页轮播图
@@ -165,7 +203,7 @@ export default {
         this.swiper.slideTo(1, 1000, false);
     },
     methods: {
-        // 轮播图数据
+        // 获取轮播图数据
         async getHomeSwiper() {
             await homeApi.homeSwiper().then(res => {
                 let _MSG_ = res.data._MSG_;
@@ -177,12 +215,24 @@ export default {
             });
         },
 
-        // 热门头条
+        // 获取热门头条
         async getHotInfo() {
             await homeApi.hotInfo().then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.hotNews = res.data;
+                } else {
+                    this.toast(_MSG_);
+                }
+            });
+        },
+
+        // 获取金牌课程
+        async getGoldCourse() {
+            await homeApi.goldCourse().then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.goldCourse = res.data._DATA_;
                 } else {
                     this.toast(_MSG_);
                 }
@@ -203,7 +253,20 @@ export default {
             }
         },
 
+        // 跳转全部课程
+        allCourse() {
+            this.$router.push("/home/home-recommend/recommend-all-course");
+        },
 
+        // 跳转课程详情
+        courseDetails(item) {
+            this.$router.push({
+                path: "/home/home-recommend/recommend-course-details",
+                query: {
+                    ID: item.ID
+                }
+            });
+        }
     }
 };
 </script>
