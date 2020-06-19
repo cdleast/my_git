@@ -1,5 +1,7 @@
 <template>
-    <div class="home-learning">学习</div>
+    <div class="home-learning">
+        
+    </div>
 </template>
 
 <script>

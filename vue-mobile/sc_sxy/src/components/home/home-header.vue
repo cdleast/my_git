@@ -1,7 +1,7 @@
 <template>
     <div class="homeHeader">
         <div class="left">
-            <i class="icon icon-zhankai"></i>
+            <i @click="switchGroup" class="icon icon-zhankai"></i>
         </div>
         <div class="center">
             <router-link to='/home/home-recommend' tag="span">推荐</router-link>
@@ -20,6 +20,12 @@ export default {
     name: "homeHeader",
     data() {
         return {};
+    },
+    methods:{
+        // 切换组织，调用父组件弹窗
+        switchGroup(){
+            this.$parent.onSwitchGroup();
+        }
     }
 };
 </script>
