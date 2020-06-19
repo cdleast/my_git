@@ -32,6 +32,24 @@ export default {
     },
 
     /**
+     * 金牌课程
+    */
+    appCoursesListAll(course) {
+        return request({
+            url: '/archivetemp-api/EXEXM_COURSE.appCoursesListAll.do',
+            method: 'POST',
+            params: {
+                NAME: course.NAME,
+                PAGE: course.PAGE,
+                NUM: course.NUM,
+                SORT: course.SORT,
+                STATE: course.STATE,
+                NOPAGE: course.NOPAGE
+            }
+        })
+    },
+
+    /**
      * 金牌课程详情
     */
     appCourseDetails(ID) {
@@ -120,7 +138,7 @@ export default {
     /**
      * 金牌课程详情/课程添加评论
     */
-   appAddComments(ID, RATE, CONTENT) {
+    appAddComments(ID, RATE, CONTENT) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appAddComments.do',
             method: 'POST',

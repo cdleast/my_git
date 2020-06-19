@@ -65,3 +65,15 @@
         color: $active-color;
     }
 }
+
+
+/**
+* Picker 选择器
+* 支持单列选择和多列级联，通常与弹出层组件配合使用
+*/
+.van-picker{
+    .van-picker__confirm{
+        color: $active-color;
+    }
+}
+

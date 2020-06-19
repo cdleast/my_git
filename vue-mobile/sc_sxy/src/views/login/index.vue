@@ -66,8 +66,8 @@ export default {
             }
         },
         // 登录用户
-        onSubmit() {
-            loginApi.login(this.users).then(res => {
+        async onSubmit() {
+            await loginApi.login(this.users).then(res => {
                 const resp = res.data;
                 if (resp._RTN_CODE_ === "OK") {
                     // 存储token

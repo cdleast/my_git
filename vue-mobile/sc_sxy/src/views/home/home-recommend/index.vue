@@ -210,7 +210,7 @@ export default {
                 if (res.status === 200) {
                     this.swiperList = res.data._DATA_;
                 } else {
-                    this.toast(_MSG_);
+                    this.$toast(_MSG_);
                 }
             });
         },
@@ -222,7 +222,7 @@ export default {
                 if (res.status === 200) {
                     this.hotNews = res.data;
                 } else {
-                    this.toast(_MSG_);
+                    this.$toast(_MSG_);
                 }
             });
         },
@@ -234,7 +234,7 @@ export default {
                 if (res.status === 200) {
                     this.goldCourse = res.data._DATA_;
                 } else {
-                    this.toast(_MSG_);
+                    this.$toast(_MSG_);
                 }
             });
         },

@@ -10,7 +10,7 @@
         ></van-nav-bar>
 
         <!-- 背景图 -->
-        <div class="image-box" :style="{backgroundImage:'url('+avatar+')'}"></div>
+        <div class="image-box" :style="{backgroundImage:'url('+ avatar +')'}"></div>
 
         <!-- tab标签切换 -->
         <van-tabs
@@ -107,7 +107,7 @@
                     </van-collapse-item>
                 </van-collapse>
             </van-tab>
-            <van-tab class="course-evaluation" title="评价(10)">
+            <van-tab class="course-evaluation" :title="`评价(${queryComments.length})`">
                 <div class="evaluation-title">评价</div>
                 <div class="evaluation-score-section">
                     <span class="l-score">{{ averageComments.AVERAGE }}</span>
@@ -277,7 +277,7 @@ export default {
                 if (res.status === 200) {
                     this.courseDetails = res.data._DATA_;
                 } else {
-                    this.toast(_MSG_);
+                    this.$toast(_MSG_);
                 }
             });
         },
@@ -289,7 +289,7 @@ export default {
                 if (res.status === 200) {
                     this.coursewareList = res.data._DATA_;
                 } else {
-                    this.toast(_MSG_);
+                    this.$toast(_MSG_);
                 }
             });
         },
@@ -301,7 +301,7 @@ export default {
                 if (res.status === 200) {
                     this.averageComments = res.data._DATA_;
                 } else {
-                    this.toast(_MSG_);
+                    this.$toast(_MSG_);
                 }
             });
         },
@@ -313,7 +313,7 @@ export default {
                 if (res.status === 200) {
                     this.queryComments = res.data._DATA_;
                 } else {
-                    this.toast(_MSG_);
+                    this.$toast(_MSG_);
                 }
             });
         },
@@ -325,7 +325,7 @@ export default {
                     let data = res.data;
                     let _MSG_ = data && data._MSG_;
                     if (_MSG_.includes("ERROR")) {
-                        this.toast(_MSG_);
+                        this.$toast(_MSG_);
                         return;
                     }
                     if (_MSG_.includes("OK")) {
@@ -349,7 +349,7 @@ export default {
                     let data = res.data;
                     let _MSG_ = data && data._MSG_;
                     if (_MSG_.includes("ERROR")) {
-                        this.toast(_MSG_);
+                        this.$toast(_MSG_);
                         return;
                     }
 
@@ -375,7 +375,7 @@ export default {
                     let data = res.data;
                     let _MSG_ = data && data._MSG_;
                     if (_MSG_.includes("ERROR")) {
-                        this.toast(_MSG_);
+                        this.$toast(_MSG_);
                         return;
                     }
                     if (_MSG_.includes("OK")) {

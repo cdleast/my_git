@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import homeHeader from "@/components/home/homeHeader";
+import homeHeader from "@/components/home/home-header";
 import footerBar from "@/components/global/footerBar";
 export default {
     name: "home",
