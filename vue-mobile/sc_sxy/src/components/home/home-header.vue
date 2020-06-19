@@ -1,5 +1,5 @@
 <template>
-    <div class="homeHeader">
+    <div class="home-header">
         <div class="left">
             <i @click="switchGroup" class="icon icon-zhankai"></i>
         </div>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-    name: "homeHeader",
+    name: "home-header",
     data() {
         return {};
     },

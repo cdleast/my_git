@@ -11,12 +11,7 @@ export default [
     },
 
     /**
-     * 推荐二级子页面
-     * signin - 每日签到
-     * ranking - 每日签到
-     * teaching - 每日签到
-     * signin - 每日签到
-     * signin - 每日签到
+     * 推荐三级子页面
     */
     { path: '/home/home-recommend/recommend-signin', name: 'recommend-signin', component: () => import('@/views/home/home-recommend/recommend-signin') },
     { path: '/home/home-recommend/recommend-ranking', name: 'recommend-ranking', component: () => import('@/views/home/home-recommend/recommend-ranking') },

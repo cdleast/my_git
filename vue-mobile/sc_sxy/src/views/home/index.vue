@@ -23,7 +23,7 @@
 
 <script>
 import homeHeader from "@/components/home/home-header";
-import footerBar from "@/components/global/footerBar";
+import footerBar from "@/components/global/footer-bar";
 export default {
     name: "home",
     components: {
