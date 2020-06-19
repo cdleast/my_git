@@ -141,9 +141,9 @@ export default {
         };
     },
     created() {
-        this.getHomeSwiper();
-        this.getHotInfo();
-        this.getGoldCourse();
+        this.appGetPicture();
+        this.appHotHeadlines();
+        this.appGoldCourse();
     },
     computed: {
         // 首页轮播图
@@ -204,8 +204,8 @@ export default {
     },
     methods: {
         // 获取轮播图数据
-        async getHomeSwiper() {
-            await homeApi.homeSwiper().then(res => {
+        async appGetPicture() {
+            await homeApi.appGetPicture().then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.swiperList = res.data._DATA_;
@@ -216,8 +216,8 @@ export default {
         },
 
         // 获取热门头条
-        async getHotInfo() {
-            await homeApi.hotInfo().then(res => {
+        async appHotHeadlines() {
+            await homeApi.appHotHeadlines().then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.hotNews = res.data;
@@ -228,8 +228,8 @@ export default {
         },
 
         // 获取金牌课程
-        async getGoldCourse() {
-            await homeApi.goldCourse().then(res => {
+        async appGoldCourse() {
+            await homeApi.appGoldCourse().then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.goldCourse = res.data._DATA_;

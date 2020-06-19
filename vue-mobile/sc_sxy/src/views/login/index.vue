@@ -5,7 +5,7 @@
 
         <!-- 登录主体 -->
         <template v-if="!guideShow">
-            <img class="logo" src="../../assets/images/logo.png" />
+            <img class="logo" src="~@/assets/images/default/logo.png" />
             <h1>首创商学院</h1>
             <van-form @submit="onSubmit">
                 <van-field

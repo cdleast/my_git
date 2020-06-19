@@ -8,9 +8,10 @@ $bg-text-color: #fff; // 背景色下的颜色
 /**
     页面背景色部分
 */
-$bg-color: #f7f7f7; // 页面主体背景色
+$bg-color: #eeeff2; // 页面主体背景色
 $bg-header-color: #409eff; // 页面头部背景色
 $bg-header-text-color: #fff; // 页面头部背景色下的字体颜色
+$bg-default-color: #409eff; // 默认背景色
 
 /**
     按钮颜色
@@ -22,3 +23,10 @@ $btn-color: #409eff; // 按钮背景颜色
     边框颜色部分
 */
 $border-color: #ebedf0; // 边框颜色
+
+
+/**
+    状态完成颜色
+*/
+$finished-color: #00cd93;
+$not-finished-color: #ff6589;

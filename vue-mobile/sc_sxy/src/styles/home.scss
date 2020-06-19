@@ -1,11 +1,40 @@
+// 选项卡部分表头样式
+@mixin tab-title {
+    font-size: 36px;
+    color: $text-color;
+    font-weight: 700;
+    padding-left: 30px;
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 6px;
+        height: 36px;
+        background: $bg-default-color;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -18px;
+    }
+}
+
+
+
 // 首页
-.home {}
+.home {
+    padding-top: 100px;
+}
+
 
 // 首页头部
 .homeHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100px;
     padding: 0 30px;
-    position: relative;
+    z-index: 999;
     background-color: $bg-header-color;
 
     &>div {
@@ -53,6 +82,7 @@
     &>div {
         margin-top: 40px !important;
     }
+
 
     // 轮播图
     .swiper-container {
@@ -152,6 +182,7 @@
         }
     }
 
+
     // 金牌课程
     .king-classes {
 
@@ -240,6 +271,446 @@
                             color: #919298;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+
+// 课程详情
+.recommend-course-details /deep/ {
+
+    // 背景图
+    .image-box {
+        width: 100%;
+        height: 400px;
+        position: fixed;
+        top: 92px;
+        z-index: 999;
+    }
+
+
+    // tab标签部分
+    .van-tabs {
+        width: 100%;
+        margin-top: 400px;
+        z-index: 1;
+        margin-bottom: 140px;
+
+        // tab主体内容部分
+        .van-tabs__content {
+            font-weight: 700;
+            color: $text-color;
+            font-size: 30px;
+        }
+
+        // 详情部分
+        .course-details {
+
+            // 详情表头描述
+            .details-describe {
+                font-size: 30px;
+                padding: 36px 30px 30px;
+                border-bottom: 20px solid $bg-color;
+
+                .details-title {
+                    font-size: 38px;
+                }
+
+                // 目标
+                .details-target {
+                    margin-top: 10px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    font-size: 30px;
+
+                    .details-target-learn {
+                        display: inline-block;
+                        border-radius: 50%;
+                        width: 50px;
+                        height: 50px;
+                        line-height: 50px;
+                        text-align: center;
+                        color: #fff;
+                        background-color: $bg-default-color;
+                        margin-right: 30px;
+                    }
+                }
+
+                // 奖励
+                .details-reward {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    font-size: 30px;
+
+                    .parcel {
+                        display: flex;
+                        align-items: center;
+                        margin-right: 10px;
+
+                        // 圆点
+                        .circle {
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            background-color: $bg-default-color;
+                            border-radius: 50%;
+                        }
+
+                        .item {
+                            margin-left: 6px;
+                            margin-right: 20px;
+                        }
+                    }
+
+
+                }
+            }
+
+
+            // 课程介绍
+            .details-intro {
+                padding: 36px 30px 30px;
+                border-bottom: 20px solid $bg-color;
+
+                .intro-title {
+                    @include tab-title;
+                }
+
+                .intro-content {
+                    margin-top: 30px;
+                    font-size: 26px;
+                    font-weight: 400;
+                    color: $text-color;
+                    line-height: 44px;
+                }
+
+                .intro-teacher {
+                    margin-top: 68px;
+                    font-size: 30px;
+                    color: $text-color;
+                }
+
+                .teacher-info {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-top: 30px;
+
+                    .teacher-box {
+                        height: 100px;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        font-weight: 500;
+                        margin-left: 30px;
+
+                        .teacher-name {
+                            font-size: 26px;
+                            color: $text-color;
+                        }
+
+                        .teacher-intro {
+                            font-size: 24px;
+                            color: #bbb;
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+        // 目录部分
+        .course-directory {
+            padding: 36px 30px 30px;
+            border-bottom: 20px solid $bg-color;
+
+            .directory-title {
+                @include tab-title;
+            }
+
+            // 折叠面板部分
+            .directory-collapse {
+                .van-collapse-item {
+                    margin-top: 10px;
+
+                    // 内容部分
+                    .van-collapse-item__content {
+                        padding: 0;
+
+                        .directory-topic {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: baseline;
+
+                            .icon {
+                                font-size: 24px;
+                            }
+
+                            .directory-topic-box {
+                                margin-left: 10px;
+
+                                .directory-title-text {
+                                    font-size: 26px;
+                                    font-weight: 400;
+                                    color: $text-color;
+                                    display: -webkit-box;
+                                    -webkit-box-orient: vertical;
+                                    -webkit-line-clamp: 1;
+                                    overflow: hidden;
+                                }
+
+                                // 状态圆点
+                                .directory-infomation {
+                                    .status-circle {
+                                        display: inline-block;
+                                        width: 14px;
+                                        height: 14px;
+                                        border-radius: 50%;
+                                        margin-right: 4px;
+
+                                        &.finished-status-circle {
+                                            background: $finished-color;
+                                        }
+
+                                        &.not-finished-status-circle {
+                                            background: $not-finished-color;
+                                        }
+                                    }
+
+                                    .status-text {
+                                        font-size: 24px;
+                                        font-weight: 400;
+                                        color: $text-color;
+                                    }
+
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .van-cell {
+                    padding-left: 0;
+                    padding-right: 0;
+
+                    &::after {
+                        border-width: 0;
+                    }
+                }
+
+                .van-collapse-item--border::after {
+                    border-width: 0;
+                }
+            }
+        }
+
+
+        // 评价部分
+        .course-evaluation {
+            padding: 36px 30px 30px;
+
+            .evaluation-title {
+                @include tab-title;
+            }
+
+            // 分数/评估值
+            .evaluation-score-section {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 40px;
+                height: 160px;
+                padding-right: 50px;
+                padding-left: 50px;
+                background: #eeeff2;
+                border-radius: 8px;
+
+                .l-score {
+                    font-size: 100px;
+                    font-weight: 700;
+                    color: #ff9f4d;
+                }
+
+                .star-section {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    border-right: 1px solid #dddddd;
+                    padding-right: 16px;
+                    margin-left: 20px;
+
+                    .pingjia-text {
+                        font-size: 20px;
+                        font-weight: 400;
+                        color: #bbb;
+                    }
+                }
+
+                .r-score {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: #bbb;
+                    margin-left: 10px;
+
+                    .desp {
+                        font-size: 30px;
+                        font-weight: 700;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            // 评论
+            .comment-list {
+                padding: 30px 0;
+
+                // 头像/用户名/日期/
+                .comment-head {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    .comment-portrait {
+                        margin-right: 12px;
+                    }
+
+                    .comment-person {
+                        font-weight: 500;
+
+                        .comment-person-name {
+                            font-size: 26px;
+                            margin: 8px 0;
+                            color: $text-color;
+                        }
+
+                        .comment-person-time {
+                            font-size: 24px;
+                            margin: 8px 0;
+                            color: #bbb;
+                        }
+                    }
+                }
+
+                // 评论内容
+                .comment-content {
+                    font-size: 26px;
+                    font-weight: 400;
+                    color: $text-color;
+                    line-height: 44px;
+                    padding: 32px 0 42px 0;
+                }
+
+                // 评论底部点赞评分
+                .comment-footer {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .comment-footer-right {
+                        display: flex;
+                        align-items: center;
+
+                        .icon {
+                            margin: 0 15px;
+
+                            &.no {
+                                color: #bbb;
+                            }
+                        }
+
+                        .num {
+                            color: #bbb;
+                            font-size: 28px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 添加评价
+    .add-comments {
+        width: 100%;
+        height: 120px;
+        padding: 0 30px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+
+        .van-button {
+            width: 100%;
+        }
+    }
+
+    // 添加评价弹出层
+    .comment-box {
+        width: 600px;
+        height: 630px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .van-rate {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .comment-rate-text {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 500;
+            color: #999;
+        }
+
+        .van-cell.van-field {
+            padding: 20px 26px;
+            width: 530px;
+            height: 270px;
+            background: #f7f7f7;
+            border: 0.5px solid #ededed;
+            border-radius: 16px;
+            color: #999;
+            overflow-y: scroll;
+
+            &::after {
+                border-width: 0;
+            }
+        }
+
+        .btn-box {
+            margin-top: 44px;
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 52px;
+
+            .van-button {
+                width: 232px;
+
+                &.white {
+                    color: $btn-color;
+                    background-color: #fff;
                 }
             }
         }

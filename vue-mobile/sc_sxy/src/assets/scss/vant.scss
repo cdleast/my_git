@@ -1,5 +1,5 @@
 /**
-    按钮样式，已默认按钮为模板修改
+* 按钮样式，已默认按钮为模板修改
 */
 .van-button {
     background: $btn-color;
@@ -8,7 +8,7 @@
 
 
 /**
-    默认字体图标
+* 默认字体图标
 */
 .van-icon {
     font-size: 40px;
@@ -16,7 +16,7 @@
 
 
 /**
-    头部导航
+* 头部导航
 */
 .van-nav-bar {
     background-color: $bg-header-color;
@@ -28,5 +28,40 @@
 
     .van-nav-bar__title {
         color: $bg-header-text-color;
+    }
+}
+
+// 去掉默认的下边框
+.van-nav-bar.van-hairline--bottom::after {
+    border-bottom-width: 0;
+}
+
+
+/**
+* tab标签
+*/
+.van-tabs {
+
+    // 去掉标签上边框
+    .van-hairline--top-bottom::after,
+    .van-hairline-unset--top-bottom::after {
+        border-top: none;
+    }
+
+    // 选中下边框颜色高度
+    .van-tabs__line {
+        height: 4px;
+        background-color: $active-color;
+    }
+
+    // 标签默认字体样式
+    .van-tab {
+        font-weight: 700;
+        color: $text-color;
+    }
+
+    // 标签选择字体样式
+    .van-tab--active {
+        color: $active-color;
     }
 }
