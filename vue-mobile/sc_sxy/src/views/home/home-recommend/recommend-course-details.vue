@@ -107,7 +107,7 @@
                     </van-collapse-item>
                 </van-collapse>
             </van-tab>
-            <van-tab class="course-evaluation" :title="`评价(${queryComments.length})`">
+            <van-tab class="course-evaluation" :title="`评价(${ averageComments.COMMENTS })`">
                 <div class="evaluation-title">评价</div>
                 <div class="evaluation-score-section">
                     <span class="l-score">{{ averageComments.AVERAGE }}</span>

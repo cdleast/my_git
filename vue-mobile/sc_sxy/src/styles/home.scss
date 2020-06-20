@@ -719,83 +719,80 @@
 
 // 全部课程
 .recommend-all-course /deep/ {
-    .van-tabs {
-        .screening {
+
+    // 全部课程/我的课程
+    .screening {
+        height: 80px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #F8F8F8;
+        padding: 0 30px;
+        font-size: 26px;
+        font-weight: 500;
+        color: #999;
+
+        .screening-bar-right {
+            display: flex;
+            align-items: center;
+
+            .icon {
+                color: #999;
+            }
+        }
+    }
+
+    // 课程分类
+    .course-category {
+        padding: 0 30px;
+
+        .course-category-head {
             height: 80px;
             display: flex;
-            flex-direction: row;
             align-items: center;
-            justify-content: space-between;
-            background-color: #F8F8F8;
-            padding: 0 30px;
-            font-size: 26px;
-            font-weight: 500;
-            color: #999;
 
-            .screening-bar-right {
+            .name {
+                color: $text-color;
+                font-weight: 700;
+                font-size: 30px;
+            }
+
+            .icon {
+                color: $text-color;
+            }
+        }
+
+        .child-cate-box {
+            display: flex;
+            flex-wrap: wrap;
+
+            .child-cate-item {
+                width: 160px;
+                height: 72px;
+                background-color: $bg-default-color;
+                border-radius: 10px;
+                font-size: 26px;
+                font-weight: 500;
+                color: #fff;
                 display: flex;
                 align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                margin-right: 16px;
 
-                .icon {
-                    color: #999;
+                &:nth-child(4n) {
+                    margin-right: 0;
                 }
             }
         }
     }
+}
 
-    // 课程列表
-    .home-course-item {
-        .course-item {
-            display: flex;
-            flex-direction: row;
-            padding: 0 30px;
-            padding-bottom: 30px;
-            padding-top: 30px;
-
-            .course-item-pic {
-                width: 220px;
-                height: 110px;
-                border-radius: 16px;
-                border: 1px solid #eaeaea;
-                background-size: 100% 100%;
-            }
-
-            .course-item-info {
-                flex: 1;
-                justify-content: space-between;
-                margin-left: 30px;
-
-                .course-item-name {
-                    font-size: 30px;
-                    font-weight: 500;
-                    color: $text-color;
-                    text-overflow: ellipsis;
-                }
-
-                .course-item-type {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    margin-top: 10px;
-
-                    .van-tag {
-                        margin-right: 20px;
-                    }
-                }
-
-                .course-item-publish {
-                    display: flex;
-                    flex-direction: row;
-                    margin-top: 10px;
-
-                    .course-item-publish-time {
-                        font-size: 24px;
-                        font-weight: 500;
-                        color: #999;
-                        margin-right: 22px;
-                    }
-                }
-            }
-        }
-    }
+// 课程分类下课程列表
+.recommend-course-list {
+    // .not-data {
+    //     font-size: 28px;
+    //     text-align: center;
+    // }
 }

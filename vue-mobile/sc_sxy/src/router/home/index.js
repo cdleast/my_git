@@ -11,11 +11,14 @@ export default [
     },
 
     /**
-     * 推荐三级子页面
+     * 推荐子页面
     */
     { path: '/home/home-recommend/recommend-signin', name: 'recommend-signin', component: () => import('@/views/home/home-recommend/recommend-signin') },
     { path: '/home/home-recommend/recommend-ranking', name: 'recommend-ranking', component: () => import('@/views/home/home-recommend/recommend-ranking') },
     { path: '/home/home-recommend/recommend-teaching', name: 'recommend-teaching', component: () => import('@/views/home/home-recommend/recommend-teaching') },
-    { path: '/home/home-recommend/recommend-all-course', name: 'recommend-all-course', component: () => import('@/views/home/home-recommend/recommend-all-course') },
+
+    // 金牌课程部分
+    { path: '/home/home-recommend/recommend-course-all', name: 'recommend-course-all', component: () => import('@/views/home/home-recommend/recommend-course-all') },
+    { path: '/home/home-recommend/recommend-course-list', name: 'recommend-course-list', component: () => import('@/views/home/home-recommend/recommend-course-list') },
     { path: '/home/home-recommend/recommend-course-details', name: 'recommend-course-details', component: () => import('@/views/home/home-recommend/recommend-course-details') },
 ]

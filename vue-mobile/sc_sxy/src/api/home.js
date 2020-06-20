@@ -32,24 +32,6 @@ export default {
     },
 
     /**
-     * 金牌课程
-    */
-    appCoursesListAll(course) {
-        return request({
-            url: '/archivetemp-api/EXEXM_COURSE.appCoursesListAll.do',
-            method: 'POST',
-            params: {
-                NAME: course.NAME,
-                PAGE: course.PAGE,
-                NUM: course.NUM,
-                SORT: course.SORT,
-                STATE: course.STATE,
-                NOPAGE: course.NOPAGE
-            }
-        })
-    },
-
-    /**
      * 金牌课程详情
     */
     appCourseDetails(ID) {
@@ -149,4 +131,73 @@ export default {
             }
         })
     },
+
+    /**
+     * 金牌课程/全部课程
+    */
+    appCoursesListAll(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_COURSE.appCoursesListAll.do',
+            method: 'POST',
+            params: {
+                NAME: data.NAME,
+                PAGE: data.PAGE,
+                NUM: data.NUM,
+                SORT: data.SORT,
+                STATE: data.STATE,
+                NOPAGE: data
+            }
+        })
+    },
+
+    /**
+     * 金牌课程/课程分类
+    */
+    appCoursesCategory(NAME) {
+        return request({
+            url: '/archivetemp-api/EXEXM_COURSE_TYPE.appCoursesCategory.do',
+            method: 'POST',
+            params: {
+                NAME: NAME
+            }
+        })
+    },
+
+    /**
+     * 金牌课程/课程分类下课程列表
+    */
+    appCoursesList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_COURSE.appCoursesList.do',
+            method: 'POST',
+            params: {
+                TYPE_ID: data.TYPE_ID,
+                PAGE: data.PAGE,
+                NUM: data.NUM,
+                NAME: data.NAME,
+                SORT: data.SORT,
+                STATE: data.STATE,
+                NOPAGE: data.NOPAGE
+            }
+        })
+    },
+
+    /**
+     * 金牌课程/我的课程
+    */
+    appCoursesListMy(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_COURSE.appCoursesListMy.do',
+            method: 'POST',
+            params: {
+                NAME: data.NAME,
+                PAGE: data.PAGE,
+                NUM: data.NUM,
+                SORT: data.SORT,
+                NOPAGE: data.NOPAGE,
+            }
+        })
+    },
+
+
 }

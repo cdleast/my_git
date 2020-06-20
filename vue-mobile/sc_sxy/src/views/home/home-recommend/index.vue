@@ -255,7 +255,7 @@ export default {
 
         // 跳转全部课程
         allCourse() {
-            this.$router.push("/home/home-recommend/recommend-all-course");
+            this.$router.push("/home/home-recommend/recommend-course-all");
         },
 
         // 跳转课程详情

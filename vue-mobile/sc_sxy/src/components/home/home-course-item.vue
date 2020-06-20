@@ -1,6 +1,11 @@
 <template>
     <div class="home-course-item">
-        <div class="course-item van-hairline--bottom" v-for="items in courseAll" :key="items.ID">
+        <div
+            @click="jumpDetails(items)"
+            class="course-item van-hairline--bottom"
+            v-for="items in datas"
+            :key="items.ID"
+        >
             <div
                 class="course-item-pic"
                 v-for="(item,index) in items.FILE"
@@ -32,23 +37,88 @@
 export default {
     name: "home-course-item",
     props: {
-        courseAll: {
+        datas: {
             type: Array
         }
     },
     computed: {
         avatar() {
             return (
-                (this.courseAll &&
-                    this.courseAll[0]&&
-                    this.courseAll[0].FILE[0] &&
-                    this.courseAll[0].FILE[0].FILE_PATH) ||
+                (this.datas &&
+                    this.datas[0] &&
+                    this.datas[0].FILE[0] &&
+                    this.datas[0].FILE[0].FILE_PATH) ||
                 "@/assets/default/default-avatar.png"
             );
+        }
+    },
+    methods: {
+        // 跳转到详情页
+        jumpDetails(items) {
+            this.$router.push({
+                path: "/home/home-recommend/recommend-course-details",
+                query: {
+                    ID: items.ID
+                }
+            });
         }
     }
 };
 </script>
 
 <style lang='scss' scoped>
+.home-course-item {
+    .course-item {
+        display: flex;
+        flex-direction: row;
+        padding: 0 30px;
+        padding-bottom: 30px;
+        padding-top: 30px;
+
+        .course-item-pic {
+            width: 220px;
+            height: 110px;
+            border-radius: 16px;
+            border: 1px solid #eaeaea;
+            background-size: 100% 100%;
+        }
+
+        .course-item-info {
+            flex: 1;
+            justify-content: space-between;
+            margin-left: 30px;
+
+            .course-item-name {
+                font-size: 30px;
+                font-weight: 500;
+                color: $text-color;
+                text-overflow: ellipsis;
+            }
+
+            .course-item-type {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 10px;
+
+                .van-tag {
+                    margin-right: 20px;
+                }
+            }
+
+            .course-item-publish {
+                display: flex;
+                flex-direction: row;
+                margin-top: 10px;
+
+                .course-item-publish-time {
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: #999;
+                    margin-right: 22px;
+                }
+            }
+        }
+    }
+}
 </style>
