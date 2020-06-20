@@ -1,5 +1,5 @@
 <template>
-    <div class="recommend-all-course">
+    <div class="course-all">
         <van-nav-bar :title="title" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
         <van-search
             @search="searchCourse"
@@ -61,9 +61,9 @@
 
 <script>
 import homeApi from "@/api/home";
-import courseItem from "@/components/home/home-course-item";
+import courseItem from "@/components/home/course-item";
 export default {
-    name: "recommend-all-course",
+    name: "course-all",
     components: {
         courseItem
     },
@@ -191,7 +191,7 @@ export default {
         // 跳转到课程分类下课程列表
         onCoursesList(item) {
             this.$router.push({
-                path: "/home/home-recommend/recommend-course-list",
+                path: "/home/recommend/course-list",
                 query: {
                     ID: item.ID,
                     NAME: item.NAME

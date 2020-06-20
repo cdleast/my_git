@@ -1,5 +1,5 @@
 <template>
-    <div class="home-recommend">
+    <div class="recommend">
         <!-- 轮播图 -->
         <swiper ref="mySwiper" :options="swiperOptions">
             <swiper-slide v-for="items in this.swiperList" :key="items.ID">
@@ -21,7 +21,7 @@
             </van-col>
         </van-row>
 
-        <!-- 垂直滚动轮播 -->
+        <!-- 热门头条垂直滚动轮播 -->
         <van-notice-bar
             class
             left-icon="volume-o"
@@ -30,7 +30,11 @@
             background="#F3F7FA"
         >
             <van-swipe vertical class="notice-swipe" :autoplay="3000" :show-indicators="false">
-                <van-swipe-item v-for="item in hotNewsList" :key="item.ID">
+                <van-swipe-item
+                    @click="hotHandleClick(item)"
+                    v-for="item in hotNewsList"
+                    :key="item.ID"
+                >
                     <van-image round width="35" height="35" :src="item.src" />
                     <span class="title">{{ item.title }}</span>
                     <span class="label">{{ item.typeName }}</span>
@@ -54,7 +58,7 @@
                 :show-indicators="false"
             >
                 <van-swipe-item
-                    @click="courseDetails(item)"
+                    @click="courseDetails(item.ID)"
                     v-for="item in goldCourse"
                     :key="item.ID"
                 >
@@ -82,7 +86,7 @@
 <script>
 import homeApi from "@/api/home";
 export default {
-    name: "home-recommend",
+    name: "recommend",
     data() {
         return {
             swiperList: {}, // 首页轮播图
@@ -109,12 +113,12 @@ export default {
                 {
                     icon: "qiandao",
                     text: "签到",
-                    path: "/home/home-recommend/recommend-signin"
+                    path: "/home/recommend/signin"
                 },
                 {
                     icon: "paihangbang",
                     text: "排行榜",
-                    path: "/home/home-recommend/recommend-ranking"
+                    path: "/home/recommend/ranking"
                 },
                 {
                     icon: "renwu",
@@ -127,7 +131,7 @@ export default {
                 {
                     icon: "zhibo",
                     text: "直播",
-                    path: "/home/home-recommend/recommend-teaching"
+                    path: "/home/recommend/teaching"
                 }
                 // {
                 //     icon: "shequ",
@@ -244,6 +248,22 @@ export default {
             window.location.href = item;
         },
 
+        // 热门头条点击跳转页面
+        hotHandleClick(item) {
+            const type = item.type;
+            switch (type) {
+                case "course":
+                    this.courseDetails(item.ID);
+                    break;
+                case "knowledge":
+                    break;
+                case "merge":
+                    break;
+                default:
+                    this.$toast("敬请期待");
+            }
+        },
+
         // banner跳转子页面
         jumpBannerItem(item) {
             if (item) {
@@ -255,15 +275,15 @@ export default {
 
         // 跳转全部课程
         allCourse() {
-            this.$router.push("/home/home-recommend/recommend-course-all");
+            this.$router.push("/home/recommend/course-all");
         },
 
         // 跳转课程详情
-        courseDetails(item) {
+        courseDetails(ID) {
             this.$router.push({
-                path: "/home/home-recommend/recommend-course-details",
+                path: "/home/recommend/course-details",
                 query: {
-                    ID: item.ID
+                    ID: ID
                 }
             });
         }

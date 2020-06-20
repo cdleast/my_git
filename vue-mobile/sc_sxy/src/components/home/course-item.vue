@@ -1,5 +1,5 @@
 <template>
-    <div class="home-course-item">
+    <div class="course-item">
         <div
             @click="jumpDetails(items)"
             class="course-item van-hairline--bottom"
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-    name: "home-course-item",
+    name: "course-item",
     props: {
         datas: {
             type: Array
@@ -56,7 +56,7 @@ export default {
         // 跳转到详情页
         jumpDetails(items) {
             this.$router.push({
-                path: "/home/home-recommend/recommend-course-details",
+                path: "/home/recommend/course-details",
                 query: {
                     ID: items.ID
                 }
@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.home-course-item {
+.course-item {
     .course-item {
         display: flex;
         flex-direction: row;

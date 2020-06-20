@@ -75,7 +75,7 @@
 
 
 // 推荐页
-.home-recommend /deep/ {
+.recommend /deep/ {
     height: 2000px;
 
     &>div {
@@ -278,7 +278,7 @@
 
 
 // 课程详情
-.recommend-course-details /deep/ {
+.course-details /deep/ {
 
     // 背景图
     .image-box {
@@ -718,7 +718,7 @@
 
 
 // 全部课程
-.recommend-all-course /deep/ {
+.course-all /deep/ {
 
     // 全部课程/我的课程
     .screening {
@@ -790,7 +790,7 @@
 }
 
 // 课程分类下课程列表
-.recommend-course-list {
+.course-list {
     // .not-data {
     //     font-size: 28px;
     //     text-align: center;

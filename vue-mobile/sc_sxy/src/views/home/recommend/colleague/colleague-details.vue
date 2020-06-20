@@ -1,12 +1,10 @@
 <template>
-    <div class="home-learning">
-        
-    </div>
+    <div class="recommend-colleague-details">recommend-colleague-details</div>
 </template>
 
 <script>
 export default {
-    name: "home-learning",
+    name: "recommend-colleague-details",
     data() {
         return {};
     }

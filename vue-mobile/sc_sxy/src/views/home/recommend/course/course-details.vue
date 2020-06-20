@@ -1,5 +1,5 @@
 <template>
-    <div class="recommend-course-details">
+    <div class="course-details">
         <van-nav-bar
             z-index="999"
             fixed
@@ -196,7 +196,7 @@
 <script>
 import homeApi from "@/api/home";
 export default {
-    name: "recommend-course-details",
+    name: "course-details",
     data() {
         return {
             courseID: this.$route.query.ID, // 课程详情ID

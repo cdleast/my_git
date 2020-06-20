@@ -4,9 +4,9 @@
             <i @click="switchGroup" class="icon icon-zhankai"></i>
         </div>
         <div class="center">
-            <router-link to='/home/home-recommend' tag="span">推荐</router-link>
-            <router-link to='/home/home-found' tag="span">发现</router-link>
-            <router-link to='/home/home-learning' tag="span">学习</router-link>
+            <router-link to='/home/recommend' tag="span">推荐</router-link>
+            <router-link to='/home/found' tag="span">发现</router-link>
+            <router-link to='/home/learning' tag="span">学习</router-link>
         </div>
         <div class="right">
             <i class="icon icon-sousuo"></i>

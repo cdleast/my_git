@@ -1,5 +1,5 @@
 <template>
-    <div class="recommend-course-list">
+    <div class="course-list">
         <van-nav-bar :title="title" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
 
         <van-empty v-if="!coursesList.length>0" description="暂无课程数据" />
@@ -10,9 +10,9 @@
 
 <script>
 import homeApi from "@/api/home";
-import courseItem from "@/components/home/home-course-item";
+import courseItem from "@/components/home/course-item";
 export default {
-    name: "recommend-course-list",
+    name: "course-list",
     components: {
         courseItem
     },
