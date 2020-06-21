@@ -11,6 +11,7 @@
 <script>
 import homeApi from "@/api/home";
 import courseItem from "@/components/home/course-item";
+import bus from "@/utils/eventBus"; // 全局事件总线,用于传递数据
 export default {
     name: "course-list",
     components: {
@@ -47,6 +48,10 @@ export default {
                 }
             });
         }
+    },
+    destroyed() {
+        // 返回上一页时并传递1过去给van-tabs组件，让他显示下标为1的数据
+        bus.$emit("tabActive", 1);
     }
 };
 </script>
