@@ -626,10 +626,6 @@
 
                         .icon {
                             margin: 0 15px;
-
-                            &.no {
-                                color: #bbb;
-                            }
                         }
 
                         .num {
@@ -789,10 +785,118 @@
     }
 }
 
-// 课程分类下课程列表
-.course-list {
-    // .not-data {
-    //     font-size: 28px;
-    //     text-align: center;
-    // }
+
+// 同事圈详情
+.colleague-details {
+    .details-box {
+        padding: 30px;
+        display: flex;
+
+        .details-left {
+            width: 90px;
+        }
+
+        .details-right {
+            flex: 1;
+            font-size: 32px;
+            padding-left: 20px;
+
+            .user-box {
+                .user-name {
+                    font-size: 32px;
+                    font-weight: 600;
+                    color: $text-color;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .user-company {
+                    color: #919298;
+                    font-size: 24px;
+                    line-height: 34px;
+                }
+            }
+
+            .paragraph {
+                margin-top: 20px;
+                font-size: 30px;
+                line-height: 50px;
+                color: #303232;
+                overflow: hidden;
+            }
+
+            .thumbnails {
+                font-size: 0;
+
+                .gallery {
+                    width: 100%;
+                    height: 400px;
+                    background: #757575;
+                    overflow: hidden;
+                    background-size: 100% 100%;
+                }
+
+                .thumbnail-list {
+                    .van-image {
+                        margin-right: 20px;
+                        margin-bottom: 20px;
+
+                        &:nth-child(3n) {
+                            margin-right: 0;
+                        }
+                    }
+
+                }
+            }
+
+            .toolbar {
+                height: 60px;
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .timestamp {
+                    color: #757575;
+                    font-size: 24px;
+                }
+
+                .toolbar-right {
+                    .icon {
+                        margin-left: 20px;
+                    }
+                }
+            }
+
+            .details-footer {
+                margin-top: 20px;
+                padding: 10px 0;
+                background-color: $bg-color;
+
+                .footer-content {
+                    padding: 0 10px;
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+
+                    .icon {
+                        margin-right: 10px;
+                    }
+
+                    .give-nickname {
+                        color: #36648B;
+                        font-size: 24px;
+                    }
+
+                    .give-content {
+                        color: $text-color;
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
 }
+
+

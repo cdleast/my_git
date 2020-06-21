@@ -258,6 +258,7 @@ export default {
                 case "knowledge":
                     break;
                 case "merge":
+                    this.colleagueDetails(item.ID);
                     break;
                 default:
                     this.$toast("敬请期待");
@@ -282,6 +283,16 @@ export default {
         courseDetails(ID) {
             this.$router.push({
                 path: "/home/recommend/course-details",
+                query: {
+                    ID: ID
+                }
+            });
+        },
+
+        // 跳转同事圈详情
+        colleagueDetails(ID) {
+            this.$router.push({
+                path: "/home/found/colleague-details",
                 query: {
                     ID: ID
                 }

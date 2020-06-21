@@ -17,4 +17,8 @@ body,
 .icon {
     font-size: 40px;
     color: $active-color;
+
+    &.no {
+        color: #bbb;
+    }
 }

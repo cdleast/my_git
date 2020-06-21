@@ -199,5 +199,45 @@ export default {
         })
     },
 
+    /**
+     * 同事圈详情
+    */
+    appColleague(ID) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS.appColleague.do',
+            method: 'POST',
+            params: {
+                ID: ID
+            }
+        })
+    },
+
+    /**
+     * 同事圈点赞
+    */
+    appGiveLike(MOMENTS_ID, LIKE_NUM) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS_LIKE.appGiveLike.do',
+            method: 'POST',
+            params: {
+                MOMENTS_ID: MOMENTS_ID,
+                LIKE_NUM: LIKE_NUM
+            }
+        })
+    },
+
+    /**
+     * 同事圈取消点赞
+    */
+   appCancelLike(MOMENTS_ID, LIKE_NUM) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS_LIKE.appCancelLike.do',
+            method: 'POST',
+            params: {
+                MOMENTS_ID: MOMENTS_ID,
+                LIKE_NUM: LIKE_NUM
+            }
+        })
+    }
 
 }
