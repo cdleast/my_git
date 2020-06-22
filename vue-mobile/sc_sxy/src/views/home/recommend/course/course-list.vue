@@ -20,16 +20,6 @@ export default {
     data() {
         return {
             title: this.$route.query.NAME, // 标题
-            // 获取课程分类下课程列表的参数
-            datas: {
-                TYPE_ID: this.$route.query.ID,
-                PAGE: 1,
-                NUM: 10,
-                NAME: "",
-                SORT: 1,
-                STATE: 0,
-                NOPAGE: true
-            },
             coursesList: [] // 课程分类下课程列表
         };
     },
@@ -37,8 +27,18 @@ export default {
         this.appCoursesList();
     },
     methods: {
+        // 获取课程分类下课程列表
         async appCoursesList() {
-            await homeApi.appCoursesList(this.datas).then(res => {
+            let data = {
+                TYPE_ID: this.$route.query.ID,
+                PAGE: 1,
+                NUM: 10,
+                NAME: "",
+                SORT: 1,
+                STATE: 0,
+                NOPAGE: true
+            };
+            await homeApi.appCoursesList(data).then(res => {
                 let data = res.data;
                 let _MSG_ = data && data._MSG_;
                 if (res.status === 200) {

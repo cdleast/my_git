@@ -21,7 +21,7 @@
             </van-tab>
             <van-tab title="课程分类">
                 <div class="course-category" v-for="items in courseCate" :key="items.ID">
-                    <div class="course-category-head">
+                    <div class="course-category-head" @click="onCoursesList(items.ID)">
                         <span class="name">{{ items.NAME }}</span>
                         <span class="icon icon-arrow-right"></span>
                     </div>
@@ -95,7 +95,6 @@ export default {
         this.appCoursesCategory();
         this.appCoursesListMy(this.course);
         bus.$on("tabActive", num => {
-            console.log(num);
             this.active = num;
         });
     },
@@ -120,11 +119,14 @@ export default {
 
         // 获取课程分类
         async appCoursesCategory(NAME) {
+            let data = {
+                NAME: NAME
+            };
             this.$toast.loading({
                 message: "加载中...",
                 forbidClick: true
             });
-            await homeApi.appCoursesCategory(NAME).then(res => {
+            await homeApi.appCoursesCategory(data).then(res => {
                 let data = res.data;
                 let _MSG_ = data && data._MSG_;
                 if (res.status === 200) {

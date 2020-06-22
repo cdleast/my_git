@@ -195,6 +195,7 @@
 
 <script>
 import homeApi from "@/api/home";
+import bus from "@/utils/eventBus"; // 全局事件总线,用于传递数据
 export default {
     name: "course-details",
     data() {
@@ -272,7 +273,10 @@ export default {
     methods: {
         // 获取课程详情数据
         async appCourseDetails() {
-            await homeApi.appCourseDetails(this.courseID).then(res => {
+            let data = {
+                COURSE_ID: this.courseID
+            };
+            await homeApi.appCourseDetails(data).then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.courseDetails = res.data._DATA_;
@@ -284,7 +288,10 @@ export default {
 
         // 获取金牌课程详情/目录部分
         async appCoursewareList() {
-            await homeApi.appCoursewareList(this.courseID).then(res => {
+            let data = {
+                COURSE_ID: this.courseID
+            };
+            await homeApi.appCoursewareList(data).then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.coursewareList = res.data._DATA_;
@@ -296,7 +303,10 @@ export default {
 
         // 金牌课程详情/评价部分/评分值
         async appAverageComments() {
-            await homeApi.appAverageComments(this.courseID).then(res => {
+            let data = {
+                COURSE_ID: this.courseID
+            };
+            await homeApi.appAverageComments(data).then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.averageComments = res.data._DATA_;
@@ -308,7 +318,10 @@ export default {
 
         // 金牌课程详情/课程评论列表
         async appQueryComments() {
-            await homeApi.appQueryComments(this.courseID).then(res => {
+            let data = {
+                COURSE_ID: this.courseID
+            };
+            await homeApi.appQueryComments(data).then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.queryComments = res.data._DATA_;
@@ -320,7 +333,11 @@ export default {
 
         // 点赞
         async onAddSupport(comID) {
-            await homeApi.appAddSupport(this.courseID, comID).then(res => {
+            let data = {
+                COURSE_ID: this.courseID,
+                COMMENT_ID: COMID
+            };
+            await homeApi.appAddSupport(data).then(res => {
                 if (res.status === 200) {
                     let data = res.data;
                     let _MSG_ = data && data._MSG_;
@@ -344,7 +361,11 @@ export default {
 
         // 取消点赞
         async onDeleteSupport(comID) {
-            await homeApi.appDeleteSupport(this.courseID, comID).then(res => {
+            let data = {
+                COURSE_ID: this.courseID,
+                COMMENT_ID: COMID
+            };
+            await homeApi.appDeleteSupport(data).then(res => {
                 if (res.status === 200) {
                     let data = res.data;
                     let _MSG_ = data && data._MSG_;
@@ -369,23 +390,30 @@ export default {
 
         // 添加评价
         async onAddComments() {
-            await homeApi
-                .appAddComments(this.courseID, this.comDialogRate, this.message)
-                .then(res => {
-                    let data = res.data;
-                    let _MSG_ = data && data._MSG_;
-                    if (_MSG_.includes("ERROR")) {
-                        this.$toast(_MSG_);
-                        return;
-                    }
-                    if (_MSG_.includes("OK")) {
-                        this.commentsShow = false; // 关闭弹窗
-                        // 重新拉取课程详情数据，1.更新评字颜色状态，2.检查是否需要弹出添加奖励提示窗
-                        this.appQueryComments();
-                        this.appAverageComments();
-                    }
-                });
+            let data = {
+                COURSE_ID: this.courseID,
+                RATE: this.comDialogRate,
+                CONTENT: this.message
+            };
+            await homeApi.appAddComments(data).then(res => {
+                let data = res.data;
+                let _MSG_ = data && data._MSG_;
+                if (_MSG_.includes("ERROR")) {
+                    this.$toast(_MSG_);
+                    return;
+                }
+                if (_MSG_.includes("OK")) {
+                    this.commentsShow = false; // 关闭弹窗
+                    // 重新拉取课程详情数据，1.更新评字颜色状态，2.检查是否需要弹出添加奖励提示窗
+                    this.appQueryComments();
+                    this.appAverageComments();
+                }
+            });
         }
+    },
+    destroyed() {
+        // 返回上一页时并传递1过去给van-tabs组件，让他显示下标为1的数据
+        bus.$emit("tabActive", 2);
     }
 };
 </script>

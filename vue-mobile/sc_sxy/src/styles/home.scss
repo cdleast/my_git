@@ -76,8 +76,6 @@
 
 // 推荐页
 .recommend /deep/ {
-    height: 2000px;
-
     &>div {
         margin-top: 40px !important;
     }
@@ -202,6 +200,10 @@
                 font-size: 24px;
                 font-weight: 600;
             }
+
+            &.top-0 {
+                margin-bottom: 10px;
+            }
         }
 
         .van-swipe {
@@ -270,6 +272,111 @@
                             color: #919298;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    // 胶囊广告
+    .ad-section {
+        height: 200px;
+        margin: auto 30px;
+
+        .van-swipe {
+            height: 100%;
+
+            .van-swipe-item {
+                background-size: 100% 100%;
+            }
+        }
+    }
+
+    // 行业优先课程
+    .course-list {
+        margin: auto 30px;
+
+        .course-list-item {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 30px;
+
+            .course-pic-box {
+                width: 180px;
+                height: 180px;
+                border-radius: 10px;
+                background-size: 100% 100%;
+                overflow: hidden;
+            }
+
+            .course-list-item-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                margin-left: 30px;
+
+                .course-title {
+                    font-size: 30px;
+                    color: $text-color;
+                    max-width: 480px;
+                }
+
+                .course-name {
+                    margin-top: 30px;
+                    font-size: 24px;
+                    color: #919298;
+                }
+
+                .course-bottom {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: auto;
+
+                    .left-price {
+                        font-size: 24px;
+                        color: #ff6e40;
+                        font-weight: 600;
+                    }
+
+                    .right-count {
+                        font-size: 24px;
+                        color: #919298;
+                    }
+                }
+            }
+        }
+    }
+
+    // 企业咨询
+    .company-info {
+        .company-content {
+            padding: 30px;
+            display: flex;
+
+            .item-pic {
+                border-radius: 6px;
+            }
+
+            .item-right {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding-left: 20px;
+
+                .title {
+                    font-size: 26px;
+                    font-weight: 700;
+                    color: $text-color;
+                }
+
+                .bottom {
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: #bbb;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                 }
             }
         }
@@ -898,5 +1005,3 @@
         }
     }
 }
-
-

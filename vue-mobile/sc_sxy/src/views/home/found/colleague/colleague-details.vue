@@ -99,29 +99,35 @@ export default {
 
         // 点赞
         async onGiveLike(ID, LIKE_NUM) {
-            await homeApi.appGiveLike(ID, LIKE_NUM).then(res => {
+            const data = {
+                MOMENTS_ID: ID,
+                LIKE_NUM: LIKE_NUM
+            };
+            await homeApi.appGiveLike(data).then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (_MSG_.includes("OK")) {
                     this.appColleague(); // 重新获取数据
                 } else {
-                    this.$toast('点赞失败');
+                    this.$toast("点赞失败");
                 }
             });
         },
 
         // 取消点赞
         async onCancelLike(ID, LIKE_NUM) {
-            await homeApi.appCancelLike(ID, LIKE_NUM).then(res => {
+            const data = {
+                MOMENTS_ID: ID,
+                LIKE_NUM: LIKE_NUM
+            };
+            await homeApi.appCancelLike(data).then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (_MSG_.includes("OK")) {
                     this.appColleague(); // 重新获取数据
                 } else {
-                    this.$toast('取消点赞失败');
+                    this.$toast("取消点赞失败");
                 }
             });
-        },
-
-
+        }
     }
 };
 </script>

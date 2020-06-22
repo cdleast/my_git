@@ -34,101 +34,77 @@ export default {
     /**
      * 金牌课程详情
     */
-    appCourseDetails(ID) {
+    appCourseDetails(data) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appCourseDetails.do',
             method: 'POST',
-            params: {
-                COURSE_ID: ID
-            }
+            params: data
         })
     },
 
     /**
      * 金牌课程详情/目录部分
     */
-    appCoursewareList(ID) {
+    appCoursewareList(data) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSEWARE.appCoursewareList.do',
             method: 'POST',
-            params: {
-                COURSE_ID: ID,
-                PAGE: 1,
-                NUM: 10,
-                NOPAGE: true
-            }
+            params: data
         })
     },
 
     /**
      * 金牌课程详情/评价部分/评分值
     */
-    appAverageComments(ID) {
+    appAverageComments(data) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appAverageComments.do',
             method: 'POST',
-            params: {
-                COURSE_ID: ID
-            }
+            params: data
         })
     },
 
     /**
      * 金牌课程详情/课程评论列表
     */
-    appQueryComments(ID) {
+    appQueryComments(data) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appQueryComments.do',
             method: 'POST',
-            params: {
-                COURSE_ID: ID,
-                PAGE: 1,
-                NUM: 10,
-                NOPAGE: true
-            }
+            params: data
         })
     },
 
     /**
      * 金牌课程详情/课程评论点赞
     */
-    appAddSupport(ID, COMID) {
+    appAddSupport(data) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appAddSupport.do',
             method: 'POST',
-            params: {
-                COURSE_ID: ID,
-                COMMENT_ID: COMID
-            }
+            params: data
         })
     },
 
     /**
      * 金牌课程详情/课程评论取消点赞
     */
-    appDeleteSupport(ID, COMID) {
+    appDeleteSupport(data) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appDeleteSupport.do',
             method: 'POST',
-            params: {
-                COURSE_ID: ID,
-                COMMENT_ID: COMID
-            }
+            params: data
         })
     },
 
     /**
      * 金牌课程详情/课程添加评论
     */
-    appAddComments(ID, RATE, CONTENT) {
+    appAddComments(data) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appAddComments.do',
             method: 'POST',
-            params: {
-                COURSE_ID: ID,
-                RATE: RATE,
-                CONTENT: CONTENT
-            }
+            params: data
         })
     },
 
@@ -139,27 +115,18 @@ export default {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appCoursesListAll.do',
             method: 'POST',
-            params: {
-                NAME: data.NAME,
-                PAGE: data.PAGE,
-                NUM: data.NUM,
-                SORT: data.SORT,
-                STATE: data.STATE,
-                NOPAGE: data
-            }
+            params: data
         })
     },
 
     /**
      * 金牌课程/课程分类
     */
-    appCoursesCategory(NAME) {
+    appCoursesCategory(data) {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE_TYPE.appCoursesCategory.do',
             method: 'POST',
-            params: {
-                NAME: NAME
-            }
+            params: data
         })
     },
 
@@ -170,15 +137,7 @@ export default {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appCoursesList.do',
             method: 'POST',
-            params: {
-                TYPE_ID: data.TYPE_ID,
-                PAGE: data.PAGE,
-                NUM: data.NUM,
-                NAME: data.NAME,
-                SORT: data.SORT,
-                STATE: data.STATE,
-                NOPAGE: data.NOPAGE
-            }
+            params: data
         })
     },
 
@@ -189,13 +148,17 @@ export default {
         return request({
             url: '/archivetemp-api/EXEXM_COURSE.appCoursesListMy.do',
             method: 'POST',
-            params: {
-                NAME: data.NAME,
-                PAGE: data.PAGE,
-                NUM: data.NUM,
-                SORT: data.SORT,
-                NOPAGE: data.NOPAGE,
-            }
+            params: data
+        })
+    },
+
+    /**
+     * 行业优秀课程
+    */
+    appExcellentCourse() {
+        return request({
+            url: '/archivetemp-api/EXEXM_COURSE.appExcellentCourse.do',
+            method: 'POST'
         })
     },
 
@@ -215,29 +178,66 @@ export default {
     /**
      * 同事圈点赞
     */
-    appGiveLike(MOMENTS_ID, LIKE_NUM) {
+    appGiveLike(data) {
         return request({
             url: '/archivetemp-api/EXEXM_MOMENTS_LIKE.appGiveLike.do',
             method: 'POST',
-            params: {
-                MOMENTS_ID: MOMENTS_ID,
-                LIKE_NUM: LIKE_NUM
-            }
+            params: data
         })
     },
 
     /**
      * 同事圈取消点赞
     */
-   appCancelLike(MOMENTS_ID, LIKE_NUM) {
+    appCancelLike(data) {
         return request({
             url: '/archivetemp-api/EXEXM_MOMENTS_LIKE.appCancelLike.do',
             method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 胶囊广告
+    */
+    appGetCapsule() {
+        return request({
+            url: '/archivetemp-api/EXEXM_HOME_CAPSULE.appGetCapsule.do',
+            method: 'POST'
+        })
+    },
+
+    /**
+     * 知识库详情
+    */
+    appEXEXM_KNOWLEDGE(ID) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE.byid.do',
+            method: 'POST',
             params: {
-                MOMENTS_ID: MOMENTS_ID,
-                LIKE_NUM: LIKE_NUM
+                ID: ID
             }
         })
-    }
+    },
 
+    /**
+     * 企业资讯顶部根栏目列表
+    */
+    appChnlList() {
+        return request({
+            url: '/archivetemp-api/EXEXM_INFORMATION_CHNL.appChnlList.do',
+            method: 'POST'
+        })
+    },
+
+    /**
+     * 企业资讯列表
+    */
+    appInforList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_INFORMATION.appInforList.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }

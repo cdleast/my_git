@@ -80,6 +80,82 @@
                 </van-swipe-item>
             </van-swipe>
         </div>
+
+        <!-- 胶囊广告 -->
+        <div class="ad-section">
+            <van-swipe :autoplay="0" :show-indicators="false">
+                <van-swipe-item
+                    v-for="items in getCapsule"
+                    :key="items.ID"
+                    :style="{backgroundImage:'url('+items.FILE[0].FILE_PATH+')'}"
+                    @click="tapCapsule(items)"
+                ></van-swipe-item>
+            </van-swipe>
+        </div>
+
+        <!-- 行业优秀课程 -->
+        <div class="king-classes">
+            <div class="top">
+                <span class="title">行业优秀课程</span>
+                <span @click="allCourse" class="right-all">全部</span>
+            </div>
+            <div class="course-list" v-for="items in excellentCourse" :key="items.ID">
+                <div class="course-list-item" @click="courseDetails(items.ID)">
+                    <div
+                        class="course-pic-box van-hairline--surround"
+                        :style="{backgroundImage:'url('+items.FILE[0].FILE_PATH+')'}"
+                    ></div>
+                    <div class="course-list-item-content">
+                        <div class="course-title van-ellipsis">{{ items.NAME }}</div>
+                        <div class="course-name">{{ items.LECTURER | formatCourseItem }}</div>
+                        <div class="course-bottom">
+                            <span class="left-price">{{ items.price || '免费' }}</span>
+                            <span class="right-count">{{ items.LOOK_COUNT + '人参与' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 企业资讯 -->
+        <div class="king-classes">
+            <div class="top top-0">
+                <span class="title">企业资讯</span>
+                <span class="right-all">全部</span>
+            </div>
+
+            <van-tabs
+                @click="onChnlList"
+                class="company-info"
+                v-model="active"
+                animated
+                :ellipsis="false"
+            >
+                <van-tab v-for="items in chnlList" :key="items.ID">
+                    <div
+                        class="tab-title"
+                        slot="title"
+                        @click="onChnlList(items.ID)"
+                    >{{ items.CHNL_NAME }}</div>
+                    <div class="company-content" v-for="items in inforList" :key="items.ID">
+                        <van-image
+                            class="item-pic"
+                            v-if="items.FILE[0]"
+                            width="155"
+                            height="100"
+                            :src="items.FILE[0].FILE_PATH"
+                        />
+                        <div class="item-right">
+                            <div class="title van-multi-ellipsis--l2">{{ items.TITLE }}</div>
+                            <div class="bottom">
+                                <span class="left">{{ items.CHNL_NAME }}</span>
+                                <span class="right">{{ items.PUBLISH_TIME }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </van-tab>
+            </van-tabs>
+        </div>
     </div>
 </template>
 
@@ -92,6 +168,7 @@ export default {
             swiperList: {}, // 首页轮播图
             hotNews: [], // 热门头条
             goldCourse: [], // 金牌课程
+            excellentCourse: [], // 行业优秀课程
             swiperOptions: {
                 direction: "horizontal", // 水平方向(horizontal)或垂直方向(vertical)
                 loop: true, // 开启循环
@@ -141,13 +218,21 @@ export default {
                 //     icon: "kecheng",
                 //     text: "我的课程"
                 // }
-            ]
+            ],
+            getCapsule: [], // 胶囊广告
+            chnlList: [], // 企业资讯顶部根栏目列表
+            active: 1, // 企业资讯顶部根栏目列表默认选中项
+            CHNL: "", // 企业资讯顶部根栏目列表栏目id
+            inforList: [] // 企业资讯列表
         };
     },
     created() {
         this.appGetPicture();
         this.appHotHeadlines();
         this.appGoldCourse();
+        this.appGetCapsule();
+        this.appExcellentCourse();
+        this.appChnlList();
     },
     computed: {
         // 首页轮播图
@@ -206,6 +291,20 @@ export default {
          */
         this.swiper.slideTo(1, 1000, false);
     },
+    filters: {
+        // 过滤行业优秀课程名字以便好渲染
+        formatCourseItem(item) {
+            const showName = item.SHOW_NAME || "";
+            const showDept = item.SHOW_DEPT || "";
+            if (showName && showDept) {
+                return `${showName}·${showDept}`;
+            } else if (showName) {
+                return `${showName}`;
+            } else if (showDept) {
+                return `${showDept}`;
+            }
+        }
+    },
     methods: {
         // 获取轮播图数据
         async appGetPicture() {
@@ -237,6 +336,60 @@ export default {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.goldCourse = res.data._DATA_;
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
+        },
+
+        // 获取胶囊广告
+        async appGetCapsule() {
+            await homeApi.appGetCapsule().then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.getCapsule = res.data._DATA_;
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
+        },
+
+        // 获取行业优秀课程
+        async appExcellentCourse() {
+            await homeApi.appExcellentCourse().then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.excellentCourse = res.data._DATA_;
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
+        },
+
+        // 获取企业资讯顶部根栏目列表
+        async appChnlList() {
+            await homeApi.appChnlList().then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.chnlList = res.data._DATA_;
+                    this.CHNL = this.chnlList[1] && this.chnlList[1].ID; // 拿到id
+                    this.appInforList(this.CHNL); // 拿到id后调用方法
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
+        },
+
+        // 获取企业资讯列表
+        async appInforList(ID) {
+            const data = {
+                PAGE: 1,
+                CHNL: ID
+            };
+            await homeApi.appInforList(data).then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.inforList = res.data._DATA_;
                 } else {
                     this.$toast(_MSG_);
                 }
@@ -297,6 +450,39 @@ export default {
                     ID: ID
                 }
             });
+        },
+
+        // 胶囊广告跳转
+        tapCapsule(item) {
+            switch (item.TYPE) {
+                case "LINK": // 超链接
+                    break;
+                case "EXEXM_COURSE_TRAINING_PLAN": // 课程
+                    this.$router.push({
+                        path: "/home/recommend/course-details",
+                        query: {
+                            ID: item.ID
+                        }
+                    });
+                    break;
+                case "EXEXM_KNOWLEDGE_LIST": // 知识库
+                    this.$router.push({
+                        path: "/home/recommend/knowledge-details",
+                        query: {
+                            ID: item.ID
+                        }
+                    });
+                    break;
+                case "EXEXM_REPOSITORY_TYPE": // 知识分类
+                    break;
+            }
+        },
+
+        // 企业资讯切换标签更改id
+        onChnlList(ID) {
+            setTimeout(() => {
+                this.appInforList(ID);
+            }, 10);
         }
     }
 };
