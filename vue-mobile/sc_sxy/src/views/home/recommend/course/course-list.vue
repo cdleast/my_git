@@ -1,6 +1,6 @@
 <template>
     <div class="course-list">
-        <van-nav-bar :title="title" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+        <header-bar :title="title"></header-bar>
 
         <van-empty v-if="!coursesList.length>0" description="暂无课程数据" />
 

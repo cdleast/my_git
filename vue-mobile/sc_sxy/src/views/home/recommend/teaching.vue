@@ -1,6 +1,6 @@
 <template>
     <div class="teaching">
-        <van-nav-bar title="直播教学" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+        <header-bar title="直播教学"></header-bar>
     </div>
 </template>
 

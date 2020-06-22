@@ -1,18 +1,18 @@
 <template>
-    <div class='recommend-ranking'>
-        <van-nav-bar title="排行榜" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+    <div class="recommend-ranking">
+        <header-bar title="排行榜"></header-bar>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'recommend-ranking',
+    name: "recommend-ranking",
     data() {
-        return {}
-    },
+        return {
+        };
+    }
 };
 </script>
 
 <style lang='scss' scoped>
-
 </style>

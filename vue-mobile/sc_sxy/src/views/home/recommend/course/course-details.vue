@@ -1,13 +1,6 @@
 <template>
     <div class="course-details">
-        <van-nav-bar
-            z-index="999"
-            fixed
-            placeholder
-            title="课程详情"
-            left-arrow
-            @click-left="$router.go(-1)"
-        ></van-nav-bar>
+        <header-bar title="课程详情"></header-bar>
 
         <!-- 背景图 -->
         <div class="image-box" :style="{backgroundImage:'url('+ avatar +')'}"></div>

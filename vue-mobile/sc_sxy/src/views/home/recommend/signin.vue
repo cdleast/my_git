@@ -1,18 +1,18 @@
 <template>
-    <div class='signin'>
-        <van-nav-bar title="每日签到" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+    <div class="signin">
+        <header-bar title="每日签到"></header-bar>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'signin',
+    name: "signin",
     data() {
-        return {}
-    },
+        return {
+        };
+    }
 };
 </script>
 
 <style lang='scss' scoped>
-
 </style>

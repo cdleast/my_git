@@ -128,7 +128,6 @@
                 @click="onChnlList"
                 class="company-info"
                 v-model="active"
-                animated
                 :ellipsis="false"
             >
                 <van-tab v-for="items in chnlList" :key="items.ID">

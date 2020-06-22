@@ -1,7 +1,6 @@
 <template>
     <div class="knowledge-details">
-        <van-nav-bar title="知识详情" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
-
+        <header-bar title="知识详情"></header-bar>
         <div class="details-content" v-for="items in knowledgeDetails" :key="items.ID">
             <div class="details-title">{{ items.NAME }}</div>
         </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="colleague-details">
-        <van-nav-bar title="同事圈详情" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+        <header-bar title="同事圈详情"></header-bar>
         <div class="details-box van-hairline--bottom">
             <div class="details-left" v-if="colleagueList.USER_IMG">
                 <van-image

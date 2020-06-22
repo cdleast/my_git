@@ -1,6 +1,6 @@
 <template>
     <div class="course-all">
-        <van-nav-bar :title="title" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+        <header-bar :title="title"></header-bar>
         <van-search
             @search="searchCourse"
             left-icon="false"
@@ -21,7 +21,7 @@
             </van-tab>
             <van-tab title="课程分类">
                 <div class="course-category" v-for="items in courseCate" :key="items.ID">
-                    <div class="course-category-head" @click="onCoursesList(items.ID)">
+                    <div class="course-category-head">
                         <span class="name">{{ items.NAME }}</span>
                         <span class="icon icon-arrow-right"></span>
                     </div>
