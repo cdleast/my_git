@@ -210,13 +210,11 @@ export default {
     /**
      * 知识库详情
     */
-    appEXEXM_KNOWLEDGE(ID) {
+    appEXEXM_KNOWLEDGE(data) {
         return request({
             url: '/archivetemp-api/EXEXM_KNOWLEDGE.byid.do',
             method: 'POST',
-            params: {
-                ID: ID
-            }
+            params: data
         })
     },
 

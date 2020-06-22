@@ -18,6 +18,11 @@
     }
 }
 
+@mixin flex-row-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
 // 首页
 .home {
@@ -71,6 +76,47 @@
     .icon {
         color: $bg-text-color;
     }
+}
+
+
+// 搜索页
+.search /deep/ {
+    .search-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+
+        .title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #919298;
+        }
+
+        .cate {
+            padding: 0 120px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+
+            .cate-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 60px;
+                padding-top: 4px;
+
+                .cate-name {
+                    margin-top: 10px;
+                    font-size: 26px;
+                    font-weight: 700;
+                    color: #919298;
+                }
+            }
+        }
+    }
+
 }
 
 
@@ -277,6 +323,7 @@
         }
     }
 
+
     // 胶囊广告
     .ad-section {
         height: 200px;
@@ -290,6 +337,7 @@
             }
         }
     }
+
 
     // 行业优先课程
     .course-list {
@@ -346,6 +394,7 @@
             }
         }
     }
+
 
     // 企业咨询
     .company-info {
@@ -511,8 +560,6 @@
                     .teacher-box {
                         height: 100px;
                         display: flex;
-                        -webkit-box-orient: vertical;
-                        -webkit-box-direction: normal;
                         flex-direction: column;
                         justify-content: space-around;
                         font-weight: 500;
@@ -826,9 +873,7 @@
     // 全部课程/我的课程
     .screening {
         height: 80px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        @include flex-row-center;
         justify-content: space-between;
         background-color: #F8F8F8;
         padding: 0 30px;
@@ -1003,5 +1048,123 @@
                 }
             }
         }
+    }
+}
+
+
+// 知识库详情
+.knowledge-details /deep/ {
+    .details-content {
+        padding: 0 30px;
+
+        .details-title {
+            padding: 40px 0;
+            display: flex;
+            flex-direction: row;
+            font-size: 30px;
+            font-weight: 500;
+            color: $text-color;
+            flex-wrap: wrap;
+        }
+
+        .details-info {
+            @include flex-row-center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+
+            .info-left {
+                @include flex-row-center;
+
+                .info-left-name {
+                    margin-right: 20px;
+                    margin-left: 20px;
+                }
+            }
+
+            .info-right {
+                @include flex-row-center;
+
+                .icon {
+                    font-size: 24px;
+                    color: #666;
+                    margin-left: 20px;
+                    margin-right: 6px;
+                }
+            }
+
+            .info-text {
+                font-size: 24px;
+                font-weight: 500;
+                color: #666;
+            }
+        }
+
+        .file {
+            margin-top: 60px;
+
+            .file-item {
+                height: 124px;
+                @include flex-row-center;
+
+                .icon {
+                    font-size: 60px;
+                }
+
+                .item-box {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding-left: 10px;
+
+                    .item-title {
+                        flex: 1;
+                        color: $text-color;
+                        font-size: 24px;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+
+                    .item-text-box {
+                        @include flex-row-center;
+
+                        .item-text {
+                            color: #999;
+                            font-size: 24px;
+                            font-weight: 500;
+
+                            &.size {
+                                margin-left: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer {
+            height: 100px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .footer-item {
+                font-size: 30px;
+                font-weight: 500;
+                color: #666;
+                display: flex;
+                align-items: center;
+
+                .icon{
+                    color: #666;
+                    margin: 0 10px;
+                }
+            }
+        }
+
     }
 }

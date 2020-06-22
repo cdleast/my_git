@@ -100,7 +100,7 @@
         <van-grid :column-num="3" class="grid" :border="false">
             <van-grid-item :to="item.router" v-for="(item,index) in gridList" :key="index">
                 <span :class="`icon icon-${item.icon}`"></span>
-                <p>{{item.text}}</p>
+                <p>{{ item.text }}</p>
             </van-grid-item>
         </van-grid>
 

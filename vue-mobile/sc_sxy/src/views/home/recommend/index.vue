@@ -58,7 +58,7 @@
                 :show-indicators="false"
             >
                 <van-swipe-item
-                    @click="courseDetails(item.ID)"
+                    @click="onCourseDetails(item.ID)"
                     v-for="item in goldCourse"
                     :key="item.ID"
                 >
@@ -124,12 +124,7 @@
                 <span class="right-all">全部</span>
             </div>
 
-            <van-tabs
-                @click="onChnlList"
-                class="company-info"
-                v-model="active"
-                :ellipsis="false"
-            >
+            <van-tabs @click="onChnlList" class="company-info" v-model="active" :ellipsis="false">
                 <van-tab v-for="items in chnlList" :key="items.ID">
                     <div
                         class="tab-title"
@@ -432,7 +427,7 @@ export default {
         },
 
         // 跳转课程详情
-        courseDetails(ID) {
+        onCourseDetails(ID) {
             this.$router.push({
                 path: "/home/recommend/course-details",
                 query: {
@@ -454,15 +449,10 @@ export default {
         // 胶囊广告跳转
         tapCapsule(item) {
             switch (item.TYPE) {
-                case "LINK": // 超链接
-                    break;
+                // case "LINK": // 超链接
+                //     break;
                 case "EXEXM_COURSE_TRAINING_PLAN": // 课程
-                    this.$router.push({
-                        path: "/home/recommend/course-details",
-                        query: {
-                            ID: item.ID
-                        }
-                    });
+                    this.onCourseDetails(item.ID);
                     break;
                 case "EXEXM_KNOWLEDGE_LIST": // 知识库
                     this.$router.push({
@@ -472,8 +462,8 @@ export default {
                         }
                     });
                     break;
-                case "EXEXM_REPOSITORY_TYPE": // 知识分类
-                    break;
+                // case "EXEXM_REPOSITORY_TYPE": // 知识分类
+                //     break;
             }
         },
 

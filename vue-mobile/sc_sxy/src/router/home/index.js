@@ -1,7 +1,7 @@
 export default [
     /**
      * 首页及二级子页面
-     * 推荐/学习/发现
+     * 推荐/学习/发现/搜索
     */
     {
         path: '/home', name: 'home', redirect: "/home/recommend", component: () => import('@/views/home'), children: [
@@ -10,6 +10,10 @@ export default [
             { path: 'found', name: 'found', component: () => import('@/views/home/found') },
         ],
     },
+
+    // 搜索页面
+    { path: '/search', name: 'search', component: () => import('@/views/home/search') },
+    { path: '/search/list', name: 'search-list', component: () => import('@/views/home/search/search-list') },
 
     /**
      * 推荐子页面
