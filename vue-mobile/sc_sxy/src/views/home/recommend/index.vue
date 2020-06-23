@@ -131,7 +131,12 @@
                         slot="title"
                         @click="onChnlList(items.ID)"
                     >{{ items.CHNL_NAME }}</div>
-                    <div class="company-content" v-for="items in inforList" :key="items.ID">
+                    <div
+                        class="company-content"
+                        @click="onInformation(items.ID)"
+                        v-for="items in inforList"
+                        :key="items.ID"
+                    >
                         <van-image
                             class="item-pic"
                             v-if="items.FILE[0]"
@@ -400,9 +405,10 @@ export default {
             const type = item.type;
             switch (type) {
                 case "course":
-                    this.courseDetails(item.ID);
+                    this.onCourseDetails(item.ID);
                     break;
                 case "knowledge":
+                    this.onknowledgeDetails(item.ID);
                     break;
                 case "merge":
                     this.colleagueDetails(item.ID);
@@ -430,6 +436,16 @@ export default {
         onCourseDetails(ID) {
             this.$router.push({
                 path: "/home/recommend/course-details",
+                query: {
+                    ID: ID
+                }
+            });
+        },
+
+        // 跳转知识详情
+        onknowledgeDetails(ID) {
+            this.$router.push({
+                path: "/home/recommend/knowledge-details",
                 query: {
                     ID: ID
                 }
@@ -472,6 +488,16 @@ export default {
             setTimeout(() => {
                 this.appInforList(ID);
             }, 10);
+        },
+
+        // 跳转企业资讯详情
+        onInformation(ID) {
+            this.$router.push({
+                path: "/home/recommend/information-details",
+                query: {
+                    ID: ID
+                }
+            });
         }
     }
 };

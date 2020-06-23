@@ -4,18 +4,18 @@
 
         <van-empty v-if="!coursesList.length>0" description="暂无课程数据" />
 
-        <course-item v-else :datas="coursesList"></course-item>
+        <item-list v-else :datas="coursesList"></item-list>
     </div>
 </template>
 
 <script>
 import homeApi from "@/api/home";
-import courseItem from "@/components/home/course-item";
+import itemList from "@/components/home/item-list";
 import bus from "@/utils/eventBus"; // 全局事件总线,用于传递数据
 export default {
     name: "course-list",
     components: {
-        courseItem
+        itemList
     },
     data() {
         return {

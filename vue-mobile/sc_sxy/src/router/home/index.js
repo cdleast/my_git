@@ -37,7 +37,12 @@ export default [
     { path: '/home/recommend/knowledge-details-comments', name: 'knowledge-details-comments', component: () => import('@/views/home/recommend/knowledge/knowledge-details-comments') },
 
     /**
-     * 同事圈部分
+     * 企业资讯
+    */
+    { path: '/home/recommend/information-details', name: 'information-details', component: () => import('@/views/home/recommend/information/information-details') },
+
+    /**
+     * 同事圈
     */
     { path: '/home/found/colleague-details', name: 'colleague-details', component: () => import('@/views/home/found/colleague/colleague-details') },
 ]

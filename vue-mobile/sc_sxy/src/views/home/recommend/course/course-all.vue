@@ -17,7 +17,7 @@
                         <span class="icon icon-arrow-down"></span>
                     </div>
                 </div>
-                <course-item :datas="courseAll"></course-item>
+                <item-list :datas="courseAll"></item-list>
             </van-tab>
             <van-tab title="课程分类">
                 <div class="course-category" v-for="items in courseCate" :key="items.ID">
@@ -61,12 +61,12 @@
 
 <script>
 import homeApi from "@/api/home";
-import courseItem from "@/components/home/course-item";
+import itemList from "@/components/home/item-list";
 import bus from "@/utils/eventBus"; // 全局事件总线,用于传递数据
 export default {
     name: "course-all",
     components: {
-        courseItem
+        itemList
     },
     data() {
         return {

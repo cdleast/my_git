@@ -56,7 +56,6 @@ export default {
         onConfirm(value) {
             this.value = value;
             this.showPicker = false;
-            console.log(this.value);
         }
     }
 };

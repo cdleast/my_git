@@ -1228,3 +1228,42 @@
         right: 0;
     }
 }
+
+
+// 企业资讯详情
+.information-details {
+    .details-content {
+        padding: 30px;
+
+        .details-title {
+            font-size: 34px;
+            font-weight: 500;
+            color: $text-color;
+        }
+
+        .details-type-time {
+            font-size: 24px;
+            font-weight: 500;
+            color: #A0A0A0;
+            padding: 20px 0;
+
+            .details-type {
+                color: $active-color;
+                margin-right: 20px;
+            }
+        }
+
+        .details-main {
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 44px;
+            color: $text-color;
+            margin-bottom: 20px;
+        }
+
+        .details-img {
+            height: 380px;
+            background-size: 100% 100%;
+        }
+    }
+}

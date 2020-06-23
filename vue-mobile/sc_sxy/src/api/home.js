@@ -208,27 +208,6 @@ export default {
     },
 
     /**
-     * 企业资讯顶部根栏目列表
-    */
-    appChnlList() {
-        return request({
-            url: '/archivetemp-api/EXEXM_INFORMATION_CHNL.appChnlList.do',
-            method: 'POST'
-        })
-    },
-
-    /**
-     * 企业资讯列表
-    */
-    appInforList(data) {
-        return request({
-            url: '/archivetemp-api/EXEXM_INFORMATION.appInforList.do',
-            method: 'POST',
-            params: data
-        })
-    },
-
-    /**
      * 知识库/浏览人数添加
     */
     appAddKnLl(data) {
@@ -356,6 +335,38 @@ export default {
     appAddKnPl(data) {
         return request({
             url: '/archivetemp-api/EXEXM_KNOWLEDGE_COMMENT.appAddKnPl.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 企业资讯顶部根栏目列表
+    */
+    appChnlList() {
+        return request({
+            url: '/archivetemp-api/EXEXM_INFORMATION_CHNL.appChnlList.do',
+            method: 'POST'
+        })
+    },
+
+    /**
+     * 企业资讯列表
+    */
+    appInforList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_INFORMATION.appInforList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 企业资讯详情
+    */
+    appInformation(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_INFORMATION.appInformation.do',
             method: 'POST',
             params: data
         })
