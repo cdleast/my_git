@@ -208,17 +208,6 @@ export default {
     },
 
     /**
-     * 知识库详情
-    */
-    appEXEXM_KNOWLEDGE(data) {
-        return request({
-            url: '/archivetemp-api/EXEXM_KNOWLEDGE.byid.do',
-            method: 'POST',
-            params: data
-        })
-    },
-
-    /**
      * 企业资讯顶部根栏目列表
     */
     appChnlList() {
@@ -234,6 +223,139 @@ export default {
     appInforList(data) {
         return request({
             url: '/archivetemp-api/EXEXM_INFORMATION.appInforList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/浏览人数添加
+    */
+    appAddKnLl(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_LOOK.appAddKnLl.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/浏览人数统计
+    */
+    appCountKnOt(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_LOOK.appCountKnOt.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库详情
+    */
+    appEXEXM_KNOWLEDGE(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE.byid.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/是否收藏
+    */
+    appKnScCollection(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_COLLECTION.appKnScCollection.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/添加收藏
+    */
+    appAddKnScCollection(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_COLLECTION.appAddKnScCollection.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/取消
+    */
+    appKnDeleteCollection(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_COLLECTION.appKnDeleteCollection.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/是否点赞
+    */
+    appIsLike(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_LIKE.appIsLike.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+
+    /**
+     * 知识库/点赞
+    */
+    appLike(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_LIKE.appLike.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/取消点赞
+    */
+    appCancelLike(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_LIKE.appCancelLike.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/评论人数
+    */
+    appCountKnPlCollection(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_COMMENT.appCountKnPlCollection.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/评论列表
+    */
+    appQueryKnPl(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_COMMENT.appQueryKnPl.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/提交评论
+    */
+    appAddKnPl(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE_COMMENT.appAddKnPl.do',
             method: 'POST',
             params: data
         })

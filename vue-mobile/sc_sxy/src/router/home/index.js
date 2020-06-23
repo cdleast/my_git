@@ -34,6 +34,7 @@ export default [
     */
     { path: '/home/recommend/knowledge-all', name: 'knowledge-all', component: () => import('@/views/home/recommend/knowledge/knowledge-all') },
     { path: '/home/recommend/knowledge-details', name: 'knowledge-details', component: () => import('@/views/home/recommend/knowledge/knowledge-details') },
+    { path: '/home/recommend/knowledge-details-comments', name: 'knowledge-details-comments', component: () => import('@/views/home/recommend/knowledge/knowledge-details-comments') },
 
     /**
      * 同事圈部分

@@ -1159,12 +1159,72 @@
                 display: flex;
                 align-items: center;
 
-                .icon{
+                .icon {
                     color: #666;
-                    margin: 0 10px;
+
+                    &.active {
+                        color: $active-color;
+                    }
+
+                }
+
+                .desp.active {
+                    color: $active-color;
                 }
             }
         }
 
+    }
+}
+
+
+// 知识库详情评论
+.knowledge-details-comments /deep/ {
+    padding-bottom: 100px;
+
+    .item-box {
+        padding: 30px;
+
+        .item-list {
+            margin-bottom: 30px;
+
+            .item-cont {
+                display: flex;
+
+                .info-right {
+                    flex: 1;
+                    padding-left: 20px;
+
+                    .info-name {
+                        font-size: 30px;
+                        font-weight: 500;
+                        color: $text-color;
+                        margin-top: 6px;
+                    }
+
+                    .info-time {
+                        font-size: 24px;
+                        font-weight: 500;
+                        color: #666;
+                        margin-top: 10px;
+                    }
+                }
+            }
+
+            .list-desp {
+                padding: 10px 0;
+                font-size: 30px;
+                font-weight: 500;
+                color: $text-color;
+                line-height: 40px;
+            }
+        }
+    }
+
+    .comments-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 }

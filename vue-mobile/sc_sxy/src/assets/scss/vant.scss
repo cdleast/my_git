@@ -5,7 +5,9 @@
     background: $btn-color;
     color: $bg-header-text-color;
 }
-
+.van-button--default{
+    border-color: $btn-color;
+}
 
 /**
 * 默认字体图标
