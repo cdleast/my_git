@@ -18,7 +18,9 @@ Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/', redirect: '/home' },
-	...login, ...home, ...message, ...addres, ...secretary, ...myinfo
+	...login, ...home, ...message, ...addres, ...secretary, ...myinfo,
+	{ path: '/calendar', name: 'calendar', component: () => import('@/components/global/calendar') },
+	{ path: '/calendar1', name: 'calendar1', component: () => import('@/components/global/calendar1') }
 ]
 
 const router = new VueRouter({

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import homeApi from "@/api/home";
 export default {
     name: "recommend-ranking",
     data() {

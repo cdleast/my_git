@@ -39,6 +39,7 @@ export default [
     /**
      * 企业资讯
     */
+    { path: '/home/recommend/information-all', name: 'information-all', component: () => import('@/views/home/recommend/information/information-all') },
     { path: '/home/recommend/information-details', name: 'information-details', component: () => import('@/views/home/recommend/information/information-details') },
 
     /**

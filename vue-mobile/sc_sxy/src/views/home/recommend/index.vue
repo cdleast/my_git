@@ -121,10 +121,10 @@
         <div class="king-classes">
             <div class="top top-0">
                 <span class="title">企业资讯</span>
-                <span class="right-all">全部</span>
+                <span class="right-all" @click="onInforListAll">全部</span>
             </div>
 
-            <van-tabs @click="onChnlList" class="company-info" v-model="active" :ellipsis="false">
+            <van-tabs  @click="onChnlList" class="company-info" v-model="active" :ellipsis="false">
                 <van-tab v-for="items in chnlList" :key="items.ID">
                     <div
                         class="tab-title"
@@ -498,6 +498,11 @@ export default {
                     ID: ID
                 }
             });
+        },
+
+        // 跳转企业资讯全部
+        onInforListAll() {
+            this.$router.push("/home/recommend/information-all");
         }
     }
 };

@@ -371,4 +371,93 @@ export default {
             params: data
         })
     },
+
+    /**
+     * 是否签到
+    */
+    appDoYouSignIn(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appDoYouSignIn.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 签到保存 
+    */
+    appSignIn(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appSignIn.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 自动签到
+    */
+    appAutomaticSignIn(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appAutomaticSignIn.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 今日签到奖励
+    */
+    appSignInAwardToday(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appSignInAwardToday.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 额外签到奖励
+    */
+    appSignInAdditional(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appSignInAdditional.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 当月累计签到天数
+    */
+    appAccumulatedDays(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appAccumulatedDays.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 签到列表
+    */
+    appSignInList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appSignInList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 当月心情列表
+    */
+    appMoodList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appMoodList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
 }

@@ -1267,3 +1267,256 @@
         }
     }
 }
+
+
+// 签到
+.signin {
+    .cumulative-main {
+        position: relative;
+
+        .cumulative-cont {
+            position: absolute;
+            top: 18px;
+            right: 30px;
+            font-size: 30px;
+            width: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .cumulative {
+                display: flex;
+                align-items: center;
+
+                .day {
+                    color: orange;
+                }
+            }
+
+            .sign-in {
+                padding: 10px 20px;
+                background-color: $bg-default-color;
+                color: #fff;
+                border-radius: 10px;
+
+                &.yes {
+                    background-color: #ccc;
+                }
+            }
+        }
+    }
+
+    .mood {
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 30px;
+
+        .total-mood {
+            display: flex;
+            align-items: center;
+
+            .desp {
+                margin-right: 10px;
+            }
+        }
+
+        .mood-classify {
+            display: flex;
+
+            .classify-list {
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+
+                .num {
+                    font-size: 32px;
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+
+    .line-bg {
+        height: 20px;
+        background-color: $bg-color;
+    }
+
+    .month-signin {
+        .month-signin-title {
+            font-size: 26px;
+            font-weight: 500;
+            color: $text-color;
+            line-height: 26px;
+            padding: 20px 30px;
+        }
+
+        .gift {
+            display: flex;
+            padding: 10px 30px;
+
+            .gift-list {
+                position: relative;
+                flex: 1;
+                height: 120px;
+                text-align: center;
+                padding-bottom: 40px;
+                border-bottom: 8px solid #EEE;
+                font-size: 24px;
+                font-weight: 500;
+                color: $text-color;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .text {
+                    font-size: 24px;
+                    line-height: 24px;
+                    font-weight: 500;
+                    color: $text-color;
+                    position: absolute;
+                    bottom: -56px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                .border-active {
+                    width: 100%;
+                    height: 8px;
+                    background-color: #FDC72F;
+                    position: absolute;
+                    bottom: -8px;
+                    left: 0;
+                    z-index: 11;
+                }
+
+                &:first-child .van-image {
+                    margin-top: 16px;
+                }
+
+                &:first-child::after {
+                    content: '';
+                    width: 50%;
+                    height: 8px;
+                    background: #FFF;
+                    position: absolute;
+                    left: 0;
+                    bottom: -8px;
+                    z-index: 13;
+                }
+
+                &:last-child::after {
+                    content: '';
+                    width: 50%;
+                    height: 8px;
+                    background: #FFF;
+                    position: absolute;
+                    right: 0;
+                    bottom: -8px;
+                    z-index: 13;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 14px;
+                    height: 14px;
+                    bottom: -11px;
+                    left: 50%;
+                    margin-left: -6px;
+                    background-color: #D1D1D1;
+                    border-radius: 50%;
+                    z-index: 14;
+                }
+
+                &.active::before {
+                    background-color: #FDC72F;
+                }
+            }
+        }
+
+        .hint-text {
+            font-size: 24px;
+            font-weight: 500;
+            color: #FDC72F;
+            padding-left: 30px;
+            margin-top: 80px;
+        }
+    }
+
+    .signin-modal {
+        width: 600px;
+        padding: 0 30px;
+        background: #fff;
+        border-radius: 16px;
+
+        .title {
+            font-size: 56px;
+            line-height: 56px;
+            font-weight: 500;
+            color: #666;
+            margin: 20px 0;
+        }
+
+        .signin-award-text {
+            font-size: 26px;
+            line-height: 26px;
+            font-weight: 500;
+            color: #f2b931;
+            margin-bottom: 20px;
+        }
+
+        .signin-award-box {
+            font-size: 0;
+            margin-bottom: 40px;
+
+            .signin-award-item {
+                border: 0.5px solid $bg-default-color;
+                height: 40px;
+                line-height: 40px;
+                font-size: 26px;
+                font-weight: 500;
+                color: $bg-default-color;
+                padding: 0 6px;
+                border-radius: 12px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+        }
+
+        .signin-hint {
+            font-size: 26px;
+            line-height: 26px;
+            margin-bottom: 20px;
+            color: #999;
+        }
+
+        .mood-icon {
+            display: flex;
+            justify-content: space-around;
+            .van-image.active{
+                transform:scale(1.5);
+            }
+        }
+
+        .btn {
+            text-align: center;
+
+            .van-button {
+                width: 300px;
+                margin: 40px auto 30px auto;
+            }
+
+            .cancel {
+                width: 100%;
+                font-size: 26px;
+                line-height: 43px;
+                font-weight: 500;
+                color: #999;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
