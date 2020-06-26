@@ -43,7 +43,7 @@
                         <span class="icon icon-arrow-down"></span>
                     </div>
                 </div>
-                <course-item :datas="courseMy"></course-item>
+                <item-list :datas="courseMy"></item-list>
             </van-tab>
         </van-tabs>
 

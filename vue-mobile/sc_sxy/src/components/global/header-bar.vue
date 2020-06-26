@@ -1,6 +1,15 @@
 <template>
     <div class="header-bar">
-        <van-nav-bar :title="title" fixed placeholder left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+        <van-nav-bar
+            :title="title"
+            z-index="999"
+            fixed
+            placeholder
+            left-arrow
+            @click-left="$router.go(-1)"
+        >
+            <slot slot="title" name="title"></slot>
+        </van-nav-bar>
     </div>
 </template>
 
@@ -14,4 +23,14 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.header-bar /deep/ {
+    .van-nav-bar__title > div {
+        display: flex;
+        align-items: center;
+    }
+    .icon {
+        color: #fff;
+        font-size: 50px;
+    }
+}
 </style>

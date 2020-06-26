@@ -2,6 +2,7 @@
     <div class="signin">
         <header-bar title="每日签到"></header-bar>
 
+        <!-- 日历签到 -->
         <div class="cumulative-main">
             <calendar
                 ref="Calendar"
@@ -14,10 +15,14 @@
                     累计签到
                     <span class="day">{{numDays}}</span>天
                 </span>
-                <span @click="showPopup = true" v-if="!isSignin" class="sign-in">签到</span>
-                <span v-else class="sign-in" :class="isSignin?'yes':''">已签到</span>
+                <template v-if="showSignin">
+                    <span @click="showPopup = true" v-if="!isSignin" class="sign-in">签到</span>
+                    <span v-else class="sign-in" :class="isSignin?'yes':''">已签到</span>
+                </template>
             </div>
         </div>
+
+        <!-- 心情列表 -->
         <div class="mood van-hairline--top-bottom">
             <div class="total-mood">
                 <span class="desp">综合心情</span>
@@ -84,44 +89,47 @@
 
         <div class="line-bg"></div>
 
+        <!-- 月签到奖励 -->
         <div class="month-signin">
             <div class="month-signin-title">月累计签到奖励</div>
             <div class="gift">
-                <div class="gift-list">
+                <div class="gift-list" :class="{active: numDays>=1}">
                     <van-image
                         :src="require('@/assets/images/signin/qd.png')"
                         width="24"
                         height="24"
+                        v-if="numDays>0"
+                    />
+                    <van-image
+                        :src="require('@/assets/images/signin/notlw.png')"
+                        width="40"
+                        height="40"
+                        v-if="numDays==0"
                     />
                     <span class="text">签到</span>
-                    <div v-if="false" class="border-active"></div>
+                    <div class="border-active"></div>
                 </div>
-                <div class="gift-list">
+                <div
+                    class="gift-list"
+                    v-for="item in attendanceAward"
+                    :key="item.type"
+                    :class="{active: numDays >= item.CONDITION_NUM}"
+                >
                     <van-image
                         :src="require('@/assets/images/signin/notlw.png')"
                         width="40"
                         height="40"
+                        v-if="numDays < item.CONDITION_NUM"
                     />
-                    <span class="text">7</span>
-                    <div v-if="false" class="border-active"></div>
-                </div>
-                <div class="gift-list">
                     <van-image
-                        :src="require('@/assets/images/signin/notlw.png')"
+                        :src="require('@/assets/images/signin/qdlw.png')"
                         width="40"
                         height="40"
+                        v-if="numDays >= item.CONDITION_NUM"
+                        @click="getGiftCollection(item.TYPE, item.CONDITION_NUM)"
                     />
-                    <span class="text">14</span>
-                    <div v-if="false" class="border-active"></div>
-                </div>
-                <div class="gift-list">
-                    <van-image
-                        :src="require('@/assets/images/signin/notlw.png')"
-                        width="40"
-                        height="40"
-                    />
-                    <span class="text">28</span>
-                    <div v-if="false" class="border-active"></div>
+                    <span class="text">{{ item.CONDITION_NUM }}</span>
+                    <div class="border-active"></div>
                 </div>
             </div>
 
@@ -192,6 +200,7 @@ export default {
             risusListLength: 0, // 大笑  id: 4
             colourListLength: 0, // 色  id: 5
             isSignin: false, // 是否签到
+            showSignin: true, // 签到是否显示
             numDays: 0, // 当月累计签到天数
             moodList: [], // 当月心情列表
             totalMood: 0, // 综合心情显示的下标
@@ -206,7 +215,8 @@ export default {
             latStr: 0, // 纬度
             cityStr: "", // 城市
             addressStr: "", // 具体位置
-            defaultTime: this.getNowFormatDate() // 获取当前日期
+            defaultTime: this.getNowFormatDate(), // 获取当前日期
+            attendanceAward: [] // 月累计签到奖励
         };
     },
     created() {
@@ -216,6 +226,7 @@ export default {
         this.appSignInAwardToday();
         this.appSignInAdditional();
         this.appMoodList(this.defaultTime);
+        this.appAttendanceAward(this.defaultTime);
     },
     computed: {
         // 当前时间戳
@@ -361,14 +372,12 @@ export default {
                             this.pitifulListLength,
                             this.grievedListLength
                         ];
-                        console.log(totalArr);
                         /**
                          * Math.max不支持传入数组
                          * apply用来重新改变this指向，传递null是不需要改变this指向
                          * apply可以将一个数组默认的转换为一个参数列表([param1,param2,param3] 转换为 (param1,param2,param3)
                          */
                         let max = Math.max.apply(null, totalArr);
-                        console.log(totalArr.indexOf(max));
                         // 查找最大数第一次出现的位置
                         switch (totalArr.indexOf(max)) {
                             case 0:
@@ -391,7 +400,6 @@ export default {
                 } else {
                     this.$toast(_MSG_);
                 }
-                // console.log(this.moodList);
             });
         },
 
@@ -408,10 +416,26 @@ export default {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.$toast("签到成功");
-                    this.appDoYouSignIn();
-                    this.appAccumulatedDays();
-                    this.appMoodList();
+                    this.appDoYouSignIn(this.defaultTime);
+                    this.appAccumulatedDays(this.defaultTime);
+                    this.appMoodList(this.defaultTime);
                     this.showPopup = false;
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
+        },
+
+        // 月累计签到奖励
+        async appAttendanceAward(timer) {
+            let data = {
+                STARTTIME: this.getCurrentMonthFirst(timer),
+                ENDTIME: this.getCurrentMonthLast(timer)
+            };
+            await homeApi.appAttendanceAward(data).then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.attendanceAward = res.data._DATA_;
                 } else {
                     this.$toast(_MSG_);
                 }
@@ -425,11 +449,43 @@ export default {
 
         //左右点击切换月份
         changeDate(data) {
-            this.appSignInList(data);
-            this.appDoYouSignIn(data);
-            this.appAccumulatedDays(data);
-            this.appSignInList(data);
-            this.appMoodList(data);
+            this.appDoYouSignIn(data); // 是否签到
+            this.appSignInList(data); // 获取签到列表
+            this.appAccumulatedDays(data); // 当月累计签到天数
+            this.appMoodList(data); // 当月心情列表
+            this.appAttendanceAward(data); // 月累计签到奖励
+
+            // 转换日期格式2020/6/26
+            let timer = this.getNowFormatDate();
+            let nowdate = new Date(timer).toLocaleDateString();
+
+            // 签到按钮显示和隐藏
+            if (nowdate === data) {
+                this.showSignin = true;
+            } else {
+                this.showSignin = false;
+            }
+        },
+
+        // 领取钱袋礼包
+        async getGiftCollection(type, num) {
+            let data = {
+                TYPE: type,
+                CONDITION_NUM: num
+            };
+            await homeApi.appGiftCollection(data).then(res => {
+                let data = res.data._DATA_;
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    if (data.type == true) {
+                        this.$toast(data[0].TYPE_NAME);
+                    } else {
+                        this.$toast(data[0].TYPE_NAME);
+                    }
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
         }
     }
 };

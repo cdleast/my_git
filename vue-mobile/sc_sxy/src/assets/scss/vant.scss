@@ -5,7 +5,8 @@
     background: $btn-color;
     color: $bg-header-text-color;
 }
-.van-button--default{
+
+.van-button--default {
     border-color: $btn-color;
 }
 
@@ -73,9 +74,12 @@
 * Picker 选择器
 * 支持单列选择和多列级联，通常与弹出层组件配合使用
 */
-.van-picker{
-    .van-picker__confirm{
+.van-picker {
+    .van-picker__confirm {
         color: $active-color;
     }
-}
 
+    .van-picker__toolbar {
+        border-bottom: 1px solid $active-color;
+    }
+}

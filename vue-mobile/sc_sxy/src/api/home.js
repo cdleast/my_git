@@ -460,4 +460,59 @@ export default {
         })
     },
 
+    /* 
+    * 月累计签到奖励
+    */
+    appAttendanceAward(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appAttendanceAward.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 领取钱袋礼包
+    */
+    appGiftCollection(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_SIGNED.appGiftCollection.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 排行榜类别+排行榜类型+签到心情+学习计划来源类型+公告类别+公告紧急程度
+    */
+    SY_COMM_INFO(data) {
+        return request({
+            url: '/archivetemp-api/SY_COMM_INFO.dict.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 我的排行榜值
+    */
+    appMyRanking(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LEADERBOARD.appMyRanking.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 排行榜列表
+    */
+    appRankingListClass(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LEADERBOARD.appRankingListClass.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
 }

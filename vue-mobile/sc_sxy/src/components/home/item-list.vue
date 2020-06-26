@@ -35,7 +35,7 @@
 
 <script>
 export default {
-    name: "course-item",
+    name: "item-list",
     props: {
         datas: {
             type: Array

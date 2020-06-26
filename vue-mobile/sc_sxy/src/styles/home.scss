@@ -1275,6 +1275,7 @@
         position: relative;
 
         .cumulative-cont {
+            height: 62px;
             position: absolute;
             top: 18px;
             right: 30px;
@@ -1381,16 +1382,6 @@
                     transform: translateX(-50%);
                 }
 
-                .border-active {
-                    width: 100%;
-                    height: 8px;
-                    background-color: #FDC72F;
-                    position: absolute;
-                    bottom: -8px;
-                    left: 0;
-                    z-index: 11;
-                }
-
                 &:first-child .van-image {
                     margin-top: 16px;
                 }
@@ -1432,6 +1423,18 @@
 
                 &.active::before {
                     background-color: #FDC72F;
+                }
+
+                &.active {
+                    .border-active {
+                        width: 100%;
+                        height: 8px;
+                        background-color: #FDC72F;
+                        position: absolute;
+                        bottom: -8px;
+                        left: 0;
+                        z-index: 11;
+                    }
                 }
             }
         }
@@ -1496,8 +1499,9 @@
         .mood-icon {
             display: flex;
             justify-content: space-around;
-            .van-image.active{
-                transform:scale(1.5);
+
+            .van-image.active {
+                transform: scale(1.5);
             }
         }
 
@@ -1519,4 +1523,112 @@
             }
         }
     }
+}
+
+
+// 排行榜
+.recommend-ranking /deep/ {
+    .van-tabs__content {
+        padding-top: 10px;
+    }
+
+    .ranking-top {
+        height: 320px;
+        background-size: 100% 100%;
+        display: flex;
+        align-items: center;
+
+        .ranking-top-box {
+            display: flex;
+            align-items: center;
+
+            .van-image {
+                border: 10px solid #FFF;
+                margin-left: 100px;
+                margin-right: 20px;
+            }
+
+            .ranking-top-name {
+                font-weight: 700;
+                color: #fff;
+                font-size: 30px;
+            }
+        }
+    }
+
+    .my-ranking {
+        height: 190px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        padding-left: 104px;
+        padding-right: 30px;
+        border-bottom: 30px solid $bg-color;
+
+        .van-image {
+            margin-right: 20px;
+        }
+
+        .my-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-weight: 700;
+            line-height: 1.8;
+
+            .my-name {
+                font-size: 30px;
+                color: $text-color
+            }
+
+            .my-desp {
+                font-size: 24px;
+                color: #bbb;
+            }
+        }
+
+        .my-credit-box {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 777;
+            color: #bbb;
+            margin-left: auto;
+
+            .credit {
+                margin-right: 14px;
+                font-size: 50px;
+                color: #ff9f4d;
+            }
+        }
+
+        &.ranking-list {
+            padding-left: 0;
+            border-bottom: none;
+
+            .ranking-left {
+                width: 60px;
+                height: 80px;
+                font-size: 0;
+                margin: 0 20px;
+                text-align: center;
+
+                .van-image {
+                    margin-right: 0;
+                }
+
+                .ranking-left-number{
+                    font-size: 60px;
+                    color: $active-color;
+                }
+            }
+
+            .ranking-right {
+                flex: 1;
+                display: flex;
+            }
+        }
+    }
+
 }
