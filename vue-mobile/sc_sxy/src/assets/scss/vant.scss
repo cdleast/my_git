@@ -83,3 +83,17 @@
         border-bottom: 1px solid $active-color;
     }
 }
+
+
+/**
+* cell 单元格
+*/
+.van-cell{
+    &::after{
+        left: 0;
+    }
+    .van-cell__title{
+        color: $text-color;
+        font-weight: 700;
+    }
+}

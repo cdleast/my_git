@@ -5,7 +5,7 @@
             <!-- 头部导航标题 -->
             <header-bar title="我的" :leftArrow="false">
                 <div slot="right">
-                    <span @click="onClickRight" class="icon icon-shezhi"></span>
+                    <span @click="$router.push('/myinfo/my-set')" class="icon icon-shezhi"></span>
                 </div>
             </header-bar>
 
@@ -26,15 +26,15 @@
 
         <div class="part">
             <van-row type="flex" justify="space-around">
-                <van-col span="6" @click="goMyRouse">
+                <van-col span="6" @click="$router.push('/home/recommend/course-all')">
                     <p class="num">{{ COURSE_NUM }}</p>
                     <p class="desp">我的课程</p>
                 </van-col>
-                <van-col span="6">
+                <van-col span="6" @click="$toast('敬请期待')">
                     <p class="num">0</p>
                     <p class="desp">我的考试</p>
                 </van-col>
-                <van-col span="6">
+                <van-col span="6" @click="$router.push('/home/recommend/knowledge-all')">
                     <p class="num">{{ COLLECTION_NUM }}</p>
                     <p class="desp">我的收藏</p>
                 </van-col>
@@ -112,7 +112,6 @@
 <script>
 import footerBar from "@/components/global/footer-bar";
 import homeApi from "@/api/home";
-import bus from "@/utils/eventBus"; // 全局事件总线,用于传递数据
 export default {
     name: "myinfo",
     components: {
@@ -121,7 +120,8 @@ export default {
     data() {
         return {
             COURSE_NUM: 0, // 我的课程数量
-            COLLECTION_NUM:0, // 我的收藏数量
+            COLLECTION_NUM: 0, // 我的收藏数量
+            active: 2,
             gridList: [
                 {
                     text: "我的问题",
@@ -168,6 +168,7 @@ export default {
     },
     created() {
         this.appCourseSum();
+        this.appMyCollections();
     },
     computed: {
         // 获取用户信息
@@ -188,19 +189,16 @@ export default {
             });
         },
 
-        // 跳转我的设置
-        onClickRight() {
-            this.$router.push("/myinfo/my-set");
-        },
-
-        // 跳转我的课程
-        goMyRouse() {
-            this.$router.push("/home/recommend/course-all");
+        // 我的知识列表(我收藏的)
+        async appMyCollections() {
+            await homeApi.appMyCollections().then(res => {
+                // console.log(res);
+            });
         }
     },
     destroyed() {
         // 跳转我的课程的时候显示我的课程列表
-        bus.$emit("tabActive", 2);
+        this.EventBus.$emit("tabActive", 2);
     }
 };
 </script>

@@ -416,6 +416,7 @@ export default {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.$toast("签到成功");
+                    this.appSignInList(this.defaultTime);
                     this.appDoYouSignIn(this.defaultTime);
                     this.appAccumulatedDays(this.defaultTime);
                     this.appMoodList(this.defaultTime);

@@ -14,7 +14,7 @@ import GL_Compoent from '@/components/index.js' // 全局注册组件
 import '@/permission' // 权限拦截，判断是否登录等
 import VueAwesomeSwiper from 'vue-awesome-swiper' // 轮播图插件
 import 'swiper/css/swiper.min.css' // 轮播图插件样式
-
+import '@/utils/eventBus/index' // 引入全局事件总线
 
 import axios from 'axios'
 Vue.prototype.$axios = axios
@@ -25,6 +25,7 @@ Vue.use(Vant) // 全局vant
 Vue.use(func) // 全局方法函数
 Vue.use(GL_Compoent) // 使用全局组件
 Vue.use(VueAwesomeSwiper) // 全局轮播图
+Vue.prototype.EventBus = new Vue() // 全局事件总线
 
 // Vue.config.productionTip = false
 // 开发环境 development, 生产环境 production 

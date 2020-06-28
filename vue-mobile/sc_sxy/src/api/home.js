@@ -273,7 +273,7 @@ export default {
     },
 
     /**
-     * 知识库/取消
+     * 知识库/取消收藏
     */
     appKnDeleteCollection(data) {
         return request({
@@ -345,6 +345,55 @@ export default {
     appAddKnPl(data) {
         return request({
             url: '/archivetemp-api/EXEXM_KNOWLEDGE_COMMENT.appAddKnPl.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    // 获取各种知识列表（精品知识，最新知识，知识分类下的知识）
+    // data.PAGE 页数（必填）
+    // data.NUM 每页显示的数据条数（必填）
+    // data.NAME 用于搜索的参数,不加参数则查询全部，加上则查询包含该名称的知识列表
+    // data.TYPE_ID 知识分类id
+    // data.IS_BOUTIQUE 是否精品 1是 2否
+    // data.IS_TOP 是否获取最新数据 true|false
+    // data.NOPAGE 是否分页 true|false
+    appKnAllList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE.appList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/获取知识分类
+    */
+    appKnowledgeCification(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_REPOSITORY_TYPE.appKnowledgeCification.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/我的知识列表(我收藏的)
+    */
+    appMyCollections(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE.appMyCollections.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 知识库/我的知识列表(我分享的)
+    */
+    appMyShare(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KNOWLEDGE.appMyShare.do',
             method: 'POST',
             params: data
         })

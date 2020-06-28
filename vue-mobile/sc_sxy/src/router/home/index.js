@@ -42,6 +42,7 @@ export default [
      * 知识库
     */
     { path: '/home/recommend/knowledge-all', name: 'knowledge-all', component: () => import('@/views/home/recommend/knowledge/knowledge-all') },
+    { path: '/home/recommend/knowledge-all-list', name: 'knowledge-all-list', component: () => import('@/views/home/recommend/knowledge/knowledge-all-list') },
     { path: '/home/recommend/knowledge-details', name: 'knowledge-details', component: () => import('@/views/home/recommend/knowledge/knowledge-details') },
     { path: '/home/recommend/knowledge-details-comments', name: 'knowledge-details-comments', component: () => import('@/views/home/recommend/knowledge/knowledge-details-comments') },
 

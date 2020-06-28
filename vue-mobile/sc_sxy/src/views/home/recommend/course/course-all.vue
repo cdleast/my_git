@@ -62,7 +62,6 @@
 <script>
 import homeApi from "@/api/home";
 import itemList from "@/components/home/item-list";
-import bus from "@/utils/eventBus"; // 全局事件总线,用于传递数据
 export default {
     name: "course-all",
     components: {
@@ -94,8 +93,7 @@ export default {
         this.appCoursesListAll(this.course);
         this.appCoursesCategory();
         this.appCoursesListMy(this.course);
-        bus.$on("tabActive", num => {
-            console.log(num)
+        this.EventBus.$on("tabActive", num => {
             this.active = num;
         });
     },
@@ -209,7 +207,7 @@ export default {
     },
     // 组件销毁时解除事件总线绑定的事件
     destroyed() {
-        bus.$off("tabActive");
+        this.EventBus.$off("tabActive");
     }
 };
 </script>

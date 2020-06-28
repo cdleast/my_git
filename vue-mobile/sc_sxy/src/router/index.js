@@ -18,7 +18,8 @@ Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/', redirect: '/home' },
-	...login, ...home, ...message, ...addres, ...secretary, ...myinfo
+	...login, ...home, ...message, ...addres, ...secretary, ...myinfo,
+	{ path: '/tabs', name: 'tabs', component: () => import('@/components/global/tabs') },
 ]
 
 const router = new VueRouter({

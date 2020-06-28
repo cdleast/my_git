@@ -1052,6 +1052,62 @@
 }
 
 
+// 知识库
+.knowledge-all /deep/ {
+    .tag-content {
+        padding: 30px;
+        font-size: 0;
+
+        .van-tag {
+            margin-right: 30px;
+        }
+    }
+
+    .tabs {
+        padding: 30px;
+        font-size: 0;
+
+        .van-tag {
+            margin-right: 20px;
+        }
+    }
+
+    .tabs-content {
+        padding: 0 30px;
+    }
+
+    .knowledge-empty {
+        margin-top: 200px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+
+        .line-1 {
+            font-size: 30px;
+            font-weight: 500;
+            color: $text-color;
+        }
+
+        .line-2 {
+            margin-top: 30px;
+            font-size: 26px;
+            font-weight: 500;
+            color: rgba(153,153,153,1);
+        }
+
+        .line-3{
+            margin-top: 30px;
+        }
+
+        .van-button{
+            min-width: 200px;
+        }
+    }
+}
+
+
+
 // 知识库详情
 .knowledge-details /deep/ {
     .details-content {
@@ -1618,7 +1674,7 @@
                     margin-right: 0;
                 }
 
-                .ranking-left-number{
+                .ranking-left-number {
                     font-size: 60px;
                     color: $active-color;
                 }
