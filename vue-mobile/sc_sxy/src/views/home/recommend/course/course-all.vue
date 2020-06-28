@@ -95,6 +95,7 @@ export default {
         this.appCoursesCategory();
         this.appCoursesListMy(this.course);
         bus.$on("tabActive", num => {
+            console.log(num)
             this.active = num;
         });
     },

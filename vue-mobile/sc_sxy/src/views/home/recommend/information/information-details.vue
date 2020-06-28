@@ -2,14 +2,14 @@
     <div class="information-details">
         <header-bar title="企业资讯详情"></header-bar>
 
-        <div class="details-content">
+        <div class="details-content" v-if="information">
             <div class="details-title">{{ information.TITLE }}</div>
             <div class="details-type-time">
                 <span class="details-type">{{ information.CHNL_NAME }}</span>
                 <span class="details-time">{{ information.PUBLISH_TIME }}</span>
             </div>
             <div class="details-main" v-html="information.CONTENT"></div>
-            <div class="details-img" :style="{backgroundImage:'url('+information.FILE[0].FILE_PATH+')'}"></div>
+            <div class="details-img" :style="{backgroundImage:'url('+ bgImg +')'}"></div>
         </div>
     </div>
 </template>
@@ -25,6 +25,16 @@ export default {
     },
     created() {
         this.appInformation();
+    },
+    computed: {
+        bgImg() {
+            return (
+                this.information &&
+                this.information.FILE &&
+                this.information.FILE[0] &&
+                this.information.FILE[0].FILE_PATH
+            );
+        }
     },
     methods: {
         async appInformation() {

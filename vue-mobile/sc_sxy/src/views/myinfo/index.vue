@@ -3,11 +3,11 @@
         <!-- 头部 -->
         <div class="header">
             <!-- 头部导航标题 -->
-            <van-nav-bar title="我的" right-text="按钮" @click-right="onClickRight" :border="false">
-                <template #right>
-                    <van-icon name="setting-o" />
-                </template>
-            </van-nav-bar>
+            <header-bar title="我的" :leftArrow="false">
+                <div slot="right">
+                    <span @click="onClickRight" class="icon icon-shezhi"></span>
+                </div>
+            </header-bar>
 
             <div class="users">
                 <van-image
@@ -26,8 +26,8 @@
 
         <div class="part">
             <van-row type="flex" justify="space-around">
-                <van-col span="6">
-                    <p class="num">4</p>
+                <van-col span="6" @click="goMyRouse">
+                    <p class="num">{{ COURSE_NUM }}</p>
                     <p class="desp">我的课程</p>
                 </van-col>
                 <van-col span="6">
@@ -35,7 +35,7 @@
                     <p class="desp">我的考试</p>
                 </van-col>
                 <van-col span="6">
-                    <p class="num">1</p>
+                    <p class="num">{{ COLLECTION_NUM }}</p>
                     <p class="desp">我的收藏</p>
                 </van-col>
             </van-row>
@@ -111,6 +111,8 @@
 
 <script>
 import footerBar from "@/components/global/footer-bar";
+import homeApi from "@/api/home";
+import bus from "@/utils/eventBus"; // 全局事件总线,用于传递数据
 export default {
     name: "myinfo",
     components: {
@@ -118,7 +120,8 @@ export default {
     },
     data() {
         return {
-            user: {}, // 账户信息
+            COURSE_NUM: 0, // 我的课程数量
+            COLLECTION_NUM:0, // 我的收藏数量
             gridList: [
                 {
                     text: "我的问题",
@@ -163,16 +166,41 @@ export default {
             ]
         };
     },
+    created() {
+        this.appCourseSum();
+    },
     computed: {
+        // 获取用户信息
         getUser() {
             return this.$store.getters.user._DATA_[0];
         }
     },
     methods: {
+        // 获取我的课程数量
+        async appCourseSum() {
+            await homeApi.appCourseSum().then(res => {
+                if (res.status === 200) {
+                    this.COURSE_NUM = res.data.COURSE_NUM;
+                    this.COLLECTION_NUM = res.data.COLLECTION_NUM;
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
+        },
+
         // 跳转我的设置
         onClickRight() {
             this.$router.push("/myinfo/my-set");
+        },
+
+        // 跳转我的课程
+        goMyRouse() {
+            this.$router.push("/home/recommend/course-all");
         }
+    },
+    destroyed() {
+        // 跳转我的课程的时候显示我的课程列表
+        bus.$emit("tabActive", 2);
     }
 };
 </script>

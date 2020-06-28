@@ -153,6 +153,16 @@ export default {
     },
 
     /**
+     * 金牌课程/我的课程数量/我的收藏数量
+    */
+    appCourseSum() {
+        return request({
+            url: '/archivetemp-api/EXEXM_INTEGRAL_INFO_V.appCourseSum.do',
+            method: 'POST'
+        })
+    },
+
+    /**
      * 行业优秀课程
     */
     appExcellentCourse() {

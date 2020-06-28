@@ -396,6 +396,8 @@ export default {
                     return;
                 }
                 if (_MSG_.includes("OK")) {
+                    this.message = '';
+                    this.comDialogRate = 1;
                     this.commentsShow = false; // 关闭弹窗
                     // 重新拉取课程详情数据，1.更新评字颜色状态，2.检查是否需要弹出添加奖励提示窗
                     this.appQueryComments();

@@ -16,11 +16,20 @@ export default [
     { path: '/search/list', name: 'search-list', component: () => import('@/views/home/search/search-list') },
 
     /**
-     * 推荐子页面
+     * 签到
     */
     { path: '/home/recommend/signin', name: 'signin', component: () => import('@/views/home/recommend/signin') },
+
+    /**
+     * 排行榜
+    */
     { path: '/home/recommend/ranking', name: 'ranking', component: () => import('@/views/home/recommend/ranking') },
+
+    /**
+     * 直播
+    */
     { path: '/home/recommend/teaching', name: 'teaching', component: () => import('@/views/home/recommend/teaching') },
+    { path: '/home/recommend/teaching-history', name: 'teaching-history', component: () => import('@/views/home/recommend/teaching/teaching-history') },
 
     /**
      * 金牌课程

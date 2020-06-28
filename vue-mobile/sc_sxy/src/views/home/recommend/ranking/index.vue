@@ -7,7 +7,9 @@
             </div>
         </header-bar>
 
-        <van-tabs v-model="active" @click="onClick" sticky offset-top="46">
+        <van-empty v-if="rankingList.length > 0 && myRanking.length > 0" description="暂无数据" />
+
+        <van-tabs v-else v-model="active" @click="onClick" sticky offset-top="46">
             <van-tab
                 :title="item.ITEM_NAME | formatTabText"
                 v-for="item in RANGE_TYPE"
