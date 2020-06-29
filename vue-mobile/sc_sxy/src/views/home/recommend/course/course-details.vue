@@ -408,7 +408,7 @@ export default {
     },
     destroyed() {
         // 返回上一页时并传递1过去给van-tabs组件，让他显示下标为1的数据
-        bus.$emit("tabActive", 2);
+        this.$EventBus.$emit("tabActive", 2);
     }
 };
 </script>

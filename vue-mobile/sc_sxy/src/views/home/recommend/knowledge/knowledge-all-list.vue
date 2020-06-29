@@ -29,7 +29,7 @@ export default {
             let data = {
                 PAGE: "1",
                 NUM: "10",
-                IS_BOUTIQUE: "1"
+                TYPE_ID: this.$route.query.TYPE_ID
             };
             await homeApi.appKnAllList(data).then(res => {
                 let _MSG_ = res.data._MSG_;
@@ -40,13 +40,17 @@ export default {
                 }
             });
         }
+    },
+    destroyed() {
+        // 返回上一页时并传递1过去给van-tabs组件，让他显示下标为1的数据
+        this.EventBus.$emit("tabActive", 1);
     }
 };
 </script>
 
 <style lang='scss' scoped>
-.knowledge-all-list /deep/{
-    .van-cell{
+.knowledge-all-list /deep/ {
+    .van-cell {
         display: none;
     }
 }

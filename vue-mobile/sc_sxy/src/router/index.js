@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import login from './login' // 登录
+import global from './global' // 登录
 import home from './home' // 首页
 import message from './message' // 消息
 import addres from './addres' // 通讯录
@@ -18,8 +18,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/', redirect: '/home' },
-	...login, ...home, ...message, ...addres, ...secretary, ...myinfo,
-	{ path: '/tabs', name: 'tabs', component: () => import('@/components/global/tabs') },
+	...global, ...home, ...message, ...addres, ...secretary, ...myinfo
 ]
 
 const router = new VueRouter({

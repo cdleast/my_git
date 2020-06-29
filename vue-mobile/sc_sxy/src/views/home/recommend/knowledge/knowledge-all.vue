@@ -95,7 +95,7 @@ export default {
         return {
             title: "全部知识",
             search: "", // 搜索关键字
-            active: 2, // tab默认选项
+            active: 0, // tab默认选项
             knAllList3: [], // 精品知识3条
             knAllList10: [], // 获取最新知识1页10条
             KnowledgeCification: [], // 知识库分类
@@ -207,7 +207,7 @@ export default {
             this.$router.push({
                 path: "/home/recommend/knowledge-all-list",
                 query: {
-                    ID: item.ID,
+                    TYPE_ID: item.ID,
                     NAME: item.NAME
                 }
             });

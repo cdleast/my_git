@@ -378,6 +378,17 @@ export default {
     },
 
     /**
+     * 知识库/附件转换URL
+    */
+    fileConversionUrl(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_CONFIG_SERV.fileConversionUrl.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
      * 知识库/我的知识列表(我收藏的)
     */
     appMyCollections(data) {

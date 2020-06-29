@@ -165,6 +165,24 @@ export default {
         }
 
 
+        /**
+         * 转换文件大小KB格式
+        */
+        Vue.prototype.unitConverter = function (size) {
+            size = +size;
+            let KB = Math.pow(1024, 1);
+            let MB = Math.pow(1024, 2);
+            let GB = Math.pow(1024, 3);
+            if (size < KB && size >= 0) {
+                return `${size}B`;
+            }
+            if (size < MB && size >= KB) {
+                return `${Math.ceil(size / KB)}KB`;
+            }
+            if (size < GB && size >= MB) {
+                return `${Math.ceil(size / MB)}MB`;
+            }
+        }
 
     }
 }
