@@ -39,7 +39,7 @@
                     <p class="desp">我的收藏</p>
                 </van-col>
             </van-row>
-            <van-cell title="个人账单" class="icon icon-zhangdan" value="来一场奇妙的星际之旅" is-link />
+            <van-cell @click="$toast('敬请期待')" title="个人账单" class="icon icon-zhangdan" is-link />
         </div>
 
         <van-cell-group>
@@ -47,14 +47,14 @@
                 to="/myinfo/my-level"
                 title="我的等级"
                 class="icon icon-dengji"
-                value="LV.3"
+                value="LV.0"
                 is-link
             />
             <van-cell
                 to="/myinfo/my-charm"
                 title="我的魅力值"
                 class="icon icon-meili"
-                value="33"
+                :value="myCharisma"
                 is-link
             />
         </van-cell-group>
@@ -111,7 +111,7 @@
 
 <script>
 import footerBar from "@/components/global/footer-bar";
-import homeApi from "@/api/home";
+import myinfoApi from "@/api/myinfo";
 export default {
     name: "myinfo",
     components: {
@@ -121,7 +121,7 @@ export default {
         return {
             COURSE_NUM: 0, // 我的课程数量
             COLLECTION_NUM: 0, // 我的收藏数量
-            active: 2,
+            myCharisma: 0, // 我的魅力值数量
             gridList: [
                 {
                     text: "我的问题",
@@ -168,7 +168,7 @@ export default {
     },
     created() {
         this.appCourseSum();
-        this.appMyCollections();
+        this.appMyCharisma();
     },
     computed: {
         // 获取用户信息
@@ -177,9 +177,9 @@ export default {
         }
     },
     methods: {
-        // 获取我的课程数量
+        // 获取我的课程数量/我收藏的数量
         async appCourseSum() {
-            await homeApi.appCourseSum().then(res => {
+            await myinfoApi.appCourseSum().then(res => {
                 if (res.status === 200) {
                     this.COURSE_NUM = res.data.COURSE_NUM;
                     this.COLLECTION_NUM = res.data.COLLECTION_NUM;
@@ -189,10 +189,15 @@ export default {
             });
         },
 
-        // 我的知识列表(我收藏的)
-        async appMyCollections() {
-            await homeApi.appMyCollections().then(res => {
-                // console.log(res);
+        // 我的魅力值数量
+        async appMyCharisma() {
+            await myinfoApi.appMyCharisma().then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.myCharisma = parseInt(res.data._DATA_[0]._PK_);
+                } else {
+                    this.$toast(_MSG_);
+                }
             });
         }
     },

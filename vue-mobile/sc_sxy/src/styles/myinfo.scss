@@ -1,3 +1,4 @@
+// 我的主页面
 .myinfo /deep/ {
     height: auto;
     background-color: $bg-color;
@@ -105,5 +106,205 @@
         text-align: center;
         border-top: 20px solid #ededed;
         border-bottom: 20px solid #ededed;
+    }
+}
+
+
+// 我的等级
+.my-level {
+    .level-container {
+        padding: 40px 30px;
+
+        .header {
+            display: flex;
+            align-items: center;
+
+            .user-grade {
+                margin-left: 30px;
+                display: flex;
+                flex-direction: column;
+
+                .user-name {
+                    font-size: 30px;
+                    font-weight: 500;
+                    color: $text-color;
+                }
+
+                .user-grade-text {
+                    .lv {
+                        padding: 0 20px;
+                        height: 32px;
+                        background: #fff;
+                        border: 1px solid #ff602d;
+                        border-radius: 20px;
+                        text-align: center;
+                        line-height: 32px;
+                        font-size: 24px;
+                        font-weight: 500;
+                        color: #ff602d;
+                        margin-right: 10px;
+                    }
+
+                    .text {
+                        font-size: 24px;
+                        font-weight: 500;
+                        color: #999;
+                    }
+                }
+            }
+        }
+
+        .level-lv {
+            text-align: center;
+            position: relative;
+
+            .lv {
+                font-size: 40px;
+                font-weight: 500;
+                color: #fff;
+                position: absolute;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 111;
+            }
+        }
+
+        .level-show {
+            .level-text {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 24px;
+                font-weight: 500;
+                color: $text-color;
+            }
+
+            .level-progress {
+                margin-top: 20px;
+            }
+
+            .level-empirical {
+                display: flex;
+                justify-content: space-between;
+                font-size: 24px;
+                font-weight: 500;
+                color: #999;
+                margin: 20px 0;
+            }
+
+            .today-empirical {
+                font-size: 24px;
+                font-weight: 500;
+                color: $text-color;
+                text-align: center;
+
+                span {
+                    color: #FF602D;
+                }
+            }
+
+            .upgrade {
+                font-size: 24px;
+                font-weight: 500;
+                color: $text-color;
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 40px;
+            }
+        }
+    }
+
+    .level-brisk {
+        border-top: 20px solid #EEE;
+
+        .brisk-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            border-bottom: 1px solid #F5F5F5;
+            height: 130px;
+
+            .brisk-item-left {
+                display: flex;
+                flex-direction: column;
+
+                .title {
+                    font-size: 26px;
+                    font-weight: 500;
+                    color: $text-color;
+                }
+
+                .timer {
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: #999;
+                    margin-top: 10px;
+                }
+            }
+
+            .brisk-item-right {
+                font-size: 30px;
+                font-weight: 500;
+                color: $text-color;
+            }
+        }
+    }
+}
+
+// 我的魅力值
+.my-charm {
+    .charm-container {
+        padding: 40px 30px;
+
+        .charm-header {
+            text-align: center;
+
+            .average {
+                span {
+                    margin-right: 10px;
+                    font-size: 40px;
+                    font-weight: bold;
+                    color: $active-color;
+                }
+            }
+
+            .recent-text {
+                font-size: 24px;
+                font-weight: 500;
+                color: #666
+            }
+        }
+    }
+
+    .charm-show {
+        margin-top: 40px;
+
+        .charm-show-text {
+            padding-left: 30px;
+            font-size: 24px;
+            font-weight: 500;
+            color: $text-color;
+        }
+
+        .charm-introduce {
+            .charm-introduce-item {
+                border-top: 20px solid #F5F5F5;
+                padding: 30px;
+
+                .title {
+                    font-size: 26px;
+                    font-weight: 500;
+                    color: $text-color;
+                }
+
+                .text {
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: #666;
+                }
+            }
+        }
     }
 }
