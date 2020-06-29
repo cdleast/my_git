@@ -3,7 +3,7 @@ export default [
     { path: '/myinfo/my-set', name: 'my-set', component: () => import('@/views/myinfo/set') },
     { path: '/myinfo/my-level', name: 'my-level', component: () => import('@/views/myinfo/level') },
     { path: '/myinfo/my-charm', name: 'my-charm', component: () => import('@/views/myinfo/charm') },
-    { path: '/myinfo/my-education', name: 'my-education', component: () => import('@/views/myinfo/my-education') },
+    { path: '/myinfo/my-education', name: 'my-education', component: () => import('@/views/myinfo/education') },
     { path: '/myinfo/my-certificate', name: 'my-certificate', component: () => import('@/views/myinfo/my-certificate') },
     { path: '/myinfo/my-integral', name: 'my-integral', component: () => import('@/views/myinfo/my-integral') },
     { path: '/myinfo/my-task', name: 'my-task', component: () => import('@/views/myinfo/my-task') },

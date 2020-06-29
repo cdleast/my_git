@@ -253,6 +253,7 @@
     }
 }
 
+
 // 我的魅力值
 .my-charm {
     .charm-container {
@@ -304,6 +305,149 @@
                     font-weight: 500;
                     color: #666;
                 }
+            }
+        }
+    }
+}
+
+
+// 我的学历
+.my-education {
+    .education {
+        margin-top: 60px;
+        text-align: center;
+
+        .total {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .text {
+                font-size: 30px;
+                color: #666;
+                line-height: 30px;
+            }
+
+            .number {
+                color: $active-color;
+            }
+        }
+
+        .desp {
+            font-size: 24px;
+            font-weight: 500;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .look-detail-btn {
+            margin-top: 20px;
+
+            .van-button {
+                width: 160px;
+            }
+        }
+    }
+
+    .box {
+        width: 750px;
+        height: 200px;
+        padding-left: 30px;
+        margin-top: 100px;
+        overflow: auto;
+        border-bottom: 20px solid #F5F5F5;
+
+        .scroll-view {
+            height: 100px;
+            white-space: nowrap;
+            box-sizing: border-box;
+
+            .view-item {
+                width: 206px;
+                height: 10px;
+                display: inline-block;
+                vertical-align: middle;
+                background: #F5F5F5;
+                position: relative;
+
+                &.active .empty-circle {
+                    background-color: $active-color;
+                    border-color: $active-color;
+                }
+
+                .text {
+                    margin-top: 40px;
+                    font-size: 30px;
+                    display: inline-block;
+                }
+
+                .first-circle {
+                    width: 14px;
+                    height: 14px;
+                    background-color: #BFBFBF;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    margin-top: -8px;
+                    border-radius: 50%;
+                }
+
+                .empty-circle {
+                    width: 26px;
+                    height: 26px;
+                    background: white;
+                    border: 1px solid #bfbfbf;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    margin-top: -14px;
+                }
+
+                &:last-child {
+                    margin-right: 30px;
+                }
+
+                &:last-child::before {
+                    content: '';
+                    width: 14px;
+                    height: 14px;
+                    background-color: #BFBFBF;
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    margin-top: -8px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    .hint {
+        font-size: 28px;
+        font-weight: 500;
+        color: $text-color;
+        padding: 30px;
+
+        .title {
+            span {
+                color: $active-color;
+            }
+        }
+
+        .score-box {
+            text-align: center;
+
+            .van-circle {
+                margin-top: 100px;
+            }
+
+            .text {
+                margin-top: 30px;
+                font-size: 28px;
+                font-weight: 500;
+                color: $text-color;
             }
         }
     }

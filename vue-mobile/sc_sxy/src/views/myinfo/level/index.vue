@@ -1,7 +1,7 @@
 <template>
     <div class="my-level">
-        <van-nav-bar title="我的等级" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
-
+        <header-bar title="我的等级"></header-bar>
+        
         <div class="level-container">
             <div class="header">
                 <van-image

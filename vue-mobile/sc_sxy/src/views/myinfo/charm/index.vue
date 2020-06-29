@@ -1,6 +1,6 @@
 <template>
     <div class="my-charm">
-        <van-nav-bar title="我的魅力" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+        <header-bar title="我的魅力"></header-bar>
 
         <div class="charm-container">
             <div class="charm-header">
