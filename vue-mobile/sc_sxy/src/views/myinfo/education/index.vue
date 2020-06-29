@@ -20,29 +20,9 @@
                 <div class="view-item">
                     <span class="first-circle"></span>
                 </div>
-                <div class="view-item">
+                <div class="view-item" v-for="(item, index) in degreeList" :key="index" :class="{'active': item.active}">
                     <span class="empty-circle"></span>
-                    <span class="text">1</span>
-                </div>
-                <div class="view-item">
-                    <span class="empty-circle"></span>
-                    <span class="text">2</span>
-                </div>
-                <div class="view-item active">
-                    <span class="empty-circle"></span>
-                    <span class="text">3</span>
-                </div>
-                <div class="view-item">
-                    <span class="empty-circle"></span>
-                    <span class="text">4</span>
-                </div>
-                <div class="view-item">
-                    <span class="empty-circle"></span>
-                    <span class="text">5</span>
-                </div>
-                <div class="view-item">
-                    <span class="empty-circle"></span>
-                    <span class="text">6</span>
+                    <span class="text">{{ item.title }}</span>
                 </div>
             </div>
         </div>
@@ -65,7 +45,33 @@ export default {
     name: "my-education",
     data() {
         return {
-            currentRate: 0,
+            degreeList: [
+                {
+                    title: "1",
+                    active: false
+                },
+                {
+                    title: "2",
+                    active: false
+                },
+                {
+                    title: "3",
+                    active: true
+                },
+                {
+                    title: "4",
+                    active: false
+                },
+                {
+                    title: "5",
+                    active: false
+                },
+                {
+                    title: "6",
+                    active: false
+                }
+            ],
+            currentRate: 0
         };
     }
 };
