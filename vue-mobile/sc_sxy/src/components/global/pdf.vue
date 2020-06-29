@@ -16,9 +16,6 @@
 <script>
 import homeApi from "@/api/home";
 import pdf from "vue-pdf";
-var loadingTask = pdf.createLoadingTask(
-    "http://124.42.41.53:8080/archivetemp-api/file/0RP0GTzFJ34WUbPdcJkr.pdf"
-);
 export default {
     name: "pdf-preview",
     components: {

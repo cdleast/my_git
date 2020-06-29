@@ -1,6 +1,6 @@
 <template>
     <div class="knowledge-item-list">
-        <van-cell :title="title" is-link />
+        <van-cell :title="title" is-link v-if="isShow" />
         <div
             class="knowledge-item van-hairline--bottom"
             v-for="item in knAllList"
@@ -35,6 +35,10 @@ export default {
         },
         knAllList: {
             type: Array
+        },
+        isShow: {
+            type: Boolean,
+            default: true
         }
     },
     methods: {

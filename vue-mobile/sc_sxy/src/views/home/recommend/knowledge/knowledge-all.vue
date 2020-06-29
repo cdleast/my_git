@@ -11,10 +11,25 @@
         <van-tabs v-model="active" @click="onClick" class="van-hairline--top" animated>
             <van-tab title="全部知识">
                 <!-- 精品知识 -->
-                <knowledge-item-list :knAllList="knAllList3" :title="'精品知识'"></knowledge-item-list>
+                <knowledge-item-list
+                    v-if="searchKnAllList.length<=0"
+                    :knAllList="knAllList3"
+                    :title="'精品知识'"
+                ></knowledge-item-list>
 
                 <!-- 最新知识 -->
-                <knowledge-item-list :knAllList="knAllList10" :title="'最新知识'"></knowledge-item-list>
+                <knowledge-item-list
+                    v-if="searchKnAllList.length<=0"
+                    :knAllList="knAllList10"
+                    :title="'最新知识'"
+                ></knowledge-item-list>
+
+                <!-- 搜索返回的全部知识 -->
+                <knowledge-item-list
+                    :isShow="false"
+                    v-if="searchKnAllList.length>0"
+                    :knAllList="searchKnAllList"
+                ></knowledge-item-list>
             </van-tab>
             <van-tab title="知识分类">
                 <div
@@ -22,17 +37,30 @@
                     v-for="(item,index) in KnowledgeCification.CHILD"
                     :key="index"
                 >
-                    <van-cell :title="item.NAME" is-link />
-                    <div class="tag-content van-hairline--bottom" v-if="item.CHILD">
-                        <van-tag
-                            v-for="tag in item.CHILD"
-                            :key="tag.ID"
-                            round
-                            type="primary"
-                            size="large"
-                            @click="onKnowledgeList(tag)"
-                        >{{ tag.NAME }}</van-tag>
-                    </div>
+                    <template v-if="!isCification">
+                        <van-cell :title="item.NAME" is-link />
+                        <div class="tag-content van-hairline--bottom" v-if="item.CHILD">
+                            <van-tag
+                                v-for="tag in item.CHILD"
+                                :key="tag.ID"
+                                round
+                                type="primary"
+                                size="large"
+                                @click="onKnowledgeList(tag)"
+                            >{{ tag.NAME }}</van-tag>
+                        </div>
+                    </template>
+
+                    <template v-if="isCification">
+                        <div class="tag-content van-hairline--bottom">
+                            <van-tag
+                                round
+                                type="primary"
+                                size="large"
+                                @click="onKnowledgeList(item)"
+                            >{{ item.NAME }}</van-tag>
+                        </div>
+                    </template>
                 </div>
             </van-tab>
             <van-tab title="我的知识">
@@ -101,7 +129,9 @@ export default {
             KnowledgeCification: [], // 知识库分类
             cur: 0, // 我的知识选中
             myCollections: [], // 我的知识列表(我收藏的)
-            myShare: [] // 我的知识列表(我分享的)
+            myShare: [], // 我的知识列表(我分享的)
+            searchKnAllList: [], // 搜索返回的全部知识
+            isCification: false // 是否搜索知识分类
         };
     },
     created() {
@@ -150,8 +180,11 @@ export default {
         },
 
         // 获取知识分类
-        async appKnowledgeCification() {
-            await homeApi.appKnowledgeCification().then(res => {
+        async appKnowledgeCification(NAME) {
+            let data = {
+                NAME: NAME
+            };
+            await homeApi.appKnowledgeCification(data).then(res => {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.KnowledgeCification = res.data._DATA_;
@@ -177,6 +210,24 @@ export default {
             });
         },
 
+        // 查询全部知识
+        async searchAppKnAllList(NAME) {
+            let data = {
+                NUM: 10,
+                PAGE: 1,
+                NAME: NAME
+            };
+            await homeApi.appKnAllList(data).then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.isCification = false;
+                    this.searchKnAllList = res.data._DATA_;
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
+        },
+
         // 我的知识列表(我分享的)
         async appMyShare() {
             let data = {
@@ -194,7 +245,27 @@ export default {
         },
 
         // 搜索内容
-        searchContent() {},
+        searchContent(val) {
+            if (val != "") {
+                this.search = val.trim();
+                switch (this.active) {
+                    case 0:
+                        this.searchAppKnAllList(this.search);
+                        break;
+                    case 1:
+                        this.isCification = true; // 开启搜索
+                        this.appKnowledgeCification(this.search);
+                        break;
+                    case 2:
+                        console.log(2);
+                        // this.appCoursesListMy(this.course);
+                        break;
+                }
+            } else {
+                this.$toast('内容为空');
+                return;
+            }
+        },
 
         // tab切换事件，改变头部标题
         onClick(name, title) {
