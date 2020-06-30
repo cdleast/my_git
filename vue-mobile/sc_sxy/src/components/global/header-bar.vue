@@ -38,7 +38,7 @@ export default {
     }
     .icon {
         color: #fff;
-        font-size: 50px;
+        font-size: 40px;
     }
 }
 </style>
