@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import myinfoApi from "@/api/myinfo";
 export default {
     name: "my-education",
     data() {

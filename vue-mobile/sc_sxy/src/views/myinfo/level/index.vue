@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import myinfoApi from "@/api/myinfo";
 export default {
     name: "my-level",
     data() {

@@ -60,14 +60,9 @@
         </van-cell-group>
 
         <van-cell-group>
-            <van-cell
-                to="/myinfo/my-education"
-                title="我的学历"
-                class="icon icon-xueli"
-                value="新手上路"
-                is-link
-            />
+            <van-cell to="/myinfo/my-education" title="我的学历" class="icon icon-xueli" is-link />
             <van-cell to="/myinfo/my-certificate" title="我的证书" class="icon icon-zhengshu" is-link />
+            <van-cell to="/myinfo/my-achievement" title="我的成就" class="icon icon-zhankai" is-link />
         </van-cell-group>
 
         <van-cell-group>
@@ -75,26 +70,14 @@
                 to="/myinfo/my-integral"
                 title="我的积分"
                 class="icon icon-jifen"
-                value="1470"
+                :value="integralNum"
                 is-link
             />
-            <van-cell
-                to="/myinfo/my-task"
-                title="我的任务"
-                class="icon icon-renwu"
-                value="3个人未完成"
-                is-link
-            />
-            <van-cell
-                to="/myinfo/my-photo"
-                title="我的相册"
-                class="icon icon-xiangce"
-                value="3个人未完成"
-                is-link
-            />
+            <van-cell to="/myinfo/my-task" title="我的任务" class="icon icon-renwu" is-link />
+            <van-cell to="/myinfo/my-photo" title="我的相册" class="icon icon-xiangce" is-link />
         </van-cell-group>
 
-        <van-cell to="/myinfo/my-draft" title="我的草稿" class="icon icon-caogao" value="1470" is-link />
+        <van-cell to="/myinfo/my-draft" title="我的草稿" class="icon icon-caogao" is-link />
 
         <!-- 九宫格部分 -->
         <van-grid :column-num="3" class="grid" :border="false">
@@ -122,6 +105,7 @@ export default {
             COURSE_NUM: 0, // 我的课程数量
             COLLECTION_NUM: 0, // 我的收藏数量
             myCharisma: 0, // 我的魅力值数量
+            integralNum: 0, // 我的积分总数
             gridList: [
                 {
                     text: "我的问题",
@@ -161,7 +145,7 @@ export default {
                 {
                     text: "排行榜",
                     icon: "paihangbang",
-                    router: "/myinfo/my-ranking"
+                    router: "/home/recommend/ranking"
                 }
             ]
         };
@@ -169,6 +153,7 @@ export default {
     created() {
         this.appCourseSum();
         this.appMyCharisma();
+        this.appIntegralSum();
     },
     computed: {
         // 获取用户信息
@@ -195,6 +180,18 @@ export default {
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.myCharisma = parseInt(res.data._DATA_[0]._PK_);
+                } else {
+                    this.$toast(_MSG_);
+                }
+            });
+        },
+
+        // 我的积分总数
+        async appIntegralSum() {
+            await myinfoApi.appIntegralSum().then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.integralNum = parseInt(res.data._DATA_[0]._PK_);
                 } else {
                     this.$toast(_MSG_);
                 }

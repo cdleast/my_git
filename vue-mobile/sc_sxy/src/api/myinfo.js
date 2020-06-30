@@ -32,4 +32,26 @@ export default {
             params: data
         })
     },
+
+    /* 
+    * 我的积分总数
+    */
+    appIntegralSum(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_INTEGRAL_INFO_V.appIntegralSum.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 我的积分
+    */
+    appMyIntegral(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_INTEGRAL_INFO_V.appMyIntegral.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }

@@ -1,10 +1,11 @@
 <template>
     <div class="my-fans">
-        <van-nav-bar title="关注/粉丝" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+        <header-bar title="关注/粉丝"></header-bar>
     </div>
 </template>
 
 <script>
+import myinfoApi from "@/api/myinfo";
 export default {
     name: "my-fans",
     data() {
@@ -14,4 +15,5 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import "~@/styles/myinfo.scss";
 </style>

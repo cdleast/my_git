@@ -1,13 +1,13 @@
 <template>
-    <div class="my-task">
-        <header-bar title="我的任务"></header-bar>
+    <div class="my-achievement">
+         <header-bar title="我的成就"></header-bar>
     </div>
 </template>
 
 <script>
 import myinfoApi from "@/api/myinfo";
 export default {
-    name: "my-task",
+    name: "my-achievement",
     data() {
         return {};
     }

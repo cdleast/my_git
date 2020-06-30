@@ -1,10 +1,11 @@
 <template>
     <div class="my-share">
-        <van-nav-bar title="我的分享" left-arrow @click-left="$router.go(-1)"></van-nav-bar>
+        <header-bar title="我的分享"></header-bar>
     </div>
 </template>
 
 <script>
+import myinfoApi from "@/api/myinfo";
 export default {
     name: "my-share",
     data() {
@@ -14,4 +15,5 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import "~@/styles/myinfo.scss";
 </style>
