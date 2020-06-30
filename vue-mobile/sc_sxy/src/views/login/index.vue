@@ -73,6 +73,7 @@ export default {
                     // 存储token
                     this.$store.commit("SET_TOKEN", resp.USER_TOKEN);
                     localStorage.setItem("eleToken", resp.USER_TOKEN);
+                    localStorage.setItem("USER_CODE", res.data.USER_CODE);
                     this.guideShow = true; // 打开开屏广告
 
                     // 根据登录成功之后的token获取用户信息

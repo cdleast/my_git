@@ -237,3 +237,7 @@ a,button,input,optgroup,select,textarea {
  
 /* 加载不出来的图片不要显示灰色边框 */
 img:not([src]),img[src=""] {opacity: 0;}
+
+iframe{
+  border: none;
+}

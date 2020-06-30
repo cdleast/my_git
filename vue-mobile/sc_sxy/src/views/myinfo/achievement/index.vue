@@ -1,6 +1,6 @@
 <template>
     <div class="my-achievement">
-         <header-bar title="我的成就"></header-bar>
+        <header-bar title="我的成就"></header-bar>
     </div>
 </template>
 

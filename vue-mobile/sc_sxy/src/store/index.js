@@ -9,8 +9,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 	modules: {
 		login, home
-	},
-	plugins: [createVuexAlong()]
+	}
 })
 
 export default store

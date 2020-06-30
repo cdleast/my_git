@@ -1,5 +1,6 @@
 const TOKEN_KEY = 'eleToken'
 const USER_KEY = 'eleUser'
+const USER_CODE = 'USER_CODE'
 
 // 获取 token
 export function getToken() {
@@ -25,4 +26,5 @@ export function setUser(user) {
 export function removeToken() {
     localStorage.removeItem(TOKEN_KEY)
     localStorage.removeItem(USER_KEY)
+    localStorage.removeItem(USER_CODE)
 }

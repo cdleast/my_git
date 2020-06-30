@@ -5,19 +5,18 @@
             <!-- 头部导航标题 -->
             <header-bar title="我的" :leftArrow="false">
                 <div slot="right">
-                    <span @click="$router.push('/myinfo/my-set')" class="icon icon-shezhi"></span>
+                    <span @click="$router.push('/myinfo/set')" class="icon icon-shezhi"></span>
                 </div>
             </header-bar>
 
-            <div class="users">
+            <div class="users" >
                 <van-image
-                    v-for="(item,index) in getUser.IMAGE_FILE"
-                    :key="index"
+                    v-for="(item,index) in getUser.IMAGE_FILE" :key="index"
                     round
                     class="user-info"
                     :src="item.FILE_PATH"
                 />
-                <div class="user-desp">
+                <div class="user-desp" v-if="getUser">
                     <h2>{{getUser.USER_NAME}}</h2>
                     <p>{{getUser.EX_ODEPT_CODE__NAME}}</p>
                 </div>
@@ -158,7 +157,7 @@ export default {
     computed: {
         // 获取用户信息
         getUser() {
-            return this.$store.getters.user._DATA_[0];
+            return this.$store.getters.user._DATA_[0]
         }
     },
     methods: {
