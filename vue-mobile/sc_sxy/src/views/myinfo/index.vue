@@ -44,7 +44,7 @@
 
         <van-cell-group>
             <van-cell
-                to="/myinfo/my-level"
+                to="/myinfo/level"
                 title="我的等级"
                 class="icon icon-dengji"
                 value="LV.0"
@@ -60,24 +60,24 @@
         </van-cell-group>
 
         <van-cell-group>
-            <van-cell to="/myinfo/my-education" title="我的学历" class="icon icon-xueli" is-link />
-            <van-cell to="/myinfo/my-certificate" title="我的证书" class="icon icon-zhengshu" is-link />
-            <van-cell to="/myinfo/my-achievement" title="我的成就" class="icon icon-zhankai" is-link />
+            <van-cell to="/myinfo/education" title="我的学历" class="icon icon-xueli" is-link />
+            <van-cell to="/myinfo/certificate" title="我的证书" class="icon icon-zhengshu" is-link />
+            <van-cell to="/myinfo/achievement" title="我的成就" class="icon icon-zhankai" is-link />
         </van-cell-group>
 
         <van-cell-group>
             <van-cell
-                to="/myinfo/my-integral"
+                to="/myinfo/integral"
                 title="我的积分"
                 class="icon icon-jifen"
                 :value="integralNum"
                 is-link
             />
-            <van-cell to="/myinfo/my-task" title="我的任务" class="icon icon-renwu" is-link />
-            <van-cell to="/myinfo/my-photo" title="我的相册" class="icon icon-xiangce" is-link />
+            <van-cell to="/myinfo/task" title="我的任务" class="icon icon-renwu" is-link />
+            <van-cell to="/myinfo/photo" title="我的相册" class="icon icon-xiangce" is-link />
         </van-cell-group>
 
-        <van-cell to="/myinfo/my-draft" title="我的草稿" class="icon icon-caogao" is-link />
+        <van-cell to="/myinfo/draft" title="我的草稿" class="icon icon-caogao" is-link />
 
         <!-- 九宫格部分 -->
         <van-grid :column-num="3" class="grid" :border="false">
@@ -110,37 +110,37 @@ export default {
                 {
                     text: "我的问题",
                     icon: "wenti",
-                    router: "/myinfo/my-problem"
+                    router: "/myinfo/problem"
                 },
                 {
                     text: "我的回答",
                     icon: "huida",
-                    router: "/myinfo/my-answer"
+                    router: "/myinfo/answer"
                 },
                 {
                     text: "我的分享",
                     icon: "fenxiang",
-                    router: "/myinfo/my-share"
+                    router: "/myinfo/share"
                 },
                 {
                     text: "我的帖子",
                     icon: "tiezi",
-                    router: "/myinfo/my-post"
+                    router: "/myinfo/post"
                 },
                 {
                     text: "我的背包",
                     icon: "beibao",
-                    router: "/myinfo/my-backpack"
+                    router: "/myinfo/backpack"
                 },
                 {
                     text: "我的下载",
                     icon: "xiazai",
-                    router: "/myinfo/my-download"
+                    router: "/myinfo/download"
                 },
                 {
                     text: "关注/粉丝",
                     icon: "guanzhu",
-                    router: "/myinfo/my-fans"
+                    router: "/myinfo/fans"
                 },
                 {
                     text: "排行榜",

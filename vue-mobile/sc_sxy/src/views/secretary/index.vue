@@ -1,6 +1,6 @@
 <template>
     <div class="secretary">
-        secretary
+        <header-bar title="小秘书"></header-bar>
         <footer-bar></footer-bar>
     </div>
 </template>

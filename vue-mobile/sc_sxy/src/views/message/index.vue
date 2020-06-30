@@ -1,6 +1,6 @@
 <template>
     <div class="message">
-        message
+        <header-bar title="消息"></header-bar>
         <footer-bar></footer-bar>
     </div>
 </template>
