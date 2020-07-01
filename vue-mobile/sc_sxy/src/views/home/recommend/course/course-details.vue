@@ -55,7 +55,7 @@
                             round
                             width="50"
                             height="50"
-                            :src="items.LECTURER && items.LECTURER.IMAGE_FILE[0] && items.LECTURER.IMAGE_FILE[0].FILE_PATH"
+                            :src="items.LECTURER&&items.LECTURER.IMAGE_FILE&&items.LECTURER.IMAGE_FILE[0]&&items.LECTURER.IMAGE_FILE[0].FILE_PATH"
                         />
                         <div class="teacher-box">
                             <div
@@ -133,6 +133,7 @@
                             width="50"
                             height="50"
                             round
+                            v-if="items.USER_IMG[0]"
                             :src="items.USER_IMG[0].FILE_PATH"
                         />
                         <div class="comment-person">
@@ -214,12 +215,16 @@ export default {
         // 提取图片及默认背景图
         avatar() {
             return (
-                (this.courseDetails[0] &&
+                (this.courseDetails &&
+                    this.courseDetails[0] &&
                     this.courseDetails[0].FILE[0] &&
                     this.courseDetails[0].FILE[0].FILE_PATH) ||
                 "@/assets/default/default-avatar.png"
             );
         },
+
+        // 老师头像
+        teacheravatar() {},
 
         // 评价分值/星星部分
         score() {
@@ -395,7 +400,7 @@ export default {
                     return;
                 }
                 if (_MSG_.includes("OK")) {
-                    this.message = '';
+                    this.message = "";
                     this.comDialogRate = 1;
                     this.commentsShow = false; // 关闭弹窗
                     // 重新拉取课程详情数据，1.更新评字颜色状态，2.检查是否需要弹出添加奖励提示窗

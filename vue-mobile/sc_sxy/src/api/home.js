@@ -575,4 +575,48 @@ export default {
         })
     },
 
+    /* 
+    * 已完成计划数量
+    */
+    appFinishPlan(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LEARN_MAP_PLAN.appFinishPlan.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 已课程通过数量
+    */
+    appFinishCSum(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_COURSE.appFinishCSum.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 已累计获得学分
+    */
+    appTotalCredits(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LEARN_MAP_PLAN.appTotalCredits.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 学习中课程列表
+    */
+    appStudyCourse(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LEARN_MAP_PLAN.appStudyCourse.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
 }

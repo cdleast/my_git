@@ -457,6 +457,16 @@ export default {
             });
         },
 
+        // 跳转知识分类
+        onknowledgeAll(ID) {
+            this.$router.push({
+                path: "/home/recommend/knowledge-all",
+                query: {
+                    ID: ID
+                }
+            });
+        },
+
         // 跳转同事圈详情
         colleagueDetails(ID) {
             this.$router.push({
@@ -470,21 +480,19 @@ export default {
         // 胶囊广告跳转
         tapCapsule(item) {
             switch (item.TYPE) {
-                // case "LINK": // 超链接
-                //     break;
+                case "LINK": // 超链接
+                    this.jumpUrl(item.DATA);
+                    break;
                 case "EXEXM_COURSE_TRAINING_PLAN": // 课程
-                    this.onCourseDetails(item.ID);
+                    this.onCourseDetails(item.DATA);
                     break;
-                case "EXEXM_KNOWLEDGE_LIST": // 知识库
-                    this.$router.push({
-                        path: "/home/recommend/knowledge-details",
-                        query: {
-                            ID: item.ID
-                        }
-                    });
+                case "EXEXM_KNOWLEDGE_LIST": // 知识库详情
+                    this.onknowledgeDetails(item.DATA);
                     break;
-                // case "EXEXM_REPOSITORY_TYPE": // 知识分类
-                //     break;
+                case "EXEXM_REPOSITORY_TYPE": // 知识分类
+                    this.onknowledgeAll(item.DATA);
+                    this.EventBus.$emit("tabActive", 1);
+                    break;
             }
         },
 
