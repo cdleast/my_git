@@ -40,9 +40,65 @@
 
             <van-tabs class="third-section" v-model="active">
                 <van-tab title="在学课程">
-                    <learning-item-list :datas="studyCourse"></learning-item-list>
+                    <learning-item-list v-if="studyCourse" :datas="studyCourse"></learning-item-list>
+                    <van-empty v-else description="暂无在学课程" />
                 </van-tab>
-                <van-tab title="学习计划">内容 2</van-tab>
+                <van-tab title="学习计划">
+                    <div class="ramind-text-box">
+                        <div
+                            class="ramind-text"
+                            @click="$router.push('/home/learning/plan-remind')"
+                        >{{ studyPlan.THREE_DATE }}个计划将到期，{{ studyPlan.OVER_DATE }}个计划已逾期</div>
+                    </div>
+
+                    <div
+                        class="ramind-item-list"
+                        v-for="(item,index1) in studyPlan._DATA_"
+                        :key="index1+'2'"
+                        v-show="item.TYPE == '2'"
+                    >
+                        <div class="top">
+                            <van-image
+                                width="20"
+                                height="20"
+                                :src="require('@/assets/images/learning/xxjhpy.png')"
+                            />
+                            <div class="title">{{ item.NAME }}</div>
+                        </div>
+                        <div class="desp">
+                            <van-image
+                                width="18"
+                                height="18"
+                                :src="require('@/assets/images/learning/time-icon.png')"
+                            />
+                            <div class="title">建议在{{ item.PLAN_END_TIME }}前完成</div>
+                        </div>
+                        <van-progress :percentage="item.PERCENTAGE" pivot-text stroke-width="10" />
+                        <div class="progress">进度：{{ item.PERCENTAGE }}%</div>
+                    </div>
+
+                    <div
+                        class="ramind-item-list"
+                        v-for="(item,index2) in studyPlan._DATA_"
+                        :key="index2+'1'"
+                        v-show="item.TYPE == '1'"
+                    >
+                        <div class="top">
+                            <van-image
+                                width="20"
+                                height="20"
+                                :src="require('@/assets/images/learning/dttb.png')"
+                            />
+                            <div class="title">{{ item.NAME }}</div>
+                        </div>
+                        <div
+                            class="desp"
+                            v-if="item.MAP_XX"
+                        >共{{ item.MAP_XX[0].STAGE_SUM }}阶段 {{item.MAP_XX[0].GQ_SUM}}关卡</div>
+                        <van-progress :percentage="item.PERCENTAGE" pivot-text stroke-width="10" />
+                        <div class="progress">进度：{{ item.PERCENTAGE }}%</div>
+                    </div>
+                </van-tab>
             </van-tabs>
         </div>
     </div>
@@ -100,11 +156,12 @@ export default {
                     router: ""
                 }
             ],
-            active: 0,
+            active: 1,
             finishPlan: [], // 已完成计划数量
             finishCSum: [], // 已课程通过数量
             totalCredits: [], // 已累计获得学分
-            studyCourse: [] // 学习中课程列表
+            studyCourse: [], // 学习中课程列表
+            studyPlan: [] // 学习计划/筛选/逾期计划
         };
     },
     created() {
@@ -112,6 +169,7 @@ export default {
         this.appFinishCSum();
         this.appTotalCredits();
         this.appStudyCourse();
+        this.appStudyPlan();
     },
     methods: {
         // 已完成计划数量
@@ -150,7 +208,7 @@ export default {
             });
         },
 
-        // 学习中课程列表
+        // 在学课程/学习中课程列表
         async appStudyCourse() {
             let data = {
                 PAGE: 1,
@@ -164,7 +222,18 @@ export default {
                 } else {
                     this.$toast(_MSG_);
                 }
-                console.log(this.studyCourse);
+            });
+        },
+
+        // 学习计划/筛选/逾期计划
+        async appStudyPlan() {
+            await homeApi.appStudyPlan().then(res => {
+                let _MSG_ = res.data && res.data._MSG_;
+                if (res.status === 200) {
+                    this.studyPlan = res.data;
+                } else {
+                    this.$toast(_MSG_);
+                }
             });
         }
     }

@@ -61,4 +61,9 @@ export default [
      * 同事圈
     */
     { path: '/home/found/colleague-details', name: 'colleague-details', component: () => import('@/views/home/found/colleague/colleague-details') },
+
+    /**
+     * 学习-计划提醒
+    */
+    { path: '/home/learning/plan-remind', name: 'plan-remind', component: () => import('@/views/home/learning/plan/plan-remind') },
 ]

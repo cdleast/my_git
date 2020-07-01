@@ -619,4 +619,14 @@ export default {
         })
     },
 
+    /* 
+    * 学习计划/筛选/逾期计划
+    */
+    appStudyPlan(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LEARN_MAP_PLAN.appStudyPlan.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }
