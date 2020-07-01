@@ -17,7 +17,7 @@
                         <span class="icon icon-arrow-down"></span>
                     </div>
                 </div>
-                <item-list :datas="courseAll"></item-list>
+                <course-item-list :datas="courseAll"></course-item-list>
             </van-tab>
             <van-tab title="课程分类">
                 <div class="course-category" v-for="items in courseCate" :key="items.ID">
@@ -43,7 +43,7 @@
                         <span class="icon icon-arrow-down"></span>
                     </div>
                 </div>
-                <item-list :datas="courseMy"></item-list>
+                <course-item-list :datas="courseMy"></course-item-list>
             </van-tab>
         </van-tabs>
 
@@ -61,11 +61,11 @@
 
 <script>
 import homeApi from "@/api/home";
-import itemList from "@/components/home/item-list";
+import courseItemList from "@/components/home/course-item-list";
 export default {
     name: "course-all",
     components: {
-        itemList
+        courseItemList
     },
     data() {
         return {

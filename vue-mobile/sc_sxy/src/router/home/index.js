@@ -11,6 +11,11 @@ export default [
         ],
     },
 
+    /**
+     * 第三方地址
+    */
+    { path: '/third-url', name: 'third-url', component: () => import('@/views/home/recommend/third-url') },
+
     // 搜索页面
     { path: '/search', name: 'search', component: () => import('@/views/home/search') },
     { path: '/search/list', name: 'search-list', component: () => import('@/views/home/search/search-list') },

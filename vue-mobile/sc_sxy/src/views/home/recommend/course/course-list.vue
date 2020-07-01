@@ -4,17 +4,17 @@
 
         <van-empty v-if="!coursesList.length>0" description="暂无课程数据" />
 
-        <item-list v-else :datas="coursesList"></item-list>
+        <course-item-list v-else :datas="coursesList"></course-item-list>
     </div>
 </template>
 
 <script>
 import homeApi from "@/api/home";
-import itemList from "@/components/home/item-list";
+import courseItemList from "@/components/home/course-item-list";
 export default {
     name: "course-list",
     components: {
-        itemList
+        courseItemList
     },
     data() {
         return {

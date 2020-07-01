@@ -124,7 +124,7 @@
                 <span class="right-all" @click="onInforListAll">全部</span>
             </div>
 
-            <van-tabs  @click="onChnlList" class="company-info" v-model="active" :ellipsis="false">
+            <van-tabs @click="onChnlList" class="company-info" v-model="active" :ellipsis="false">
                 <van-tab v-for="items in chnlList" :key="items.ID">
                     <div
                         class="tab-title"
@@ -397,7 +397,12 @@ export default {
 
         // 轮播图跳转第三方链接
         jumpUrl(item) {
-            window.location.href = item;
+            this.$router.push({
+                path: "/third-url",
+                query: {
+                    item
+                }
+            });
         },
 
         // 热门头条点击跳转页面

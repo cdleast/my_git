@@ -1,5 +1,5 @@
 <template>
-    <div class="course-item">
+    <div class="course-item-list">
         <div
             @click="jumpDetails(items)"
             class="course-item van-hairline--bottom"
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-    name: "item-list",
+    name: "course-item-list",
     props: {
         datas: {
             type: Array
@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.course-item {
+.course-item-list {
     .course-item {
         display: flex;
         flex-direction: row;

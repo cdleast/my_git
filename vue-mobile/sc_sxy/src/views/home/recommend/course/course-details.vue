@@ -188,7 +188,6 @@
 
 <script>
 import homeApi from "@/api/home";
-import bus from "@/utils/eventBus"; // 全局事件总线,用于传递数据
 export default {
     name: "course-details",
     data() {
