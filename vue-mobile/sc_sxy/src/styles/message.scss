@@ -56,64 +56,6 @@
     }
 }
 
-// 企业公告列表
-.enterprise-announcement {
-    .list {
-        padding: 20px 30px;
-
-        .list-item {
-            display: flex;
-            flex-direction: column;
-
-            .userinfo {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 20px 0 10px;
-
-                .username {
-                    margin-left: 20px;
-                    font-size: 24px;
-                    font-weight: 500;
-                    color: $text-color;
-                }
-            }
-
-            .title {
-                font-size: 30px;
-                font-weight: bold;
-                color: $text-color;
-                line-height: 60px;
-            }
-
-            .content {
-                font-size: 24px;
-                font-weight: 500;
-                color: #767676;
-                line-height: 40px;
-                padding: 10px 0;
-            }
-
-            .bottom {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                padding: 5px 0 10px;
-
-                .time,
-                .type,
-                .icon {
-                    font-size: 24px;
-                    font-weight: 500;
-                    color: #9d9d9d;
-                }
-            }
-        }
-    }
-}
-
-
 // 企业公告消息列表详情
 .enterprise-details {
     height: 100%;
