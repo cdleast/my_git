@@ -78,7 +78,7 @@ export default {
                 {
                     src: require("@/assets/images/learning/icon_xuexi_kaoshirenwu@3x.png"),
                     text: "考试任务",
-                    router: ""
+                    router: "/home/learning/exam-task"
                 },
                 {
                     src: require("@/assets/images/learning/icon_xuexi_zhishiku@3x.png"),

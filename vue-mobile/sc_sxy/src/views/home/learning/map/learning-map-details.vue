@@ -58,6 +58,7 @@
                                 width="72"
                                 height="51"
                                 class="img"
+                                v-if="item.COVER[0]"
                                 :src="item.COVER[0].FILE_PATH"
                             />
                             <div class="desp van-ellipsis">{{ item.SHOW_COURSE }}</div>

@@ -444,7 +444,7 @@ export default {
     },
 
     /* 
-    * 签到保存 
+     * 签到保存 
     */
     appSignIn(data) {
         return request({
@@ -455,7 +455,7 @@ export default {
     },
 
     /* 
-    * 自动签到
+     * 自动签到
     */
     appAutomaticSignIn(data) {
         return request({
@@ -466,7 +466,7 @@ export default {
     },
 
     /* 
-    * 今日签到奖励
+     * 今日签到奖励
     */
     appSignInAwardToday(data) {
         return request({
@@ -477,7 +477,7 @@ export default {
     },
 
     /* 
-    * 额外签到奖励
+     * 额外签到奖励
     */
     appSignInAdditional(data) {
         return request({
@@ -488,7 +488,7 @@ export default {
     },
 
     /* 
-    * 当月累计签到天数
+     * 当月累计签到天数
     */
     appAccumulatedDays(data) {
         return request({
@@ -499,7 +499,7 @@ export default {
     },
 
     /* 
-    * 签到列表
+     * 签到列表
     */
     appSignInList(data) {
         return request({
@@ -510,7 +510,7 @@ export default {
     },
 
     /* 
-    * 当月心情列表
+     * 当月心情列表
     */
     appMoodList(data) {
         return request({
@@ -521,7 +521,7 @@ export default {
     },
 
     /* 
-    * 月累计签到奖励
+     * 月累计签到奖励
     */
     appAttendanceAward(data) {
         return request({
@@ -532,7 +532,7 @@ export default {
     },
 
     /* 
-    * 领取钱袋礼包
+     * 领取钱袋礼包
     */
     appGiftCollection(data) {
         return request({
@@ -543,7 +543,7 @@ export default {
     },
 
     /* 
-    * 排行榜类别+排行榜类型+签到心情+学习计划来源类型+公告类别+公告紧急程度
+     * 排行榜类别+排行榜类型+签到心情+学习计划来源类型+公告类别+公告紧急程度
     */
     SY_COMM_INFO(data) {
         return request({
@@ -554,7 +554,7 @@ export default {
     },
 
     /* 
-    * 我的排行榜值
+     * 我的排行榜值
     */
     appMyRanking(data) {
         return request({
@@ -565,7 +565,7 @@ export default {
     },
 
     /* 
-    * 排行榜列表
+     * 排行榜列表
     */
     appRankingListClass(data) {
         return request({
@@ -576,7 +576,7 @@ export default {
     },
 
     /* 
-    * 已完成计划数量
+     * 已完成计划数量
     */
     appFinishPlan(data) {
         return request({
@@ -587,7 +587,7 @@ export default {
     },
 
     /* 
-    * 已课程通过数量
+     * 已课程通过数量
     */
     appFinishCSum(data) {
         return request({
@@ -598,7 +598,7 @@ export default {
     },
 
     /* 
-    * 已累计获得学分
+     * 已累计获得学分
     */
     appTotalCredits(data) {
         return request({
@@ -609,7 +609,7 @@ export default {
     },
 
     /* 
-    * 学习中课程列表
+     * 学习中课程列表
     */
     appStudyCourse(data) {
         return request({
@@ -620,7 +620,7 @@ export default {
     },
 
     /* 
-    * 学习计划/筛选/逾期计划
+     * 学习计划/筛选/逾期计划
     */
     appStudyPlan(data) {
         return request({
@@ -631,7 +631,7 @@ export default {
     },
 
     /* 
-    * 学习地图
+     * 学习地图
     */
     appStudyMapList(data) {
         return request({
@@ -642,11 +642,24 @@ export default {
     },
 
     /* 
-    * 学习地图详情
+     * 学习地图详情
     */
     appMapDetails(data) {
         return request({
             url: '/archivetemp-api/EXEXM_LEARN_MAP.appMapDetails.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 考试任务-考试列表详情
+     * 从考试列表点开进入详情，详情数据
+     * 答题卡ID（必传) 示例：'2EZEhws9XV3TElmRoxvH'
+    */
+    appExamList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_KS_APP.appExamList.do',
             method: 'POST',
             params: data
         })

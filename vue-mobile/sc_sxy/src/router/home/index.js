@@ -68,4 +68,9 @@ export default [
     { path: '/home/learning/plan-remind', name: 'plan-remind', component: () => import('@/views/home/learning/plan/plan-remind') },
     { path: '/home/learning/learning-map', name: 'learning-map', component: () => import('@/views/home/learning/map/learning-map') },
     { path: '/home/learning/learning-map-details', name: 'learning-map-details', component: () => import('@/views/home/learning/map/learning-map-details') },
+
+    /**
+     * 考试
+    */
+    { path: '/home/learning/exam-task', name: 'exam-task', component: () => import('@/views/home/learning/exam/exam-task') },
 ]
