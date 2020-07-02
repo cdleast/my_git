@@ -48,56 +48,9 @@
                         <div
                             class="ramind-text"
                             @click="$router.push('/home/learning/plan-remind')"
-                        >{{ studyPlan.THREE_DATE }}个计划将到期，{{ studyPlan.OVER_DATE }}个计划已逾期</div>
+                        >{{ THREE_DATE }}个计划将到期，{{ OVER_DATE }}个计划已逾期</div>
                     </div>
-
-                    <div
-                        class="ramind-item-list"
-                        v-for="(item,index1) in studyPlan._DATA_"
-                        :key="index1+'2'"
-                        v-show="item.TYPE == '2'"
-                    >
-                        <div class="top">
-                            <van-image
-                                width="20"
-                                height="20"
-                                :src="require('@/assets/images/learning/xxjhpy.png')"
-                            />
-                            <div class="title">{{ item.NAME }}</div>
-                        </div>
-                        <div class="desp">
-                            <van-image
-                                width="18"
-                                height="18"
-                                :src="require('@/assets/images/learning/time-icon.png')"
-                            />
-                            <div class="title">建议在{{ item.PLAN_END_TIME }}前完成</div>
-                        </div>
-                        <van-progress :percentage="item.PERCENTAGE" pivot-text stroke-width="10" />
-                        <div class="progress">进度：{{ item.PERCENTAGE }}%</div>
-                    </div>
-
-                    <div
-                        class="ramind-item-list"
-                        v-for="(item,index2) in studyPlan._DATA_"
-                        :key="index2+'1'"
-                        v-show="item.TYPE == '1'"
-                    >
-                        <div class="top">
-                            <van-image
-                                width="20"
-                                height="20"
-                                :src="require('@/assets/images/learning/dttb.png')"
-                            />
-                            <div class="title">{{ item.NAME }}</div>
-                        </div>
-                        <div
-                            class="desp"
-                            v-if="item.MAP_XX"
-                        >共{{ item.MAP_XX[0].STAGE_SUM }}阶段 {{item.MAP_XX[0].GQ_SUM}}关卡</div>
-                        <van-progress :percentage="item.PERCENTAGE" pivot-text stroke-width="10" />
-                        <div class="progress">进度：{{ item.PERCENTAGE }}%</div>
-                    </div>
+                    <ramind-item-list :datas="studyPlan"></ramind-item-list>
                 </van-tab>
             </van-tabs>
         </div>
@@ -107,10 +60,12 @@
 <script>
 import homeApi from "@/api/home";
 import learningItemList from "@/components/home/learning-item-list";
+import ramindItemList from "@/components/home/ramind-item-list";
 export default {
     name: "learning",
     components: {
-        learningItemList
+        learningItemList,
+        ramindItemList
     },
     data() {
         return {
@@ -156,12 +111,14 @@ export default {
                     router: ""
                 }
             ],
-            active: 1,
+            active: 0,
             finishPlan: [], // 已完成计划数量
             finishCSum: [], // 已课程通过数量
             totalCredits: [], // 已累计获得学分
             studyCourse: [], // 学习中课程列表
-            studyPlan: [] // 学习计划/筛选/逾期计划
+            studyPlan: [], // 学习计划/筛选/逾期计划
+            THREE_DATE: 0, // 计划到期
+            OVER_DATE: 0 // 计划已逾期
         };
     },
     created() {
@@ -230,7 +187,9 @@ export default {
             await homeApi.appStudyPlan().then(res => {
                 let _MSG_ = res.data && res.data._MSG_;
                 if (res.status === 200) {
-                    this.studyPlan = res.data;
+                    this.studyPlan = res.data._DATA_;
+                    this.THREE_DATE = res.data.THREE_DATE;
+                    this.OVER_DATE = res.data.OVER_DATE;
                 } else {
                     this.$toast(_MSG_);
                 }

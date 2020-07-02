@@ -1800,50 +1800,22 @@
                     display: inline-block;
                 }
             }
+        }
+    }
+}
 
-            .ramind-item-list {
-                background: #fff;
-                box-shadow: 0px 3px 22px 1px rgba(4, 0, 2, 0.07);
-                border-radius: 16px;
-                padding: 20px;
-                margin-bottom: 20px;
 
-                &>div {
-                    margin: 16px 0;
-                }
+// 计划提醒
+.plan-remind {
+    .remind-container {
+        padding: 0 30px;
 
-                .top {
-                    display: flex;
-                    align-items: center;
-
-                    .van-image {
-                        margin-right: 10px;
-                    }
-
-                    .title {
-                        font-size: 30px;
-                        font-weight: 700;
-                        color: $text-color;
-                    }
-                }
-
-                .desp {
-                    font-size: 24px;
-                    color: $text-color;
-                    display: flex;
-                    align-items: center;
-
-                    .van-image {
-                        margin-right: 10px;
-                    }
-                }
-
-                .progress {
-                    font-size: 24px;
-                    font-weight: 500;
-                    color: #999;
-                }
-            }
+        .ramind-text {
+            font-size: 24px;
+            font-weight: 400;
+            color: #999;
+            margin-bottom: 30px;
+            margin-top: 24px;
         }
     }
 }
