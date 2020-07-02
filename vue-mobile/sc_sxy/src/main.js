@@ -27,9 +27,9 @@ Vue.use(GL_Compoent) // 使用全局组件
 Vue.use(VueAwesomeSwiper) // 全局轮播图
 Vue.prototype.EventBus = new Vue() // 全局事件总线
 
-// Vue.config.productionTip = false
+Vue.config.productionTip = false
 // 开发环境 development, 生产环境 production 
-Vue.config.productionTip = process.env.NODE_ENV === 'production'
+// Vue.config.productionTip = process.env.NODE_ENV === 'production'
 
 
 new Vue({

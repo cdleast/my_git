@@ -63,7 +63,9 @@ export default [
     { path: '/home/found/colleague-details', name: 'colleague-details', component: () => import('@/views/home/found/colleague/colleague-details') },
 
     /**
-     * 学习-计划提醒
+     * 学习
     */
     { path: '/home/learning/plan-remind', name: 'plan-remind', component: () => import('@/views/home/learning/plan/plan-remind') },
+    { path: '/home/learning/learning-map', name: 'learning-map', component: () => import('@/views/home/learning/map/learning-map') },
+    { path: '/home/learning/learning-map-details', name: 'learning-map-details', component: () => import('@/views/home/learning/map/learning-map-details') },
 ]

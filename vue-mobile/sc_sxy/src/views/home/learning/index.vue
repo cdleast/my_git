@@ -93,7 +93,7 @@ export default {
                 {
                     src: require("@/assets/images/learning/icon_xuexi_xuexiditu@3x.png"),
                     text: "学习地图",
-                    router: ""
+                    router: "/home/learning/learning-map"
                 },
                 {
                     src: require("@/assets/images/learning/icon_xuexi_jiangshiku@3x.png"),

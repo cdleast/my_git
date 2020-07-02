@@ -629,4 +629,26 @@ export default {
             params: data
         })
     },
+
+    /* 
+    * 学习地图
+    */
+    appStudyMapList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LEARN_MAP.appStudyMapList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /* 
+    * 学习地图详情
+    */
+    appMapDetails(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LEARN_MAP.appMapDetails.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }

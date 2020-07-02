@@ -5,6 +5,7 @@
             v-for="(item,index1) in datas"
             :key="index1+'2'"
             v-show="item.TYPE == '2'"
+            @click="onMapDetails(item.MAP_ID)"
         >
             <div class="top">
                 <van-image
@@ -31,6 +32,7 @@
             v-for="(item,index2) in datas"
             :key="index2+'1'"
             v-show="item.TYPE == '1'"
+            @click="onMapDetails(item.MAP_ID)"
         >
             <div class="top">
                 <van-image
@@ -56,6 +58,16 @@ export default {
     props: {
         datas: {
             type: Array
+        }
+    },
+    methods: {
+        onMapDetails(ID) {
+            this.$router.push({
+                path: "/home/learning/learning-map-details",
+                query: {
+                    ID
+                }
+            });
         }
     }
 };

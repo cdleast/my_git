@@ -332,7 +332,7 @@ export default {
         async onAddSupport(comID) {
             let data = {
                 COURSE_ID: this.courseID,
-                COMMENT_ID: COMID
+                COMMENT_ID: comID
             };
             await homeApi.appAddSupport(data).then(res => {
                 if (res.status === 200) {
@@ -360,7 +360,7 @@ export default {
         async onDeleteSupport(comID) {
             let data = {
                 COURSE_ID: this.courseID,
-                COMMENT_ID: COMID
+                COMMENT_ID: comID
             };
             await homeApi.appDeleteSupport(data).then(res => {
                 if (res.status === 200) {

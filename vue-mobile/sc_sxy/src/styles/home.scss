@@ -1819,3 +1819,167 @@
         }
     }
 }
+
+
+// 学习地图
+.learning-map {
+    .van-tab__pane {
+        padding: 30px;
+    }
+}
+
+// 学习地图详情
+.learning-map-details /deep/ {
+    height: 100%;
+    background: url('~@/assets/images/learning/bj1px.png') repeat-y;
+    background-size: 100% 100%;
+
+    .map-details-content {
+        padding: 30px;
+        font-size: 30px;
+        font-weight: 400;
+        color: $text-color;
+        line-height: 1.8;
+        background: url('~@/assets/images/learning/bj1px.png') repeat-y;
+        background-size: 100% 100%;
+
+        .content-title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .content-item {
+            .level {
+                font-weight: bold;
+                padding: 34px 0 20px;
+            }
+
+            .reward-content {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                font-weight: bold;
+
+                .reward-item {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-right: 30px;
+                    margin-left: 10px;
+
+                    .dot {
+                        margin-right: 8px;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        background-color: #fca055;
+                    }
+                }
+            }
+
+            .icon-container {
+                width: 100%;
+                height: 260px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .btn-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                font-size: 30px;
+                font-weight: bold;
+                color: $text-color;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .block {
+        width: 588px;
+        height: 642px;
+        border-radius: 20px;
+        background-color: #fff;
+
+        .block-progress {
+            margin-top: -60px;
+            width: 120px;
+            height: 120px;
+            border-radius: 100%;
+            border: 4px solid #e3e3e3;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+            span {
+                font-size: 36px;
+                font-weight: bold;
+                color: #fca65f;
+            }
+        }
+
+        .block-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: #6f6f6f;
+            margin-bottom: 30px;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .scroll-height {
+            height: 460px;
+            width: 588px;
+
+            .scroll-height-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex-direction: row;
+                margin: 0 20px;
+                height: 136px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                border: 1px solid #cacaca;
+                position: relative;
+
+                &.active {
+                    border: 1px solid #fca65f;
+                }
+
+                .img {
+                    margin: 0 20px;
+                }
+
+                .desp {
+                    flex: 1;
+                    max-width: 340px;
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: #6f6f6f;
+                }
+
+                .pic {
+                    position: absolute;
+                    right: 0;
+                    bottom: -4px;
+                    border-bottom-right-radius: 10px;
+                }
+            }
+        }
+    }
+}
