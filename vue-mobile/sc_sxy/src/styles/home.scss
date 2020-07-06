@@ -1985,7 +1985,84 @@
 }
 
 
-// 考试任务
-.exam-task{
-    
+// 讲师库
+.lecturer-library {
+    .lecturer-library-fixed {
+        position: fixed;
+        width: 100%;
+        top: 92px;
+        background: #fff;
+        z-index: 999;
+    }
+
+    // 头部固定部分主体内容
+    .lecturer-ranking {
+        padding: 10px 30px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .lecturer-ranking-title {
+            font-size: 34px;
+            font-weight: 500;
+            color: $active-color;
+        }
+
+        .lecturer-ranking-item {
+            display: flex;
+            align-items: center;
+
+            .van-image {
+                margin-right: 10px;
+            }
+
+            .icon {
+                color: $text-color;
+            }
+        }
+    }
+
+    .lecturer-total {
+        height: 70px;
+        padding: 0 30px;
+        background: #f6f6f6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .total-text {
+            font-size: 30px;
+            color: $text-color
+        }
+
+        .sort {
+            font-size: 30px;
+            color: $text-color;
+
+            .icon {
+                color: $text-color;
+            }
+        }
+    }
+
+    // 下拉加载
+    .van-pull-refresh {
+        margin-top: 310px;
+    }
+
+    // 右侧弹窗窗
+    .drawer-mask {
+        .bottom-btn {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: flex;
+
+            .van-button {
+                flex: 1;
+            }
+        }
+    }
 }

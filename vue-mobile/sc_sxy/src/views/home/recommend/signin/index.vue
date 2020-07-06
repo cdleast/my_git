@@ -205,7 +205,7 @@ export default {
             moodList: [], // 当月心情列表
             totalMood: 0, // 综合心情显示的下标
             signInList: [], // 签到列表
-            showPopup: false, // 签到弹窗
+            showPopup: true, // 签到弹窗
             signInAwardToday: [], // 今日签到奖励
             signInAdditional: [], // 额外签到奖励
             isActive: false, // 选中心情
@@ -336,7 +336,7 @@ export default {
                         // 有数据
                         for (let i = 0; i < this.moodList.length; i++) {
                             switch (this.moodList[i].MOOD) {
-                                case "1":
+                                case "5":
                                     this.grievedListLength = Number(
                                         this.moodList[i].COUNT_MOOD
                                     );
@@ -356,7 +356,7 @@ export default {
                                         this.moodList[i].COUNT_MOOD
                                     );
                                     break;
-                                case "5":
+                                case "1":
                                     this.colourListLength = Number(
                                         this.moodList[i].COUNT_MOOD
                                     );

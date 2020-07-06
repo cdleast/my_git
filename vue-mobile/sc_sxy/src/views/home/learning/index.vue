@@ -98,7 +98,7 @@ export default {
                 {
                     src: require("@/assets/images/learning/icon_xuexi_jiangshiku@3x.png"),
                     text: "讲师库",
-                    router: ""
+                    router: "/home/learning/lecturer-library"
                 },
                 {
                     src: require("@/assets/images/learning/icon_xuexi_tushuguan@3x.png"),

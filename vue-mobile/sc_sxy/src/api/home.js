@@ -664,4 +664,70 @@ export default {
             params: data
         })
     },
+
+    /**
+     * 讲师列表/点击筛选
+    */
+    appTeacherList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER.appTeacherList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 讲师排行榜（周榜）
+    */
+    appWeekList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER.appWeekList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 讲师排行榜（月榜）
+    */
+    appMonthList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER.appMonthList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 讲师排行榜（总榜）
+    */
+    appGeneralList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER.appGeneralList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 关注讲师
+    */
+    appAddTeFollow(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER_ATTENTION.appAddTeFollow.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 取消关注讲师
+    */
+    appKnDelTeFollow(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER_ATTENTION.appKnDelTeFollow.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }

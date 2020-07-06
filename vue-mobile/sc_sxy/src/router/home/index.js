@@ -73,4 +73,11 @@ export default [
      * 考试
     */
     { path: '/home/learning/exam-task', name: 'exam-task', component: () => import('@/views/home/learning/exam/exam-task') },
+
+    /**
+     * 讲师
+    */
+    { path: '/home/learning/lecturer-library', name: 'lecturer-library', component: () => import('@/views/home/learning/lecturer/lecturer-library') },
+    { path: '/home/learning/lecturer-focus', name: 'lecturer-focus', component: () => import('@/views/home/learning/lecturer/lecturer-focus') },
+    { path: '/home/learning/lecturer-ranking', name: 'lecturer-ranking', component: () => import('@/views/home/learning/lecturer/lecturer-ranking') },
 ]

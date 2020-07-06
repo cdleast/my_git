@@ -1,14 +1,14 @@
 /**
 * 按钮样式，已默认按钮为模板修改
 */
-.van-button {
-    background: $btn-color;
-    color: $bg-header-text-color;
-}
+// .van-button {
+//     background: $btn-color;
+//     color: $bg-header-text-color;
+// }
 
-.van-button--default {
-    border-color: $btn-color;
-}
+// .van-button--default {
+//     border-color: $btn-color;
+// }
 
 /**
 * 默认字体图标
@@ -96,4 +96,12 @@
         color: $text-color;
         font-weight: 700;
     }
+}
+
+
+/**
+* 内置样式下边框
+*/
+.van-hairline--bottom::after{
+    border-color: #ccc;
 }
