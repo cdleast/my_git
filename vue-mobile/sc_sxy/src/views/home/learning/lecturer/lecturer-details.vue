@@ -49,7 +49,9 @@
                 <div class="course-number">
                     <span>在线课程{{ teachereCords._OKCOUNT_ }}</span>
                 </div>
-                <div v-if="teachereCords._OKCOUNT_>0"></div>
+                <div v-if="teachereCords._OKCOUNT_>0">
+                    <course-item-list :datas="teachereCordsCourse"></course-item-list>
+                </div>
                 <van-empty v-else description="暂无数据" />
             </van-tab>
         </van-tabs>
@@ -58,12 +60,17 @@
 
 <script>
 import homeApi from "@/api/home";
+import courseItemList from "@/components/home/course/course-item-list";
 export default {
     name: "lecturer-details",
+    components: {
+        courseItemList
+    },
     data() {
         return {
-            teacherDetails: [],
-            teachereCords: [],
+            teacherDetails: [], // 讲师档案
+            teachereCords: [], // 讲师档案下授课记录
+            teachereCordsCourse: [], // 讲师档案下授课课程
             active: 1
         };
     },
@@ -98,6 +105,7 @@ export default {
                 let _MSG_ = res.data && res.data._MSG_;
                 if (res.status === 200) {
                     this.teachereCords = res.data;
+                    this.teachereCordsCourse = res.data._DATA_;
                 } else {
                     this.$toast(_MSG_);
                 }

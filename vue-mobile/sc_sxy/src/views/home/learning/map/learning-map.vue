@@ -17,7 +17,7 @@
 
 <script>
 import homeApi from "@/api/home";
-import ramindItemList from "@/components/home/ramind-item-list";
+import ramindItemList from "@/components/home/plan/ramind-item-list";
 export default {
     name: "learning-map",
     components: {

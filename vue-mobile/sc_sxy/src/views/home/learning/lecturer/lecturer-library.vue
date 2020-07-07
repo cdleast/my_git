@@ -73,7 +73,7 @@
 
 <script>
 import homeApi from "@/api/home";
-import lecturerItemList from "@/components/home/lecturer-item-list";
+import lecturerItemList from "@/components/home/lecturer/lecturer-item-list";
 export default {
     name: "lecturer-library",
     components: {

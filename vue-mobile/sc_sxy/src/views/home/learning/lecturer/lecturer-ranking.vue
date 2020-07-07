@@ -18,7 +18,7 @@
 
 <script>
 import homeApi from "@/api/home";
-import lecturerRankingList from "@/components/home/lecturer-ranking-list";
+import lecturerRankingList from "@/components/home/lecturer/lecturer-ranking-list";
 export default {
     name: "lecturer-ranking",
     components: {

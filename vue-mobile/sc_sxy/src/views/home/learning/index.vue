@@ -59,8 +59,8 @@
 
 <script>
 import homeApi from "@/api/home";
-import learningItemList from "@/components/home/learning-item-list";
-import ramindItemList from "@/components/home/ramind-item-list";
+import learningItemList from "@/components/home/learning/learning-item-list";
+import ramindItemList from "@/components/home/plan/ramind-item-list";
 export default {
     name: "learning",
     components: {

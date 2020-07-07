@@ -113,7 +113,7 @@
 
 <script>
 import homeApi from "@/api/home";
-import knowledgeItemList from "@/components/home/knowledge-item-list";
+import knowledgeItemList from "@/components/home/knowledge/knowledge-item-list";
 export default {
     name: "knowledge-all",
     components: {

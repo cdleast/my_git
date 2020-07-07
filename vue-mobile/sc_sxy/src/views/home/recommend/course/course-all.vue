@@ -61,7 +61,7 @@
 
 <script>
 import homeApi from "@/api/home";
-import courseItemList from "@/components/home/course-item-list";
+import courseItemList from "@/components/home/course/course-item-list";
 export default {
     name: "course-all",
     components: {

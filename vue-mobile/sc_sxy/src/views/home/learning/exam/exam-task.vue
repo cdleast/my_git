@@ -17,7 +17,7 @@
 
 <script>
 import homeApi from "@/api/home";
-import examTaskList from "@/components/home/exam-task-list";
+import examTaskList from "@/components/home/exam/exam-task-list";
 export default {
     name: "exam-task",
     components: {
