@@ -8,12 +8,14 @@
                     <div class="user-company">{{ item.SHOW_DEPT }}</div>
                     <div class="user-type">{{ item.TYPE__NAME }}</div>
                 </div>
-                <div
-                    class="subscribe-btn"
-                    v-if="item.IF_FOLLOWT === '2'"
-                    @click="onAddTeFollow(item)"
-                >关注</div>
-                <div class="subscribe-btn active" v-else @click="onKnDelTeFollow(item)">已关注</div>
+                <template v-if="isShow">
+                    <div
+                        class="subscribe-btn"
+                        v-if="item.IF_FOLLOWT === '2'"
+                        @click.stop="onAddTeFollow(item)"
+                    >关注</div>
+                    <div class="subscribe-btn active" v-else @click.stop="onKnDelTeFollow(item)">已关注</div>
+                </template>
             </div>
         </div>
     </div>
@@ -26,6 +28,10 @@ export default {
     props: {
         datas: {
             type: Array
+        },
+        isShow: {
+            type: Boolean,
+            default: true
         }
     },
     methods: {

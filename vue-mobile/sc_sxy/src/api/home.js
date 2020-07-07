@@ -752,4 +752,15 @@ export default {
             params: data
         })
     },
+
+    /**
+     * 我关注的讲师
+    */
+    appMyFollowT(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER_ATTENTION.appMyFollowT.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }
