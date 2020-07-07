@@ -730,4 +730,26 @@ export default {
             params: data
         })
     },
+
+    /**
+     * 讲师档案/讲师详情
+    */
+    appTeacherDetails(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER.appTeacherDetails.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 讲师档案下授课记录
+    */
+    appTeachereCords(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_LECTURER.appTeachereCords.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }

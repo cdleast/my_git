@@ -2,7 +2,7 @@
     <div class="lecturer-item-list">
         <div class="item-list" v-for="item in datas" :key="item.ID">
             <van-image round width="45" height="45" :src="item.IMAGE_FILE[0]['FILE_PATH']" />
-            <div class="item-list-info van-hairline--bottom">
+            <div class="item-list-info van-hairline--bottom" @click="appTeacherDetails(item.ID)">
                 <div class="user-info">
                     <div class="user-name">{{ item.SHOW_NAME }}</div>
                     <div class="user-company">{{ item.SHOW_DEPT }}</div>
@@ -57,6 +57,16 @@ export default {
                     this.$toast("取消关注成功");
                 } else {
                     this.$toast(_MSG_);
+                }
+            });
+        },
+
+        // 跳转讲师详情
+        appTeacherDetails(ID) {
+            this.$router.push({
+                path: "/home/learning/lecturer-details",
+                query: {
+                    ID
                 }
             });
         }

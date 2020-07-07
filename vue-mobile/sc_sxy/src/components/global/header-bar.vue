@@ -7,6 +7,7 @@
             placeholder
             :left-arrow="leftArrow"
             @click-left="$router.go(-1)"
+            :border="false"
         >
             <slot slot="left" name="left"></slot>
             <slot slot="title" name="title"></slot>
