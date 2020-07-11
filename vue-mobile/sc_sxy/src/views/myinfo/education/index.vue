@@ -33,7 +33,7 @@
                 <span>幼儿园</span>
             </div>
             <div class="score-box">
-                <van-circle v-model="currentRate" :rate="rate" :stroke-width="60" text="还需6分" />
+                <van-circle v-model="currentRate" :rate="100" :stroke-width="60" text="还需6分" />
                 <div class="text">学分值</div>
             </div>
         </div>

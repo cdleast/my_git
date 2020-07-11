@@ -25,7 +25,7 @@
                 />
 
                 <div class="btnorg">
-                    <van-button :disabled="disabled" round block native-type="submit">提交</van-button>
+                    <van-button type="info" :disabled="disabled" round block native-type="submit">提交</van-button>
                 </div>
             </van-form>
 

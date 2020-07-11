@@ -763,4 +763,27 @@ export default {
             params: data
         })
     },
+
+    /**
+     * 同事圈主题列表
+    */
+    appColleagueThemeList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MENENT_THEME.appColleagueThemeList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 同事圈列表
+    */
+    appColleagueList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS.appColleagueList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
 }

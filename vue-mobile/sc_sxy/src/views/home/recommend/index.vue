@@ -100,7 +100,7 @@
                 <span @click="allCourse" class="right-all">全部</span>
             </div>
             <div class="course-list" v-for="items in excellentCourse" :key="items.ID">
-                <div class="course-list-item" @click="courseDetails(items.ID)">
+                <div class="course-list-item" @click="onCourseDetails(items.ID)">
                     <div
                         class="course-pic-box van-hairline--surround"
                         :style="{backgroundImage:'url('+items.FILE[0].FILE_PATH+')'}"

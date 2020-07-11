@@ -18,8 +18,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/', redirect: '/home' },
-	...global, ...home, ...message, ...addres, ...secretary, ...myinfo,
-	{ path: '/ceshi', name: 'ceshi', component: () => import('@/ceshi.vue') },
+	...global, ...home, ...message, ...addres, ...secretary, ...myinfo
 ]
 
 const router = new VueRouter({

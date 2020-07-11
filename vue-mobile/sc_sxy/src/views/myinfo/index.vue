@@ -50,7 +50,7 @@
                 is-link
             />
             <van-cell
-                to="/myinfo/my-charm"
+                to="/myinfo/charm"
                 title="我的魅力值"
                 class="icon icon-meili"
                 :value="myCharisma"
