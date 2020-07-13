@@ -58,11 +58,6 @@ export default [
     { path: '/home/recommend/information-details', name: 'information-details', component: () => import('@/views/home/recommend/information/information-details') },
 
     /**
-     * 同事圈
-    */
-    { path: '/home/found/colleague-details', name: 'colleague-details', component: () => import('@/views/home/found/colleague/colleague-details') },
-
-    /**
      * 学习
     */
     { path: '/home/learning/plan-remind', name: 'plan-remind', component: () => import('@/views/home/learning/plan/plan-remind') },
@@ -81,4 +76,16 @@ export default [
     { path: '/home/learning/lecturer-focus', name: 'lecturer-focus', component: () => import('@/views/home/learning/lecturer/lecturer-focus') },
     { path: '/home/learning/lecturer-ranking', name: 'lecturer-ranking', component: () => import('@/views/home/learning/lecturer/lecturer-ranking') },
     { path: '/home/learning/lecturer-details', name: 'lecturer-details', component: () => import('@/views/home/learning/lecturer/lecturer-details') },
+
+    /**
+     * 主题列表
+    */
+    { path: '/home/found/theme-list', name: 'theme-list', component: () => import('@/views/home/found/theme/theme-list') },
+
+    /**
+     * 同事圈
+    */
+    { path: '/home/found/colleague-details', name: 'colleague-details', component: () => import('@/views/home/found/colleague/colleague-details') },
+
+
 ]

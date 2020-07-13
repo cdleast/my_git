@@ -163,41 +163,6 @@ export default {
     },
 
     /**
-     * 同事圈详情
-    */
-    appColleague(ID) {
-        return request({
-            url: '/archivetemp-api/EXEXM_MOMENTS.appColleague.do',
-            method: 'POST',
-            params: {
-                ID: ID
-            }
-        })
-    },
-
-    /**
-     * 同事圈点赞
-    */
-    appGiveLike(data) {
-        return request({
-            url: '/archivetemp-api/EXEXM_MOMENTS_LIKE.appGiveLike.do',
-            method: 'POST',
-            params: data
-        })
-    },
-
-    /**
-     * 同事圈取消点赞
-    */
-    appCancelLike(data) {
-        return request({
-            url: '/archivetemp-api/EXEXM_MOMENTS_LIKE.appCancelLike.do',
-            method: 'POST',
-            params: data
-        })
-    },
-
-    /**
      * 胶囊广告
     */
     appGetCapsule() {
@@ -781,6 +746,52 @@ export default {
     appColleagueList(data) {
         return request({
             url: '/archivetemp-api/EXEXM_MOMENTS.appColleagueList.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 同事圈详情
+    */
+    appColleague(ID) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS.appColleague.do',
+            method: 'POST',
+            params: {
+                ID: ID
+            }
+        })
+    },
+
+    /**
+     * 同事圈点赞
+    */
+    appGiveLike(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS_LIKE.appGiveLike.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 同事圈取消点赞
+    */
+    appCancelLike(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS_LIKE.appCancelLike.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 根据主题id获取同事圈列表
+    */
+    appColleagueByTheme(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS.appColleagueByTheme.do',
             method: 'POST',
             params: data
         })

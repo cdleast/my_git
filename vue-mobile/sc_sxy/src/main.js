@@ -15,11 +15,15 @@ import '@/permission' // 权限拦截，判断是否登录等
 import VueAwesomeSwiper from 'vue-awesome-swiper' // 轮播图插件
 import 'swiper/css/swiper.min.css' // 轮播图插件样式
 import '@/utils/eventBus/index' // 引入全局事件总线
+import Video from 'video.js' // 视频播放插件
+import 'video.js/dist/video-js.css' // 视频播放插件css
+
 
 import axios from 'axios'
 Vue.prototype.$axios = axios
 
 Vue.prototype.$fun = func
+Vue.prototype.$video = Video
 
 Vue.use(Vant) // 全局vant
 Vue.use(func) // 全局方法函数
