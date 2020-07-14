@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @click="isSlhShow">
         <div class="moments-post" v-for="(item,index) in datas" :key="index">
             <div class="post-left">
                 <van-image round width="45" height="45" :src="item.USER_IMG[0].FILE_PATH" />
@@ -42,21 +42,27 @@
                 </div>
                 <div class="toolbar">
                     <div class="timestamp">{{ item.distanceTime }}</div>
-                    <span @click="onSlhShow(index)" class="icon icon-shenglvehao">
-                        <transition name="van-slide-right">
-                            <div class="slide-right" v-show="cur === index">
-                                <div class="like like-comments-item">
-                                    <span class="icon icon-xin"></span>
-                                    <span>赞</span>
-                                    <!-- <span>取消</span> -->
+                    <div class="toolbar-right">
+                        <div class="toolbar-right-hidden">
+                            <transition name="van-slide-right">
+                                <div class="slide-right" v-show="cur === index">
+                                    <div
+                                        @click="item.isItLike === 'false'?onGiveLike(item.ID,item.LIKE_NUM):onCancelLike(item.ID,item.LIKE_NUM)"
+                                        class="like like-comments-item"
+                                    >
+                                        <span class="icon icon-xin"></span>
+                                        <span v-if="item.isItLike === 'false'">赞</span>
+                                        <span v-else>取消</span>
+                                    </div>
+                                    <div class="comment like-comments-item">
+                                        <span class="icon icon-pinglun"></span>
+                                        <span>评论</span>
+                                    </div>
                                 </div>
-                                <div class="comment like-comments-item">
-                                    <span class="icon icon-pinglun"></span>
-                                    <span>评论</span>
-                                </div>
-                            </div>
-                        </transition>
-                    </span>
+                            </transition>
+                        </div>
+                        <span @click.stop="onSlhShow(index)" class="icon icon-shenglvehao"></span>
+                    </div>
                 </div>
                 <div class="post-footer" v-if="item.likes.length>0">
                     <div class="footer-content">
@@ -71,6 +77,7 @@
 
 <script>
 import { ImagePreview } from "vant";
+import homeApi from "@/api/home";
 export default {
     name: "friends-item",
     data() {
@@ -111,9 +118,48 @@ export default {
         onSlhShow(index) {
             if (this.cur === index) {
                 this.cur = -1;
-            }else{
-                this.cur = index
+            } else {
+                this.cur = index;
             }
+        },
+
+        // 点击任何地方隐藏点赞取消弹窗
+        isSlhShow() {
+            this.cur = -1;
+        },
+
+        // 点赞
+        async onGiveLike(ID, LIKE_NUM) {
+            const data = {
+                MOMENTS_ID: ID,
+                LIKE_NUM: LIKE_NUM
+            };
+            await homeApi.appGiveLike(data).then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (_MSG_.includes("OK")) {
+                    // 重新获取数据
+                    this.$parent.appColleagueList();
+                } else {
+                    this.$toast("点赞失败");
+                }
+            });
+        },
+
+        // 取消点赞
+        async onCancelLike(ID, LIKE_NUM) {
+            const data = {
+                MOMENTS_ID: ID,
+                LIKE_NUM: LIKE_NUM
+            };
+            await homeApi.appCancelLike(data).then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (_MSG_.includes("OK")) {
+                    // 重新获取数据
+                    this.$parent.appColleagueList();
+                } else {
+                    this.$toast("取消点赞失败");
+                }
+            });
         }
     }
 };
@@ -165,7 +211,6 @@ export default {
         }
 
         .toolbar {
-            height: 60px;
             position: relative;
             top: 10px;
             display: flex;
@@ -177,17 +222,33 @@ export default {
                 font-size: 22px;
             }
 
+            .toolbar-right {
+                position: relative;
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                height: 82px;
+                .toolbar-right-hidden {
+                    overflow: hidden;
+                    position: absolute;
+                    right: 40px;
+                    height: 100%;
+                    width: 400px;
+                }
+            }
+
             .slide-right {
                 position: absolute;
-                right: 40px;
-                bottom: -10px;
+                right: 5px;
                 width: 360px;
-                height: 80px;
+                padding: 20px 0;
                 background: rgba(80, 85, 89, 1);
                 border-radius: 8px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                z-index: 999;
 
                 .like-comments-item {
                     flex: 1;
@@ -239,10 +300,21 @@ export default {
             }
         }
     }
-}
 
-.video-js {
-    width: 250px;
-    height: 400px;
+    .video-js {
+        width: 250px;
+        height: 400px;
+    }
+
+    .van-slide-right-enter-active,
+    .van-slide-right-leave-active {
+        transition: all 0.2s ease;
+    }
+
+    /* 定义进入过渡的开始状态 和 离开过渡的结束状态 */
+    .van-slide-right-enter,
+    .van-slide-right-leave-to {
+        transition: all 0.2s ease;
+    }
 }
 </style>
