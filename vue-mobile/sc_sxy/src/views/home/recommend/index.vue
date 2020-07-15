@@ -252,7 +252,9 @@ export default {
                             Object.keys(item).length > 0 &&
                             Object.keys(item.LECTURER).length > 0
                         ) {
-                            item.src = item.LECTURER.IMAGE_FILE[0].FILE_PATH;
+                            item.src =
+                                item.LECTURER.IMAGE_FILE[0] &&
+                                item.LECTURER.IMAGE_FILE[0].FILE_PATH;
                         }
                         return item;
                     })) ||

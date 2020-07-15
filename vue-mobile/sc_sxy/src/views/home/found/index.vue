@@ -69,7 +69,7 @@ export default {
                 } else {
                     this.$toast(_MSG_);
                 }
-                console.log(this.colleagueList);
+                console.log(this.colleagueList)
             });
         },
 

@@ -54,7 +54,10 @@
                                         <span v-if="item.isItLike === 'false'">赞</span>
                                         <span v-else>取消</span>
                                     </div>
-                                    <div class="comment like-comments-item">
+                                    <div
+                                        class="comment like-comments-item"
+                                        @click="onMesShow(item.ID,item.LIKE_NUM)"
+                                    >
                                         <span class="icon icon-pinglun"></span>
                                         <span>评论</span>
                                     </div>
@@ -70,8 +73,21 @@
                         <span class="nickname">{{ item.likes | likesSplit}}</span>
                     </div>
                 </div>
+                <div class="comments-content" v-for="i in item.COMMENT.CHILD" :key="i.ID">
+                    <span class="name">{{ i.S_UNAME }}:</span>
+                    <span class="content">{{ i.NAME }}</span>
+                </div>
             </div>
         </div>
+
+        <!-- 评论框 -->
+        <van-cell-group class="input-box" v-show="mesShow">
+            <van-field v-model="message" center autosize clearable>
+                <template #button>
+                    <van-button @click="onAddComment" size="small" type="primary">确认</van-button>
+                </template>
+            </van-field>
+        </van-cell-group>
     </div>
 </template>
 
@@ -83,7 +99,13 @@ export default {
     data() {
         return {
             startPosition: 0, // 图片预览起始位置索引
-            cur: -1
+            cur: -1, // 点赞评论按钮初始下标
+            message: "", // 评论内容
+            mesShow: false,
+            msgInfo: {
+                MOMENTS_ID: "",
+                COMMENT_NUM: ""
+            }
         };
     },
     props: {
@@ -158,6 +180,32 @@ export default {
                     this.$parent.appColleagueList();
                 } else {
                     this.$toast("取消点赞失败");
+                }
+            });
+        },
+
+        // 打开评论输入框
+        onMesShow(ID, LIKE_NUM) {
+            this.mesShow = true;
+            this.msgInfo.MOMENTS_ID = ID;
+            this.msgInfo.COMMENT_NUM = LIKE_NUM;
+        },
+
+        // 添加同事圈评论
+        async onAddComment() {
+            let data = {
+                MOMENTS_ID: this.msgInfo.MOMENTS_ID,
+                COMMENT_NUM: this.msgInfo.COMMENT_NUM,
+                CONTENT: this.message
+            };
+            await homeApi.appAddComment(data).then(res => {
+                let _MSG_ = res.data._MSG_;
+                if (res.status === 200) {
+                    this.mesShow = false;
+                    this.message = "";
+                    this.$parent.appColleagueList();
+                } else {
+                    this.$toast(_MSG_);
                 }
             });
         }
@@ -299,6 +347,21 @@ export default {
                 }
             }
         }
+
+        .comments-content {
+            background-color: #f3f3f5;
+            padding: 0 6px;
+            line-height: 40px;
+            .name {
+                font-size: 30px;
+                color: #409eff;
+            }
+            .content {
+                font-size: 30px;
+                color: #000;
+                margin-left: 6px;
+            }
+        }
     }
 
     .video-js {
@@ -315,6 +378,21 @@ export default {
     .van-slide-right-enter,
     .van-slide-right-leave-to {
         transition: all 0.2s ease;
+    }
+}
+
+.input-box /deep/ {
+    position: fixed;
+    bottom: 100px;
+    z-index: 999;
+    width: 100%;
+    .van-cell {
+        background: #ededed;
+        .van-field__control {
+            background: #fff;
+            height: 60px;
+            border-radius: 5px;
+        }
     }
 }
 </style>

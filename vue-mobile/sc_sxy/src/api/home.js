@@ -797,4 +797,25 @@ export default {
         })
     },
 
+    /**
+     * 添加同事圈评论
+    */
+    appAddComment(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS_COMMENT.appAddComment.do',
+            method: 'POST',
+            params: data
+        })
+    },
+
+    /**
+     * 删除同事圈
+    */
+    appDeleteColleague(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_MOMENTS.appDeleteColleague.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }
