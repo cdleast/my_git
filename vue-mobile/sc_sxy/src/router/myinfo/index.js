@@ -12,7 +12,7 @@ export default [
     { path: '/myinfo/photo', name: 'my-photo', component: () => import('@/views/myinfo/my-photo') },
     { path: '/myinfo/draft', name: 'my-draft', component: () => import('@/views/myinfo/my-draft') },
     { path: '/myinfo/problem', name: 'my-problem', component: () => import('@/views/myinfo/my-problem') },
-    { path: '/myinfo/answer', name: 'my-answer', component: () => import('@/views/myinfo/my-answer') },
+    { path: '/myinfo/answer', name: 'my-answer', component: () => import('@/views/myinfo/answer') },
     { path: '/myinfo/share', name: 'my-share', component: () => import('@/views/myinfo/my-share') },
     { path: '/myinfo/post', name: 'my-post', component: () => import('@/views/myinfo/my-post') },
     { path: '/myinfo/backpack', name: 'my-backpack', component: () => import('@/views/myinfo/my-backpack') },
