@@ -818,4 +818,15 @@ export default {
             params: data
         })
     },
+
+    /**
+     * 获取机构用户列表
+    */
+    appdeptUserList(data) {
+        return request({
+            url: '/archivetemp-api/EXEXM_USER_LIST.appdeptUserList.do',
+            method: 'POST',
+            params: data
+        })
+    },
 }

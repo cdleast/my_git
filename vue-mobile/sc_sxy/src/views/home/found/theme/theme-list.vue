@@ -39,7 +39,6 @@ export default {
                 } else {
                     this.$toast(_MSG_);
                 }
-                console.log(this.colleagueByTheme);
             });
         }
     }

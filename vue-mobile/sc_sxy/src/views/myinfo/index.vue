@@ -9,9 +9,10 @@
                 </div>
             </header-bar>
 
-            <div class="users" >
+            <div class="users">
                 <van-image
-                    v-for="(item,index) in getUser.IMAGE_FILE" :key="index"
+                    v-for="(item,index) in getUser.IMAGE_FILE"
+                    :key="index"
                     round
                     class="user-info"
                     :src="item.FILE_PATH"
@@ -76,7 +77,13 @@
             <van-cell to="/myinfo/photo" title="我的相册" class="icon icon-xiangce" is-link />
         </van-cell-group>
 
-        <van-cell to="/myinfo/draft" title="我的草稿" class="icon icon-caogao" is-link />
+        <van-cell-group>
+            <van-cell to="/myinfo/draft" title="我的草稿" class="icon icon-caogao" is-link />
+        </van-cell-group>
+
+        <van-cell-group>
+            <van-cell title="关于版本" class="icon icon-caogao" :value="`版本7.0.8`"/>
+        </van-cell-group>
 
         <!-- 九宫格部分 -->
         <van-grid :column-num="3" class="grid" :border="false">
@@ -157,7 +164,7 @@ export default {
     computed: {
         // 获取用户信息
         getUser() {
-            return this.$store.getters.user._DATA_[0]
+            return this.$store.getters.user._DATA_[0];
         }
     },
     methods: {

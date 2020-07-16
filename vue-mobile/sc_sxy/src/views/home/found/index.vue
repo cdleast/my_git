@@ -53,7 +53,6 @@ export default {
         this.appColleagueThemeList();
         this.appColleagueList();
     },
-    mounted() {},
     methods: {
         // 同事圈主题列表
         async appColleagueThemeList() {
@@ -75,13 +74,11 @@ export default {
         // 同事圈列表
         async appColleagueList() {
             await homeApi.appColleagueList(this.dataList).then(res => {
-                console.log(res)
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.colleagueList = res.data._DATA_;
                     this.isRefresh = false; // 数据查询成功取消加载中状态
                     this.isLoading = false; // 不处于加载状态
-
                     // 判断不做重复渲染
                     if (this.colleagueList.length >= res.data._OKCOUNT_) {
                         this.isFinished = true; //数据加载完
@@ -108,7 +105,7 @@ export default {
 
         //上拉加载数据
         onLoad() {
-            this.dataList.NUM += 10; // 每次加载五条数据
+            this.dataList.NUM += 5; // 每次加载五条数据
             this.isRefresh = false;
             this.appColleagueList();
         },
@@ -119,7 +116,7 @@ export default {
             this.isFinished = false;
             this.isLoading = true; // 表示处于加载状态
             this.isRefresh = true;
-            this.dataList.NUM = 10; // 每次加载获取几条数据
+            this.dataList.NUM = 5; // 每次加载获取几条数据
             this.appColleagueList();
         }
     }
