@@ -54,6 +54,7 @@ export default {
 
         // 切换底部组织确定按钮
         onConfirm(value) {
+            console.log(value)
             this.value = value;
             this.showPicker = false;
         }

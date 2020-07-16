@@ -160,7 +160,8 @@ export default {
                 let _MSG_ = res.data._MSG_;
                 if (_MSG_.includes("OK")) {
                     // 重新获取数据
-                    this.$parent.appColleagueList();
+                    this.$emit("appColleagueList");
+                    // this.$parent.appColleagueList();
                 } else {
                     this.$toast("点赞失败");
                 }
@@ -177,7 +178,8 @@ export default {
                 let _MSG_ = res.data._MSG_;
                 if (_MSG_.includes("OK")) {
                     // 重新获取数据
-                    this.$parent.appColleagueList();
+                    this.$emit("appColleagueList");
+                    // this.$parent.appColleagueList();
                 } else {
                     this.$toast("取消点赞失败");
                 }

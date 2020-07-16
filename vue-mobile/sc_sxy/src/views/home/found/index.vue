@@ -14,7 +14,16 @@
         </div>
 
         <!-- 同事圈列表 -->
-        <friendsItem :datas="colleagueList"></friendsItem>
+        <van-pull-refresh v-model="isRefresh" @refresh="onRefresh">
+            <van-list
+                v-model="isLoading"
+                :finished="isFinished"
+                finished-text="没有更多了"
+                @load="onLoad"
+            >
+                <friendsItem @appColleagueList="appColleagueList" :datas="colleagueList"></friendsItem>
+            </van-list>
+        </van-pull-refresh>
     </div>
 </template>
 
@@ -28,8 +37,16 @@ export default {
     },
     data() {
         return {
+            isRefresh: false, // 是否处于加载中状态
+            isLoading: false, // 是否处于加载状态
+            isFinished: false, // 数据是否加载完
             colleagueThemeList: [], // 主题列表
-            colleagueList: [] // 同事圈列表
+            colleagueList: [], // 同事圈列表
+            dataList: {
+                PAGE: 1,
+                NUM: 10,
+                NOPAGE: true
+            }
         };
     },
     created() {
@@ -57,19 +74,24 @@ export default {
 
         // 同事圈列表
         async appColleagueList() {
-            let data = {
-                PAGE: 1,
-                NUM: 10,
-                NOPAGE: true
-            };
-            await homeApi.appColleagueList(data).then(res => {
+            await homeApi.appColleagueList(this.dataList).then(res => {
+                console.log(res)
                 let _MSG_ = res.data._MSG_;
                 if (res.status === 200) {
                     this.colleagueList = res.data._DATA_;
+                    this.isRefresh = false; // 数据查询成功取消加载中状态
+                    this.isLoading = false; // 不处于加载状态
+
+                    // 判断不做重复渲染
+                    if (this.colleagueList.length >= res.data._OKCOUNT_) {
+                        this.isFinished = true; //数据加载完
+                    }
                 } else {
                     this.$toast(_MSG_);
+                    this.isRefresh = false; // 数据查询失败取消加载中状态
+                    this.isLoading = false; // 不处于加载状态
+                    this.isFinished = true; // 数据加载完，不会再处于加载状态
                 }
-                console.log(this.colleagueList)
             });
         },
 
@@ -82,6 +104,23 @@ export default {
                     title: item.NAME
                 }
             });
+        },
+
+        //上拉加载数据
+        onLoad() {
+            this.dataList.NUM += 10; // 每次加载五条数据
+            this.isRefresh = false;
+            this.appColleagueList();
+        },
+
+        // 下拉刷新时触发
+        onRefresh() {
+            this.colleagueList = [];
+            this.isFinished = false;
+            this.isLoading = true; // 表示处于加载状态
+            this.isRefresh = true;
+            this.dataList.NUM = 10; // 每次加载获取几条数据
+            this.appColleagueList();
         }
     }
 };
