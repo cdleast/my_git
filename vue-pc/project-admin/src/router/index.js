@@ -15,7 +15,8 @@ Vue.use(VueRouter)
 
 
 const routes = [
-	...global, ...home
+	...global, ...home,
+	{ path: '/', redirect: '/layout' },
 ]
 
 

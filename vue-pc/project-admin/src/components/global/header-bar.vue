@@ -1,17 +1,12 @@
 <template>
-    <div class="home">
-        
-    </div>
+    <div class="header-bar"></div>
 </template>
 
 <script>
 export default {
-    name: "home",
+    name: "header-bar",
     data() {
         return {};
-    },
-    methods: {
-        
     }
 };
 </script>
