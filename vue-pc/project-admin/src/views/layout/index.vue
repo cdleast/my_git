@@ -1,15 +1,36 @@
 <template>
-    <div class="layout">
+    <el-container style="height: 100%">
+        <!-- 左侧导航 -->
+        <el-aside width="200px">
+            <common-aside></common-aside>
+        </el-aside>
+
+        <!-- 右侧内容 -->
         <el-container>
-            <el-header>Header</el-header>
-            <el-main>Main</el-main>
-            <el-footer>Footer</el-footer>
+            <!-- 头部 -->
+            <el-header>
+                <common-header></common-header>
+            </el-header>
+
+            <!-- 内容主体 -->
+            <el-main>
+                <common-tab></common-tab>
+                <router-view></router-view>
+            </el-main>
         </el-container>
-    </div>
+    </el-container>
 </template>
 
 <script>
+import CommonHeader from "@/components/global/CommonHeader";
+import CommonAside from "@/components/global/CommonAside";
+import CommonTab from "@/components/global/CommonTab";
 export default {
+    components: {
+        CommonHeader,
+        CommonAside,
+        CommonTab
+    },
     name: "layout",
     data() {
         return {};
@@ -18,7 +39,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.el-header{
-    color: $theme-color;
+.el-header {
+    background-color: #333;
 }
 </style>

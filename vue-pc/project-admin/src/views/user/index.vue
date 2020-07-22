@@ -1,10 +1,10 @@
 <template>
-    <div class="header-bar"></div>
+    <div class="user">user</div>
 </template>
 
 <script>
 export default {
-    name: "header-bar",
+    name: "user",
     data() {
         return {};
     }
