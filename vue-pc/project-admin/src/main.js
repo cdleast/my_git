@@ -28,6 +28,8 @@ Vue.prototype.$api = API // api
 Vue.prototype.$axios = axios // ajax方法
 Vue.prototype.$func = func // 全局方法
 Vue.config.productionTip = false
+// 开发环境 development, 生产环境 production 
+// Vue.config.productionTip = process.env.NODE_ENV === 'production'
 
 new Vue({
   router,
