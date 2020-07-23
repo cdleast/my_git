@@ -14,6 +14,8 @@ import func from '@/func/index.js' // 引入全局方法函数
 import component from '@/components/index.js' // 全局注册组件
 import API from '@/api' // api文件
 
+import './mock'
+
 import axios from 'axios'
 
 Vue.use(ElementUI) // UI库
