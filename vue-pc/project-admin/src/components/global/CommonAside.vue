@@ -1,6 +1,7 @@
 <template>
     <el-menu
-        default-active="2"
+        :collapse="isCollapse"
+        :default-active="$route.path"
         class="el-menu-vertical-demo"
         background-color="#545c64"
         text-color="#fff"
@@ -91,11 +92,16 @@ export default {
         // 判断asideMenu数组是否有子级，并返回有子级的
         hasChildren() {
             return this.asideMenu.filter(item => item.children);
+        },
+        // 左侧导航状态
+        isCollapse() {
+            return this.$store.state.aside.isCollapse;
         }
     },
     methods: {
         // 点击菜单打开页面
         clickMenu(item) {
+            this.$router.push({ name: item.name });
             // 把数据存储vuex
             this.$store.commit("selectMenu", item);
         }
@@ -107,5 +113,9 @@ export default {
 .el-menu {
     height: 100%;
     border-right: none;
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
 }
 </style>

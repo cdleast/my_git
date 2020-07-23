@@ -1,7 +1,7 @@
 <template>
     <el-container style="height: 100%">
         <!-- 左侧导航 -->
-        <el-aside width="200px">
+        <el-aside width="auto">
             <common-aside></common-aside>
         </el-aside>
 

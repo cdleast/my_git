@@ -2,7 +2,7 @@
     <div class="common-header">
         <!-- 左侧展开收缩按钮及面包屑 -->
         <div class="l-content">
-            <el-button type="primary" icon="el-icon-menu" size="mini"></el-button>
+            <el-button type="primary" icon="el-icon-menu" size="mini" @click="collapseMenu"></el-button>
             <el-breadcrumb separator=">">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item :to="current.path" v-if="current">{{ current.label }}</el-breadcrumb-item>
@@ -38,6 +38,13 @@ export default {
         ...mapState({
             current: state => state.breadcrumb.currentMenu
         })
+    },
+    methods: {
+        // 按钮点击事件，控制左侧导航展开收缩
+        collapseMenu() {
+            // 拿到vuex中定义的方法collapseMenu
+            this.$store.commit("collapseMenu");
+        }
     }
 };
 </script>

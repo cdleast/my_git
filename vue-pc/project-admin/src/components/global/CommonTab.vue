@@ -6,7 +6,9 @@
             :closable="tag.name !== 'home'"
             size="medium"
             :disable-transitions="false"
+            :effect="$route.name === tag.name ? 'dark' : 'plain'"
             @close="handleClose(tag)"
+            @click="changeMenu(tag)"
         >{{ tag.label }}</el-tag>
     </div>
 </template>
@@ -29,11 +31,17 @@ export default {
         ...mapMutations({
             close: "closeTag"
         }),
-        handleClose(tag) {
+
+        // 删除标签
+        handleClose(item) {
             // 调用vuex中的删除方法并传入点击的数据
-            this.close(tag);
-
-
+            this.close(item);
+        },
+        
+        // 点击标签切换路由
+        changeMenu(item) {
+            this.$router.push({ name: item.name });
+            this.$store.commit("selectMenu", item);
         }
     }
 };
@@ -41,6 +49,7 @@ export default {
 
 <style lang='scss' scoped>
 .common-tab {
+    margin-bottom: 20px;
     .el-tag {
         margin-right: 15px;
         cursor: pointer;
