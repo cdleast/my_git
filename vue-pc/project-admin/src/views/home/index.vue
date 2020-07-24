@@ -62,10 +62,10 @@
 
             <div class="graph">
                 <el-card shadow="hover">
-                    <common-echarts style="height: 260px"></common-echarts>
+                    <common-echarts style="height: 260px" :chartData="echartData.user"></common-echarts>
                 </el-card>
                 <el-card shadow="hover">
-                    <common-echarts style="height: 260px"></common-echarts>
+                    <common-echarts style="height: 260px" :chartData="echartData.video" :isAxisChart="false"></common-echarts>
                 </el-card>
             </div>
         </el-col>
@@ -192,6 +192,7 @@ export default {
                     data: res.data.videoData,
                     type: "pie"
                 });
+                console.log(this.echartData.video)
             });
         }
     }

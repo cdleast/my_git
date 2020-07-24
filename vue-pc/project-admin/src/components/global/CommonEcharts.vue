@@ -28,25 +28,30 @@ export default {
             echart: null, // 初始化图表
             // 有坐标轴的配置
             axisOption: {
+                // 图例标题部分
                 legend: {
                     textStyle: {
                         color: "#333"
                     }
                 },
+                // 渲染图表的位置
                 grid: {
-                    left: "20%"
+                    left: "15%"
                 },
+                // 悬浮显示
                 tooltip: {
-                    trigger: "axis"
+                    trigger: "axis" // 触发时机
                 },
                 xAxis: {
                     type: "category",
                     data: [],
+                    // 坐标轴线颜色
                     axisLine: {
                         lineStyle: {
                             color: "#17b3a3"
                         }
                     },
+                    // 坐标轴下文本颜色
                     axisLabel: {
                         color: "#333"
                     }
@@ -54,6 +59,7 @@ export default {
                 yAxis: [
                     {
                         type: "value",
+                        // 坐标轴线颜色
                         axisLine: {
                             lineStyle: {
                                 color: "#17b3a3"
@@ -61,6 +67,7 @@ export default {
                         }
                     }
                 ],
+                // series选择color里的颜色
                 color: [
                     "#2ec7c9",
                     "#b6a2de",
@@ -109,33 +116,42 @@ export default {
         // 根据 isAxisChart 判断使用哪个配置，有坐标轴或者无坐标轴
         options() {
             return this.isAxisChart ? this.axisOption : this.normalOption;
+        },
+
+        // 获取左侧导航是否折叠
+        isCollapse() {
+            return this.$store.state.aside.isCollapse;
         }
-        // isCollapse() {
-        //     return this.$store.state.tab.isCollapse;
-        // }
     },
 
     // 监听
     watch: {
-        // chartData传进来数据的时候初始化图表
+        // 监听chartData传进来数据的时候初始化图表
         chartData: {
             handler: function() {
                 this.initChart();
             },
             deep: true
+        },
+        
+        // 监听左侧导航栏是否折叠，让图表重新计算尺寸大小
+        isCollapse() {
+            setTimeout(() => {
+                this.resizeChart();
+            }, 300);
         }
-        // isCollapse() {
-        //     setTimeout(() => {
-        //         this.resizeChart();
-        //     }, 300);
-        // }
+    },
+
+    mounted() {
+        // 注册事件，检测浏览器大小发生变化
+        window.addEventListener("resize", this.resizeChart);
     },
 
     methods: {
         // 初始化图表渲染
         initChart() {
             this.initChartData();
-            
+
             // 判断容器是否存在,如果存在，使用刚指定的配置项和数据显示图表
             if (this.echart) {
                 // this.options是computed里面的
@@ -158,7 +174,18 @@ export default {
                 // 把传进来的无坐标轴数据赋值给normalOption数组
                 this.normalOption.series = this.chartData.series;
             }
+        },
+
+        // 浏览器大小发生变化，重新计算echart图表尺寸
+        resizeChart() {
+            this.echart ? this.echart.resize() : "";
         }
+    },
+
+    // 组件销毁
+    destroyed() {
+        // 离开页面时候销毁事件
+        window.removeEventListener("resize", this.resizeChart);
     }
 };
 </script>
