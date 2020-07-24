@@ -20,10 +20,21 @@
 
             <!-- switch开关 -->
             <el-switch v-model="form[item.model]" v-if="item.type === 'switch'"></el-switch>
+
+            <!-- 日期选择器 -->
+            <el-date-picker
+                v-model="form[item.model]"
+                type="date"
+                placeholder="选择日期"
+                v-if="item.type === 'date'"
+                value-format="yyyy-MM-dd"
+            ></el-date-picker>
         </el-form-item>
 
         <!-- 插槽，用来放一些按钮 -->
-        <el-form-item><slot></slot></el-form-item>
+        <el-form-item>
+            <slot></slot>
+        </el-form-item>
     </el-form>
 </template>
 
