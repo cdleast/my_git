@@ -16,11 +16,11 @@ const mutations = {
         // 判断当前点击的身份为首页，首页的话不加进去
         if (val.name !== 'home') {
             // 当前打开的页面为传过来的值val
-            state.currentMenu = val;
+            state.currentMenu = val
         } else {
             state.currentMenu = null
         }
-        
+
         // val.name === 'home' ? (state.currentMenu = null) : (state.currentMenu = val)
     }
 }

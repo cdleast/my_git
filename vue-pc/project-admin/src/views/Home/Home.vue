@@ -75,7 +75,7 @@
 <script>
 import CommonEcharts from "@/components/global/CommonEcharts";
 export default {
-    name: "home",
+    name: "Home",
     components: {
         CommonEcharts
     },
@@ -192,7 +192,6 @@ export default {
                     data: res.data.videoData,
                     type: "pie"
                 });
-                console.log(this.echartData.video)
             });
         }
     }

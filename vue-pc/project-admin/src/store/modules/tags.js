@@ -1,3 +1,5 @@
+import Cookie from 'js-cookie'
+
 // 设置属性，主要承载一些属性，存储数据的
 const state = {
     // tag数组
@@ -25,7 +27,7 @@ const mutations = {
             // findIndex如果找不到数据会返回-1
             let result = state.tagsList.findIndex(item => item.name === val.name)
             result === -1 ? state.tagsList.push(val) : ''
-            // Cookie.set('tagList', JSON.stringify(state.tabsList))
+            // Cookie.set('tagsList', JSON.stringify(state.tagsList))
         }
     },
 
@@ -34,7 +36,8 @@ const mutations = {
         // 找到点击删除的tag标签的索引，然后删除
         let result = state.tagsList.findIndex(item => item.name === val.name)
         state.tagsList.splice(result, 1)
-    }
+    },
+
 }
 
 // 不直接操作，应用mutations，可以实现异步的操作

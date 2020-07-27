@@ -31,8 +31,29 @@ Vue.config.productionTip = false
 // 开发环境 development, 生产环境 production 
 // Vue.config.productionTip = process.env.NODE_ENV === 'production'
 
+
+// 路由拦截
+router.beforeEach((to, from, next) => {
+	// 防止刷新后vuex里丢失token
+	store.commit('getToken')
+	// 防止刷新后vuex里丢失标签列表tagList
+	store.commit('getMenu')
+	let token = store.state.user.token
+	// 过滤登录页，防止死循环
+	if (!token && to.name !== 'login') {
+		next({ name: 'login' })
+	} else {
+		next()
+	}
+})
+
+
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+	router,
+	store,
+	render: h => h(App),
+	// 判断vue程序进行刷新的时候，加载左侧导航权限
+	created() {
+		store.commit('addMenu', router)
+	}
 }).$mount('#app')

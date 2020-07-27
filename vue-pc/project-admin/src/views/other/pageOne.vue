@@ -4,7 +4,7 @@
 
 <script>
 export default {
-    name: "pageOne",
+    name: "PageOne",
     data() {
         return {};
     }

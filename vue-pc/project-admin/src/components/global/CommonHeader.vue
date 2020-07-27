@@ -17,7 +17,7 @@
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item icon="el-icon-setting">个人中心</el-dropdown-item>
-                    <el-dropdown-item icon="el-icon-setting">退出</el-dropdown-item>
+                    <el-dropdown-item icon="el-icon-setting" @click.native="logOut">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -30,22 +30,30 @@ export default {
     name: "common-header",
     data() {
         return {
-            userImg: require("@/assets/images/user.png")
+            userImg: require("@/assets/images/user.png"),
         };
     },
     computed: {
         // 从vuex中获取当前点击的页面
         ...mapState({
-            current: state => state.breadcrumb.currentMenu
-        })
+            current: (state) => state.breadcrumb.currentMenu,
+        }),
     },
     methods: {
         // 按钮点击事件，控制左侧导航展开收缩
         collapseMenu() {
             // 拿到vuex中定义的方法collapseMenu
             this.$store.commit("collapseMenu");
-        }
-    }
+        },
+
+        // 退出登录
+        logOut() {
+            // 清除数据
+            this.$store.commit("clearToken");
+            this.$store.commit("clearMenu");
+            location.reload(); // 刷新浏览器
+        },
+    },
 };
 </script>
 

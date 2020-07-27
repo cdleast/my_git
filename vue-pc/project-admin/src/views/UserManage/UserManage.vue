@@ -35,7 +35,7 @@
 import CommonForm from "@/components/global/CommonForm";
 import CommonTable from "@/components/global/CommonTable";
 export default {
-    name: "user",
+    name: "UserManage",
     components: {
         CommonForm,
         CommonTable
@@ -149,7 +149,6 @@ export default {
                     }
                 })
                 .then(res => {
-                    console.log(this.tableData)
                     this.tableData = res.data.list.map(item => {
                         item.sexLabel = item.sex === 0 ? "女" : "男";
                         return item;

@@ -28,8 +28,8 @@ export default {
         return {
             // 账户密码
             loginForm: {
-                username: "admin",
-                password: "111111"
+                username: "",
+                password: "",
             },
             // 验证规则
             loginRules: {
@@ -37,37 +37,50 @@ export default {
                     {
                         required: true,
                         trigger: "blur",
-                        message: "账户不能为空"
-                    }
+                        message: "账户不能为空",
+                    },
                 ],
                 password: [
                     {
                         required: true,
                         trigger: "blur",
-                        message: "密码不能为空"
-                    }
-                ]
-            }
+                        message: "密码不能为空",
+                    },
+                ],
+            },
         };
     },
     methods: {
         // 登录
         submitForm(loginForm) {
-            this.$refs[loginForm].validate(valid => {
+            this.$refs[loginForm].validate((valid) => {
                 // 验证成功
                 if (valid) {
-                    this.$message({
-                        message: "登录成功",
-                        type: "success"
-                    });
-                    this.$router.push('/home');
+                    this.$axios
+                        .post("/permission/getMenu", this.loginForm)
+                        .then((res) => {
+                            res = res.data;
+                            if (res.code === 20000) {
+                                // 先清除在设置避免二次登录
+                                this.$store.commit("clearMenu");
+                                this.$store.commit("setMenu", res.data.menu);
+                                // 存储Token
+                                this.$store.commit("setToken", res.data.token);
+                                // 做权限判断部分
+                                this.$store.commit("addMenu", this.$router);
+                                this.$router.push({ name: 'home' });
+                                this.$message.success("登录成功");
+                            } else {
+                                this.$message.warning(res.data.message);
+                            }
+                        });
                 } else {
-                    this.$message.error("登录失败");
+                    this.$message.error("验证失败");
                     return false;
                 }
             });
-        }
-    }
+        },
+    },
 };
 </script>
 
