@@ -35,7 +35,7 @@ const mutations = {
         // 1.如果不存在就不用往下走了
         if (!Cookie.get('asideMenu')) {
             return
-          }
+        }
         // 2.先获取Cookie里面的asideMenu
         let asideMenu = JSON.parse(Cookie.get('asideMenu'))
         // 3.将Cookie中获取到的asideMenu传给state里面，避免刷新的时候state里面的数据丢失

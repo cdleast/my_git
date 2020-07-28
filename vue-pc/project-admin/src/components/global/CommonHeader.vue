@@ -3,10 +3,7 @@
         <!-- 左侧展开收缩按钮及面包屑 -->
         <div class="l-content">
             <el-button type="primary" icon="el-icon-menu" size="mini" @click="collapseMenu"></el-button>
-            <el-breadcrumb separator=">">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item :to="current.path" v-if="current">{{ current.label }}</el-breadcrumb-item>
-            </el-breadcrumb>
+            <common-breadcrumb></common-breadcrumb>
         </div>
 
         <!-- 右侧用户部分 -->
@@ -25,19 +22,16 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import CommonBreadcrumb from "@/components/global/CommonBreadcrumb";
 export default {
     name: "common-header",
+    components: {
+        CommonBreadcrumb,
+    },
     data() {
         return {
             userImg: require("@/assets/images/user.png"),
         };
-    },
-    computed: {
-        // 从vuex中获取当前点击的页面
-        ...mapState({
-            current: (state) => state.breadcrumb.currentMenu,
-        }),
     },
     methods: {
         // 按钮点击事件，控制左侧导航展开收缩
@@ -51,6 +45,8 @@ export default {
             // 清除数据
             this.$store.commit("clearToken");
             this.$store.commit("clearMenu");
+            this.$store.commit("clearBreadcrumb");
+            this.$store.commit("clearTagsList");
             location.reload(); // 刷新浏览器
         },
     },

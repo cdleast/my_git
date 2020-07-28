@@ -38,6 +38,7 @@ router.beforeEach((to, from, next) => {
 	store.commit('getToken')
 	// 防止刷新后vuex里丢失标签列表tagList
 	store.commit('getMenu')
+	
 	let token = store.state.user.token
 	// 过滤登录页，防止死循环
 	if (!token && to.name !== 'login') {
@@ -55,5 +56,6 @@ new Vue({
 	// 判断vue程序进行刷新的时候，加载左侧导航权限
 	created() {
 		store.commit('addMenu', router)
+		store.commit('getBreadcrumb') // 加载面包屑
 	}
 }).$mount('#app')

@@ -1,4 +1,5 @@
 import Cookie from 'js-cookie'
+import router from '@/router'
 
 // 设置属性，主要承载一些属性，存储数据的
 const state = {
@@ -27,15 +28,35 @@ const mutations = {
             // findIndex如果找不到数据会返回-1
             let result = state.tagsList.findIndex(item => item.name === val.name)
             result === -1 ? state.tagsList.push(val) : ''
-            // Cookie.set('tagsList', JSON.stringify(state.tagsList))
+            Cookie.set('tagList', JSON.stringify(state.tagsList))
         }
     },
 
     // 删除选中的tag标签
     closeTag(state, val) {
         // 找到点击删除的tag标签的索引，然后删除
-        let result = state.tagsList.findIndex(item => item.name === val.name)
+        let result = state.tagsList.findIndex(item => {
+            return item.name === val.name
+        })
+        // 获取当前删除前一个的路径
+        let path = state.tagsList[result - 1].name
+        router.push({ name: `${path}` });
         state.tagsList.splice(result, 1)
+        Cookie.set('tagList', JSON.stringify(state.tagsList))
+    },
+
+    // 获取tags标签列表
+    getMenu(state) {
+        if (Cookie.get('tagList')) {
+            let tagList = JSON.parse(Cookie.get('tagList'))
+            state.tagsList = tagList
+        }
+    },
+
+    // 清除tagsList标签
+    clearTagsList(state) {
+        state.tagsList = []
+        Cookie.remove('tagList')
     },
 
 }

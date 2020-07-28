@@ -14,7 +14,7 @@
 
             <!-- 内容主体 -->
             <el-main>
-                <common-tab></common-tab>
+                <common-tag></common-tag>
                 <router-view></router-view>
             </el-main>
         </el-container>
@@ -24,12 +24,12 @@
 <script>
 import CommonHeader from "@/components/global/CommonHeader";
 import CommonAside from "@/components/global/CommonAside";
-import CommonTab from "@/components/global/CommonTab";
+import CommonTag from "@/components/global/CommonTag";
 export default {
     components: {
         CommonHeader,
         CommonAside,
-        CommonTab
+        CommonTag
     },
     name: "layout",
     data() {
