@@ -18,13 +18,7 @@ export default {
             current: (state) => state.breadcrumb.currentMenu,
             asideMenu: (state) => state.aside.asideMenu,
         }),
-    },
-    watch: {
-        $route(to, from) {
-            
-            // this.$store.commit("getBreadcrumb", to.name);
-        },
-    },
+    }
 };
 </script>
 

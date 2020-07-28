@@ -38,7 +38,7 @@ export default {
             let result = this.tags.findIndex((val) => {
                 return val.name === item.name;
             });
-            let data = this.tags[result - 1]
+            let data = this.tags[result - 1];
             this.$store.commit("selectMenu", data);
 
             // 调用vuex中的删除方法并传入点击的数据
