@@ -2,7 +2,7 @@ import Cookie from 'js-cookie'
 
 // 设置属性，主要承载一些属性，存储数据的
 const state = {
-    currentMenu: null // 当前打开的页面
+    breadList: [] // 当前打开的页面
 }
 
 // 对应的一些方法,用来获取到属性(state)的状态
