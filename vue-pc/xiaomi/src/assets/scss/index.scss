@@ -1,0 +1,59 @@
+@import './reset.scss';
+@import './element-ui.scss';
+
+
+
+body {
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+    background-color: #fff;
+}
+
+label {
+    font-weight: 700;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#app {
+    height: 100%;
+}
+
+.tabs {
+    .tab-title {
+        display: flex;
+
+        li {
+            flex: 1;
+            text-align: center;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+
+            &:first-child {
+                border-right: 1px solid #e0e0e0;
+                ;
+            }
+
+            &.active {
+                color: #f56600;
+            }
+        }
+    }
+
+    .tab-content {
+        padding: 0 30px;
+
+        .el-button{
+            width: 100%;
+        }
+    }
+}
