@@ -1,0 +1,30 @@
+{
+    "footerService": [
+        {
+            "name": "预约维修服务",
+            "icon": "icon-liwu"
+        },
+        {
+            "name": "7天无理由退货",
+            "icon": "icon-liwu"
+        },
+        {
+            "name": "15天免费换货",
+            "icon": "icon-liwu"
+        },
+        {
+            "name": "满99元包邮",
+            "icon": "icon-liwu"
+        },
+        {
+            "name": "520余家售后网点",
+            "icon": "icon-liwu"
+        }
+    ],
+    "footerLinks": [
+        {
+            "name": "帮助中心",
+            "children": []
+        }
+    ]
+}

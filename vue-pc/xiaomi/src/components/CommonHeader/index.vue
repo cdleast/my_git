@@ -100,6 +100,8 @@
                             :key="'index1-'+index"
                             @mouseover="mouseoverNavItem(index)"
                         >{{ item.name }}</li>
+                        <li class="nav-item">服务</li>
+                        <li class="nav-item">社区</li>
                     </ul>
                 </div>
 
@@ -116,7 +118,11 @@
             </div>
 
             <!-- 鼠标滑过显示 -->
-            <div ref="headerNavMenu" class="header-nav-menu" @mouseleave="mouseLeaveNavItem">
+            <div
+                ref="headerNavMenu"
+                class="header-nav-menu"
+                @mouseleave="mouseLeaveNavItem"
+            >
                 <div class="container">
                     <ul class="children-list clearfix" v-if="navCategory[curNavItem]">
                         <li v-for="(item,index) in navCategory[curNavItem].children" :key="index">
@@ -134,7 +140,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- 弹窗 -->
         <el-dialog
@@ -248,12 +253,12 @@ export default {
         };
     },
     created() {
-        this.getDataList();
+        this.getHeadDataList();
     },
     methods: {
         // 获取数据
-        async getDataList() {
-            await this.$api.getDataList().then((res) => {
+        async getHeadDataList() {
+            await this.$api.getHeadDataList().then((res) => {
                 this.topbarNav = res.data.topbarNav;
                 this.topbarInfo = res.data.topbarInfo;
                 this.allGoods = res.data.allGoods;
