@@ -1,5 +1,5 @@
 <template>
-    <el-container style="height: 100%">
+    <el-container>
         <el-header height="140px">
             <common-header></common-header>
         </el-header>
@@ -9,14 +9,20 @@
                 <router-view></router-view>
             </div>
         </el-main>
+
+        <el-footer>
+            <common-footer></common-footer>
+        </el-footer>
     </el-container>
 </template>
 
 <script>
 import CommonHeader from "@/components/CommonHeader";
+import CommonFooter from "@/components/CommonFooter";
 export default {
     components: {
         CommonHeader,
+        CommonFooter,
     },
     name: "layout",
     data() {
@@ -32,5 +38,6 @@ export default {
 
 .el-main {
     background: #f5f5f5;
+    padding-bottom: 80px;
 }
 </style>

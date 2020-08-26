@@ -4,7 +4,7 @@
         <el-breadcrumb-item
             v-for="(item,index) in breadList"
             :key="index"
-            :to="item.path"
+            :to="{ path: item.path }"
         >{{ item.meta.title }}</el-breadcrumb-item>
         <el-breadcrumb-item v-if="bread">{{ bread }}</el-breadcrumb-item>
     </el-breadcrumb>
@@ -30,12 +30,9 @@ export default {
     watch: {
         $route() {
             this.getBreadcrumb();
-        },
+        }
     },
     methods: {
-        isHome(route) {
-            return route.name === "首页";
-        },
         getBreadcrumb() {
             this.breadList = this.$route.matched.splice(1);
             this.breadList = this.breadList.filter((item) => {

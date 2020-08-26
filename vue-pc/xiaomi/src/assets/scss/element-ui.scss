@@ -88,6 +88,31 @@
     .el-dialog__header {
         padding: 15px 20px;
         background: #f5f5f5;
+        position: relative;
+
+        .el-dialog__headerbtn {
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                font-weight: 700;
+            }
+
+            &:hover {
+                background: #409EFF;
+
+                i {
+                    color: #fff;
+                }
+            }
+
+        }
     }
 
     .el-dialog__body {
@@ -100,7 +125,7 @@
         display: flex;
         justify-content: center;
 
-        .el-button{
+        .el-button {
             width: 150px;
         }
     }

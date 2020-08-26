@@ -52,8 +52,10 @@ html {
     .tab-content {
         padding: 0 30px;
 
-        .el-button{
-            width: 100%;
+        .el-form-item {
+            .el-button {
+                width: 100%;
+            }
         }
     }
 }
