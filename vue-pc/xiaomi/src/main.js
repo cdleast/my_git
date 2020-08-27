@@ -2,9 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import '@/assets/scss/index.scss' // global css
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+import '@/assets/scss/index.scss' // global css
 import api from '@/api' // api文件
 
 // 视频播放插件
