@@ -1,6 +1,8 @@
 <template>
     <div class="home">
         <common-breadcrumb></common-breadcrumb>
+
+        <el-button @click="$router.push('/about')">跳转小米关于</el-button>
     </div>
 </template>
 

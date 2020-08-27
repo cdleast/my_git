@@ -20,4 +20,13 @@ export default {
         })
     },
 
+    // 底部导航数据
+    getAboutDataList(params) {
+        return request({
+            url: '/mork/about.json',
+            method: 'get',
+            params
+        })
+    },
+
 }

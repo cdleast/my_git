@@ -1,15 +1,16 @@
 <template>
-    <div class="management-team">管理团队</div>
+    <div class='about-join'>about-join</div>
 </template>
 
 <script>
 export default {
-    name: "management-team",
+    name: 'about-join',
     data() {
-        return {};
+        return {}
     },
 };
 </script>
 
 <style lang='scss' scoped>
+
 </style>

@@ -174,6 +174,10 @@ export default {
                 width: 410px;
                 float: right;
                 background: #fff;
+
+                .tab-content {
+                    padding: 0 30px;
+                }
             }
 
             // 手机短信登录

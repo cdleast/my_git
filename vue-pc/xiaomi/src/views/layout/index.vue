@@ -1,19 +1,15 @@
 <template>
-    <el-container>
-        <el-header height="140px">
-            <common-header></common-header>
-        </el-header>
+    <div class="layout">
+        <common-header></common-header>
 
-        <el-main>
+        <div class="main-body">
             <div class="container">
                 <router-view></router-view>
             </div>
-        </el-main>
+        </div>
 
-        <el-footer>
-            <common-footer></common-footer>
-        </el-footer>
-    </el-container>
+        <common-footer></common-footer>
+    </div>
 </template>
 
 <script>

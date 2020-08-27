@@ -6,7 +6,6 @@
             :key="index"
             :to="{ path: item.path }"
         >{{ item.meta.title }}</el-breadcrumb-item>
-        <el-breadcrumb-item v-if="bread">{{ bread }}</el-breadcrumb-item>
     </el-breadcrumb>
 </template>
 
@@ -14,11 +13,6 @@
 import { mapState } from "vuex";
 export default {
     name: "common-breadcrumb",
-    props: {
-        bread: {
-            type: String,
-        },
-    },
     data() {
         return {
             breadList: [], // 路由集合
@@ -30,15 +24,15 @@ export default {
     watch: {
         $route() {
             this.getBreadcrumb();
-        }
+        },
     },
     methods: {
         getBreadcrumb() {
-            this.breadList = this.$route.matched.splice(1);
-            this.breadList = this.breadList.filter((item) => {
+            let matched = this.$route.matched;
+            this.breadList = matched.filter((item) => {
                 return item.name !== "home";
             });
-        },
+        }
     },
 };
 </script>
