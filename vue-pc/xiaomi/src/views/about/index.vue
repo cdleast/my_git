@@ -40,8 +40,7 @@ export default {
     },
     data() {
         return {
-            tabTitle: [],
-            bread: "公司简介", // 面包屑传入参数
+            tabTitle: []
         };
     },
     created() {
@@ -54,8 +53,9 @@ export default {
                 this.tabTitle = res.data.tabTitle;
             });
         },
+        
+        // 点击跳转
         onTabTitle(item, index) {
-            this.titleCur = index;
             this.$router.push({ path: item.path });
         },
     },

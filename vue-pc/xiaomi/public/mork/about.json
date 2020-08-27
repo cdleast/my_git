@@ -33,7 +33,7 @@
             "path": "/about/contact"
         }
     ],
-    "banner": {
+    "founderBanner": {
         "url": "http://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c6f46fb63c119d83d2b4b38505fffbcd.jpg?w=1226&h=450"
     },
     "founder": [
@@ -275,4 +275,5 @@
             ]
         }
     ]
+
 }
