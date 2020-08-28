@@ -20,10 +20,19 @@ export default {
         })
     },
 
-    // 底部导航数据
+    // 关于小米
     getAboutDataList(params) {
         return request({
             url: '/mork/about.json',
+            method: 'get',
+            params
+        })
+    },
+
+    // 帮助中心
+    getServiceDataList(params) {
+        return request({
+            url: '/mork/service.json',
             method: 'get',
             params
         })

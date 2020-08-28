@@ -4,6 +4,7 @@
 
         <div class="main-body">
             <div class="container">
+                <common-breadcrumb></common-breadcrumb>
                 <router-view></router-view>
             </div>
         </div>
@@ -15,10 +16,12 @@
 <script>
 import CommonHeader from "@/components/CommonHeader";
 import CommonFooter from "@/components/CommonFooter";
+import CommonBreadcrumb from "@/components/CommonBreadcrumb";
 export default {
     components: {
         CommonHeader,
         CommonFooter,
+        CommonBreadcrumb
     },
     name: "layout",
     data() {

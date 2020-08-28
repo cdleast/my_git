@@ -1,11 +1,7 @@
 <template>
     <div class="about">
-        <common-header></common-header>
-
         <div class="main-body">
             <div class="container">
-                <common-breadcrumb></common-breadcrumb>
-
                 <div class="tabs">
                     <ul class="tab-title">
                         <li
@@ -22,25 +18,15 @@
                 </div>
             </div>
         </div>
-
-        <common-footer></common-footer>
     </div>
 </template>
 
 <script>
-import CommonHeader from "@/components/CommonHeader";
-import CommonFooter from "@/components/CommonFooter";
-import CommonBreadcrumb from "@/components/CommonBreadcrumb";
 export default {
     name: "about",
-    components: {
-        CommonBreadcrumb,
-        CommonHeader,
-        CommonFooter,
-    },
     data() {
         return {
-            tabTitle: []
+            tabTitle: [],
         };
     },
     created() {
@@ -53,7 +39,7 @@ export default {
                 this.tabTitle = res.data.tabTitle;
             });
         },
-        
+
         // 点击跳转
         onTabTitle(item, index) {
             this.$router.push({ path: item.path });
