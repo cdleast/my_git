@@ -1,6 +1,6 @@
 <template>
     <div class="founder">
-        <el-image :src="founderBanner.url" fit="fit"></el-image>
+        <el-image :src="banner" fit="fit"></el-image>
         <div class="founder-main">
             <ul class="clearfix">
                 <li v-for="(item,index) in founder" :key="index">
@@ -21,7 +21,7 @@ export default {
     name: "founder",
     data() {
         return {
-            founderBanner: [],
+            banner: '',
             founder: [],
         };
     },
@@ -32,8 +32,8 @@ export default {
         // 获取数据
         async getAboutDataList() {
             await this.$api.getAboutDataList().then((res) => {
-                this.founderBanner = res.data.founderBanner;
-                this.founder = res.data.founder;
+                this.banner = res.data.founder[0].banner;
+                this.founder = res.data.founder.slice(1);
             });
         },
     },

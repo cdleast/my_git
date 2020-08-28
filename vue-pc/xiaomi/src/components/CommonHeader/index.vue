@@ -44,7 +44,7 @@
         <!-- 头部下拉内容 -->
         <div class="site-header">
             <div class="container clearfix">
-                <div class="header-logo">
+                <div class="header-logo" @click="$router.push('/home')">
                     <el-link :underline="false" class="logo"></el-link>
                 </div>
                 <div class="header-nav">
@@ -118,11 +118,7 @@
             </div>
 
             <!-- 鼠标滑过显示 -->
-            <div
-                ref="headerNavMenu"
-                class="header-nav-menu"
-                @mouseleave="mouseLeaveNavItem"
-            >
+            <div ref="headerNavMenu" class="header-nav-menu" @mouseleave="mouseLeaveNavItem">
                 <div class="container">
                     <ul class="children-list clearfix" v-if="navCategory[curNavItem]">
                         <li v-for="(item,index) in navCategory[curNavItem].children" :key="index">

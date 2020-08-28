@@ -27,12 +27,12 @@ export default {
         },
     },
     methods: {
-        getBreadcrumb() {
+        getBreadcrumb(route) {
             let matched = this.$route.matched;
             this.breadList = matched.filter((item) => {
-                return item.name !== "home";
+                return item.name !== "layout" && item.name !== "home";
             });
-        }
+        },
     },
 };
 </script>
