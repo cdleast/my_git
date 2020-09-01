@@ -46,11 +46,13 @@ html {
 
             &.active {
                 color: #f56600;
+                border-bottom: 1px solid #f56600;
             }
         }
     }
 
     .tab-content {
+        background: #fff;
 
         .el-form-item {
             .el-button {

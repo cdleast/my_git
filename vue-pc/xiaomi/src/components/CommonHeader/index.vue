@@ -65,7 +65,10 @@
                                         @mouseover="mouseoverSite(indexson)"
                                         @mouseleave="mouseLeaveSite(indexson)"
                                     >
-                                        <div class="title">
+                                        <div
+                                            class="title"
+                                            :class="{ active: classenable && indexson == curSiteCategory}"
+                                        >
                                             {{ itemson.name }}
                                             <span
                                                 class="icon icon-arrow-right-bold"
@@ -99,6 +102,7 @@
                             v-for="(item,index) in navCategory"
                             :key="'index1-'+index"
                             @mouseover="mouseoverNavItem(index)"
+                            @mouseleave="mouseLeaveNavItem"
                         >{{ item.name }}</li>
                         <li class="nav-item">服务</li>
                         <li class="nav-item">社区</li>
@@ -246,6 +250,7 @@ export default {
             navCategory: [], // 商品类别
             curNavItem: 0, // NavItem部分
             curSiteCategory: 0, // 全部商品部分
+            classenable:false // 鼠标滑过是否绑定class
         };
     },
     created() {
@@ -314,6 +319,7 @@ export default {
         // 左侧全部商品部分移入
         mouseoverSite(index) {
             this.curSiteCategory = index;
+            this.classenable = true;
             this.$nextTick(() => {
                 this.$refs.children[index].style.display = "block";
             });
@@ -322,6 +328,7 @@ export default {
         // 左侧全部商品部分移出
         mouseLeaveSite(index) {
             this.$nextTick(() => {
+                this.classenable = false;
                 this.$refs.children[index].style.display = "none";
             });
         },
@@ -557,11 +564,6 @@ export default {
                                     line-height: 42px;
                                     color: #424242;
 
-                                    &:hover {
-                                        color: #fff;
-                                        background: #ff6700;
-                                    }
-
                                     .icon {
                                         position: absolute;
                                         top: 12px;
@@ -570,6 +572,11 @@ export default {
                                         line-height: 16px;
                                         color: #e0e0e0;
                                     }
+                                }
+
+                                .title.active {
+                                    color: #fff;
+                                    background: #ff6700;
                                 }
 
                                 // 子级

@@ -9,5 +9,326 @@
         {
             "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/524f43e06f4722b1ff745402d7ad7cbb.jpg?thumb=1&w=2452&h=500&f=webp&q=90"
         }
+    ],
+    "fquestion": [
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cf177a3d11987a8a89fcf9737761fee4.png",
+            "title": "申请售后服务",
+            "desp": "一键预约，快速维修"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b3d78ee5b7e581ff800867890d374856.png",
+            "title": "订单查询",
+            "desp": "购物信息，快速搜索"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9c468f3f48250ba18be586cddec59414.png",
+            "title": "小米账户",
+            "desp": "重置密保，安全验证"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f894c0e7281d1c9e3aa5a038a37dc524.png",
+            "title": "保障服务",
+            "desp": "碎屏延保，双重保障"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b5fa66699ea9f680e4da98b159b7cfa4.png",
+            "title": "以旧换新",
+            "desp": "便捷交易，价格保障"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/da095cefe1f478177ad74eff3682d85a.png",
+            "title": "付费服务",
+            "desp": "安装服务，手机维修"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/74c16ff8dba7b08ffd72a4f5348751d6.png",
+            "title": "售后政策",
+            "desp": "条款说明，安心保障"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ddd3107ebde416eabeb1491d27506225.png",
+            "title": "查询真伪",
+            "desp": "辨别真伪，放心使用"
+        }
+    ],
+    "goodslist": [
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b844bf6aa1800f489e8cf549c803b4fa.jpg",
+            "desp": "小米手机"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c446d82cd2ac26d827f53cbdb4487667.jpg",
+            "desp": "红米手机"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e8ef7fadcf4fa0c49f26383f0de3b17d.jpg",
+            "desp": "小米平板"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/000922d75160d490fa51dd3e28b37d6a.jpg",
+            "desp": "小米电视"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b844bf6aa1800f489e8cf549c803b4fa.jpg",
+            "desp": "小米手机"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c446d82cd2ac26d827f53cbdb4487667.jpg",
+            "desp": "红米手机"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e8ef7fadcf4fa0c49f26383f0de3b17d.jpg",
+            "desp": "小米平板"
+        },
+        {
+            "url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/000922d75160d490fa51dd3e28b37d6a.jpg",
+            "desp": "小米电视"
+        }
+    ],
+    "serviceCenter": [
+        {
+            "title": "售后网点",
+            "desp": "小米售后，一站式为您提供售后服务。有售后，放心购是我们的服务宗旨。",
+            "iconWrap": [
+                {
+                    "url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-webfile/images/2018/service/serviceCenter_icon1.png",
+                    "name": "预约服务"
+                },
+                {
+                    "url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-webfile/images/2018/service/serviceCenter_icon2.png",
+                    "name": "1小时快修"
+                },
+                {
+                    "url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-webfile/images/2018/service/serviceCenter_icon3.png",
+                    "name": "软件升级"
+                },
+                {
+                    "url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-webfile/images/2018/service/serviceCenter_icon4.png",
+                    "name": "咨询体验"
+                },
+                {
+                    "url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-webfile/images/2018/service/serviceCenter_icon5.png",
+                    "name": "面对面拆机"
+                }
+            ]
+        }
+    ],
+    "manage": [
+        {
+            "title": "账户管理",
+            "children": [
+                {
+                    "name": "小米账户如何注册？"
+                },
+                {
+                    "name": "手机如何如申诉解锁？"
+                },
+                {
+                    "name": "什么是账号申诉重置密码保护？"
+                },
+                {
+                    "name": "如何进行重置密码保护？"
+                },
+                {
+                    "name": "小米账号忘记密码如何找回？"
+                },
+                {
+                    "name": "如何认证小米社区VIP？"
+                }
+            ]
+        },
+        {
+            "title": "购物指南",
+            "children": [
+                {
+                    "name": "缺货的产品什么时间能下单购买？"
+                },
+                {
+                    "name": "为什么订单满99元还要支付快递费用？"
+                },
+                {
+                    "name": "活动时赠送的产品可选吗？"
+                },
+                {
+                    "name": "下单后多长时间发货？"
+                },
+                {
+                    "name": "小米商城支持什么方式支付？"
+                },
+                {
+                    "name": "为什么购物车中显示有货，去结算时无货？"
+                }
+            ]
+        },
+        {
+            "title": "订单相关",
+            "children": [
+                {
+                    "name": "如何修改订单发票？"
+                },
+                {
+                    "name": "如何修改订单？"
+                },
+                {
+                    "name": "如何取消订单？"
+                },
+                {
+                    "name": "优惠券如何使用？"
+                },
+                {
+                    "name": "如何查询物流信息？"
+                },
+                {
+                    "name": "小米产品如何辨别真伪？"
+                }
+            ]
+        },
+        {
+            "title": "售后服务",
+            "children": [
+                {
+                    "name": "如何查询维修网点？"
+                },
+                {
+                    "name": "小米售后服务政策"
+                },
+                {
+                    "name": "取消订单/退货后如何退款？"
+                },
+                {
+                    "name": "在小米商城购买商品如何申请售后？"
+                },
+                {
+                    "name": "如何查询售后进度？"
+                },
+                {
+                    "name": "维修价格查询"
+                }
+            ]
+        },
+        {
+            "title": "特色服务",
+            "children": [
+                {
+                    "name": "电视挂件安装收费标准"
+                },
+                {
+                    "name": "如何以旧换新？"
+                },
+                {
+                    "name": "以旧换新常见问题"
+                },
+                {
+                    "name": "如何登陆小米云服务？"
+                },
+                {
+                    "name": "如何购买手机上门维修"
+                },
+                {
+                    "name": "米家互联网空调如何安装及收费标准？"
+                }
+            ]
+        },
+        {
+            "title": "其他产品咨询",
+            "children": [
+                {
+                    "name": "小米钱包账户问题"
+                },
+                {
+                    "name": "理财相关问题"
+                },
+                {
+                    "name": "小米分期相关问题"
+                },
+                {
+                    "name": "米粉卡相关问题"
+                },
+                {
+                    "name": "全球上网相关问题"
+                },
+                {
+                    "name": "对小米有意见或建议怎么办？"
+                }
+            ]
+        },
+        {
+            "title": "线下销售渠道",
+            "children": [
+                {
+                    "name": "小米之家功能介绍"
+                },
+                {
+                    "name": "如何查询您身边的小米之家"
+                },
+                {
+                    "name": "什么是小米授权体验店"
+                },
+                {
+                    "name": "如何查询小米授权体验店"
+                },
+                {
+                    "name": "如何查询小米KA门店（大型连锁卖场）"
+                },
+                {
+                    "name": "如何查询小米小店"
+                }
+            ]
+        }
+    ],
+    "customer": [
+        {
+            "up": [
+                {
+                    "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon1.png",
+                    "desp": "7x24人工客服"
+                },
+                {
+                    "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon2.png",
+                    "desp": "小米服务微博"
+                },
+                {
+                    "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon3.png",
+                    "desp": "小米服务微信"
+                },
+                {
+                    "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon3.png",
+                    "desp": "小米官方微信"
+                }
+            ]
+        },
+        {
+            "buttom": [
+                {
+                    "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon4.png",
+                    "lineTop": "小米商城热线",
+                    "lineBottom":"400-100-5678",
+                    "tipTop": "手机、电视盒子、智能硬件等",
+                    "tipBottom":"服务时间：8:00-18:00"
+                },
+                {
+                    "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon5.png",
+                    "lineTop": "小米金服热线",
+                    "lineBottom":"400-100-3399",
+                    "tipTop": "贷款、保险、理财、钱包",
+                    "tipBottom":"服务时间：9:00-19:00"
+                },
+                {
+                    "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon6.png",
+                    "lineTop": "小米移动热线",
+                    "lineBottom":"400-922-3838",
+                    "tipTop": "任我行、吃到饱、米粉卡等",
+                    "tipBottom":"服务时间：8:00-18:00"
+                },
+                {
+                    "url": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/service/game.png",
+                    "lineTop": "小米游戏热线",
+                    "lineBottom":"400-098-1666",
+                    "tipTop": "小米游戏相关",
+                    "tipBottom":"服务时间：8:00-18:00"
+                }
+            ]
+        }
     ]
 }
