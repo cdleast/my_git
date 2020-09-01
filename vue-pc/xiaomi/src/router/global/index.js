@@ -22,7 +22,15 @@ export default [
             /**
              * 帮助中心
             */
-            { path: 'service', name: 'service', meta: { title: '帮助中心' }, component: () => import('@/views/service') },
+            {
+                path: 'service', name: 'service', meta: { title: '帮助中心', show: true }, component: () => import('@/views/service'), children: [
+                    { path: 'quick-repair', name: 'quick-repair', meta: { title: '1小时快修服务' }, component: () => import('@/views/service/service-repair') },
+                    { path: 'exchange', name: 'exchange', meta: { title: '小米售后服务政策查询' }, component: () => import('@/views/service/service-exchange') },
+                    { path: 'guide', name: 'guide', meta: { title: '购物指南' }, component: () => import('@/views/service/service-guide') },
+                    { path: 'sitelist', name: 'sitelist', meta: { title: '服务网点' }, component: () => import('@/views/service/service-sitelist') },
+                ]
+            },
+
         ]
     },
 

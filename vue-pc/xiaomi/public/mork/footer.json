@@ -2,23 +2,28 @@
     "footerService": [
         {
             "name": "预约维修服务",
-            "icon": "icon-liwu"
+            "icon": "icon-liwu",
+            "router": "/service/quick-repair"
         },
         {
             "name": "7天无理由退货",
-            "icon": "icon-liwu"
+            "icon": "icon-liwu",
+            "router": "/service/exchange"
         },
         {
             "name": "15天免费换货",
-            "icon": "icon-liwu"
+            "icon": "icon-liwu",
+            "router": "/service/exchange"
         },
         {
             "name": "满99元包邮",
-            "icon": "icon-liwu"
+            "icon": "icon-liwu",
+            "router": "/service/guide"
         },
         {
             "name": "520余家售后网点",
-            "icon": "icon-liwu"
+            "icon": "icon-liwu",
+            "router": "/service/sitelist"
         }
     ],
     "footerLinks": [

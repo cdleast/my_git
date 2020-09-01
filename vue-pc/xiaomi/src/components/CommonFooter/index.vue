@@ -4,8 +4,10 @@
             <div class="footer-service">
                 <ul class="list-service clearfix">
                     <li v-for="(item,index) in footerService" :key="index">
-                        <span :class="'icon ' + item.icon"></span>
-                        <span>{{ item.name }}</span>
+                        <el-link :underline="false" :href="item.router" target="_blank">
+                            <span :class="'icon ' + item.icon"></span>
+                            <span class="name">{{ item.name }}</span>
+                        </el-link>
                     </li>
                 </ul>
             </div>
@@ -119,6 +121,10 @@ export default {
                     font-size: 24px;
                     vertical-align: text-bottom;
                     margin-right: 5px;
+                }
+
+                .name {
+                    vertical-align: 5px;
                 }
 
                 &:first-child {

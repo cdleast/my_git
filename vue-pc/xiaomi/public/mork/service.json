@@ -290,11 +290,13 @@
                 },
                 {
                     "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon3.png",
-                    "desp": "小米服务微信"
+                    "desp": "小米服务微信",
+                    "hoverUrl": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/service/service.png"
                 },
                 {
                     "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon3.png",
-                    "desp": "小米官方微信"
+                    "desp": "小米官方微信",
+                    "hoverUrl": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/service/mishop_wx.jpg"
                 }
             ]
         },
@@ -303,30 +305,30 @@
                 {
                     "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon4.png",
                     "lineTop": "小米商城热线",
-                    "lineBottom":"400-100-5678",
+                    "lineBottom": "400-100-5678",
                     "tipTop": "手机、电视盒子、智能硬件等",
-                    "tipBottom":"服务时间：8:00-18:00"
+                    "tipBottom": "服务时间：8:00-18:00"
                 },
                 {
                     "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon5.png",
                     "lineTop": "小米金服热线",
-                    "lineBottom":"400-100-3399",
+                    "lineBottom": "400-100-3399",
                     "tipTop": "贷款、保险、理财、钱包",
-                    "tipBottom":"服务时间：9:00-19:00"
+                    "tipBottom": "服务时间：9:00-19:00"
                 },
                 {
                     "url": "https://i1.mifile.cn/f/i/2018/service/contact_icon6.png",
                     "lineTop": "小米移动热线",
-                    "lineBottom":"400-922-3838",
+                    "lineBottom": "400-922-3838",
                     "tipTop": "任我行、吃到饱、米粉卡等",
-                    "tipBottom":"服务时间：8:00-18:00"
+                    "tipBottom": "服务时间：8:00-18:00"
                 },
                 {
                     "url": "https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/service/game.png",
                     "lineTop": "小米游戏热线",
-                    "lineBottom":"400-098-1666",
+                    "lineBottom": "400-098-1666",
                     "tipTop": "小米游戏相关",
-                    "tipBottom":"服务时间：8:00-18:00"
+                    "tipBottom": "服务时间：8:00-18:00"
                 }
             ]
         }
