@@ -105,6 +105,9 @@ div:focus {
     *zoom: 1;
 }
 
+.container:before,
+.container:after,
+.clearfix:before,
 .clearfix:after {
     content: "";
     display: block;

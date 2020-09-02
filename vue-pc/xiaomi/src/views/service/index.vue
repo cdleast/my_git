@@ -239,53 +239,53 @@ export default {
             text-align: center;
             line-height: 106px;
         }
-    }
 
-    // 服务中心
-    .content {
-        display: flex;
+        // 服务中心
+        .content {
+            display: flex;
 
-        & > div {
-            flex: 1;
-        }
-
-        .right {
-            background: #fff;
-            text-align: center;
-        }
-
-        p {
-            margin: 64px auto 15px;
-            color: #000;
-            font-size: 20px;
-        }
-
-        .desp {
-            color: #000;
-            font-size: 16px;
-            opacity: 0.6;
-        }
-
-        .icon-wrap {
-            width: 500px;
-            margin: 24px auto;
-            opacity: 0.6;
-
-            dl {
-                float: left;
-                width: 100px;
+            & > div {
+                flex: 1;
             }
-        }
 
-        .btn {
-            margin: 15px auto;
-            font-size: 16px;
-            display: inline-block;
-            text-align: center;
-            color: #b0b0b0;
-            cursor: pointer;
-            -webkit-transition: all 0.4s;
-            transition: all 0.4s;
+            .right {
+                background: #fff;
+                text-align: center;
+            }
+
+            p {
+                margin: 64px auto 15px;
+                color: #000;
+                font-size: 20px;
+            }
+
+            .desp {
+                color: #000;
+                font-size: 16px;
+                opacity: 0.6;
+            }
+
+            .icon-wrap {
+                width: 500px;
+                margin: 24px auto;
+                opacity: 0.6;
+
+                dl {
+                    float: left;
+                    width: 100px;
+                }
+            }
+
+            .btn {
+                margin: 15px auto;
+                font-size: 16px;
+                display: inline-block;
+                text-align: center;
+                color: #b0b0b0;
+                cursor: pointer;
+                -webkit-transition: all 0.4s;
+                transition: all 0.4s;
+            }
         }
     }
 

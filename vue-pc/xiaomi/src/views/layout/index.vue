@@ -2,8 +2,8 @@
     <div class="layout">
         <common-header></common-header>
 
-        <div class="main-body">
-            <div class="container">
+        <div :class="mainBody">
+            <div :class="className">
                 <common-breadcrumb></common-breadcrumb>
                 <router-view></router-view>
             </div>
@@ -21,11 +21,23 @@ export default {
     components: {
         CommonHeader,
         CommonFooter,
-        CommonBreadcrumb
+        CommonBreadcrumb,
     },
     name: "layout",
     data() {
         return {};
+    },
+    computed: {
+        className() {
+            return this.$route.fullPath == "/service/quick-repair"
+                ? "container-w100"
+                : "container";
+        },
+        mainBody() {
+            return this.$route.fullPath == "/service/quick-repair"
+                ? "main-body-p0"
+                : "main-body";
+        },
     },
 };
 </script>
@@ -38,5 +50,15 @@ export default {
 .el-main {
     background: #f5f5f5;
     padding-bottom: 80px;
+}
+
+.main-body {
+    background: #f5f5f5;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.main-body-p0 {
+    padding-bottom: 0;
 }
 </style>

@@ -1,12 +1,14 @@
 <template>
-    <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item
-            v-for="(item,index) in breadList"
-            :key="index"
-            :to="{ path: item.path }"
-        >{{ item.meta.title }}</el-breadcrumb-item>
-    </el-breadcrumb>
+    <div class="common-breadcrumb">
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item
+                v-for="(item,index) in breadList"
+                :key="index"
+                :to="{ path: item.path }"
+            >{{ item.meta.title }}</el-breadcrumb-item>
+        </el-breadcrumb>
+    </div>
 </template>
 
 <script>
@@ -38,7 +40,14 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.common-breadcrumb {
+    background: #f5f5f5;
+}
 .el-breadcrumb {
-    margin-bottom: 20px;
+    height: 40px;
+    line-height: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

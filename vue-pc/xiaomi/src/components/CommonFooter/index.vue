@@ -99,6 +99,7 @@ export default {
 
 <style lang='scss' scoped>
 .common-footer /deep/ {
+
     .footer-service {
         padding: 27px 0;
         border-bottom: 1px solid #e0e0e0;
