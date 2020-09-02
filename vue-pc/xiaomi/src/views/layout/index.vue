@@ -54,7 +54,6 @@ export default {
 
 .main-body {
     background: #f5f5f5;
-    padding-top: 20px;
     padding-bottom: 80px;
 }
 
