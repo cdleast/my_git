@@ -70,6 +70,7 @@ export default {
         display: block;
         font-size: 30px;
         margin-top: 30px;
+        margin-bottom: 30px;
         color: #666;
         font-weight: 400;
         text-align: center;

@@ -436,5 +436,35 @@
         {
             "name": "显示器"
         }
+    ],
+    "shoppingTab": [
+        {
+            "name": "发货时效",
+            "path": "/service/guide/sendtime"
+        },
+        {
+            "name": "购物车常见问题和购物技巧",
+            "path": "/service/guide/problems"
+        },
+        {
+            "name": "销售时间",
+            "path": "/service/guide/salestime"
+        },
+        {
+            "name": "包邮政策",
+            "path": "/service/guide/postal"
+        },
+        {
+            "name": "支付帮助",
+            "path": "/service/guide/payment"
+        },
+        {
+            "name": "活动相关",
+            "path": "/service/guide/activity"
+        },
+        {
+            "name": "防诈骗提示",
+            "path": "/service/guide/avoid"
+        }
     ]
 }

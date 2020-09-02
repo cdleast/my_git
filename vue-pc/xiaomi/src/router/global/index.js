@@ -26,7 +26,17 @@ export default [
                 path: 'service', name: 'service', meta: { title: '帮助中心', show: true }, component: () => import('@/views/service'), children: [
                     { path: 'quick-repair', name: 'quick-repair', meta: { title: '1小时快修服务' }, component: () => import('@/views/service/service-repair') },
                     { path: 'exchange', name: 'exchange', meta: { title: '小米售后服务政策查询' }, component: () => import('@/views/service/service-exchange') },
-                    { path: 'guide', name: 'guide', meta: { title: '购物指南' }, component: () => import('@/views/service/service-guide') },
+                    {
+                        path: 'guide', name: 'guide', meta: { title: '购物指南' }, component: () => import('@/views/service/guide'), redirect: '/service/guide/sendtime', children: [
+                            { path: 'sendtime', name: 'sendtime', meta: { title: '发货时效' }, component: () => import('@/views/service/guide/guide-sendtime') },
+                            { path: 'problems', name: 'problems', meta: { title: '购物车常见问题和购物技巧' }, component: () => import('@/views/service/guide/guide-problems') },
+                            { path: 'salestime', name: 'salestime', meta: { title: '销售时间' }, component: () => import('@/views/service/guide/guide-salestime') },
+                            { path: 'postal', name: 'postal', meta: { title: '包邮政策' }, component: () => import('@/views/service/guide/guide-postal') },
+                            { path: 'payment', name: 'payment', meta: { title: '支付帮助' }, component: () => import('@/views/service/guide/guide-payment') },
+                            { path: 'activity', name: 'activity', meta: { title: '活动相关' }, component: () => import('@/views/service/guide/guide-activity') },
+                            { path: 'avoid', name: 'avoid', meta: { title: '防诈骗提示' }, component: () => import('@/views/service/guide/guide-avoid') },
+                        ]
+                    },
                     { path: 'sitelist', name: 'sitelist', meta: { title: '服务网点' }, component: () => import('@/views/service/service-sitelist') },
                 ]
             },

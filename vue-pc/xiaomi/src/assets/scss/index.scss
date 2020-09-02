@@ -60,3 +60,29 @@ html {
         }
     }
 }
+
+.service-guide-view {
+    padding-bottom: 50px;
+
+    .el-collapse-item__header {
+        padding-left: 48px;
+        font-size: 16px;
+        line-height: 70px;
+        height: 70px;
+    }
+
+    .el-collapse-item__header.is-active {
+        color: #ff6700;
+    }
+
+    .el-collapse-item__content {
+        background-color: #fbfbfb;
+        padding: 32px 48px;
+        line-height: 24px;
+
+        &>div {
+            color: #333;
+            font-size: 16px;
+        }
+    }
+}
