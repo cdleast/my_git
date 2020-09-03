@@ -102,47 +102,7 @@
                 </div>
             </div>
 
-            <div class="service-fquestion">
-                <h2>联系客服</h2>
-                <ul class="items-list" v-if="customer[0]">
-                    <li
-                        class="transi-up per"
-                        v-for="(item,index) in customer[0].up"
-                        :key="'index1'+index"
-                    >
-                        <p class="main" :class="item.hoverUrl?'qr-img-main':''">
-                            <el-image style="width: 49px; height: 44px" :src="item.url" fit="fit"></el-image>
-                            <span>{{ item.desp }}</span>
-                        </p>
-                        <el-image
-                            v-if="item.hoverUrl"
-                            :src="item.hoverUrl"
-                            :class="item.hoverUrl?'qr-img':''"
-                            style="width: 140px; height: 140px"
-                        ></el-image>
-                    </li>
-
-                    <li
-                        class="transi-up per"
-                        v-for="(item,index) in customer[1].buttom"
-                        :key="'index2'+index"
-                    >
-                        <p class="main">
-                            <el-image style="width: 49px; height: 44px" :src="item.url" fit="fit"></el-image>
-                            <span class="two-line">
-                                {{ item.lineTop }}
-                                <br />
-                                {{ item.lineBottom }}
-                            </span>
-                        </p>
-                        <p class="tip">
-                            {{ item.tipTop }}
-                            <br />
-                            {{ item.tipBottom }}
-                        </p>
-                    </li>
-                </ul>
-            </div>
+            <service-customer></service-customer>
         </template>
 
         <router-view></router-view>
@@ -150,8 +110,12 @@
 </template>
 
 <script>
+import serviceCustomer from "@/views/service/service-customer";
 export default {
     name: "service",
+    components: {
+        serviceCustomer,
+    },
     data() {
         return {
             carousel: [], // 轮播图
@@ -159,7 +123,6 @@ export default {
             goodslist: [], // 产品支持
             serviceCenter: [], // 售后网点
             manage: [], // 管理部分
-            customer: [], // 联系客服
             swiperOptions: {
                 pagination: {
                     el: ".swiper-pagination",
@@ -188,7 +151,6 @@ export default {
                 this.goodslist = res.data.goodslist;
                 this.serviceCenter = res.data.serviceCenter;
                 this.manage = res.data.manage;
-                this.customer = res.data.customer;
             });
         },
 
@@ -234,6 +196,7 @@ export default {
         h2 {
             font-size: 30px;
             margin-top: 30px;
+            margin-bottom: 30px;
             color: #666;
             font-weight: 400;
             text-align: center;
@@ -302,6 +265,8 @@ export default {
     }
 
     .service-manage {
+        margin-bottom: 30px;
+
         .tab-title {
             li {
                 border: none;

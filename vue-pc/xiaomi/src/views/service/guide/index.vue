@@ -14,10 +14,14 @@
                                     @click="$router.push({ path: item.path })"
                                 >{{ item.name }}</li>
                             </ul>
+                            <span class="line"></span>
+                            <ul class="tab-title">
+                                <li @click="$router.push('/service/contact')">联系客服</li>
+                            </ul>
                         </div>
                     </div>
                 </el-col>
-                
+
                 <el-col :span="18">
                     <div class="grid-content service-guide-view">
                         <router-view></router-view>
@@ -75,6 +79,13 @@ export default {
             &.active {
                 color: #f56600;
             }
+        }
+
+        .line {
+            width: 84px;
+            margin: 14px 0;
+            display: block;
+            border-bottom: 1px solid #dbdbdb;
         }
     }
 }

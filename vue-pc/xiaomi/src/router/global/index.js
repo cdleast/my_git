@@ -38,6 +38,7 @@ export default [
                         ]
                     },
                     { path: 'sitelist', name: 'sitelist', meta: { title: '服务网点' }, component: () => import('@/views/service/service-sitelist') },
+                    { path: 'customer', name: 'customer', meta: { title: '联系客服' }, component: () => import('@/views/service/service-customer') },
                 ]
             },
 

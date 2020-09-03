@@ -17,6 +17,12 @@ import 'swiper/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
 
 
+import BaiduMap from 'vue-baidu-map' // 百度地图api
+Vue.use(BaiduMap, {
+	ak: 'Lf18663IUntCD6lsswcsoIzatbPtu8kw'
+})
+
+
 // 视频播放插件
 import Video from 'video.js'
 import 'video.js/dist/video-js.css'
