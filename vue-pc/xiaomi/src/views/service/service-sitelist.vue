@@ -15,39 +15,82 @@
             </div>
 
             <div class="location-section">
-                <el-select v-model="select.value1" slot="prepend" placeholder="请选择">
-                    <el-option label="餐厅名" value="1"></el-option>
-                    <el-option label="订单号" value="2"></el-option>
-                    <el-option label="用户电话" value="3"></el-option>
-                </el-select>
-                <el-select v-model="select.value2" slot="prepend" placeholder="请选择">
-                    <el-option label="餐厅名" value="1"></el-option>
-                    <el-option label="订单号" value="2"></el-option>
-                    <el-option label="用户电话" value="3"></el-option>
-                </el-select>
-                <el-select v-model="select.value3" slot="prepend" placeholder="请选择">
-                    <el-option label="餐厅名" value="1"></el-option>
-                    <el-option label="订单号" value="2"></el-option>
-                    <el-option label="用户电话" value="3"></el-option>
-                </el-select>
+                <v-distpicker
+                    @province="onChangeProvince"
+                    @city="onChangeCity"
+                    @area="onChangeArea"
+                    :placeholders="{ province: '请选择省', city: '请选择市', area: '请选择区' }"
+                ></v-distpicker>
             </div>
         </div>
 
-        <div class="location-main"></div>
+        <div class="location-main">
+            <div class="location-shop-con">
+                <div class="location-shop-select">
+                    <span class="location-shop-tit">支持产品</span>
+                    <el-select
+                        v-model="select.value4"
+                        size="small"
+                        slot="prepend"
+                        placeholder="请选择"
+                    >
+                        <el-option label="全部类型" value="1"></el-option>
+                        <el-option label="手机" value="2"></el-option>
+                        <el-option label="平板" value="3"></el-option>
+                        <el-option label="耳机" value="4"></el-option>
+                        <el-option label="音箱" value="5"></el-option>
+                    </el-select>
+                </div>
+                <div class="location-shop-detail">
+                    <ul class="location-list">
+                        <li v-for="i in 20" :key="i">
+                            <span class="location-num">1</span>
+                            <div class="location-addr">
+                                <h3>小米授权服务中心清河店（支持手机同城免费邮寄）</h3>
+                                <p>北京海淀区清河嘉园东区1号楼2层108</p>
+                                <div class="maintain-praise">
+                                    <el-rate
+                                        v-model="select.value5"
+                                        disabled
+                                        show-score
+                                        text-color="#999"
+                                        score-template="{value}"
+                                        :colors="['#f56e0c', '#f56e0c', '#f56e0c']"
+                                    ></el-rate>
+                                    <span class="user-nums">0.134万 用户打分</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-        <div class="location-bot">
-            <p>没有找到附近的服务网点？了解 <el-link :underline="false">县区受理网点></el-link> </p>
+            <div class="location-map">
+                <baidu-map
+                    class="map"
+                    @ready="mapReady"
+                    :scroll-wheel-zoom="true"
+                    :mapStyle="mapStyle"
+                >
+                    <bm-marker :position="point" animation="BMAP_ANIMATION_BOUNCE"></bm-marker>
+                </baidu-map>
+            </div>
         </div>
 
-        <!-- <baidu-map class="map" @ready="mapReady" :scroll-wheel-zoom="true" :mapStyle="mapStyle">
-            <bm-marker :position="point" animation="BMAP_ANIMATION_BOUNCE"></bm-marker>
-        </baidu-map> -->
+        <div class="location-bot">
+            <p>
+                没有找到附近的服务网点？了解
+                <el-link :underline="false">县区受理网点></el-link>
+            </p>
+        </div>
     </div>
 </template>
 
 <script>
+import VDistpicker from "v-distpicker";
 export default {
     name: "service-sitelist",
+    components: { VDistpicker },
     data() {
         return {
             point: "",
@@ -63,18 +106,41 @@ export default {
                     },
                 ],
             },
+            areajson: [], // 三级联动数据
             select: {
-                value1: "",
-                value2: "",
-                value3: "",
+                value4: "", // 支持产品
+                value5: 3.7, // 评分
+            },
+            linkage: {
+                province: "", // 省的名字
+                city: "", // 市的名字
+                area: "", // 区的名字
             },
         };
+    },
+    created() {
+        // this.getProvinceCityArea();
     },
     methods: {
         mapReady({ BMap, map }) {
             // 选择一个经纬度作为中心点
             this.point = new BMap.Point(116.404, 39.915);
             map.centerAndZoom(this.point, 12);
+        },
+
+        // 选择省
+        onChangeProvince(item) {
+            this.linkage.province = item;
+        },
+
+        // 选择市
+        onChangeCity(item) {
+            this.linkage.city = item;
+        },
+
+        // 选择区
+        onChangeArea(item) {
+            this.linkage.area = item;
         },
     },
 };
@@ -124,18 +190,129 @@ export default {
         .location-section {
             float: right;
 
-            .el-select {
-                margin-left: 15px;
-                .el-input__inner {
-                    height: 50px;
-                    line-height: 50px;
-                }
+            select {
+                width: 150px;
+                margin-left: 7px;
             }
         }
     }
 
-    .location-main{
-        
+    .location-main {
+        padding: 20px 35px 15px 45px;
+        margin-top: 10px;
+        background: #fff;
+        display: flex;
+
+        .location-shop-con {
+            width: 325px;
+
+            .location-shop-select {
+                display: flex;
+                justify-content: space-between;
+
+                .location-shop-tit {
+                    line-height: 32px;
+                    float: left;
+                }
+
+                .el-select {
+                    width: 148px;
+                }
+            }
+
+            .location-shop-detail {
+                margin-top: 18px;
+
+                .location-list {
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    height: 470px;
+                    border-top: 1px solid #e1e1e1;
+
+                    li {
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+                        padding-right: 15px;
+                        transition: all 0.3s;
+                        font-size: 12px;
+                        cursor: pointer;
+                        border-bottom: 1px solid #f5f5f5;
+                        position: relative;
+
+                        .location-num {
+                            position: absolute;
+                            left: 5px;
+                            top: 27px;
+                            width: 20px;
+                            height: 20px;
+                            line-height: 20px;
+                            color: #f56700;
+                            border: 1px solid #f56e0c;
+                            border-radius: 50%;
+                            text-align: center;
+                        }
+
+                        .location-addr {
+                            padding-left: 40px;
+                            font-size: 12px;
+                            color: #999;
+
+                            h3,
+                            p {
+                                height: 20px;
+                                line-height: 20px;
+                                overflow: hidden;
+                            }
+
+                            h3 {
+                                font-weight: normal;
+                                margin-bottom: 2px;
+                                color: #212121;
+                                font-size: 14px;
+                            }
+
+                            p {
+                                font-size: 12px;
+                            }
+
+                            .maintain-praise {
+                                margin-top: 5px;
+
+                                .el-rate {
+                                    float: left;
+
+                                    .el-rate__icon {
+                                        margin-right: 0;
+                                        font-size: 20px;
+                                    }
+
+                                    .el-rate__text {
+                                        font-size: 12px;
+                                        line-height: 20px;
+                                    }
+                                }
+
+                                .user-nums {
+                                    margin-left: 20px;
+                                    line-height: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .location-map {
+            flex: 1;
+            margin-left: 30px;
+            border: 1px solid #f56700;
+
+            .map {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 
     .location-bot {
@@ -143,15 +320,16 @@ export default {
         padding: 20px;
         color: #999;
         background: #fff;
-
-        .el-link{
-            color: #ff6600;
+        
+        p{
+            display: flex;
+            align-items: center;
         }
-    }
 
-    .map {
-        width: 400px;
-        height: 300px;
+        .el-link {
+            color: #ff6600;
+            font-size: 16px;
+        }
     }
 }
 </style>

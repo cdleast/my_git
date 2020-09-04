@@ -38,4 +38,13 @@ export default {
         })
     },
 
+    // 获取三级联动省市区
+    getProvinceCityArea(params) {
+        return request({
+            url: '/mork/area.json',
+            method: 'get',
+            params
+        })
+    }
+
 }
