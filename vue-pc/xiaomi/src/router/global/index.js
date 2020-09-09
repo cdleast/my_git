@@ -38,6 +38,7 @@ export default [
                         ]
                     },
                     { path: 'sitelist', name: 'sitelist', meta: { title: '服务网点' }, component: () => import('@/views/service/service-sitelist') },
+                    { path: 'acceptstore', name: 'acceptstore', meta: { title: '小米售后 县区受理网点查询' }, component: () => import('@/views/service/service-acceptstore') },
                     { path: 'customer', name: 'customer', meta: { title: '联系客服' }, component: () => import('@/views/service/service-customer') },
                 ]
             },

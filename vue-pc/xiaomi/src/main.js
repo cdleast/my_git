@@ -29,7 +29,8 @@ import 'video.js/dist/video-js.css'
 Vue.prototype.$video = Video
 
 
-
+import Distpicker from 'v-distpicker' // 三级联动
+Vue.component('v-distpicker', Distpicker)
 
 
 

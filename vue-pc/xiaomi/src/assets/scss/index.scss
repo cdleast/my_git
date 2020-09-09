@@ -86,3 +86,14 @@ html {
         }
     }
 }
+
+
+// 三级联动
+.distpicker-address-wrapper {
+    label select {
+        width: 150px;
+        min-width: 100px;
+        position: relative;
+    }
+
+}

@@ -43,8 +43,13 @@
                 </div>
                 <div class="location-shop-detail">
                     <ul class="location-list">
-                        <li v-for="i in 20" :key="i">
-                            <span class="location-num">1</span>
+                        <li
+                            v-for="(i,index) in 20"
+                            :key="i"
+                            @click="onActive(index)"
+                            :class="active==index?'active':''"
+                        >
+                            <span class="location-num">{{ index+1 }}</span>
                             <div class="location-addr">
                                 <h3>小米授权服务中心清河店（支持手机同城免费邮寄）</h3>
                                 <p>北京海淀区清河嘉园东区1号楼2层108</p>
@@ -80,21 +85,21 @@
         <div class="location-bot">
             <p>
                 没有找到附近的服务网点？了解
-                <el-link :underline="false">县区受理网点></el-link>
+                <el-link :underline="false" target="_blank" href="/service/acceptstore" >县区受理网点></el-link>
             </p>
         </div>
     </div>
 </template>
 
 <script>
-import VDistpicker from "v-distpicker";
+import VDistpicker from "v-distpicker"; // 三级联动
 export default {
     name: "service-sitelist",
     components: { VDistpicker },
     data() {
         return {
-            point: "",
-            // 自定义样式
+            point: "", // 百度地图默认地址IP
+            // 地图自定义样式
             mapStyle: {
                 styleJson: [
                     {
@@ -106,26 +111,24 @@ export default {
                     },
                 ],
             },
-            areajson: [], // 三级联动数据
-            select: {
-                value4: "", // 支持产品
-                value5: 3.7, // 评分
-            },
             linkage: {
                 province: "", // 省的名字
                 city: "", // 市的名字
                 area: "", // 区的名字
             },
+            select: {
+                value4: "", // 支持产品
+                value5: 3.7, // 评分
+            },
+            active: -1, // 地图左侧导航选中
         };
     },
-    created() {
-        // this.getProvinceCityArea();
-    },
     methods: {
+        // 创建地图实例
         mapReady({ BMap, map }) {
             // 选择一个经纬度作为中心点
-            this.point = new BMap.Point(116.404, 39.915);
-            map.centerAndZoom(this.point, 12);
+            this.point = new BMap.Point(116.404, 39.915); // 创建点坐标
+            map.centerAndZoom(this.point, 12); // 初始化地图，设置中心点坐标和地图级别
         },
 
         // 选择省
@@ -141,6 +144,11 @@ export default {
         // 选择区
         onChangeArea(item) {
             this.linkage.area = item;
+        },
+
+        // 地图左侧点击选择地址
+        onActive(index) {
+            this.active = index;
         },
     },
 };
@@ -245,7 +253,7 @@ export default {
                             top: 27px;
                             width: 20px;
                             height: 20px;
-                            line-height: 20px;
+                            line-height: 18px;
                             color: #f56700;
                             border: 1px solid #f56e0c;
                             border-radius: 50%;
@@ -299,6 +307,18 @@ export default {
                             }
                         }
                     }
+
+                    li.active {
+                        .location-addr h3,
+                        .location-addr p {
+                            color: #f56e0c;
+                        }
+
+                        .location-num {
+                            color: #fff;
+                            background: #f56e0c;
+                        }
+                    }
                 }
             }
         }
@@ -320,8 +340,8 @@ export default {
         padding: 20px;
         color: #999;
         background: #fff;
-        
-        p{
+
+        p {
             display: flex;
             align-items: center;
         }
