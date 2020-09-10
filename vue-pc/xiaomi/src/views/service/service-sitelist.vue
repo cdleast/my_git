@@ -16,10 +16,11 @@
 
             <div class="location-section">
                 <v-distpicker
-                    @province="onChangeProvince"
-                    @city="onChangeCity"
-                    @area="onChangeArea"
-                    :placeholders="{ province: '请选择省', city: '请选择市', area: '请选择区' }"
+                    :province="linkage.province"
+                    :city="linkage.city"
+                    :area="linkage.area"
+                    @selected="onSelected"
+                    :placeholders="{ province: '省', city: '', area: '全部区域' }"
                 ></v-distpicker>
             </div>
         </div>
@@ -85,7 +86,7 @@
         <div class="location-bot">
             <p>
                 没有找到附近的服务网点？了解
-                <el-link :underline="false" target="_blank" href="/service/acceptstore" >县区受理网点></el-link>
+                <el-link :underline="false" target="_blank" href="/service/acceptstore">县区受理网点></el-link>
             </p>
         </div>
     </div>
@@ -131,19 +132,11 @@ export default {
             map.centerAndZoom(this.point, 12); // 初始化地图，设置中心点坐标和地图级别
         },
 
-        // 选择省
-        onChangeProvince(item) {
-            this.linkage.province = item;
-        },
-
-        // 选择市
-        onChangeCity(item) {
-            this.linkage.city = item;
-        },
-
-        // 选择区
-        onChangeArea(item) {
-            this.linkage.area = item;
+        // 选择最后一项时候出发
+        onSelected(data) {
+            this.linkage.province = data.province.value;
+            this.linkage.city = data.city.value;
+            this.linkage.area = data.area.value;
         },
 
         // 地图左侧点击选择地址
