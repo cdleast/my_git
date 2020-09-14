@@ -1,4 +1,4 @@
-### 项目功能
+### blag-admin 博客权限管理系统 项目功能
 
 ##### 1、vue-element-template
 
