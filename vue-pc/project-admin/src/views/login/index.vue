@@ -11,11 +11,7 @@
                 <el-input type="password" v-model="loginForm.password" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item class="btn">
-                <el-button
-                    :disabled="!loginForm.username || !loginForm.password"
-                    type="primary"
-                    @click="submitForm('loginForm')"
-                >提交</el-button>
+                <el-button :disabled="!loginForm.username || !loginForm.password" type="primary" @click="submitForm('loginForm')">提交</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -56,24 +52,22 @@ export default {
             this.$refs[loginForm].validate((valid) => {
                 // 验证成功
                 if (valid) {
-                    this.$axios
-                        .post("/permission/getMenu", this.loginForm)
-                        .then((res) => {
-                            res = res.data;
-                            if (res.code === 20000) {
-                                // 先清除在设置避免二次登录
-                                this.$store.commit("clearMenu");
-                                this.$store.commit("setMenu", res.data.menu);
-                                // 存储Token
-                                this.$store.commit("setToken", res.data.token);
-                                // 做权限判断部分
-                                this.$store.commit("addMenu", this.$router);
-                                this.$router.push({ name: 'home' });
-                                this.$message.success("登录成功");
-                            } else {
-                                this.$message.warning(res.data.message);
-                            }
-                        });
+                    this.$axios.post("/permission/getMenu", this.loginForm).then((res) => {
+                        res = res.data;
+                        if (res.code === 20000) {
+                            // 先清除在设置避免二次登录
+                            this.$store.commit("clearMenu");
+                            this.$store.commit("setMenu", res.data.menu);
+                            // 存储Token
+                            this.$store.commit("setToken", res.data.token);
+                            // 做权限判断部分
+                            this.$store.commit("addMenu", this.$router);
+                            this.$router.push({ name: 'home' });
+                            this.$message.success("登录成功");
+                        } else {
+                            this.$message.warning(res.data.message);
+                        }
+                    });
                 } else {
                     this.$message.error("验证失败");
                     return false;

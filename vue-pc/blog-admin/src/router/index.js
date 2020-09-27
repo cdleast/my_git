@@ -22,12 +22,12 @@ export const constantRoutes = [
     {
         path: '/',
         component: Layout,
-        redirect: '/dashboard',
+        redirect: '/home',
         children: [{
-            path: 'dashboard',
-            name: 'Dashboard',
-            component: () => import('@/views/dashboard/index'),
-            meta: { title: '首页', icon: 'dashboard' }
+            path: 'home',
+            name: 'home',
+            component: () => import('@/views/home'),
+            meta: { title: '首页', icon: 'el-icon-s-home', affix: true } // affix: true 固定没有删除
         }]
     },
 
@@ -41,19 +41,19 @@ export const constantRoutes = [
         children: [
             {
                 path: 'article',
-                name: 'article',
+                name: 'blogArticle',
                 component: () => import('@/views/blog/article'),
                 meta: { title: '文章管理', icon: 'el-icon-notebook-1' }
             },
             {
                 path: 'category',
-                name: 'category',
+                name: 'blogCategory',
                 component: () => import('@/views/blog/category'),
                 meta: { title: '分类管理', icon: 'el-icon-s-order' }
             },
             {
                 path: 'label',
-                name: 'label',
+                name: 'blogLabel',
                 component: () => import('@/views/blog/label'),
                 meta: { title: '标签管理', icon: 'el-icon-collection-tag' }
             }
@@ -84,20 +84,20 @@ export const constantRoutes = [
         children: [
             {
                 path: 'user',
-                name: 'user',
-                component: () => import('@/views/user'),
+                name: 'systemUser',
+                component: () => import('@/views/system/user'),
                 meta: { title: '用户管理', icon: 'el-icon-user-solid' }
             },
             {
                 path: 'role',
-                name: 'role',
-                component: () => import('@/views/role'),
+                name: 'systemRole',
+                component: () => import('@/views/system/role'),
                 meta: { title: '角色管理', icon: 'el-icon-coin' }
             },
             {
                 path: 'menu',
-                name: 'menu',
-                component: () => import('@/views/menu'),
+                name: 'systemMenu',
+                component: () => import('@/views/system/menu'),
                 meta: { title: '菜单管理', icon: 'el-icon-menu' }
             }
         ]
@@ -127,7 +127,6 @@ export const constantRoutes = [
             }
         ]
     },
-
 
     { path: '*', redirect: '/404', hidden: true }
 ]

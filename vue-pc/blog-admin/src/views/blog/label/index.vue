@@ -1,5 +1,5 @@
 <template>
-    <div class='label'>标签管理</div>
+    <div class="label">标签管理</div>
 </template>
 
 <script>

@@ -43,8 +43,8 @@ export default {
 .el-header {
     background-color: #333;
 }
-.el-backtop{
-    background-color: #409EFF;
+.el-backtop {
+    background-color: #409eff;
     color: #fff;
 }
 </style>

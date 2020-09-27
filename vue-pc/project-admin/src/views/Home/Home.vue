@@ -25,30 +25,15 @@
             <!-- table列表部分 -->
             <el-card shadow="hover" style="height: 538px;margin-top: 20px">
                 <el-table :data="tableData">
-                    <el-table-column
-                        show-overflow-tooltip
-                        v-for="(val, key) in tableLabel"
-                        :key="key"
-                        :prop="key"
-                        :label="val"
-                    ></el-table-column>
+                    <el-table-column show-overflow-tooltip v-for="(val, key) in tableLabel" :key="key" :prop="key" :label="val"></el-table-column>
                 </el-table>
             </el-card>
         </el-col>
 
         <el-col :span="16">
             <div class="num">
-                <el-card
-                    shadow="hover"
-                    v-for="(item,index) in countData"
-                    :key="index"
-                    :body-style="{ display: 'flex', padding: 0 }"
-                >
-                    <i
-                        class="icon"
-                        :class="`el-icon-${item.icon}`"
-                        :style="{ background: item.color }"
-                    ></i>
+                <el-card shadow="hover" v-for="(item,index) in countData" :key="index" :body-style="{ display: 'flex', padding: 0 }">
+                    <i class="icon" :class="`el-icon-${item.icon}`" :style="{ background: item.color }"></i>
                     <div class="detail">
                         <p class="num">￥ {{ item.value }}</p>
                         <p class="txt">{{ item.name }}</p>
@@ -170,7 +155,7 @@ export default {
                         type: "line"
                     });
                 });
-                
+
                 // 用户柱状图
                 this.echartData.user.xData = res.data.userData.map(
                     item => item.date
