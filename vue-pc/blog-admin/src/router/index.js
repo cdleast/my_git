@@ -27,7 +27,7 @@ export const constantRoutes = [
             path: 'home',
             name: 'home',
             component: () => import('@/views/home'),
-            meta: { title: '首页', icon: 'el-icon-s-home', affix: true } // affix: true 固定没有删除
+            meta: { title: '首页', icon: 'el-icon-s-home', affix: true } // affix: true 固定没有删除选项
         }]
     },
 
@@ -132,14 +132,14 @@ export const constantRoutes = [
 ]
 
 const createRouter = () => new Router({
-    mode: 'history', // require service support
+    mode: 'history',
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRoutes
 })
 
 const router = createRouter()
 
-// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+
 export function resetRouter() {
     const newRouter = createRouter()
     router.matcher = newRouter.matcher // reset router
