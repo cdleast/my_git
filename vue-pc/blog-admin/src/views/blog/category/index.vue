@@ -49,12 +49,19 @@
             layout="total, sizes, prev, pager, next, jumper"
             :total="page.total"
         ></el-pagination>
+
+        <!-- 新增和编辑弹窗 -->
+        <addAndEdit :title="addAndEdit.title" :visible="addAndEdit.visible" :formData="addAndEdit.formData" :remoteClose="remoteClose"></addAndEdit>
     </div>
 </template>
 
 <script>
+import addAndEdit from './addAndEdit'
 export default {
     name: 'blogCategory',
+    components: { // 子组件
+        addAndEdit
+    },
     data() {
         return {
             list: [], // 列表数据
@@ -64,6 +71,11 @@ export default {
                 size: 20, // 每页查询条数
                 total: 0 // 总条数
             },
+            addAndEdit: { // 传递给子组件参数
+                title: '',
+                visible: false,
+                formData: {}
+            }
         }
     },
     created() {
@@ -103,14 +115,26 @@ export default {
             this.fetchData()
         },
 
-        // 新增数据
+        // 新增数据打开新增窗口
         addData() {
-
+            this.addAndEdit.visible = true
+            this.addAndEdit.title = '新增'
         },
 
         // 编辑列表
         handleEdit(id) {
-            console.log(id)
+            this.$api.getCategory(id).then(res => {
+                if (res.code === 20000) {
+                    this.addAndEdit.formData = res.data
+                    this.addAndEdit.title = '编辑'
+                    this.addAndEdit.visible = true
+                }
+            })
+        },
+
+        // 子组件会触发此方法关闭子组件
+        remoteClose() {
+            this.addAndEdit.visible = false
         },
 
         // 删除列表
@@ -121,7 +145,7 @@ export default {
                 type: 'warning'
             }).then(() => {
                 // 发送删除请求
-                this.$api.deleteCategoryById(id).then(res => {
+                this.$api.deleteCategory(id).then(res => {
                     this.$message({
                         type: res.code === 20000 ? 'success' : 'error',
                         message: res.message
