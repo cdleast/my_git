@@ -51,16 +51,16 @@
         ></el-pagination>
 
         <!-- 新增和编辑弹窗 -->
-        <addAndEdit :title="addAndEdit.title" :visible="addAndEdit.visible" :formData="addAndEdit.formData" :remoteClose="remoteClose"></addAndEdit>
+        <addEdit :title="addEdit.title" :visible="addEdit.visible" :formData="addEdit.formData" :remoteClose="remoteClose"></addEdit>
     </div>
 </template>
 
 <script>
-import addAndEdit from './addAndEdit'
+import addEdit from './addEdit'
 export default {
-    name: 'blogCategory',
+    name: 'blog-category',
     components: { // 子组件
-        addAndEdit
+        addEdit
     },
     data() {
         return {
@@ -71,7 +71,7 @@ export default {
                 size: 20, // 每页查询条数
                 total: 0 // 总条数
             },
-            addAndEdit: { // 传递给子组件参数
+            addEdit: { // 传递给子组件参数
                 title: '',
                 visible: false,
                 formData: {}
@@ -117,24 +117,24 @@ export default {
 
         // 新增数据打开新增窗口
         addData() {
-            this.addAndEdit.visible = true
-            this.addAndEdit.title = '新增'
+            this.addEdit.visible = true
+            this.addEdit.title = '新增'
         },
 
         // 编辑列表
         handleEdit(id) {
             this.$api.getCategory(id).then(res => {
                 if (res.code === 20000) {
-                    this.addAndEdit.formData = res.data
-                    this.addAndEdit.title = '编辑'
-                    this.addAndEdit.visible = true
+                    this.addEdit.formData = res.data
+                    this.addEdit.title = '编辑'
+                    this.addEdit.visible = true
                 }
             })
         },
 
         // 子组件会触发此方法关闭子组件
         remoteClose() {
-            this.addAndEdit.visible = false
+            this.addEdit.visible = false
         },
 
         // 删除列表
@@ -162,7 +162,4 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.el-pagination {
-    margin-top: 20px;
-}
 </style>

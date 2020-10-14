@@ -39,9 +39,7 @@ export default {
         },
         formData: { // 提交表单数据
             type: Object,
-            default() {
-                return {}
-            }
+            default: {}
         },
         remoteClose: Function // 用于关闭窗口，父组件传递的方法
     },
