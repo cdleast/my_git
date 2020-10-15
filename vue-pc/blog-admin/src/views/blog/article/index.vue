@@ -15,7 +15,7 @@
             </el-form-item>
             <el-form-item>
                 <el-button icon="el-icon-search" type="primary" @click="queryData">查询</el-button>
-                <el-button icon="el-icon-refresh" @click="reload">重置</el-button>
+                <el-button icon="el-icon-refresh" @click="reloadData">重置</el-button>
             </el-form-item>
         </el-form>
 
@@ -136,7 +136,7 @@ export default {
         },
 
         // 刷新重置
-        reload() {
+        reloadData() {
             this.query = {}
             this.fetchData()
         },

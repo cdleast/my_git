@@ -215,4 +215,94 @@ export default {
             method: 'delete'
         })
     },
+
+
+    /**
+     * 广告管理-分页条件查询列表
+     * query - 查询条件
+     * current - 当前页数
+     * size - 每页查询条数
+    */
+    getAdvertList(query, current = 1, size = 20) {
+        return request({
+            url: '/advert/index/search',
+            method: 'post',
+            data: {
+                ...query,
+                current,
+                size
+            }
+        })
+    },
+
+
+    /**
+     * 广告管理-上传图片
+    */
+    uploadImg(data = {}) {
+        return request({
+            url: '/advert/file/upload',
+            method: 'post',
+            data
+        })
+    },
+
+
+    /**
+     * 广告管理-删除图片 
+     * /article/file/delete?fileUrl=http://xxxxx
+    */
+    deleteImg(imageUrl) {
+        return request({
+            url: '/advert/file/delete',
+            method: 'delete',
+            params: { 'fileUrl': imageUrl }
+        })
+    },
+
+
+    /**
+     * 广告管理-新增广告
+    */
+    addAdvert(data) {
+        return request({
+            url: '/advert/index/add',
+            method: 'post',
+            data
+        })
+    },
+
+
+    /**
+     * 广告管理-编辑查询
+    */
+    getAdvert(id) {
+        return request({
+            url: `/advert/index/update/${id}`,
+            method: 'get'
+        })
+    },
+
+
+    /**
+     * 广告管理-编辑更新
+    */
+    updateAdvert(data) {
+        return request({
+            url: '/advert/index/update',
+            method: 'put',
+            data
+        })
+    },
+
+
+    /**
+     * 广告管理-删除广告
+    */
+    deleteAdvert(id) {
+        return request({
+            url: `/advert/index/delete/${id}`,
+            method: 'delete'
+        })
+    },
 }

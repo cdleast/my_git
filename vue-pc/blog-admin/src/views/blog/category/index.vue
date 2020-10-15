@@ -122,8 +122,8 @@ export default {
         },
 
         // 编辑列表
-        handleEdit(id) {
-            this.$api.getCategory(id).then(res => {
+        async handleEdit(id) {
+            await this.$api.getCategory(id).then(res => {
                 if (res.code === 20000) {
                     this.addEdit.formData = res.data
                     this.addEdit.title = '编辑'
