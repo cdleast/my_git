@@ -47,8 +47,18 @@
                 <template slot-scope="scope">
                     <el-button type="primary" @click="openView(scope.row.id)" size="mini">查看</el-button>
                     <!-- 审核：只有status===1 才显示，其他不显示。删除：只有status !==0 才显示，其他不显示-->
-                    <el-button v-if="scope.row.status === 1" type="success" @click="openAudit(scope.row.id)" size="mini">审核</el-button>
-                    <el-button v-if="scope.row.status !== 0" type="danger" @click="handleDelete(scope.row.id)" size="mini">删除</el-button>
+                    <el-button
+                        v-if="scope.row.status === 1"
+                        type="success"
+                        @click="openAudit(scope.row.id)"
+                        size="mini"
+                    >审核</el-button>
+                    <el-button
+                        v-if="scope.row.status !== 0"
+                        type="danger"
+                        @click="handleDelete(scope.row.id)"
+                        size="mini"
+                    >删除</el-button>
                 </template>
             </el-table-column>
         </el-table>

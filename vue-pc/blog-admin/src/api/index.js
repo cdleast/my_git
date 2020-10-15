@@ -3,7 +3,7 @@ import request from '@/utils/request'
 
 export default {
     /**
-     * 博客管理-分类管理-分页条件查询列表
+     * 博客管理-分类管理-分页查询列表
      * query - 查询条件
      * current - 当前页数
      * size - 每页查询条数
@@ -305,4 +305,149 @@ export default {
             method: 'delete'
         })
     },
+
+
+    /**
+     * 系统管理-菜单管理-查询列表
+    */
+    getMenuList(data) {
+        return request({
+            url: '/system/menu/search',
+            method: 'post',
+            data
+        })
+    },
+
+
+    /**
+     * 系统管理-菜单管理-新增列表
+    */
+    addMenu(data) {
+        return request({
+            url: '/system/menu/add',
+            method: 'post',
+            data
+        })
+    },
+
+
+    /**
+     * 系统管理-菜单管理-编辑查询
+    */
+    getMenu(id) {
+        return request({
+            url: `/system/menu/update/${id}`,
+            method: 'get',
+        })
+    },
+
+
+    /**
+     * 系统管理-菜单管理-编辑更新
+    */
+    updateMenu(data) {
+        return request({
+            url: '/system/menu/update',
+            method: 'put',
+            data
+        })
+    },
+
+
+    /**
+     * 系统管理-菜单管理-删除列表
+    */
+    deleteMenu(id) {
+        return request({
+            url: `/system/menu/delete/${id}`,
+            method: 'delete'
+        })
+    },
+
+
+    /**
+     * 系统管理-角色管理-分页查询列表
+     * query - 查询条件
+     * current - 当前页数
+     * size - 每页查询条数
+    */
+    getRoleList(query, current = 1, size = 20) {
+        return request({
+            url: '/system/role/search',
+            method: 'post',
+            data: {
+                ...query,
+                current,
+                size
+            }
+        })
+    },
+
+
+    /**
+     * 系统管理-角色管理-新增角色
+    */
+    addRole(data) {
+        return request({
+            url: '/system/role/add',
+            method: 'post',
+            data
+        })
+    },
+
+
+    /**
+     * 系统管理-角色管理-编辑查询
+    */
+    getRole(id) {
+        return request({
+            url: `/system/role/update/${id}`,
+            method: 'get',
+        })
+    },
+
+
+    /**
+     * 系统管理-角色管理-编辑更新
+    */
+    updateRole(data) {
+        return request({
+            url: '/system/role/update',
+            method: 'put',
+            data
+        })
+    },
+
+
+    /**
+     * 系统管理-角色管理-删除角色
+    */
+    deleteRole(id) {
+        return request({
+            url: `/system/role/delete/${id}`,
+            method: 'delete'
+        })
+    },
+
+    /**
+     * 系统管理-角色管理-通过角色id查询所拥有的菜单ids
+    */
+    getMenuIdsByRoleId(id) {
+        return request({
+            url: `/system/role/${id}/menu/ids`,
+            method: 'get'
+        })
+    },
+
+
+    /**
+     * 系统管理-角色管理-提交角色权限数据
+    */
+    saveRoleMenu(id, menuIds) {
+        return request({
+            url: `/system/role/${id}/menu/save`,
+            method: 'post',
+            data: menuIds
+        })
+    }
 }

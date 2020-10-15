@@ -144,7 +144,6 @@ export default {
         // 编辑
         async handleEdit(id) {
             await this.$api.getAdvert(id).then(res => {
-                console.log(res)
                 if (res.code === 20000) {
                     this.addEdit.formData = res.data
                     // 修改前的图片url

@@ -7,7 +7,6 @@
                     action 指定上传地址，但是我们不用它默认的，所以给它空的，不能把它删除，默认这个必须要有 show-file-list 是否显示已上传文件列表，因为上传的是图片，不是文件，所以不要显示 http-request 自定义上传实现-->
                     <el-upload class="avatar-uploader" action :show-file-list="false" :http-request="uploadMainImg">
                         <img v-if="formData.imageUrl" :src="formData.imageUrl" class="avatar" />
-                        <!-- <el-button v-else type="primary" icon="el-icon-plus" size="mini">添加图片</el-button> -->
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload>
                 </el-form-item>
