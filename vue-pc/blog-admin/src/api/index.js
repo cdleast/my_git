@@ -449,5 +449,105 @@ export default {
             method: 'post',
             data: menuIds
         })
-    }
+    },
+
+
+    /**
+     * 系统管理-角色管理-分页查询列表
+     * query - 查询条件
+     * current - 当前页数
+     * size - 每页查询条数
+    */
+    getUserList(query, current = 1, size = 20) {
+        return request({
+            url: '/system/user/search',
+            method: 'post',
+            data: {
+                ...query,
+                current,
+                size
+            }
+        })
+    },
+
+
+    /**
+     * 系统管理-用户管理-新增用户
+    */
+    addUser(data) {
+        return request({
+            url: '/system/user/add',
+            method: 'post',
+            data
+        })
+    },
+
+
+    /**
+     * 系统管理-用户管理-编辑查询
+    */
+    getUser(id) {
+        return request({
+            url: `/system/user/update/${id}`,
+            method: 'get',
+        })
+    },
+
+
+    /**
+     * 系统管理-用户管理-编辑更新
+    */
+    updateUser(data) {
+        return request({
+            url: '/system/user/update',
+            method: 'put',
+            data
+        })
+    },
+
+
+    /**
+     * 系统管理-用户管理-删除用户
+    */
+    deleteUser(id) {
+        return request({
+            url: `/system/user/delete/${id}`,
+            method: 'delete'
+        })
+    },
+
+
+    /**
+     * 系统管理-用户管理-通过用户id查询所拥有的菜单ids
+    */
+    getRoleIdsByUserId(id) {
+        return request({
+            url: `/system/user/${id}/role/ids`,
+            method: 'get'
+        })
+    },
+
+
+    /**
+     * 系统管理-用户管理-保存用户拥有角色
+    */
+    saveUserRole(id, roleIds) {
+        return request({
+            url: `/system/user/${id}/role/save`,
+            method: 'post',
+            data: roleIds
+        })
+    },
+
+
+    /**
+     * 系统管理-用户管理-保存用户拥有角色
+    */
+    updatePassword(data) {
+        return request({
+            url: '/system/user/password',
+            method: 'put',
+            data
+        })
+    },
 }

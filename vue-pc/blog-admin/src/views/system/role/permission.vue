@@ -20,9 +20,9 @@
                 :default-checked-keys="menuIds"
             ></el-tree>
 
-            <el-form-item>
-                <el-button size="mini" type="primary" @click="submitForm('formData')">确定</el-button>
-                <el-button size="mini" @click="handleClose">取消</el-button>
+            <el-form-item class="btn">
+                <el-button type="primary" @click="submitForm('formData')">确定</el-button>
+                <el-button @click="handleClose">取消</el-button>
             </el-form-item>
         </el-form>
     </el-dialog>
@@ -107,4 +107,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.btn::v-deep {
+    .el-form-item__content {
+        margin-left: 0 !important;
+        text-align: center;
+    }
+}
 </style>
