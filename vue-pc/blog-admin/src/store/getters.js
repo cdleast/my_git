@@ -7,7 +7,7 @@ const getters = {
     visitedViews: state => state.tagsView.visitedViews,
     cachedViews: state => state.tagsView.cachedViews,
 
-    // 添加菜单相关的状态
+    // 菜单按钮权限状态
     init: state => state.menu.init,
     menuList: state => state.menu.menuList,
     buttonList: state => state.menu.buttonList

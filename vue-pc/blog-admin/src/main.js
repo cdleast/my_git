@@ -15,6 +15,11 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+// 导入全局自定义指令
+import directive from '@/directive'
+Vue.use(directive)
+
+
 import api from '@/api'
 Vue.prototype.$api = api
 

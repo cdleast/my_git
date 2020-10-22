@@ -2,21 +2,25 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-import '@/styles/index.scss' // global css
+import '@/assets/scss/index.scss' // global css
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
+Vue.use(ElementUI) // UI库
 
-import "babel-polyfill" // 解决es6问题
-import promise from "es6-promise"
+
+import "babel-polyfill" // 解决 ie9 不支持 es6 语法的问题
+import promise from "es6-promise" // 支持ES6语法=> 箭头函数可能会报promise错误
 promise.polyfill()
 
-Vue.config.productionTip = false
 
-import api from '@/api'
-Vue.prototype.$api = api
+import api from '@/api' // api文件
+Vue.prototype.$api = api // api
+
+
+
+
+Vue.config.productionTip = false
 
 new Vue({
     router,

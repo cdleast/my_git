@@ -32,7 +32,7 @@ module.exports = {
             [process.env.VUE_APP_BASE_API]: {  // '/dev-api': {
                 // 目标服务器地址
                 // target: process.env.VUE_APP_SERVICE_URL,
-                target: "http://mengxuegu.com:7300/mock/5f5adecd8d90085e5b58451b/admin",
+                target: "http://mengxuegu.com:7300/mock/5f5adecd8d90085e5b58451b/admin-copy",
                 changeOrigin: true, // 开启代理服务器，
                 pathRewrite: {
                     // 将 请求地址前缀 /dev-api 替换为 空的，

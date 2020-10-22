@@ -1,9 +1,19 @@
 <template>
     <div id="app">
-        123
         <router-view />
     </div>
 </template>
+
+<script>
+export default {
+    created() {
+
+    },
+    methods: {
+
+    }
+}
+</script>
 
 <style lang="scss">
 </style>

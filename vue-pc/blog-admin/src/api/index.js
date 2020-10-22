@@ -5,6 +5,17 @@ export default {
     /**
      * 首页-查询总用户
     */
+    getUserMenuList(userId) {
+        return request({
+            url: `/system/menu/user/${userId}`,
+            method: 'get'
+        })
+    },
+
+
+    /**
+     * 首页-查询总用户
+    */
     getUserTotal() {
         return request({
             url: '/system/user/total',
