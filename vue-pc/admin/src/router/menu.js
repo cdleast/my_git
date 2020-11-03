@@ -2,15 +2,17 @@ import Layout from '@/layout' // 布局页面
 
 export default [
     { // 首页
-        path: '/',
+        path: '',
         component: Layout,
         redirect: '/home',
-        children: [{
-            path: '/home',
-            name: 'home',
-            component: () => import('@/views/home'),
-            meta: { title: '首页', icon: 'el-icon-s-home', affix: true } // affix: true 固定没有删除选项
-        }]
+        children: [
+            {
+                path: '/home',
+                name: 'home',
+                component: () => import('@/views/home'),
+                meta: { title: '首页', icon: 'el-icon-s-home' }
+            }
+        ]
     },
 
     { // 会员管理
@@ -130,6 +132,20 @@ export default [
                 name: 'systemMenu',
                 component: () => import('@/views/system/menu'),
                 meta: { title: '菜单管理', icon: 'el-icon-menu' }
+            }
+        ]
+    },
+
+
+    { // 测试机
+        path: '',
+        component: Layout,
+        children: [
+            {
+                path: '/test',
+                name: 'test',
+                component: () => import('@/views/test'),
+                meta: { title: '测试页面', icon: 'el-icon-picture-outline-round' }
             }
         ]
     },

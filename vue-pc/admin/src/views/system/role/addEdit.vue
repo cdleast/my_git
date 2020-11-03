@@ -1,0 +1,97 @@
+<template>
+    <el-dialog :title="title" :visible.sync="visible" width="500px" :before-close="handleClose">
+        <el-form
+            :rules="rules"
+            ref="formData"
+            :model="formData"
+            label-width="100px"
+            label-position="right"
+            style="width: 400px"
+            status-icon
+        >
+            <el-form-item label="角色名称：" prop="name">
+                <el-input v-model="formData.name"></el-input>
+            </el-form-item>
+            <el-form-item label="备注：" prop="remark">
+                <el-input type="textarea" v-model="formData.remark"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('formData')" size="mini">确定</el-button>
+                <el-button size="mini" @click="handleClose">取消</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
+</template>
+
+<script>
+export default {
+    name: 'add-edit-role',
+    props: {
+        title: { // 弹窗的标题
+            type: String,
+            default: ''
+        },
+        visible: { // 弹出窗口，true弹出
+            type: Boolean,
+            default: false
+        },
+        formData: { // 提交表单数据
+            type: Object,
+            default: {}
+        },
+        remoteClose: Function // 用于关闭窗口
+    },
+    data() {
+        return {
+            rules: {
+                name: [ // prop值
+                    { required: true, message: '请输入角色名称', trigger: 'blur' },
+                ],
+            }
+        }
+    },
+    methods: {
+        // 关闭窗口
+        handleClose() {
+            this.$refs['formData'].resetFields()
+            this.remoteClose()
+        },
+
+        // 校验表单
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    this.submitData()
+                } else {
+                    return false;
+                }
+            })
+        },
+
+        // 提交表单数据
+        async submitData() {
+            let res = null
+            if (this.formData.id) {
+                // 编辑
+                res = await this.$api.updateRole(this.formData)
+            } else {
+                // 新增
+                res = await this.$api.addRole(this.formData)
+            }
+
+            if (res.data.code === 20000) {
+                //   提示信息
+                this.$message({ message: res.data.message, type: 'success' })
+                // 关闭窗口
+                this.handleClose()
+            } else {
+                this.$message({ message: '保存失败', type: 'error' })
+            }
+        },
+
+    }
+};
+</script>
+
+<style lang='scss' scoped>
+</style>

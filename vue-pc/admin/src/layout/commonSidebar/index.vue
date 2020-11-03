@@ -1,6 +1,7 @@
 <template>
-    <div class="sidebar-container" style="height:100vh">
-        <el-scrollbar style="height:100%">
+    <div class="sidebar-container" :class="{'has-logo':sidebarLogo}" style="height:100vh">
+        <logo v-if="sidebarLogo" :collapse="isCollapse" />
+        <el-scrollbar>
             <el-menu
                 :router="true"
                 :default-active="$route.path"
@@ -11,22 +12,27 @@
                 text-color="#bfcbd9"
                 active-text-color="#409EFF"
             >
-                <template v-for="(item,index) in menuList">
-                    <el-menu-item :key="index" v-if="item.children.length <= 1" :index="item.children[0].path">
+                <template v-for="(item,index) in sidebars">
+                    <el-menu-item v-if="!item.children" :key="index" :index="item.path+''" @click="clickMenu(item)">
                         <template>
-                            <i :class="item.children[0].meta.icon"></i>
-                            <span slot="title">{{item.children[0].meta.title}}</span>
+                            <i :class="item.meta.icon"></i>
+                            <span slot="title">{{item.meta.title}}</span>
                         </template>
                     </el-menu-item>
 
-                    <el-submenu :key="index" v-else :index="item.path">
+                    <el-submenu v-else :key="index" :index="item.path+''">
                         <template slot="title">
                             <i :class="item.meta.icon"></i>
                             <span slot="title">{{item.meta.title}}</span>
                         </template>
-                        <el-menu-item :index="ite.path" v-for="ite in item.children" :key="ite.path">
-                            <i :class="ite.meta.icon"></i>
-                            <span slot="title">{{ite.meta.title}}</span>
+                        <el-menu-item
+                            :index="subItem.path"
+                            v-for="subItem in item.children"
+                            :key="subItem.path"
+                            @click="clickMenu(subItem)"
+                        >
+                            <i :class="subItem.meta.icon"></i>
+                            <span slot="title">{{subItem.meta.title}}</span>
                         </el-menu-item>
                     </el-submenu>
                 </template>
@@ -36,17 +42,36 @@
 </template>
 
 <script>
-import menuList from '@/router/menu' // 布局页面
+import logo from './logo' // logo页面
 export default {
     name: 'common-sidebar',
+    components: {
+        logo
+    },
     data() {
-        return {
-            menuList: menuList, // 导航数据
-            isCollapse: false // 展开收起
+        return {}
+    },
+    computed: {
+        // 获取左侧导航栏数组
+        sidebars() {
+            return this.$store.state.sidebar.sidebars;
+        },
+        // 左侧导航状态-展开收起
+        isCollapse() {
+            return this.$store.state.sidebar.isCollapse;
+        },
+        // 左侧导航状态-logo部分
+        sidebarLogo() {
+            return this.$store.state.settings.sidebarLogo
         }
     },
-    created() {
-        // console.log(this.menuList)
+    methods: {
+        // 存储用户访问过的页面
+        clickMenu(item) {
+            // 把数据存储vuex
+            this.$store.dispatch("tagsView/addVisitedView", item)
+            this.$router.push({ name: item.name });
+        }
     }
 };
 </script>

@@ -37,7 +37,7 @@ const mutations = {
             return
         }
         // 2.先获取Cookie里面的asideMenu
-        let asideMenu = JSON.parse(Cookie.get('asideMenu'))
+        // let asideMenu = JSON.parse(Cookie.get('asideMenu'))
         // 3.将Cookie中获取到的asideMenu传给state里面，避免刷新的时候state里面的数据丢失
         state.asideMenu = asideMenu
         // 4.定义一个动态添加路由的数组

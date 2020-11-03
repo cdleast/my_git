@@ -1,11 +1,11 @@
 <template>
-    <section class="main-container">
-        <div class="app-main">
+    <div class="app-main">
+        <transition name="fade-transform" mode="out-in">
             <keep-alive>
                 <router-view></router-view>
             </keep-alive>
-        </div>
-    </section>
+        </transition>
+    </div>
 </template>
 
 <script>
@@ -19,19 +19,11 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.main-container /deep/ {
-    min-height: 100%;
-    -webkit-transition: margin-left 0.28s;
-    transition: margin-left 0.28s;
-    margin-left: 210px;
+.app-main {
+    width: 100%;
     position: relative;
-
-    .app-main {
-        width: 100%;
-        position: relative;
-        padding-top: 84px;
-        min-height: calc(100vh - 84px);
-        overflow: hidden;
-    }
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
 }
 </style>

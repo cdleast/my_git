@@ -5,6 +5,14 @@
     font-weight: 400 !important;
 }
 
+.el-breadcrumb .el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb .el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+.el-breadcrumb .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+.el-breadcrumb .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+    color: #97a8be;
+}
+
+
 .el-upload {
     input[type="file"] {
         display: none !important;
@@ -81,4 +89,18 @@
 // to fix el-date-picker css style
 .el-range-separator {
     box-sizing: content-box;
+}
+
+
+// 分页
+.el-pagination {
+    margin-top: 20px;
+}
+
+
+// 弹出窗
+.el-dialog {
+    .el-dialog__body {
+        padding: 20px;
+    }
 }

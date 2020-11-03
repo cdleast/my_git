@@ -22,7 +22,7 @@ export function setUser(user) {
 }
 
 //移除用户信息
-export function removeToken() {
+export function removeTokenUser() {
     localStorage.removeItem(TOKEN_KEY)
     localStorage.removeItem(USER_KEY)
 }

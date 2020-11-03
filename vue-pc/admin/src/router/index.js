@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import menuList from './menu' // 布局页面
+
 
 
 // 解决 点击同一路由，控制台报错问题，适用所有UI框架
@@ -21,11 +21,8 @@ const routes = [
         name: 'login',
         hidden: true,
         component: () => import('@/views/login')
-    },
-    ...menuList
+    }
 ]
-
-
 
 const router = new VueRouter({
     mode: 'history',

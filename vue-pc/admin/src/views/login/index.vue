@@ -20,7 +20,13 @@
                     <el-input type="username" v-model="loginData.loginUser" autocomplete="off" placeholder="请输入用户名"></el-input>
                 </el-form-item>
                 <el-form-item label="密码" prop="loginPass">
-                    <el-input type="password" v-model="loginData.loginPass" autocomplete="off" placeholder="请输入密码"></el-input>
+                    <el-input
+                        type="password"
+                        v-model="loginData.loginPass"
+                        autocomplete="off"
+                        placeholder="请输入密码"
+                        @keyup.enter.native="submitForm('loginData')"
+                    ></el-input>
                 </el-form-item>
                 <el-form-item class="btn">
                     <el-button
@@ -94,8 +100,8 @@ export default {
             tabCur: 1, // 高亮当前标签名
             reverse: 1, // 旋转 1 登录，2 注册
             loginData: { // 登录表单数据
-                loginUser: "",
-                loginPass: ""
+                loginUser: "admin",
+                loginPass: "11111"
             },
             regData: { // 注册表单数据
                 regUser: '',
@@ -157,15 +163,29 @@ export default {
         // 登录
         async loginSubmit() {
             // 验证帐号和密码是否通过
-            await this.$api.loginUser(this.loginData).then(res => {
-                const resp = res.data
-                // 登录成功，存储token
-                this.$store.dispatch("login", resp.data.token)
-                // 登录成功，获取用户信息，异步操作
-                this.$api.getUserInfo(resp.data.token).then(info => {
-                    this.$store.dispatch("getUserInfo", info.data);
-                })
-                this.$router.push('/')
+            this.$store.dispatch('user/login', this.loginData).then(res => {
+                // res 就是响应回来的那个真实对象
+                if (res.flag) {
+                    // 查询用户菜单权限树
+                    this.$api.getUserMenuList(res.data.token).then(menu => {
+                        // 先清除在设置避免二次登录
+                        this.$store.commit("sidebar/clearSidebar")
+                        this.$store.commit("sidebar/setSidebar", menu.data.data.menuTreeList)
+
+                        // 做权限判断部分
+                        this.$store.commit("sidebar/addSidebars", this.$router)
+                        this.$router.push('/')
+
+                        this.$message.success(res.message)
+                    })
+                } else {
+                    this.$message({
+                        message: res.message,
+                        type: 'waring'
+                    })
+                }
+            }).catch(error => {
+                console.log(error)
             })
         },
 
