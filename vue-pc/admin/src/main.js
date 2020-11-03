@@ -14,6 +14,8 @@ import directive from '@/directive' // 导入全局自定义指令
 Vue.use(directive)
 
 
+import '@/utils/nprogress' // 进度条插件
+
 // 权限拦截
 import './permission'
 

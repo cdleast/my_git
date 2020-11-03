@@ -43,13 +43,16 @@
 
 <script>
 import logo from './logo' // logo页面
+import menuList from '@/router/menu'
 export default {
     name: 'common-sidebar',
     components: {
         logo
     },
     data() {
-        return {}
+        return {
+            menuList: menuList
+        }
     },
     computed: {
         // 获取左侧导航栏数组

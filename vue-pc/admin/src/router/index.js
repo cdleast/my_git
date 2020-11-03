@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import global from './global' // 全局
 
 
 // 解决 点击同一路由，控制台报错问题，适用所有UI框架
@@ -16,12 +16,7 @@ Vue.use(VueRouter)
 
 
 const routes = [
-    {
-        path: '/login',
-        name: 'login',
-        hidden: true,
-        component: () => import('@/views/login')
-    }
+    ...global
 ]
 
 const router = new VueRouter({

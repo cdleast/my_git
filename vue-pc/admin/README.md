@@ -74,3 +74,7 @@ export default new Vuex.Store({
     plugins: [createPersistedState()]
 })
 ```
+
+### 11、进度条插件
+
+- npm install --save nprogress

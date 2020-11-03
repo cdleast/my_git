@@ -57,7 +57,7 @@ const mutations = {
                 currentSidebars[0].children.push(item)
             }
         })
-        // state.sidebars = currentSidebars
+
         router.options.routes = state.sidebars
         router.addRoutes(currentSidebars)
     }
