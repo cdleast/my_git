@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import global from './global' // 全局
+import menu from './menu' // 全局
 
 
 // 解决 点击同一路由，控制台报错问题，适用所有UI框架
@@ -16,7 +17,8 @@ Vue.use(VueRouter)
 
 
 const routes = [
-    ...global
+    ...global,
+    ...menu
 ]
 
 const router = new VueRouter({

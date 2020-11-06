@@ -28,9 +28,18 @@ import api from '@/api' // api文件
 Vue.prototype.$api = api // api
 
 
-
-
 Vue.config.productionTip = false
+
+// 路由拦截
+router.beforeEach((to, from, next) => {
+    let token = store.state.user.token
+    // 过滤登录页，防止死循环
+    if (!token && to.name !== 'login') {
+        next({ name: 'login' })
+    } else {
+        next()
+    }
+})
 
 new Vue({
     router,

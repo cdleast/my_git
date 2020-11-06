@@ -16,9 +16,9 @@ export default new Vuex.Store({
         settings, user, sidebar, tagsView
     },
     plugins: [createVuexAlong({
-        name: "sidebar-tagsView-settings", // 保存的集合名字
+        name: "tagsView-settings", // 保存的集合名字
         local: {
-            list: ["sidebar", "tagsView", "settings"] // 保存模块的数据
+            list: ["tagsView", "settings"] // 保存模块的数据
         },
     })]
 })

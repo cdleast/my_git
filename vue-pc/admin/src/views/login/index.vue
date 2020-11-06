@@ -166,18 +166,8 @@ export default {
             this.$store.dispatch('user/login', this.loginData).then(res => {
                 // res 就是响应回来的那个真实对象
                 if (res.flag) {
-                    // 查询用户菜单权限树
-                    this.$api.getUserMenuList(res.data.token).then(menu => {
-                        // 先清除在设置避免二次登录
-                        this.$store.commit("sidebar/clearSidebar")
-                        this.$store.commit("sidebar/setSidebar", menu.data.data.menuTreeList)
-
-                        // 做权限判断部分
-                        this.$store.commit("sidebar/addSidebars", this.$router)
-                        this.$router.push('/')
-
-                        this.$message.success(res.message)
-                    })
+                    this.$router.push('/')
+                    this.$message.success(res.message)
                 } else {
                     this.$message({
                         message: res.message,

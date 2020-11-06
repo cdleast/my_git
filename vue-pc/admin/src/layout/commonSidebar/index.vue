@@ -12,8 +12,13 @@
                 text-color="#bfcbd9"
                 active-text-color="#409EFF"
             >
-                <template v-for="(item,index) in sidebars">
-                    <el-menu-item v-if="!item.children" :key="index" :index="item.path+''" @click="clickMenu(item)">
+                <!-- <template v-for="(item,index) in menuList">
+                    <el-menu-item
+                        v-if="!item.children || item.children.length === 0"
+                        :key="index"
+                        :index="item.path+''"
+                        @click="clickMenu(item)"
+                    >
                         <template>
                             <i :class="item.meta.icon"></i>
                             <span slot="title">{{item.meta.title}}</span>
@@ -35,7 +40,7 @@
                             <span slot="title">{{subItem.meta.title}}</span>
                         </el-menu-item>
                     </el-submenu>
-                </template>
+                </template>-->
             </el-menu>
         </el-scrollbar>
     </div>
@@ -56,9 +61,9 @@ export default {
     },
     computed: {
         // 获取左侧导航栏数组
-        sidebars() {
-            return this.$store.state.sidebar.sidebars;
-        },
+        // sidebars() {
+        //     return this.$store.state.sidebar.sidebars;
+        // },
         // 左侧导航状态-展开收起
         isCollapse() {
             return this.$store.state.sidebar.isCollapse;
@@ -67,6 +72,9 @@ export default {
         sidebarLogo() {
             return this.$store.state.settings.sidebarLogo
         }
+    },
+    created() {
+        console.log(this.menuList)
     },
     methods: {
         // 存储用户访问过的页面

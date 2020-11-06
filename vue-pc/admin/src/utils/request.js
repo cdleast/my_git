@@ -68,7 +68,6 @@ request.interceptors.response.use(response => {
 }, error => {
     // 关闭加载窗口
     loading.close()
-    console.log('response.error', error.response.status)
     Message({
         message: error.message,
         type: 'error',
