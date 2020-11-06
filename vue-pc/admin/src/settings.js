@@ -11,7 +11,7 @@ module.exports = {
      * @type {boolean} true | false
      * @description 是否需要tagsView
      */
-    tagsView: false,
+    tagsView: true,
 
     /**
      * @type {boolean} true | false

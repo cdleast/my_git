@@ -49,6 +49,8 @@
             :normalList="normalList"
             :remoteClose="remoteClose"
         ></addEdit>
+
+        <router-view></router-view>
     </div>
 </template>
 

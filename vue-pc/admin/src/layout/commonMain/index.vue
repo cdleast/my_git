@@ -15,6 +15,11 @@ export default {
         return {
         }
     },
+    computed: {
+        key() {
+            return this.$route.path + Math.random()
+        }
+    }
 };
 </script>
 

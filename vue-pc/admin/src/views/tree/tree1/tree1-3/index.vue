@@ -1,10 +1,10 @@
 <template>
-    <div class="label2">label2</div>
+    <div class="tree1-3">tree1-3</div>
 </template>
 
 <script>
 export default {
-    name: 'label2',
+    name: 'tree1-3',
     data() {
         return {}
     },

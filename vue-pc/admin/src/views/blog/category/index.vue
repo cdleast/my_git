@@ -2,7 +2,7 @@
     <div class="blog-category">
         <!-- 条件查询 -->
         <el-form :inline="true" :model="query" size="mini">
-            <el-form-item label="文章标题:">
+            <el-form-item label="分类标题:">
                 <el-input v-model.trim="query.title"></el-input>
             </el-form-item>
             <el-form-item label="状态:">
@@ -84,7 +84,7 @@ export default {
         }
     },
     created() {
-        this.fetchData();
+        this.fetchData()
     },
     methods: {
         // 分页条件查询列表

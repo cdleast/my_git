@@ -1,15 +1,17 @@
 <template>
-    <div class="el-tag-views" v-if="visitedViews">
-        <el-tag
-            v-for="item in visitedViews"
-            :key="item.path"
-            :closable="!item.meta.affix"
-            :effect="$route.name === item.name ? 'dark' : 'plain'"
-            size="small"
-            @close="handleClose(item)"
-            @click="jumpViews(item)"
-        >{{ item.meta.title}}</el-tag>
-    </div>
+    <el-scrollbar class="scroll-container">
+        <div class="el-tag-views" v-if="visitedViews">
+            <el-tag
+                v-for="item in visitedViews"
+                :key="item.path"
+                :closable="!item.meta.affix"
+                :effect="$route.name === item.name ? 'dark' : 'plain'"
+                size="small"
+                @close="handleClose(item)"
+                @click="jumpViews(item)"
+            >{{ item.meta.title}}</el-tag>
+        </div>
+    </el-scrollbar>
 </template>
 
 <script>
@@ -45,8 +47,22 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.scroll-container {
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    ::v-deep {
+        .el-scrollbar__bar {
+            bottom: 0px;
+        }
+        .el-scrollbar__wrap {
+            overflow-y: hidden;
+        }
+    }
+}
 .el-tag-views /deep/ {
-    height: 100%;
+    height: 35px;
     display: flex;
     align-items: center;
 

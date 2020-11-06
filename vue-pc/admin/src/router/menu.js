@@ -37,40 +37,29 @@ export default [
                 meta: { title: '员工管理', icon: 'el-icon-user-solid' }
             },
             {
+                path: '/blog',
                 name: 'blog',
+                redirect: '/blog/article',
+                component: () => import('@/views/blog'),
                 meta: { title: '博客管理', icon: 'el-icon-notebook-2' },
                 children: [
                     {
-                        path: '/article',
-                        name: 'blogArticle',
+                        path: '/blog/article',
+                        name: 'blog-article',
                         component: () => import('@/views/blog/article'),
                         meta: { title: '文章管理', icon: 'el-icon-notebook-1' }
                     },
                     {
-                        path: '/category',
+                        path: '/blog/category',
                         name: 'blogCategory',
                         component: () => import('@/views/blog/category'),
                         meta: { title: '分类管理', icon: 'el-icon-s-order' }
                     },
                     {
-                        path: '/label',
-                        name: 'blogLabel',
+                        path: '/blog/label',
+                        name: 'blog-label',
                         component: () => import('@/views/blog/label'),
-                        meta: { title: '标签管理', icon: 'el-icon-collection-tag' },
-                        children: [
-                            {
-                                path: '/label1',
-                                name: 'blog-label-label1',
-                                component: () => import('@/views/blog/label/label1'),
-                                meta: { title: 'label1', icon: 'el-icon-notebook-1' }
-                            },
-                            {
-                                path: '/label2',
-                                name: 'blog-label-label2',
-                                component: () => import('@/views/blog/label/label2'),
-                                meta: { title: 'label2', icon: 'el-icon-notebook-1' }
-                            }
-                        ]
+                        meta: { title: '标签管理', icon: 'el-icon-collection-tag' }
                     }
                 ]
             },
@@ -81,23 +70,26 @@ export default [
                 meta: { title: '广告管理', icon: 'el-icon-picture-outline-round' }
             },
             {
+                path: '/system',
                 name: 'system',
+                redirect: '/system/user',
+                component: () => import('@/views/system'),
                 meta: { title: '系统管理', icon: 'el-icon-setting' },
                 children: [
                     {
-                        path: '/user',
+                        path: '/system/user',
                         name: 'systemUser',
                         component: () => import('@/views/system/user'),
                         meta: { title: '用户管理', icon: 'el-icon-user-solid' }
                     },
                     {
-                        path: '/role',
+                        path: '/system/role',
                         name: 'systemRole',
                         component: () => import('@/views/system/role'),
                         meta: { title: '角色管理', icon: 'el-icon-coin' }
                     },
                     {
-                        path: '/menu',
+                        path: '/system/menu',
                         name: 'systemMenu',
                         component: () => import('@/views/system/menu'),
                         meta: { title: '菜单管理', icon: 'el-icon-menu' }
@@ -109,6 +101,54 @@ export default [
                 name: 'test',
                 component: () => import('@/views/test'),
                 meta: { title: '测试页面', icon: 'el-icon-picture-outline-round' }
+            },
+            {
+                path: '/tree',
+                name: 'tree',
+                component: () => import('@/views/tree'),
+                redirect: '/tree/tree1',
+                meta: { title: 'tree', icon: 'el-icon-picture-outline-round' },
+                children: [
+                    {
+                        path: '/tree/tree1',
+                        name: 'tree-tree1',
+                        component: () => import('@/views/tree/tree1'),
+                        redirect: '/tree/tree1/tree1-1',
+                        meta: { title: 'tree1', icon: 'el-icon-user-solid' },
+                        children: [
+                            {
+                                path: '/tree/tree1/tree1-1',
+                                name: 'tree-tree1-tree1_1',
+                                component: () => import('@/views/tree/tree1/tree1-1'),
+                                meta: { title: 'tree1-1', icon: 'el-icon-user-solid' }
+                            },
+                            {
+                                path: '/tree/tree1/tree1-2',
+                                name: 'tree-tree1-tree1_2',
+                                component: () => import('@/views/tree/tree1/tree1-2'),
+                                meta: { title: 'tree1-2', icon: 'el-icon-user-solid' }
+                            },
+                            {
+                                path: '/tree/tree1/tree1-3',
+                                name: 'tree-tree1-tree1_3',
+                                component: () => import('@/views/tree/tree1/tree1-3'),
+                                meta: { title: 'tree1-3', icon: 'el-icon-user-solid' }
+                            }
+                        ]
+                    },
+                    {
+                        path: '/tree/tree2',
+                        name: 'tree-tree2',
+                        component: () => import('@/views/tree/tree2'),
+                        meta: { title: 'tree2', icon: 'el-icon-user-solid' }
+                    },
+                    {
+                        path: '/tree/tree3',
+                        name: 'tree-tree3',
+                        component: () => import('@/views/tree/tree1'),
+                        meta: { title: 'tree3', icon: 'el-icon-user-solid' }
+                    }
+                ]
             }
         ]
     }

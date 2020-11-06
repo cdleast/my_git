@@ -35,18 +35,11 @@ export default {
         getBreadcrumb() {
             let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
             const first = matched[0]
-            // // //如果不是首页
+            //如果不是首页
             if (!this.isHome(first)) {
                 matched = [{ path: "/home", meta: { title: "首页" } }].concat(matched)
             }
             this.breadList = matched
-            // console.log(this.breadList)
-            // const first = matched[0]
-            // if (!this.isHome(first)) {
-            //     matched = [{ path: '/home', meta: { title: '首页' } }].concat(matched)
-            // }
-            // this.breadList = matched
-            // console.log(this.breadList)
         }
     }
 
