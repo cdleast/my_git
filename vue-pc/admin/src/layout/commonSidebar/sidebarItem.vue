@@ -33,12 +33,10 @@ export default {
             default: {}
         }
     },
-    data() {
-        return {}
-    },
     methods: {
         // 存储用户访问过的页面
         clickMenu(item) {
+            // console.log(item)
             // 把数据存储vuex
             this.$store.dispatch("tagsView/addVisitedView", item)
             this.$router.push({
