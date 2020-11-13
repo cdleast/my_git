@@ -1,67 +1,44 @@
 <template>
     <div class="pizza">
-        <pizza-header class="pizza-header"></pizza-header>
-
-        <template v-if="$route.name == 'pizza'">
-            <div class="pizza-container">
-                <div class="background">
-                    <h1>欢迎大家品尝pizza!</h1>
-                    <h2>这里有你非常喜欢的pizza!</h2>
-                    <el-button type="primary" @click="goToMenu">Let's order!</el-button>
-                </div>
-            </div>
-
-            <pizza-panel class="pizza-panel"></pizza-panel>
-        </template>
-
-        <router-view></router-view>
+        <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+            <el-tab-pane label="主页" name="home">
+                <app-home></app-home>
+            </el-tab-pane>
+            <el-tab-pane label="菜单" name="menu">
+                <app-menu></app-menu>
+            </el-tab-pane>
+            <el-tab-pane label="管理" name="admin">
+                <app-admin></app-admin>
+            </el-tab-pane>
+            <el-tab-pane label="关于我们" name="about">
+                <app-about></app-about>
+            </el-tab-pane>
+        </el-tabs>
     </div>
 </template>
 
 <script>
-import pizzaHeader from './components/header' // 头部
-import pizzaPanel from './components/panel' // 主页提示面板
-
+import appHome from './home'
+import appMenu from './menu'
+import appAdmin from './admin'
+import appAbout from './about'
 export default {
     name: 'pizza',
     components: {
-        pizzaHeader,
-        pizzaPanel
+        appHome, appMenu, appAdmin, appAbout
     },
     data() {
-        return {}
+        return {
+            activeName: 'home'
+        }
     },
     methods: {
-        goToMenu() {
-            this.$router.push({ name: 'menuLink' })
+        handleClick(tab, event) {
+            // this.activeName = tab.name
         }
     }
 };
 </script>
 
 <style lang='scss' scoped>
-.pizza-container {
-    background: url("~@/assets/images/pizza/pizza.jpg") no-repeat;
-    background-size: 100% 100%;
-    margin: 30px 0;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-
-    .background {
-        background: #eee;
-        opacity: 0.8;
-        width: 70%;
-        height: 50%;
-        margin: 0 auto;
-        text-align: center;
-
-        h1,
-        h2 {
-            margin: 5%;
-            font-size: 40px;
-            font-weight: 700;
-        }
-    }
-}
 </style>

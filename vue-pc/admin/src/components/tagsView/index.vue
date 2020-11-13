@@ -5,7 +5,7 @@
                 v-for="item in visitedViews"
                 :key="item.path"
                 :closable="!item.meta.affix"
-                :effect="$route.name === item.name ? 'dark' : 'plain'"
+                :effect="isActive(item) ? 'dark' : 'plain'"
                 size="small"
                 @close="handleClose(item)"
                 @click="jumpViews(item)"
@@ -27,15 +27,42 @@ export default {
         },
     },
     methods: {
+        // 判断是否当前路由页
+        isActive(route) {
+            return route.path === this.$route.path
+        },
+
         // 删除标签
-        handleClose(item) {
-            // 拿到点击删除标签的前一个元素传给面包屑
-            let result = this.visitedViews.findIndex((val) => {
-                return val.name === item.name;
+        handleClose(view) {
+            this.$store.dispatch('tagsView/delView', view).then(({ visitedViews }) => {
+                if (this.isActive(view)) {
+                    this.toLastView(visitedViews, view)
+                }
             })
-            let data = this.visitedViews[result - 1]
-            this.$store.dispatch('tagsView/closeTagView', result)
-            this.$router.push({ path: data.path })
+            // // 拿到点击删除标签的前一个元素传给面包屑
+            // let result = this.visitedViews.findIndex((val) => {
+            //     return val.name === item.name;
+            // })
+            // let data = this.visitedViews[result - 1]
+            // this.$store.dispatch('tagsView/closeTagView', result)
+            // this.$router.push({ path: data.path })
+        },
+
+        toLastView(visitedViews, view) {
+            const latestView = visitedViews.slice(-1)[0]
+            console.log(latestView)
+            if (latestView) {
+                this.$router.push(latestView.path)
+            } else {
+                // now the default is to redirect to the home page if there is no tags-view,
+                // you can adjust it according to your needs.
+                if (view.name === 'home') {
+                    // to reload home page
+                    this.$router.replace({ path: view.path })
+                } else {
+                    this.$router.push('/')
+                }
+            }
         },
 
         // 跳转路由

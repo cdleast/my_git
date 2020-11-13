@@ -1,13 +1,12 @@
 <template>
-    <div class="pizza-menu"></div>
+    <div class="zh_portal">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-
-
 export default {
-    name: 'pizza-menu',
-
+    name: 'zh_portal',
     data() {
         return {}
     },

@@ -28,10 +28,19 @@ const mutations = {
         state.visitedViews.push(view)
     },
 
-    // 删除标签导航
-    CLOSE_TAG_VIEW: (state, view) => {
-        state.visitedViews.splice(view, 1)
+    DEL_VISITED_VIEW: (state, view) => {
+        for (const [i, v] of state.visitedViews.entries()) {
+            if (v.path === view.path) {
+                state.visitedViews.splice(i, 1)
+                break
+            }
+        }
     },
+
+    // 删除标签导航
+    // CLOSE_TAG_VIEW: (state, view) => {
+    //     state.visitedViews.splice(view, 1)
+    // },
 
     // 退出清除visitedViews标签
     CLEAR_TAG_VIEW: (state) => {
@@ -49,10 +58,25 @@ const actions = {
         commit('ADD_VISITED_VIEW', view)
     },
 
-    // 删除标签导航
-    closeTagView({ commit }, view) {
-        commit('CLOSE_TAG_VIEW', view)
+    delView({ dispatch, state }, view) {
+        return new Promise(resolve => {
+            dispatch('delVisitedView', view)
+            resolve({
+                visitedViews: [...state.visitedViews],
+            })
+        })
     },
+    delVisitedView({ commit, state }, view) {
+        return new Promise(resolve => {
+            commit('DEL_VISITED_VIEW', view)
+            resolve([...state.visitedViews])
+        })
+    },
+
+    // 删除标签导航
+    // closeTagView({ commit }, view) {
+    //     commit('CLOSE_TAG_VIEW', view)
+    // },
 
     // 退出清除visitedViews标签
     clearTagView({ commit }) {

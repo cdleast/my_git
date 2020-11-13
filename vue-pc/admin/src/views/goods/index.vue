@@ -160,7 +160,6 @@ export default {
         queryData() {
             this.page.current = 1
             this.fetchData()
-            console.log(this.query)
         },
 
 

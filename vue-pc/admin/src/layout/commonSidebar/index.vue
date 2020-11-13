@@ -1,6 +1,7 @@
 <template>
     <div class="sidebar-container" :class="{'has-logo':sidebarLogo}" style="height:100vh">
         <logo v-if="sidebarLogo" :collapse="isCollapse" />
+        <!-- :default-active="$route.meta.activeMenu" -->
         <el-scrollbar>
             <el-menu
                 :router="true"

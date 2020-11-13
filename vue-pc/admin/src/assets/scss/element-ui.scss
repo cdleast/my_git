@@ -104,3 +104,17 @@
         padding: 20px;
     }
 }
+
+
+// 选项卡部分
+.el-tabs.el-tabs-width {
+    .el-tabs__nav {
+        width: 100%;
+        display: flex;
+
+        .el-tabs__item {
+            flex: 1;
+            text-align: center;
+        }
+    }
+}

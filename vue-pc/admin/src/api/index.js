@@ -954,4 +954,60 @@ export default {
             data
         })
     },
+
+
+    /**
+     * 点餐系统
+    */
+    addPizza(data) {
+        return request({
+            url: '/pizza/add',
+            method: 'post',
+            data
+        })
+    },
+
+
+    /**
+     * 美团外卖-商品查询
+    */
+    getGoodsList() {
+        return request({
+            url: '/meituan/goods',
+            method: 'get'
+        })
+    },
+
+
+    /**
+     * 美团外卖-评级查询
+    */
+    getRatingsList() {
+        return request({
+            url: '/meituan/ratings',
+            method: 'get'
+        })
+    },
+
+
+    /**
+     * 美团外卖-店家查询
+     */
+    getSellerList() {
+        return request({
+            url: '/meituan/seller',
+            method: 'get'
+        })
+    },
+
+
+    /**
+     * 保险门户-新闻处理中心
+     */
+    getPortalNewsList() {
+        return request({
+            url: '/zh_portal/news',
+            method: 'get'
+        })
+    },
 }

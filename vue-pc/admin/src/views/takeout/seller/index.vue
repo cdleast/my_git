@@ -1,13 +1,10 @@
 <template>
-    <div class="pizza-menu"></div>
+    <div class="takeout-seller">takeout-seller</div>
 </template>
 
 <script>
-
-
 export default {
-    name: 'pizza-menu',
-
+    name: 'takeout-seller',
     data() {
         return {}
     },

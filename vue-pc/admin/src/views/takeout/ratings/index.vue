@@ -1,13 +1,10 @@
 <template>
-    <div class="pizza-menu"></div>
+    <div class="takeout-ratings">takeout-ratings</div>
 </template>
 
 <script>
-
-
 export default {
-    name: 'pizza-menu',
-
+    name: 'takeout-ratings',
     data() {
         return {}
     },

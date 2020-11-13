@@ -16,6 +16,9 @@ Vue.use(directive)
 
 import '@/utils/nprogress' // 进度条插件
 
+import Fragment from 'vue-fragment' // 解决 vue 只能有一个根组件的限制
+Vue.use(Fragment.Plugin) // 例子：用于 sidebarItem 组件
+
 // 权限拦截
 import './permission'
 

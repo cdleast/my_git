@@ -75,6 +75,16 @@ export default new Vuex.Store({
 })
 ```
 
-### 11、进度条插件
+### 11、进度条插件 nprogress
 
 - npm install --save nprogress
+
+### 12、解决 vue 只能有一个根组件的限制，不想用无用的容器污染 DOM 或想一次返回许多元素时 vue-fragment
+
+```
+- npm install --save vue-fragment
+- main.js引入
+- import Fragment from 'vue-fragment'
+- Vue.use(Fragment.Plugin)
+- 使用的时候fragment标签放在最外层即可
+```

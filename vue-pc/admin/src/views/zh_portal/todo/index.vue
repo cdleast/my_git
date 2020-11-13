@@ -1,13 +1,10 @@
 <template>
-    <div class="pizza-menu"></div>
+    <div class="todo">todo</div>
 </template>
 
 <script>
-
-
 export default {
-    name: 'pizza-menu',
-
+    name: 'zh_portal-todo',
     data() {
         return {}
     },

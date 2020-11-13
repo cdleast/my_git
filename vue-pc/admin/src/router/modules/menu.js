@@ -14,33 +14,55 @@ export default [
                 meta: { title: '首页', icon: 'el-icon-s-home' }
             },
             {
+                path: '/zh_portal',
+                name: 'zh_portal',
+                redirect: '/zh_portal/news',
+                component: () => import('@/views/zh_portal'),
+                meta: { title: '中华保险门户', icon: 'el-icon-s-ticket' },
+                children: [
+                    {
+                        path: '/zh_portal/news',
+                        name: 'zh_portal-news',
+                        component: () => import('@/views/zh_portal/news'),
+                        meta: { title: '新闻处理中心', icon: 'el-icon-s-ticket' }
+                    },
+                    {
+                        path: '/zh_portal/official',
+                        name: 'zh_portal-official',
+                        component: () => import('@/views/zh_portal/official'),
+                        meta: { title: '公文处理中心', icon: 'el-icon-s-ticket' }
+                    },
+                    {
+                        path: '/zh_portal/business',
+                        name: 'zh_portal-business',
+                        component: () => import('@/views/zh_portal/business'),
+                        meta: { title: '业务流程中心', icon: 'el-icon-s-ticket' }
+                    },
+                    {
+                        path: '/zh_portal/todo',
+                        name: 'zh_portal-todo',
+                        component: () => import('@/views/zh_portal/todo'),
+                        meta: { title: '集成待办中心', icon: 'el-icon-s-ticket' }
+                    },
+                    {
+                        path: '/zh_portal/statistical',
+                        name: 'zh_portal-statistical',
+                        component: () => import('@/views/zh_portal/statistical'),
+                        meta: { title: '查询统计中心', icon: 'el-icon-s-ticket' }
+                    },
+                ]
+            },
+            {
+                path: '/takeout',
+                name: 'takeout',
+                component: () => import('@/views/takeout'),
+                meta: { title: '美团外卖', icon: 'el-icon-s-shop', activeMenu: '/takeout' }
+            },
+            {
                 path: '/pizza',
                 name: 'pizza',
                 component: () => import('@/views/pizza'),
-                meta: { title: '点餐系统', icon: 'el-icon-s-order' },
-                children: [
-                    {
-                        path: '/pizza/menu',
-                        name: 'pizza-menu',
-                        hidden: true,
-                        component: () => import('@/views/pizza/menu'),
-                        meta: { title: '点餐系统菜单', icon: 'el-icon-s-order' }
-                    },
-                    {
-                        path: '/pizza/admin',
-                        name: 'pizza-admin',
-                        hidden: true,
-                        component: () => import('@/views/pizza/admin'),
-                        meta: { title: '点餐系统管理', icon: 'el-icon-s-order' }
-                    },
-                    {
-                        path: '/pizza/about',
-                        name: 'pizza-about',
-                        hidden: true,
-                        component: () => import('@/views/pizza/about'),
-                        meta: { title: '点餐系统关于我们', icon: 'el-icon-s-order' }
-                    },
-                ]
+                meta: { title: '点餐系统', icon: 'el-icon-s-order' }
             },
             {
                 path: '/member',
@@ -81,7 +103,7 @@ export default [
                     },
                     {
                         path: '/blog/category',
-                        name: 'blogCategory',
+                        name: 'blog-category',
                         component: () => import('@/views/blog/category'),
                         meta: { title: '分类管理', icon: 'el-icon-s-order' }
                     },
