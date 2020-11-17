@@ -1,13 +1,14 @@
 // 设置属性，主要承载一些属性，存储数据的
 const state = {
-    visitedViews: [
+    visitedViews: [ // 用户访问过的页面
         {
             path: '/home',
             name: 'home',
             component: () => import('@/views/home'),
             meta: { title: '首页', icon: 'el-icon-s-home', affix: true }
         }
-    ] // 用户访问过的页面
+    ],
+    cachedViews: [] // 刷新缓存
 }
 
 
@@ -23,12 +24,13 @@ const mutations = {
     ADD_VISITED_VIEW: (state, view) => {
         // some方法 只要其中一个为true 就会返回true的
         // 判断是否已经打开过当前路由页面
-        // console.log(view)
         if (state.visitedViews.some(v => v.path === view.path)) return
         state.visitedViews.push(view)
     },
 
+    // 删除选中标签
     DEL_VISITED_VIEW: (state, view) => {
+        // entries() 方法返回一个数组的迭代对象，该对象包含数组的键值对 (key/value)。
         for (const [i, v] of state.visitedViews.entries()) {
             if (v.path === view.path) {
                 state.visitedViews.splice(i, 1)
@@ -37,10 +39,25 @@ const mutations = {
         }
     },
 
-    // 删除标签导航
-    // CLOSE_TAG_VIEW: (state, view) => {
-    //     state.visitedViews.splice(view, 1)
-    // },
+    // 右键刷新
+    DEL_CACHED_VIEW: (state, view) => {
+        const index = state.cachedViews.indexOf(view.name)
+        index > -1 && state.cachedViews.splice(index, 1)
+    },
+
+    // 右键删除其他标签
+    DEL_OTHERS_VISITED_VIEWS: (state, view) => {
+        state.visitedViews = state.visitedViews.filter(v => {
+            return v.meta.affix || v.path === view.path
+        })
+    },
+
+    // 右键删除所有标签
+    DEL_ALL_VISITED_VIEWS: state => {
+        // keep affix tags
+        const affixTags = state.visitedViews.filter(item => item.meta.affix)
+        state.visitedViews = affixTags
+    },
 
     // 退出清除visitedViews标签
     CLEAR_TAG_VIEW: (state) => {
@@ -54,18 +71,29 @@ const mutations = {
 // 不直接操作，应用mutations，可以实现异步的操作
 const actions = {
     // 添加用户访问过的页面
+    addView({ dispatch }, view) {
+        dispatch('addVisitedView', view)
+        // dispatch('addCachedView', view)
+    },
     addVisitedView({ commit }, view) {
         commit('ADD_VISITED_VIEW', view)
     },
+    // addCachedView({ commit }, view) {
+    //     commit('ADD_CACHED_VIEW', view)
+    // },
 
+    // 删除标签-异步
     delView({ dispatch, state }, view) {
         return new Promise(resolve => {
             dispatch('delVisitedView', view)
+            dispatch('delCachedView', view) // 右键刷新的方法
             resolve({
-                visitedViews: [...state.visitedViews],
+                visitedViews: [...state.visitedViews]
             })
         })
     },
+
+    // 删除标签-同步
     delVisitedView({ commit, state }, view) {
         return new Promise(resolve => {
             commit('DEL_VISITED_VIEW', view)
@@ -73,10 +101,54 @@ const actions = {
         })
     },
 
-    // 删除标签导航
-    // closeTagView({ commit }, view) {
-    //     commit('CLOSE_TAG_VIEW', view)
-    // },
+    // 右键刷新标签
+    delCachedView({ commit, state }, view) {
+        return new Promise(resolve => {
+            commit('DEL_CACHED_VIEW', view)
+            resolve([...state.cachedViews])
+        })
+    },
+
+    // 右键删除其他标签-异步
+    delOthersViews({ dispatch, state }, view) {
+        return new Promise(resolve => {
+            dispatch('delOthersVisitedViews', view)
+            resolve({
+                visitedViews: [...state.visitedViews]
+            })
+        })
+    },
+
+    // 右键删除其他标签-同步
+    delOthersVisitedViews({ commit, state }, view) {
+        return new Promise(resolve => {
+            commit('DEL_OTHERS_VISITED_VIEWS', view)
+            resolve([...state.visitedViews])
+        })
+    },
+
+    // 右键删除所有标签-同步
+    delAllViews({ dispatch, state }, view) {
+        return new Promise(resolve => {
+            dispatch('delAllVisitedViews', view)
+            resolve({
+                visitedViews: [...state.visitedViews]
+            })
+        })
+    },
+
+    // 右键删除所有标签-异步
+    delAllVisitedViews({ commit, state }) {
+        return new Promise(resolve => {
+            commit('DEL_ALL_VISITED_VIEWS')
+            resolve([...state.visitedViews])
+        })
+    },
+
+
+
+
+
 
     // 退出清除visitedViews标签
     clearTagView({ commit }) {

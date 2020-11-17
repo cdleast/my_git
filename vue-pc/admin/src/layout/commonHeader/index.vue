@@ -158,7 +158,7 @@ export default {
     .tags-view-container {
         height: 35px;
         width: 100%;
-        padding: 0 15px;
+        // padding: 0 15px;
         background: #fff;
         border-bottom: 1px solid #d8dce5;
         -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12),

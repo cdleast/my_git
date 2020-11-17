@@ -1,5 +1,11 @@
 export default [
     {
+        path: '/redirect/:path(.*)',
+        name: 'redirect',
+        hidden: true,
+        component: () => import('@/views/redirect')
+    },
+    {
         path: '/login',
         name: 'login',
         hidden: true,

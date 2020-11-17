@@ -17,8 +17,8 @@ Vue.use(VueRouter)
 
 
 const routes = [
-    ...global,
-    ...menu
+    ...menu,
+    ...global
 ]
 
 const router = new VueRouter({

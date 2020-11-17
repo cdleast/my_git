@@ -10,7 +10,7 @@ const loading = {
         if (this.loadingInstance === null) {
             // 如果实例 为空，则创建
             this.loadingInstance = Loading.service({
-                target: '#app',
+                target: '.main-container',
                 text: '拼命加载中...',
                 background: 'rgba(0, 0, 0, 0.5)'
             })

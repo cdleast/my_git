@@ -48,7 +48,7 @@ export default {
         // 存储用户访问过的页面
         clickMenu(item) {
             // 把数据存储vuex
-            this.$store.dispatch("tagsView/addVisitedView", item)
+            this.$store.dispatch("tagsView/addView", item)
             this.$router.push({
                 path: item.path,
                 name: item.name
