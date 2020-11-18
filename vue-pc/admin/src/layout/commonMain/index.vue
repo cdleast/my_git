@@ -12,8 +12,7 @@
 export default {
     name: 'common-main',
     data() {
-        return {
-        }
+        return {}
     },
     computed: {
         key() {

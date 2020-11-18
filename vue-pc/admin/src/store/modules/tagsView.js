@@ -8,7 +8,7 @@ const state = {
             meta: { title: '首页', icon: 'el-icon-s-home', affix: true }
         }
     ],
-    cachedViews: [] // 刷新缓存
+    cachedViews: [] // 选中标签
 }
 
 
@@ -28,6 +28,14 @@ const mutations = {
         state.visitedViews.push(view)
     },
 
+    // 添加选中标签
+    ADD_CACHED_VIEW: (state, view) => {
+        if (state.cachedViews.includes(view.name)) return
+        if (!view.meta.noCache) {
+            state.cachedViews.push(view.name)
+        }
+    },
+
     // 删除选中标签
     DEL_VISITED_VIEW: (state, view) => {
         // entries() 方法返回一个数组的迭代对象，该对象包含数组的键值对 (key/value)。
@@ -37,12 +45,6 @@ const mutations = {
                 break
             }
         }
-    },
-
-    // 右键刷新
-    DEL_CACHED_VIEW: (state, view) => {
-        const index = state.cachedViews.indexOf(view.name)
-        index > -1 && state.cachedViews.splice(index, 1)
     },
 
     // 右键删除其他标签
@@ -86,7 +88,6 @@ const actions = {
     delView({ dispatch, state }, view) {
         return new Promise(resolve => {
             dispatch('delVisitedView', view)
-            dispatch('delCachedView', view) // 右键刷新的方法
             resolve({
                 visitedViews: [...state.visitedViews]
             })
@@ -98,14 +99,6 @@ const actions = {
         return new Promise(resolve => {
             commit('DEL_VISITED_VIEW', view)
             resolve([...state.visitedViews])
-        })
-    },
-
-    // 右键刷新标签
-    delCachedView({ commit, state }, view) {
-        return new Promise(resolve => {
-            commit('DEL_CACHED_VIEW', view)
-            resolve([...state.cachedViews])
         })
     },
 
@@ -144,11 +137,6 @@ const actions = {
             resolve([...state.visitedViews])
         })
     },
-
-
-
-
-
 
     // 退出清除visitedViews标签
     clearTagView({ commit }) {

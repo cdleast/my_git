@@ -1,19 +1,25 @@
 <template>
     <div class="news">
-        <el-row :gutter="20">
-            <el-col :span="2">1</el-col>
-            <el-col :span="22">
-                <h2>其他公司门户</h2>
-                <el-row :gutter="20">
-                    <el-col class="item-li" :span="6" v-for="(item,index) in other" :key="index">{{ item.name }}</el-col>
-                </el-row>
-                <el-divider></el-divider>
-                <h2>分公司门户</h2>
-                <el-row :gutter="20">
-                    <el-col class="item-li" :span="4" v-for="(item,index) in child" :key="index">{{ item.name }}</el-col>
-                </el-row>
-            </el-col>
-        </el-row>
+        <ul class="left-nav">
+            <li>信息报送</li>
+            <li>信息报送查询</li>
+            <li>信息发布</li>
+            <li>信息浏览</li>
+            <li>新闻栏目统计</li>
+            <li>栏目管理</li>
+        </ul>
+
+        <div class="right-nav">
+            <h2>其他公司门户</h2>
+            <ul class="column-count-3">
+                <li class="item-li" v-for="(item,index) in other" :key="index">{{ item.name }}</li>
+            </ul>
+            <el-divider></el-divider>
+            <h2>分公司门户</h2>
+            <ul class="column-count-6">
+                <li class="item-li" v-for="(item,index) in child" :key="index">{{ item.name }}</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -43,19 +49,56 @@ export default {
 
 <style lang='scss' scoped>
 .news {
-    h2 {
-        color: #333;
-        font-weight: 700;
-        font-size: 20px;
-        margin-bottom: 20px;
+    display: flex;
+
+    .left-nav {
+        width: 50px;
+        padding: 10px 0;
+        margin-right: 20px;
+        background: #d3dce6;
+
+        li {
+            color: #000;
+            font-size: 12px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background: #fff;
+        }
     }
 
-    .item-li {
-        font-size: 14px;
-        color: #000;
-        font-weight: 400;
-        cursor: pointer;
-        line-height: 30px;
+    .right-nav {
+        flex: 1;
+
+        h2 {
+            color: #333;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        ul.column-count-3 {
+            column-count: 3;
+            -moz-column-count: 3;
+            -webkit-column-count: 3;
+        }
+
+        ul.column-count-6 {
+            column-count: 6;
+            -moz-column-count: 6;
+            -webkit-column-count: 6;
+        }
+
+        .item-li {
+            font-size: 14px;
+            color: #000;
+            font-weight: 400;
+            cursor: pointer;
+            line-height: 30px;
+        }
     }
 }
 </style>

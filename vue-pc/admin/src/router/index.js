@@ -5,10 +5,10 @@ import menu from './modules/menu' // 导航
 
 
 // 解决 点击同一路由，控制台报错问题，适用所有UI框架
-const originalPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push(location) {
-    return originalPush.call(this, location).catch(err => err)
-}
+// const originalPush = VueRouter.prototype.push
+// VueRouter.prototype.push = function push(location) {
+//     return originalPush.call(this, location).catch(err => err)
+// }
 
 
 Vue.use(VueRouter)

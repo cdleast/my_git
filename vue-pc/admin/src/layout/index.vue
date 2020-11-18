@@ -21,7 +21,9 @@ export default {
         commonHeader, commonSidebar, commonMain, rightPanel
     },
     data() {
-        return {}
+        return {
+
+        }
     },
     computed: {
         ...mapState({

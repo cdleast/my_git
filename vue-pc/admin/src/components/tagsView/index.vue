@@ -49,6 +49,7 @@ export default {
     watch: {
         // 监听路由变化
         $route() {
+            // this.addTags()
             // this.moveToCurrentTag()
         },
 
@@ -108,9 +109,9 @@ export default {
         // 鼠标刷新方法
         refreshSelectedTag(view) {
             this.reload()
-            this.$store.dispatch('tagsView/delCachedView', view).then(() => {
-                this.$nextTick(() => {
-                    this.$router.push({ path: view.path })
+            this.$nextTick(() => {
+                this.$router.replace({
+                    path: view.path
                 })
             })
         },
