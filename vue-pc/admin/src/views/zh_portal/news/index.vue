@@ -81,15 +81,17 @@ export default {
         }
 
         ul.column-count-3 {
-            column-count: 3;
-            -moz-column-count: 3;
-            -webkit-column-count: 3;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-row-gap: 20px;
+            grid-column-gap: 20px;
         }
 
         ul.column-count-6 {
-            column-count: 6;
-            -moz-column-count: 6;
-            -webkit-column-count: 6;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-row-gap: 20px;
+            grid-column-gap: 20px;
         }
 
         .item-li {

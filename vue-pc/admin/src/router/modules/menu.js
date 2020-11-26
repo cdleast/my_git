@@ -14,6 +14,39 @@ export default [
                 meta: { title: '首页', icon: 'el-icon-s-home' }
             },
             {
+                path: '/excel',
+                name: 'excel',
+                redirect: '/excel/export-excel',
+                component: () => import('@/views/excel'),
+                meta: { title: 'excel', icon: 'el-icon-document' },
+                children: [
+                    {
+                        path: '/excel/export-excel',
+                        name: 'excel-export-excel',
+                        component: () => import('@/views/excel/export-excel'),
+                        meta: { title: '导出 Excel', icon: 'el-icon-document' }
+                    },
+                    {
+                        path: '/export-selected-excel',
+                        name: 'export-selected-excel',
+                        component: () => import('@/views/excel/selected-excel'),
+                        meta: { title: '导出 已选择项', icon: 'el-icon-document' }
+                    },
+                    {
+                        path: '/export-merge-header',
+                        name: 'export-merge-header',
+                        component: () => import('@/views/excel/merge-header'),
+                        meta: { title: '导出 多级表头', icon: 'el-icon-document' }
+                    },
+                    {
+                        path: '/upload-excel',
+                        name: 'upload-excel',
+                        component: () => import('@/views/excel/upload-excel'),
+                        meta: { title: '上传 Excel', icon: 'el-icon-document' }
+                    }
+                ]
+            },
+            {
                 path: '/zh_portal',
                 name: 'zh_portal',
                 redirect: '/zh_portal/news',
@@ -49,6 +82,12 @@ export default [
                         name: 'zh_portal-statistical',
                         component: () => import('@/views/zh_portal/statistical'),
                         meta: { title: '查询统计中心', icon: 'el-icon-s-ticket' }
+                    },
+                    {
+                        path: '/zh_portal/quicklinks',
+                        name: 'zh_portal-quicklinks',
+                        component: () => import('@/views/zh_portal/quicklinks'),
+                        meta: { title: '快捷链接', icon: 'el-icon-s-ticket' }
                     },
                 ]
             },

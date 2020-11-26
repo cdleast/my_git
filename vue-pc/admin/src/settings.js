@@ -5,7 +5,7 @@ module.exports = {
      * @type {boolean} true | false
      * @description 是否在右面板显示设置按钮
      */
-    showSettings: true,
+    showSettings: false,
 
     /**
      * @type {boolean} true | false

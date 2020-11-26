@@ -1010,4 +1010,25 @@ export default {
             method: 'get'
         })
     },
+
+
+    /**
+     * excel - 导出功能
+     */
+    getExportExcel() {
+        return request({
+            url: '/export-excel',
+            method: 'get'
+        })
+    },
+
+    /**
+     * excel - 导出多级表头
+     */
+    getExportMergeExcel() {
+        return request({
+            url: '/export-merge-header',
+            method: 'get'
+        })
+    },
 }

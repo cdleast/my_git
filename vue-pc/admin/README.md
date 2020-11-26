@@ -88,3 +88,69 @@ export default new Vuex.Store({
 - Vue.use(Fragment.Plugin)
 - 使用的时候fragment标签放在最外层即可
 ```
+
+### 13、导出导入 Excel
+
+```
+- npm install file-saver -S // 文件保存器
+- npm install xlsx -S // 各种电子表格格式的解析器和编写器
+- npm install script-loader -S -D // 脚本加载器
+— vendor文件夹下的Export2Excel.js和Export2Zip.js文件
+// 数据定义
+data(){
+    return {
+        downloadLoading: false, // 导出报表Loading
+        filename: '', // 导出文件名
+        autoWidth: true, // 单元格是否自动宽度
+        bookType: 'xlsx' // 导出文件类型
+    }
+}
+
+// 导出报表
+handleDownload() {
+    this.downloadLoading = true
+    import('@/vendor/Export2Excel').then(excel => {
+        // 导出数据头
+        const tHeader = ['时间', '名字', '地址']
+        // 导出具体的数据要求
+        const filterVal = ['date', 'name', 'address']
+        // 导出特定数据
+        const list = this.tableData
+        const data = this.formatJson(filterVal, list)
+        excel.export_json_to_excel({
+            header: tHeader,
+            data,
+            filename: this.filename,
+            autoWidth: this.autoWidth,
+            bookType: this.bookType
+        })
+        this.downloadLoading = false
+    })
+},
+
+// 格式转换
+formatJson(filterVal, jsonData) {
+    return jsonData.map(v => filterVal.map(j => {
+        // 判断有时间字段的时候进行时间格式化
+        if (j === 'timestamp') {
+            // return parseTime(v[j])
+        } else {
+            return v[j]
+        }
+    }))
+},
+```
+
+### 14、轻量级时间插件 date-fns
+
+```
+- npm install date-fns --save
+- import format from 'date-fns/format'
+- const date = format(new Date(), 'yyyy-MM-dd')
+```
+
+### 15、轻量级时间插件 moment
+
+```
+- npm install moment --save
+```
